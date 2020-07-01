@@ -1,6 +1,4 @@
 
-
-
 $(document).ready(function () {
 
 
@@ -16,7 +14,7 @@ $(document).ready(function () {
             for (let i = 0; i < platforms.length; i++) {
                 // console.log(platforms[i].name);
 
-                const displayPlatformName = $("<button>").attr("type", "button").attr("data-id", platforms[i].id).addClass("list-group-item list-group-item-action platform-item").text(platforms[i].name);
+                const displayPlatformName = $("<button>").attr("type", "button").attr("data-id", platforms[i].id).attr("name", platforms[i].name).addClass("list-group-item list-group-item-action platform-item").text(platforms[i].name);
 
 
 
@@ -27,21 +25,38 @@ $(document).ready(function () {
 
     }
 
-
-
     populatePlatformList();
 
-
-
-
-    $(".platform-list").on("click", function (event) {
+    $(".platform-list").on("click", "button", function (event) {
         event.preventDefault();
+        let platformId = $(this).data("id");
+        let platformName = $(this).attr("name");
+        let platformTitle = $(".platform-title")
 
-        let platformId = $(".platform-item").data("id");
+        if (platformTitle.text() === "") {
+            platformTitle.text(platformName);
+            renderGameGrid(platformId)
+        } else if (platformTitle.text() === platformName) {
+            alert(`you already have ${platformName} selected`);
+        } else {
+            renderGameGrid(platformId);
+        }
 
-        console.log(platformId);
 
-        let gamesByPlatformURL = `https://rawg.io/api/games?platforms=${platformId}&platforms_count=1&page_size=50&ordering=-rating`;
+
+
+
+
+
+
+
+    });
+
+    const renderGameGrid = (id) => {
+
+        let gamesByPlatformURL = `https://rawg.io/api/games?platforms=${id}&page_size=50&ordering=-rating`;
+
+
 
         $.get(gamesByPlatformURL).then((response) => {
             console.log(response.results);
@@ -52,14 +67,14 @@ $(document).ready(function () {
             for (let i = 0; i < game.length; i++) {
 
 
-                const createCard = $("<div>").addClass("card d-inline-block").attr("style", "width: 12rem;");
+                const createCard = $("<div>").addClass("card d-inline-block mr-3 mt-3").attr("style", "width: 30%;");
                 $(".col-auto").append(createCard);
 
                 if (game[i].background_image === null) {
                     const cardImg = $("<img>").addClass("card-img-top").attr("alt", "game-image").attr("src", "https://placekitten.com/200/139");
                     createCard.append(cardImg);
                 } else {
-                    const cardImg = $("<img>").addClass("card-img-top").attr("alt", "game-image").attr("src", game[i].background_image);
+                    const cardImg = $("<img>").addClass("img-thumbnail").attr("alt", "game-image").attr("src", game[i].background_image);
                     createCard.append(cardImg);
                 }
 
@@ -85,15 +100,15 @@ $(document).ready(function () {
 
                 const addButton = $("<button>").addClass("btn btn-dark btn-sm btn-block").attr("id", "add-to-favorites-button").text(`Add to Library`);
                 cardBody.append(addButton);
-
-
             }
 
 
         });
 
+    }
 
-    });
+
+
 
 
 });
