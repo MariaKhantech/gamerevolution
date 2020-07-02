@@ -10,7 +10,7 @@
 </head>
 
 <body>
-
+    <!-- NAVBAR (TO BE FIXED LATER) -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -33,13 +33,14 @@
         <div class="container bg-dark m-0">
             <div class="row">
 
-
+                <!-- PLATFORM NAME SIDE MENU -->
                 <div class="col-md-3 bg-dark">
                     <div class="row">
                         <div class="col-md-12">
                             <h5 class="text-light">Browse by Platform</h5>
                         </div>
                     </div>
+                    <!-- LIST OF PLATFORMS -->
                     <div class="row">
                         <div class="col-md-12">
                             <div class="list-group platform-list mt-2">
@@ -47,11 +48,13 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- GAME GRID -->
                 <div class="col-md-9">
                     <div class="container " id="game-grid">
                         <div class="row justify-content-between">
+                            <!-- PLATFORM TITLE -->
                             <h3 class="text-white mx-auto platform-title"></h3>
+                            <!-- AREA WHERE GAMES APPEAR -->
                             <div class="col-auto mb-3">
 
                             </div>
@@ -62,7 +65,25 @@
                 </div>
             </div>
 
-
+            <!-- ALERT MODAL -->
+            <div class="modal fade" id="alert-modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Alert!</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p id="modal-text"></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn  btn-primary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
     </section>
