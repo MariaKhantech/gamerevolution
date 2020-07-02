@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS `sample_db`;
-CREATE DATABASE `sample_db`;
+DROP DATABASE IF EXISTS `gamerevolution_db`;
+CREATE DATABASE `gamerevolution_db`;

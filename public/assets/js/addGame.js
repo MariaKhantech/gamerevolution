@@ -46,6 +46,9 @@ $(document).ready(function () {
         }
     });
 
+
+
+
     // function to render highest-rated games to a card by platform a using RAWG API
     const renderGameGrid = (id) => {
 
@@ -104,7 +107,7 @@ $(document).ready(function () {
                 cardBody.append(rawgRating);
 
                 // variabel to create button that will add game to "favorites" library
-                const addButton = $("<button>").addClass("btn btn-dark btn-sm btn-block").attr("id", "add-to-favorites-button").text(`Add to Library`);
+                const addButton = $("<button>").addClass("btn btn-dark btn-sm btn-block").attr("id", "add-to-favorites-button").attr("type", "button").attr("data-id", game[i].id).attr("data-name", game[i].slug).text(`Add to Library`);
                 // append button to card body
                 cardBody.append(addButton);
             }
@@ -114,8 +117,36 @@ $(document).ready(function () {
 
     }
 
+    // On click of "add to library" button to post game slug (which will be later retrieved in the user favorites section to make rawg api call to display games they have added)
+    $(".col-auto").on("click", "button", function (event) {
 
+        event.preventDefault();
 
+        // variable that sets the slug to as data-name
+        let gameSelect = $(this).data("name");
+        // variable that sets the unique game id as the data-id
+        let gameID = $(this).data("id");
 
+        // console.log(`${gameSelect} & ${gameID}`);
 
+        // sets game slug and unique game id as game_name and unique_id in database
+        const newGame = {
+            game_name: gameSelect,
+            unique_id: gameID
+        }
+        // post request to our sever to add new game to database
+        $.ajax("/api/addgames", {
+            type: "POST",
+            data: newGame
+        }).then((result) => {
+            // console.log(result);
+            $('#alert-modal').modal('show');
+            $('#modal-text').text(`Game added to library`);
+
+        }).catch((err) => {
+            if (err) {
+                throw (err);
+            }
+        });
+    });
 });
