@@ -49,7 +49,7 @@ $(document).ready(function () {
     // function to render highest-rated games to a card by platform a using RAWG API
     const renderGameGrid = (id) => {
 
-        let gamesByPlatformURL = `https://rawg.io/api/games?platforms=${id}&page_size=50&ordering=-rating`;
+        let gamesByPlatformURL = `https://rawg.io/api/games?platforms=${id}&page_size=50&ordering=-added`;
 
         $.get(gamesByPlatformURL).then((response) => {
             console.log(response.results);
@@ -118,16 +118,28 @@ $(document).ready(function () {
                     cardBody.append(cardDescription);
                 }
 
-                // variable to set RAWG rating to card body
-                const roundedRating = Math.round(game[i].rating);
+                // variables to set RAWG rating to card body
 
+                const percentage = Math.round((game[i].rating / 5) * 100);
+
+                const rawgPercentage = $("<p>", {
+                    class: "card-text text-center",
+                    text: `Rating: ${percentage}%`
+                });
 
                 const rawgRating = $("<p>", {
                     class: "card-text text-center",
-                    text: `Rating: ${roundedRating}`
+                }).rateYo({
+                    rating: game[i].rating,
+                    readOnly: true
                 });
 
-                cardBody.append(rawgRating);
+                const userRatings = $("<p>", {
+                    class: "card-text text-center",
+                    text: `User Ratings: ${game[i].ratings_count}`
+                })
+
+                cardBody.append(rawgPercentage, rawgRating, userRatings);
 
                 // variable to create button that will add game to "favorites" library
                 const addButton = $("<button>", {
