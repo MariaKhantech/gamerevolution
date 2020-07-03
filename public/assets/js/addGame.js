@@ -46,14 +46,10 @@ $(document).ready(function () {
         }
     });
 
-
-
-
     // function to render highest-rated games to a card by platform a using RAWG API
     const renderGameGrid = (id) => {
 
         let gamesByPlatformURL = `https://rawg.io/api/games?platforms=${id}&page_size=50&ordering=-rating`;
-
 
         $.get(gamesByPlatformURL).then((response) => {
             console.log(response.results);
@@ -64,57 +60,91 @@ $(document).ready(function () {
             for (let i = 0; i < game.length; i++) {
 
                 // variable to create card
-                const createCard = $("<div>").addClass("card d-inline-block mr-3 mt-3").attr("style", "width: 30%;");
+                const createCard = $("<div>", {
+                    class: "card d-inline-block mr-3 mt-3",
+                    style: "width: 30%;"
+                });
                 // append card to parent div (line 55 of addGame.html)
                 $(".col-auto").append(createCard);
 
                 // if game has no background image fill card image with a placekitten holder (not permanent just TEMPORARY)
                 if (game[i].background_image === null) {
-                    const cardImg = $("<img>").addClass("card-img-top").attr("alt", "game-image").attr("src", "https://placekitten.com/200/139");
+                    const cardImg = $("<img>", {
+                        class: "card-img-top",
+                        alt: "game-image",
+                        src: "https://placekitten.com/200/139"
+                    });
                     createCard.append(cardImg);
                 } else {
                     // else fill card image with the game's background-image  from API
-                    const cardImg = $("<img>").addClass("img-thumbnail").attr("alt", "game-image").attr("src", game[i].background_image);
+                    const cardImg = $("<img>", {
+                        class: "img-thumbnail",
+                        alt: "game-image",
+                        src: game[i].background_image
+                    });
                     createCard.append(cardImg);
                 }
 
                 // variable to create card body div
-                const cardBody = $("<div>").addClass("card-body m-auto");
+                const cardBody = $("<div>", {
+                    class: "card-body m-auto"
+                });
                 // append card body to parent .card div
                 createCard.append(cardBody);
 
                 // variable to display game title 
-                const cardTitle = $("<h6>").addClass("card-title text-center").text(game[i].name);
+                const cardTitle = $("<h6>", {
+                    class: "card-title text-center",
+                    text: game[i].name
+                });
                 // append card title to card body
                 cardBody.append(cardTitle);
 
                 // if game year is null set card description (release year) to N/A and append to card body
                 if (game[i].released === null) {
-                    const cardDescription = $("<p>").addClass("card-text text-center").text(`Released: N/A`);
+                    const cardDescription = $("<p>", {
+                        class: "card-text text-center",
+                        text: `Released: N/A`
+                    });
                     cardBody.append(cardDescription);
                 } else {
                     // else set card description to game release year and append to card body
                     const gameYear = game[i].released.split("-");
 
-                    const cardDescription = $("<p>").addClass("card-text text-center").text(`Released: ${gameYear[0]}`);
-
+                    const cardDescription = $("<p>", {
+                        class: "card-text text-center",
+                        text: `Released: ${gameYear[0]}`
+                    });
                     cardBody.append(cardDescription);
                 }
 
                 // variable to set RAWG rating to card body
-                const rawgRating = $("<p>").addClass("card-text text-center").text(`RAWG Rating: ${game[i].rating}`);
-                // append RAWG rating to card body
+                const roundedRating = Math.round(game[i].rating);
+
+
+                const rawgRating = $("<p>", {
+                    class: "card-text text-center",
+                    text: `Rating: ${roundedRating}`
+                });
+
                 cardBody.append(rawgRating);
 
-                // variabel to create button that will add game to "favorites" library
-                const addButton = $("<button>").addClass("btn btn-dark btn-sm btn-block").attr("id", "add-to-favorites-button").attr("type", "button").attr("data-id", game[i].id).attr("data-name", game[i].slug).attr("data-toggle", "popover").attr("data-content", "Game added to library").text(`Add to Library`);
+                // variable to create button that will add game to "favorites" library
+                const addButton = $("<button>", {
+                    class: "btn btn-dark btn-sm btn-block",
+                    id: "add-to-favorites-button",
+                    type: "button",
+                    "data-type": game[i].id,
+                    "data-name": game[i].slug,
+                    "data-toggle": "popover",
+                    "data-content": "Game added to library",
+                    text: `Add to Library`
+                });
+
                 // append button to card body
                 cardBody.append(addButton);
             }
-
-
         });
-
     }
 
     // On click of "add to library" button to post game slug (which will be later retrieved in the user favorites section to make rawg api call to display games they have added)
@@ -151,12 +181,6 @@ $(document).ready(function () {
             }
         });
     });
-
-
-
-
-
-
-
-
 });
+
+
