@@ -144,6 +144,7 @@ iframe {
 	height: 300px;
 }
 
+/*adjust the size of the youtube video*/
 #youtube {
 	height: 60px !important;
 	width: 60px !important;
