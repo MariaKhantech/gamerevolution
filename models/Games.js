@@ -5,3 +5,10 @@ module.exports = (sequelize, DataTypes) => {
     });
     return Game;
 };
+
+
+
+
+
+
+
