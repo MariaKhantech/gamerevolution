@@ -12,7 +12,7 @@ $(document).ready(function () {
             let platforms = response.results
 
             for (let i = 0; i < platforms.length; i++) {
-                // console.log(platforms[i].name);
+                console.log(platforms[i].name);
 
                 const displayPlatformName = $("<button>").attr("type", "button").attr("data-id", platforms[i].id).attr("name", platforms[i].name).addClass("list-group-item list-group-item-action platform-item").text(platforms[i].name);
 
@@ -107,7 +107,7 @@ $(document).ready(function () {
                 cardBody.append(rawgRating);
 
                 // variabel to create button that will add game to "favorites" library
-                const addButton = $("<button>").addClass("btn btn-dark btn-sm btn-block").attr("id", "add-to-favorites-button").attr("type", "button").attr("data-id", game[i].id).attr("data-name", game[i].slug).text(`Add to Library`);
+                const addButton = $("<button>").addClass("btn btn-dark btn-sm btn-block").attr("id", "add-to-favorites-button").attr("type", "button").attr("data-id", game[i].id).attr("data-name", game[i].slug).attr("data-toggle", "popover").attr("data-content", "Game added to library").text(`Add to Library`);
                 // append button to card body
                 cardBody.append(addButton);
             }
@@ -140,8 +140,10 @@ $(document).ready(function () {
             data: newGame
         }).then((result) => {
             // console.log(result);
-            $('#alert-modal').modal('show');
-            $('#modal-text').text(`Game added to library`);
+            $(this).popover('show');
+            setTimeout(() => {
+                $(this).popover('hide');
+            }, 600);
 
         }).catch((err) => {
             if (err) {
@@ -149,4 +151,12 @@ $(document).ready(function () {
             }
         });
     });
+
+
+
+
+
+
+
+
 });

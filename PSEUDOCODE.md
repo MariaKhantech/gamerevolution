@@ -71,3 +71,30 @@
 
 - # SCHEMA
 - # SEEDS
+
+
+-## Tables
+// Users
+Shannon is creating
+    // first_name
+    // last_name
+    // user_name
+    // user_id
+    // email
+    // password_hash (TBD)
+    // profile_picture
+    // profile_cover
+
+// Favorites
+    // game_slug
+    // unique_id
+    // user_id
+
+// top favs/worst table use booleans
+    // favorites - false
+    // non_favorites - true
+    // currently_playing - false
+
+// comments table
+    // user_id
+    // comment
