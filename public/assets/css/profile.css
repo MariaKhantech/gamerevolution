@@ -1,0 +1,192 @@
+/* reference: Help with layout from https://www.bootdey.com/snippets/*/
+
+body {
+	background-color: black;
+	margin-top: 20px;
+	color: black;
+	padding-top: 50px;
+}
+
+/*edits the avatar on the profile*/
+#user-profile {
+	color: white;
+	width: 175px !important;
+	border-radius: 50% !important;
+	border-style: groove;
+	border-color: #727cf5;
+	margin-top: 18px;
+}
+/*navbar background color*/
+#navbarchange {
+	background: #282828;
+}
+/* changes background to elements and text white */
+.background-grey {
+	background-color: #282828;
+	color: white;
+	border-style: double;
+	border-color: #3500d3;
+}
+/*changes the followers section*/
+.color-text {
+	color: #727cf5;
+}
+
+/*social media buttons*/
+.fab {
+	padding: 10px;
+	font-size: 25px;
+	text-align: center;
+	text-decoration: none;
+	margin: 3px 1px;
+	border-radius: 50%;
+}
+.fa-discord {
+	background: #727cf5;
+	color: white;
+}
+.fa-twitch {
+	background: purple;
+	color: white;
+}
+.fa-youtube-square {
+	background: red;
+	color: white;
+}
+
+/*camera avatar upload button*/
+i.fa-camera {
+	margin: 10px;
+	cursor: pointer;
+	font-size: 20px;
+	color: #dddddd;
+}
+.custom-file-upload {
+	position: absolute;
+	top: 40%;
+	left: 50%;
+}
+i:hover {
+	opacity: 0.6;
+}
+input {
+	display: none;
+}
+
+/*edits the card holding the avatar*/
+#avatar-card {
+	background: rgba(76, 175, 80, 0.0);
+	margin-top: -9rem;
+	padding-bottom: .25rem;
+}
+
+/*edits cover photo*/
+#cover-photo {
+	background-color: #190061;
+	border-style: groove;
+	border-color: #3500d3 !important;
+}
+
+/*edits the friends section on the profile page*/
+.friends {
+	border-radius: 50%;
+	width: 25% !important;
+	border-style: groove;
+	border-color: #3500d3;
+}
+.friends-row {
+	width: 75%;
+}
+/*creates margins between comments middle section*/
+.comments {
+	margin-top: 1rem !important;
+}
+
+.left-section {
+	margin-top: 1rem;
+	background-color: #282828 !important;
+	border-style: double;
+	border-color: #3500d3 !important;
+	color: white;
+}
+
+/*background of avatar section*/
+#avatar-background {
+	background-color: #190061;
+	border-style: groove;
+	border-color: #3500d3 !important;
+}
+
+/*top three friends board */
+#top-three-friends {
+	margin-top: 1rem;
+	background: #282828 !important;
+	border-style: double;
+	border-color: #3500d3;
+	color: white;
+}
+
+/*div for currently playing image section*/
+.current-game {
+	width: 225px;
+	height: auto;
+	overflow: hidden;
+	border: 1px solid black;
+}
+
+.current-game img {
+	width: 100%;
+	min-height: 100%;
+}
+/* embedded youtube section changes this keeps video size of the div*/
+iframe {
+	width: 100%;
+	height: 300px;
+}
+
+#youtube {
+	height: 60px !important;
+	width: 60px !important;
+}
+
+/*more of template*/
+.profile-page .profile-header {
+	box-shadow: 0 0 10px 0 rgba(183, 192, 206, 0.2);
+	border: 1px solid #f2f4f9;
+}
+
+.profile-page .profile-header .cover {
+	position: relative;
+	border-radius: .25rem .25rem 0 0;
+}
+
+.profile-page .profile-header .cover figure {
+	margin-bottom: 0;
+}
+/*section for charts*/
+
+/*for button timelines*/
+.card .nav > li {
+	position: relative;
+	display: block;
+}
+
+.card .nav > li > a {
+	position: relative;
+	display: block;
+	padding: 10px 15px;
+	font-weight: 300;
+	border-radius: 4px;
+}
+
+.card .nav > li > a:focus,
+.card .nav > li > a:hover {
+	text-decoration: none;
+	background-color: #eee;
+}
+.card .s-nav > li > a.active {
+	text-decoration: none;
+	background-color: #3afe;
+	color: #fff;
+}
+/* ends*/
