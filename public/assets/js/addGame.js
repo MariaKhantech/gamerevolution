@@ -12,7 +12,7 @@ $(document).ready(function () {
             let platforms = response.results
 
             for (let i = 0; i < platforms.length; i++) {
-                console.log(platforms[i].name);
+                // console.log(platforms[i].name);
 
                 const displayPlatformName = $("<button>").attr("type", "button").attr("data-id", platforms[i].id).attr("name", platforms[i].name).addClass("list-group-item list-group-item-action platform-item").text(platforms[i].name);
 
@@ -44,6 +44,16 @@ $(document).ready(function () {
         } else {
             renderGameGrid(platformId);
         }
+    });
+
+    $('.search').on("click", "button", function (event) {
+        event.preventDefault();
+
+        let gameName = $("#searchInput").val().trim();
+
+        gameSlug = gameName.replace(/\s+/g, '-').toLowerCase();
+
+        console.log(gameSlug);
     });
 
     // function to render highest-rated games to a card by platform a using RAWG API
@@ -159,6 +169,10 @@ $(document).ready(function () {
         });
     }
 
+
+    const renderSearchResult = (gameSlug) => {
+
+    }
     // On click of "add to library" button to post game slug (which will be later retrieved in the user favorites section to make rawg api call to display games they have added)
     $(".col-auto").on("click", "button", function (event) {
 
