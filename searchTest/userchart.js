@@ -16,9 +16,47 @@ const rpgVal = $("#rpgVal");
 const actionVal = $("#actionVal");
 const adventureVal = $("#adventureVal");
 const strategyVal = $("#strategyVal");
-
+let userData = [];
+const ctx = document.getElementById("userChart").getContext("2d");
+//initilize chart
+let userRadarChart = new Chart(ctx, {
+  type: "radar",
+  data: {
+    labels: [
+      "Console",
+      "PC",
+      "Online",
+      "Offline",
+      "Shooter",
+      "Racing",
+      "RPG",
+      "Action",
+      "Adventure",
+      "Strategy",
+    ],
+    datasets: [
+      {
+        label: "Average User Stats",
+        data: [1, 2, 5, 5, 4, 2, 8, 6, 4, 8],
+        borderColor: "red",
+      },
+    ],
+  },
+  options: {
+    scale: {
+      angleLines: {
+        display: false,
+      },
+      ticks: {
+        suggestedMin: 1,
+        suggestedMax: 10,
+      },
+    },
+  },
+});
+// updates chart on click
 saveStatBtn.on("click", () => {
-  console.log(
+  userData = [
     consoleVal.val(),
     pcVal.val(),
     onlineVal.val(),
@@ -28,29 +66,51 @@ saveStatBtn.on("click", () => {
     rpgVal.val(),
     actionVal.val(),
     adventureVal.val(),
-    strategyVal.val()
-  );
-  //   alert("working");
-});
-// decide size of chart by 5 or 10?
-const ctx = document.getElementById("userChart").getContext("2d");
-let getUserChart = () => {
-  data.push(checkConsole.val(), checkPC.val());
-};
+    strategyVal.val(),
+  ];
+  console.log(consoleVal.val());
+  // update chart data here
 
-let data = [];
-let userRadarChart = new Chart(ctx, {
-  type: "radar",
-  data: data,
-  options: {
-    scale: {
-      angleLines: {
-        display: false,
-      },
-      ticks: {
-        suggestedMin: 50,
-        suggestedMax: 100,
+  userRadarChart = new Chart(ctx, {
+    type: "radar",
+    data: {
+      labels: [
+        "Console",
+        "PC",
+        "Online",
+        "Offline",
+        "Shooter",
+        "Racing",
+        "RPG",
+        "Action",
+        "Adventure",
+        "Strategy",
+      ],
+      datasets: [
+        { label: "User Stats", data: userData, borderColor: "blue" },
+        {
+          label: "Average User Stats",
+          data: [1, 2, 5, 5, 4, 2, 8, 6, 4, 8],
+          borderColor: "red",
+        },
+      ],
+    },
+    options: {
+      scale: {
+        angleLines: {
+          display: false,
+        },
+        ticks: {
+          suggestedMin: 1,
+          suggestedMax: 10,
+        },
       },
     },
-  },
+  });
 });
+
+function updateUserChart() {
+  userRadarChart.update();
+  userRadarChart.data.datasets.data = userData;
+}
+// decide size of chart by 5 or 10?

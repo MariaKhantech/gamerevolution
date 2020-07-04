@@ -13,13 +13,15 @@
     <title>User Chart</title>
   </head>
   <body>
+    <div class="container">
       <!-- Chart -->
       <canvas id="userChart"></canvas>
 <!-- Button trigger modal -->
+<div class="text-center">
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" id="userStatStartBtn">
     Launch User Stats
   </button>
-  
+</div>
   <!-- Modal -->
   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -104,7 +106,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="saveStatsBtn">Save changes</button>
+          <button type="button" class="btn btn-primary" id="saveStatsBtn" data-dismiss="modal">Save changes</button>
         </div>
       </div>
     </div>
@@ -117,11 +119,6 @@
     </div> -->
 
       </div>
-    </div>
-    </div>
-    <!-- Where api call dumps -->
-    <div class="container my-4" id="imageDump"></div>
-  </div>
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script
