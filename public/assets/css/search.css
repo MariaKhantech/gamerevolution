@@ -1,0 +1,48 @@
+body {
+	background-color: black;
+	margin-top: 20px;
+	color: black;
+	padding-top: 50px;
+}
+
+
+#navbarchange {
+	background: #282828;
+}
+
+/* #platform-list {
+background: #282828 !important;
+    border-style: double;
+    border-color: #3500d3;
+    color: white;
+} */
+
+.platform-item {
+    /* background: #282828 !important;
+    border-style: double;
+    border-color: #3500d3;
+    color: white; */
+}
+
+
+.card {
+    background: #282828 !important;
+    border-style: double;
+    border-color: #3500d3;
+    color: white;  
+}
+
+.img-thumbnail {
+    background: #282828 !important;
+    border-style: double;
+    border-color: #3500d3;
+}
+
+.col-md-9 {
+    background: #282828;
+    margin: 0px auto 0px auto;
+}
+
+.search-menu {
+    margin: 0px auto 0px auto;
+}
