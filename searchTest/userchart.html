@@ -10,22 +10,100 @@
       crossorigin="anonymous"
     />
 
-    <title>Layout</title>
+    <title>User Chart</title>
   </head>
   <body>
-
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" id="userStatStartBtn">
+    Launch User Stats
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">User Stats</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="questionDiv">
+            <!-- MODAL FORM -->
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <!-- change label for -->
+                      <label>Do you play on a console or PC?</label>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="inlineCheckboxConsole" id="inlineCheckConsole" value="console">
+                        <label class="form-check-label" for="inlineRadioConsole">Console</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="inlineCheckboxConsole" id="inlineCheckPC" value="pc">
+                        <label class="form-check-label" for="inlineRadioPC">PC</label>
+                      </div>
+                    </div>
+                    <!-- Online/Offline -->
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <!-- change label for -->
+                      <label>Do you like to play online or offline?</label>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="inlineCheckboxOnline" id="inlineCheckOnline" value="online">
+                        <label class="form-check-label" for="inlineRadioConsole">Online</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="inlineCheckboxOnline" id="inlineCheckOffline" value="offline">
+                        <label class="form-check-label" for="inlineRadioPC">Offline</label>
+                      </div>
+                    </div>
+                  </div>
+                  <!--  Shooter/Racing-->
+                  <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <!-- change label for -->
+                      <label>Do you like to play Shooters or Racing games?</label>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="inlineCheckboxShooter" id="inlineCheckShooter" value="shooter">
+                        <label class="form-check-label" for="inlineRadioConsole">Shooters</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="inlineCheckboxShooter" id="inlineCheckRacing" value="racing">
+                        <label class="form-check-label" for="inlineRadioPC">Racing</label>
+                      </div>
+                  </div>
+                  <!-- RPG/ACTION -->
+                  <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <!-- change label for -->
+                      <label>Do you like to play RPG's or Action games?</label>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="inlineCheckboxRPG" id="inlineCheckShooter" value="shooter">
+                        <label class="form-check-label" for="inlineRadioConsole">Shooters</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="inlineCheckboxRPG" id="inlineCheckRacing" value="racing">
+                        <label class="form-check-label" for="inlineRadioPC">Racing</label>
+                      </div>
+                  </div>
+        </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="saveStatsBtn">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
     <!-- Search form -->
-    <div class="container">
-      <div class="row">
-      <button id="searchBtn" class="col-md-2">Search!</button>
-      <div class="active-purple-3 active-purple-4 mb-4 col-md-10">
-        <input
-          class="form-control"
-          type="text"
-          placeholder="Search"
-          aria-label="Search"
-          id="search"
-        />
+    <!-- <div class="container">
+      <div class="card">
+          <div class="card-body">
+      <button id="userStatBtn" class="col-md-2">User Stats</button>
+    </div> -->
+
       </div>
     </div>
     </div>

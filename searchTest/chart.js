@@ -1,6 +1,6 @@
 // const { response } = require("express");
 
-const { response } = require("express");
+// const { response } = require("express");
 
 const ctx = document.getElementById("myChart").getContext("2d");
 const ctxTOP = document.getElementById("topChart").getContext("2d");
