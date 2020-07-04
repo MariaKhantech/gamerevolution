@@ -2,6 +2,7 @@
 // TODO: open with modal
 // TODO: once user inputs generate graphs
 // TODO: save graph data so that it can be reloaded on specific page
+//TODO: upload an average of user data for base chart data
 const questionDiv = $("#questionDiv");
 const statStartBtn = $("#userStatStartBtn");
 const saveStatBtn = $("#saveStatsBtn");
@@ -18,6 +19,8 @@ const adventureVal = $("#adventureVal");
 const strategyVal = $("#strategyVal");
 let userData = [];
 const ctx = document.getElementById("userChart").getContext("2d");
+//set chart font to white
+Chart.defaults.global.defaultFontColor = "white";
 //initilize chart
 let userRadarChart = new Chart(ctx, {
   type: "radar",
@@ -43,7 +46,16 @@ let userRadarChart = new Chart(ctx, {
     ],
   },
   options: {
+    fontColor: "white",
+    legend: {
+      labels: {
+        fontColor: "white",
+      },
+    },
     scale: {
+      gridLines: {
+        color: "white",
+      },
       angleLines: {
         display: false,
       },
@@ -87,7 +99,7 @@ saveStatBtn.on("click", () => {
         "Strategy",
       ],
       datasets: [
-        { label: "User Stats", data: userData, borderColor: "blue" },
+        { label: "User Stats", data: userData, borderColor: "#240090" },
         {
           label: "Average User Stats",
           data: [1, 2, 5, 5, 4, 2, 8, 6, 4, 8],
@@ -97,6 +109,9 @@ saveStatBtn.on("click", () => {
     },
     options: {
       scale: {
+        gridLines: {
+          color: "white",
+        },
         angleLines: {
           display: false,
         },
