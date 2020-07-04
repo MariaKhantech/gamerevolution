@@ -1,5 +1,7 @@
 // const { response } = require("express");
 
+const { response } = require("express");
+
 const ctx = document.getElementById("myChart").getContext("2d");
 const ctxTOP = document.getElementById("topChart").getContext("2d");
 const ps3Btn = document.getElementById("ps3Drop");
@@ -186,6 +188,7 @@ $(document).ready(() => {
 // }
 // dynamic chart maker
 // sort the results scores then render by largeness
+response.results.forEach((item) => {});
 // if (response.results[i].metacritic == null) {
 //   makeGraph();
 // }
