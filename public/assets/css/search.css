@@ -10,26 +10,13 @@ body {
 	background: #282828;
 }
 
-/* #platform-list {
-background: #282828 !important;
-    border-style: double;
-    border-color: #3500d3;
-    color: white;
-} */
-
-/* .platform-item { */
-    /* background: #282828 !important;
-    border-style: double;
-    border-color: #3500d3;
-    color: white; */
-/* } */
-
 
 .card {
     background: #282828 !important;
     border-style: double;
     border-color: #3500d3;
     color: white;  
+    margin: 10px 15px 10px 15px;
 }
 
 .img-thumbnail {
@@ -44,5 +31,44 @@ background: #282828 !important;
 }
 
 .search-menu {
+    /* background-color: #3500d3; */
+    margin: 35px auto 0px auto;
+    border-style: double;
+    border-color: #3500d3;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.col-md-8 {
+    /* background: #282828; */
     margin: 0px auto 0px auto;
+}
+
+.col-md-4 {
+    /* background: #282828; */
+    margin: 0px auto 0px auto;
+}
+
+.col-md-12 {
+    margin: 25px auto 25px auto;
+}
+
+.col-auto {
+    margin: 0px auto 50px auto;
+}
+
+.modal-content {
+    background-color: #282828;
+    color: white;
+    border-style: double;
+    border-color: #3500d3;
+
+}
+
+.modal-header {
+    border-bottom: 1px solid #3500d3;
+}
+
+.modal-footer {
+    border-top: 1px solid #3500d3;
 }

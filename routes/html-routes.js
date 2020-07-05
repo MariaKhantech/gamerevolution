@@ -13,7 +13,7 @@ router.get('/profile', (req, res) => {
 // Place this route below all others to send he index.html file
 // to any request that is not explicitly defined above
 router.get('/addgame', (req, res) => {
-	res.sendFile(path.join(__dirname, '../public/addGame.html'));
+	res.sendFile(path.join(__dirname, '../public/addgame.html'));
 });
 
 module.exports = router;
