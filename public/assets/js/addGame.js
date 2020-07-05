@@ -1,5 +1,14 @@
 $(document).ready(function () {
 
+
+    // TODOS:
+    // ADD CONTENT FOR BEFORE SEARCH or BROWSE
+    // CLEAR FUNCTION ABIlTY TO CLEAR AND SEARCH FOR NEW GAMES/GAME (DONE)
+    // MAKE GAME GRID IMAGES ALL SAME SIZE
+    // MAKE RESPONSIVE!!! (STARS ESPECIALLY)
+    // ERROR HANDLING 
+    // VIDEOS FOR BROWSE (or images if no video..if no images then placekitten)
+
     // Function that populates side menu with list of RAWG platform names and sets data-ids equal to the rawg id number for platform
     const populatePlatformList = () => {
 
@@ -50,6 +59,8 @@ $(document).ready(function () {
     $('.search').on("click", "button", function (event) {
         event.preventDefault();
 
+        $(".col-auto").html("");
+
         let gameName = $("#searchInput").val().trim();
 
         if (gameName === "") {
@@ -68,6 +79,8 @@ $(document).ready(function () {
     // STILL WIP...how to refresh page on click of another platform title and only rendered those results in the game-gird.
     $("#browse-btn").on("click", function (event) {
         event.preventDefault();
+
+        $(".col-auto").html("");
 
         let platformId = $(".platform").val();
         // console.log(platformId);
