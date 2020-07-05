@@ -45,7 +45,13 @@ $(document).ready(function () {
     } else {
       renderGameGrid(platformId);
     }
-    /////////////////////////////////////////////////////////////////// update chart on click here
+    /////////////////////////////////////////////////////////////////// update chart on click
+    function chartTitle() {
+      title.pop();
+      title.push(platformName);
+    }
+    chartTitle();
+    // console.log(title);
   });
 
   $(".search").on("click", "button", function (event) {
@@ -168,9 +174,10 @@ $(document).ready(function () {
       }
       ////////////////////////////////////////////////////////////////////////////////get info for new chart
       //TODO: clear chart when running
-      //TODO: add color
       //TODO: update legend
-      //TODO: Update Title
+      //TODO: get card on hover
+      //TODO: allow changing chart type
+      //TODO: allow addition of other data sets
       let chart = new Chart(ctx, {
         type: "bar",
         data: {
@@ -194,43 +201,51 @@ $(document).ready(function () {
               ],
               backgroundColor: colorPalette,
             },
-            // {
-            //   //   label: response.results[0].name,
-            //   // backgroundColor: "rgb(99,2,33",
-            //   backgroundColor: colorPalette[1],
-            //   data: [response.results[0].metacritic],
-            // },
-            // {
-            //   //   label: response.results[1].name,
-            //   // backgroundColor: "rgb(99,2,33",
-            //   backgroundColor: colorPalette[2],
-            //   data: [response.results[1].metacritic],
-            // },
-            // {
-            //   //   label: response.results[2].name,
-            //   // backgroundColor: "rgb(99,2,33",
-            //   backgroundColor: colorPalette[3],
-            //   data: [response.results[2].metacritic],
-            // },
-            // {
-            //   //   label: response.results[3].name,
-            //   // backgroundColor: "rgb(99,2,33",
-            //   backgroundColor: colorPalette[4],
-            //   data: [response.results[3].metacritic],
-            // },
-            // {
-            //   //   label: response.results[4].name,
-            //   // backgroundColor: "rgb(99,2,33",
-            //   backgroundColor: colorPalette[5],
-            //   data: [response.results[4].metacritic],
-            // },
-            // {
-            //   //   label: response.results[5].name,
-            //   // backgroundColor: "rgb(99,2,33",
-            //   backgroundColor: colorPalette[6],
-            //   data: [response.results[5].metacritic],
-            // },
           ],
+
+          // {
+          //   //   label: response.results[0].name,
+          //   // backgroundColor: "rgb(99,2,33",
+          //   backgroundColor: colorPalette[1],
+          //   data: [response.results[0].metacritic],
+          // },
+          // {
+          //   //   label: response.results[1].name,
+          //   // backgroundColor: "rgb(99,2,33",
+          //   backgroundColor: colorPalette[2],
+          //   data: [response.results[1].metacritic],
+          // },
+          // {
+          //   //   label: response.results[2].name,
+          //   // backgroundColor: "rgb(99,2,33",
+          //   backgroundColor: colorPalette[3],
+          //   data: [response.results[2].metacritic],
+          // },
+          // {
+          //   //   label: response.results[3].name,
+          //   // backgroundColor: "rgb(99,2,33",
+          //   backgroundColor: colorPalette[4],
+          //   data: [response.results[3].metacritic],
+          // },
+          // {
+          //   //   label: response.results[4].name,
+          //   // backgroundColor: "rgb(99,2,33",
+          //   backgroundColor: colorPalette[5],
+          //   data: [response.results[4].metacritic],
+          // },
+          // {
+          //   //   label: response.results[5].name,
+          //   // backgroundColor: "rgb(99,2,33",
+          //   backgroundColor: colorPalette[6],
+          //   data: [response.results[5].metacritic],
+          // },
+        },
+        options: {
+          title: {
+            display: true,
+            position: "top",
+            text: `Top ${title} Games in 2020`,
+          },
         },
       });
     });
@@ -292,7 +307,7 @@ const colorPalette = [
 // let oldData = [0, 1, 10, 43, 23, 88, 23];
 // let newData = [10, 14, 18, 43, 21, 38, 63];
 // let oldData1 = [99, 80, 60, 66, 63, 18, 23];
-
+title = [];
 function updateChart() {
   chart.update();
   chart.data.datasets[0].data = newData;
