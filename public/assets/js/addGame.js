@@ -457,19 +457,31 @@ $(document).ready(function () {
 
                     let slugResponse = response;
 
+                    console.log(slugResponse);
+
                     const createCard = $("<div>", {
                         class: "card text-center",
                     });
                     // append card to parent div (line 55 of addGame.html)
                     $(".col-auto").append(createCard);
 
-
-                    const cardImg = $("<img>", {
-                        class: "card-img-top",
-                        alt: "game-image",
-                        src: slugResponse.background_image
-                    });
-                    createCard.append(cardImg);
+                    if (slugResponse.clip === null) {
+                        const cardImg = $("<img>", {
+                            class: "card-img-top",
+                            alt: "game-image",
+                            src: slugResponse.background_image
+                        });
+                        createCard.append(cardImg);
+                    } else {
+                        const cardVid = $("<video>", {
+                            class: "card-img-top",
+                            type: "video/mp4",
+                            controls: "controls",
+                            alt: "game-image",
+                            src: slugResponse.clip.clip
+                        });
+                        createCard.append(cardVid);
+                    }
 
                     const cardBody = $("<div>", {
                         class: "card-body",
@@ -483,7 +495,7 @@ $(document).ready(function () {
                     cardBody.append(cardTitle);
 
                     const rating = $("<p>", {
-                        class: "card-text text-center",
+                        class: "card-text text-center mx-auto",
                     }).rateYo({
                         rating: slugResponse.rating,
                         readOnly: true
@@ -498,12 +510,26 @@ $(document).ready(function () {
 
                     cardBody.append(cardDescription);
 
+
+                    const addButton = $("<button>", {
+                        class: "btn btn-outline-secondary btn-sm btn-block text-white",
+                        id: "add-to-favorites-button",
+                        type: "button",
+                        "data-type": slugResponse.id,
+                        "data-name": slugResponse.slug,
+                        "data-toggle": "popover",
+                        "data-content": "Game added to library",
+                        text: `Add to Library`
+                    });
+
+                    cardBody.append(addButton);
+
                     const gameYear = slugResponse.released.split("-");
 
 
                     const cardFooter = $("<div>", {
                         class: "card-footer",
-                        text: gameYear[0]
+                        text: `Released: ${gameYear[0]}`
 
                     });
 
@@ -516,20 +542,6 @@ $(document).ready(function () {
         });
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // On click of "add to library" button to post game slug (which will be later retrieved in the user favorites section to make rawg api call to display games they have added)
     $(".col-auto").on("click", "button", function (event) {
 
@@ -540,7 +552,7 @@ $(document).ready(function () {
         // variable that sets the unique game id as the data-id
         let gameID = $(this).data("id");
 
-        // console.log(`${gameSelect} & ${gameID}`);
+        // console.log(`${ gameSelect } & ${ gameID }`);
 
         // sets game slug and unique game id as game_name and unique_id in database
         const newGame = {
