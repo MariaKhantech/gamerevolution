@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <link rel="stylesheet" href="assets/css/style.css" />
     <title>Find a Game</title>
 </head>
 
@@ -22,15 +24,19 @@
                 <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="#">Features</a>
                 <a class="nav-item nav-link" href="#">Pricing</a>
-
             </div>
         </div>
+        <form class="search form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" id="searchInput" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-danger my-2 my-sm-0" type="button">Search</button>
+        </form>
     </nav>
 
 
 
     <section class="bg-dark">
         <div class="container bg-dark m-0">
+
             <div class="row">
 
                 <!-- PLATFORM NAME SIDE MENU -->
@@ -48,6 +54,7 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- GAME GRID -->
                 <div class="col-md-9">
                     <div class="container " id="game-grid">
@@ -101,7 +108,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
     <script src="assets/js/addGame.js"></script>
 </body>
 

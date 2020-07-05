@@ -11,14 +11,20 @@ $(document).ready(() => {
 
     signUpForm.on("submit", event => {
         //wait to submit until functions run
-    event.preventDefault();
-    const userData = {
-        firstName: firstNameInput.val().trim(),
-        lastName: lastNameInput.val().trim(),
-        username: usernameInput.val().trim(),
-        email: emailInput.val().trim(),
-        password: passwordInput.val().trim()
-    };
+        event.preventDefault();
+        const userData = {
+            firstName: firstNameInput.val().trim(),
+            lastName: lastNameInput.val().trim(),
+            username: usernameInput.val().trim(),
+            email: emailInput.val().trim(),
+            password: passwordInput.val().trim()
+        };
+
+            //checks if user enetered all criteria - returns if not
+            if (!userData.firstName || !userData.lastName || !userData.username || !userData.email || !userData.password) {
+                return;
+            }
+
     //run signUp when all data is input
     signUp(userData.firstName, userData.lastName, userData.username, userData.email, userData.password);
         //get values of all input
@@ -39,7 +45,10 @@ $(document).ready(() => {
             password: password
         //redirect to profile page once logged in
         }) .then(() => { 
-            // window.location.replace("/PROFILE.html HERE***")
+            window.location.replace("/profile")
         });
+        if (err) {
+            throw (err);
+        };
     });
 });
