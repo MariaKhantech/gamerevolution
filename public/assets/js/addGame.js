@@ -52,9 +52,9 @@ $(document).ready(function () {
 
         let gameName = $("#searchInput").val().trim();
 
-        gameSlug = gameName.replace(/\s+/g, '-').toLowerCase();
+        // gameSlug = gameName.replace(/\s+/g, '-').toLowerCase();
 
-        renderSingleGame(gameSlug);
+        renderSingleGame(gameName);
     });
 
     // STILL WIP...how to refresh page on click of another platform title and only rendered those results in the game-gird.
@@ -62,13 +62,13 @@ $(document).ready(function () {
         event.preventDefault();
 
         let platformId = $(".platform").val();
-        console.log(platformId);
+        // console.log(platformId);
         let platformName = $(".platform").attr("name");
 
         let yearInput = $("#yearInput").val().trim();
-        console.log(yearInput)
+        // console.log(yearInput)
         let ordering = $(".order").attr("name").toLowerCase();
-        console.log(ordering)
+        // console.log(ordering)
 
         if (yearInput === "") {
             renderGameGridPlatOrder(platformId, ordering);
@@ -205,7 +205,7 @@ $(document).ready(function () {
         let gamesURL = `https://rawg.io/api/games?platforms=${id}&ordering=-${ordering}`;
 
         $.get(gamesURL).then((response) => {
-            console.log(response);
+            // console.log(response);
 
             if (response.count === 0) {
                 $('#alert-modal').modal('show');
@@ -322,7 +322,7 @@ $(document).ready(function () {
         let gamesURL = `https://rawg.io/api/games?dates=${year}-01-01,${year}-12-31&ordering=-${ordering}`;
 
         $.get(gamesURL).then((response) => {
-            console.log(response);
+            // console.log(response);
 
             if (response.count === 0) {
                 $('#alert-modal').modal('show');
@@ -436,13 +436,83 @@ $(document).ready(function () {
     }
 
 
-    const renderSingleGame = (gameSlug) => {
-        let gameBySlugURL = `https://rawg.io/api/games/${gameSlug}`
+    const renderSingleGame = (searchInput) => {
+        let searchURL = `https://rawg.io/api/games?search=${searchInput}`
 
-        $.get(gameBySlugURL).then((response) => {
+
+        $.get(searchURL).then((response) => {
             console.log(response)
 
+            if (response.count === 0) {
+                $('#alert-modal').modal('show');
+                $('#modal-text').text(`No results please try again`);
+            } else {
 
+                const searchResponse = response.results;
+                // variable to create card
+
+                let slugURL = `https://rawg.io/api/games/${searchResponse[0].slug}`
+
+                $.get(slugURL).then((response) => {
+
+                    let slugResponse = response;
+
+                    const createCard = $("<div>", {
+                        class: "card text-center",
+                    });
+                    // append card to parent div (line 55 of addGame.html)
+                    $(".col-auto").append(createCard);
+
+
+                    const cardImg = $("<img>", {
+                        class: "card-img-top",
+                        alt: "game-image",
+                        src: slugResponse.background_image
+                    });
+                    createCard.append(cardImg);
+
+                    const cardBody = $("<div>", {
+                        class: "card-body",
+                    })
+                    createCard.append(cardBody);
+
+                    const cardTitle = $("<h5>", {
+                        class: "card-title text-white",
+                        text: slugResponse.name
+                    });
+                    cardBody.append(cardTitle);
+
+                    const rating = $("<p>", {
+                        class: "card-text text-center",
+                    }).rateYo({
+                        rating: slugResponse.rating,
+                        readOnly: true
+                    });
+
+                    cardBody.append(rating);
+
+                    const cardDescription = $("<p>", {
+                        class: "card-text",
+                        text: slugResponse.description_raw
+                    });
+
+                    cardBody.append(cardDescription);
+
+                    const gameYear = slugResponse.released.split("-");
+
+
+                    const cardFooter = $("<div>", {
+                        class: "card-footer",
+                        text: gameYear[0]
+
+                    });
+
+                    cardBody.append(cardFooter);
+
+
+
+                });
+            }
         });
     }
 
