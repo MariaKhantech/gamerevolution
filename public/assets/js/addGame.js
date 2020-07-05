@@ -45,6 +45,7 @@ $(document).ready(function () {
     } else {
       renderGameGrid(platformId);
     }
+    /////////////////////////////////////////////////////////////////// update chart on click here
   });
 
   $(".search").on("click", "button", function (event) {
@@ -165,6 +166,73 @@ $(document).ready(function () {
         // append button to card body
         cardBody.append(addButton);
       }
+      ////////////////////////////////////////////////////////////////////////////////get info for new chart
+      //TODO: clear chart when running
+      //TODO: add color
+      //TODO: update legend
+      //TODO: Update Title
+      let chart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: [
+            response.results[0].name,
+            response.results[1].name,
+            response.results[2].name,
+            response.results[3].name,
+            response.results[4].name,
+            response.results[5].name,
+          ],
+          datasets: [
+            {
+              data: [
+                response.results[0].metacritic,
+                response.results[1].metacritic,
+                response.results[2].metacritic,
+                response.results[3].metacritic,
+                response.results[4].metacritic,
+                response.results[5].metacritic,
+              ],
+              backgroundColor: colorPalette,
+            },
+            // {
+            //   //   label: response.results[0].name,
+            //   // backgroundColor: "rgb(99,2,33",
+            //   backgroundColor: colorPalette[1],
+            //   data: [response.results[0].metacritic],
+            // },
+            // {
+            //   //   label: response.results[1].name,
+            //   // backgroundColor: "rgb(99,2,33",
+            //   backgroundColor: colorPalette[2],
+            //   data: [response.results[1].metacritic],
+            // },
+            // {
+            //   //   label: response.results[2].name,
+            //   // backgroundColor: "rgb(99,2,33",
+            //   backgroundColor: colorPalette[3],
+            //   data: [response.results[2].metacritic],
+            // },
+            // {
+            //   //   label: response.results[3].name,
+            //   // backgroundColor: "rgb(99,2,33",
+            //   backgroundColor: colorPalette[4],
+            //   data: [response.results[3].metacritic],
+            // },
+            // {
+            //   //   label: response.results[4].name,
+            //   // backgroundColor: "rgb(99,2,33",
+            //   backgroundColor: colorPalette[5],
+            //   data: [response.results[4].metacritic],
+            // },
+            // {
+            //   //   label: response.results[5].name,
+            //   // backgroundColor: "rgb(99,2,33",
+            //   backgroundColor: colorPalette[6],
+            //   data: [response.results[5].metacritic],
+            // },
+          ],
+        },
+      });
     });
   };
 
@@ -220,30 +288,10 @@ const colorPalette = [
   "#bd00ff",
   "#d600ff",
 ];
-let newData1 = [53, 52, 18, 68, 50, 38, 73];
-let oldData = [0, 1, 10, 43, 23, 88, 23];
-let newData = [10, 14, 18, 43, 21, 38, 63];
-let oldData1 = [99, 80, 60, 66, 63, 18, 23];
-let chart = new Chart(ctx, {
-  type: "line",
-  data: {
-    labels: [1, 2, 3, 4, 5, 6, 7],
-    datasets: [
-      {
-        label: "first dataset",
-        // backgroundColor: "rgb(0,99,120",
-        borderColor: "red",
-        data: oldData,
-      },
-      {
-        label: "second dataset",
-        // backgroundColor: "rgb(99,2,33",
-        borderColor: "blue",
-        data: oldData1,
-      },
-    ],
-  },
-});
+// let newData1 = [53, 52, 18, 68, 50, 38, 73];
+// let oldData = [0, 1, 10, 43, 23, 88, 23];
+// let newData = [10, 14, 18, 43, 21, 38, 63];
+// let oldData1 = [99, 80, 60, 66, 63, 18, 23];
 
 function updateChart() {
   chart.update();
