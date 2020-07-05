@@ -7,9 +7,9 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		bio: {
 			type: DataTypes.STRING,
-			allowNull: true
+			allowNull: false
 		},
-		discordUrl: {
+		favoriteYoutubeVideoUrl: {
 			type: DataTypes.STRING,
 			allowNull: true
 		},
@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: true
 		},
-		youtubeUrl: {
+		youtubeChannelUrl: {
 			type: DataTypes.STRING,
 			allowNull: true
 		},
@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		aboutMe: {
 			type: DataTypes.STRING,
-			allowNull: false
+			allowNull: true
 		},
 		coverImg: {
 			type: DataTypes.STRING,
