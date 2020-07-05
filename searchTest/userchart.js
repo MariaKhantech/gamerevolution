@@ -3,6 +3,7 @@
 // TODO: once user inputs generate graphs
 // TODO: save graph data so that it can be reloaded on specific page
 //TODO: upload an average of user data for base chart data
+//TODO: make gauge chart
 const questionDiv = $("#questionDiv");
 const statStartBtn = $("#userStatStartBtn");
 const saveStatBtn = $("#saveStatsBtn");
@@ -41,7 +42,8 @@ let userRadarChart = new Chart(ctx, {
       {
         label: "Average User Stats",
         data: [1, 2, 5, 5, 4, 2, 8, 6, 4, 8],
-        borderColor: "red",
+        borderColor: "#84e0ee",
+        fill: true,
       },
     ],
   },
@@ -81,7 +83,7 @@ saveStatBtn.on("click", () => {
     strategyVal.val(),
   ];
   console.log(consoleVal.val());
-  // update chart data here
+  // /////////////////////////////////////////////////////////////////////update chart data here
 
   userRadarChart = new Chart(ctx, {
     type: "radar",
@@ -103,7 +105,7 @@ saveStatBtn.on("click", () => {
         {
           label: "Average User Stats",
           data: [1, 2, 5, 5, 4, 2, 8, 6, 4, 8],
-          borderColor: "red",
+          borderColor: "#84e0ee",
         },
       ],
     },
@@ -123,6 +125,10 @@ saveStatBtn.on("click", () => {
     },
   });
 });
+// $("#toggleBtn").on('click',()=>{
+//     toggleFill();
+// const toggleFill = () => {
+//     userRadarChart.
 
 function updateUserChart() {
   userRadarChart.update();
