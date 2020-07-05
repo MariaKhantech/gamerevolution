@@ -1,4 +1,8 @@
 $(document).ready(function () {
+  ////////////////////////////////////////////////////////////////initialize charts so we can use chart functions outside of response
+  let chart = new Chart(ctx, {
+    type: "bar",
+  });
   // Function that populates side menu with list of RAWG platform names and sets data-ids equal to the rawg id number for platform
   const populatePlatformList = () => {
     const platformUrl = `https://api.rawg.io/api/platforms`;
@@ -31,6 +35,9 @@ $(document).ready(function () {
   // STILL WIP...how to refresh page on click of another platform title and only rendered those results in the game-gird.
   $(".platform-list").on("click", "button", function (event) {
     event.preventDefault();
+    // clear chart
+    // chart.destroy();
+
     let platformId = $(this).data("id");
     let platformName = $(this).attr("name");
     let platformTitle = $(".platform-title");
@@ -46,11 +53,13 @@ $(document).ready(function () {
       renderGameGrid(platformId);
     }
     /////////////////////////////////////////////////////////////////// update chart on click
+
     function chartTitle() {
       title.pop();
       title.push(platformName);
     }
     chartTitle();
+    ////////////////////////clear chart on click
     // console.log(title);
   });
 
@@ -178,6 +187,8 @@ $(document).ready(function () {
       //TODO: get card on hover
       //TODO: allow changing chart type
       //TODO: allow addition of other data sets
+      //TODO: switch color palette
+      // makes main chart
       let chart = new Chart(ctx, {
         type: "bar",
         data: {
@@ -202,43 +213,75 @@ $(document).ready(function () {
               backgroundColor: colorPalette,
             },
           ],
-
-          // {
-          //   //   label: response.results[0].name,
-          //   // backgroundColor: "rgb(99,2,33",
-          //   backgroundColor: colorPalette[1],
-          //   data: [response.results[0].metacritic],
-          // },
-          // {
-          //   //   label: response.results[1].name,
-          //   // backgroundColor: "rgb(99,2,33",
-          //   backgroundColor: colorPalette[2],
-          //   data: [response.results[1].metacritic],
-          // },
-          // {
-          //   //   label: response.results[2].name,
-          //   // backgroundColor: "rgb(99,2,33",
-          //   backgroundColor: colorPalette[3],
-          //   data: [response.results[2].metacritic],
-          // },
-          // {
-          //   //   label: response.results[3].name,
-          //   // backgroundColor: "rgb(99,2,33",
-          //   backgroundColor: colorPalette[4],
-          //   data: [response.results[3].metacritic],
-          // },
-          // {
-          //   //   label: response.results[4].name,
-          //   // backgroundColor: "rgb(99,2,33",
-          //   backgroundColor: colorPalette[5],
-          //   data: [response.results[4].metacritic],
-          // },
-          // {
-          //   //   label: response.results[5].name,
-          //   // backgroundColor: "rgb(99,2,33",
-          //   backgroundColor: colorPalette[6],
-          //   data: [response.results[5].metacritic],
-          // },
+        },
+        options: {
+          title: {
+            display: true,
+            position: "top",
+            text: `Top ${title} Games in 2020`,
+          },
+        },
+      });
+      // TODO: make DONUT and LINE charts
+      // donut chart
+      let doughnutChart = new Chart(doughnutCTX, {
+        type: "doughnut",
+        data: {
+          labels: [
+            response.results[0].name,
+            response.results[1].name,
+            response.results[2].name,
+            response.results[3].name,
+            response.results[4].name,
+            response.results[5].name,
+          ],
+          datasets: [
+            {
+              data: [
+                response.results[0].metacritic,
+                response.results[1].metacritic,
+                response.results[2].metacritic,
+                response.results[3].metacritic,
+                response.results[4].metacritic,
+                response.results[5].metacritic,
+              ],
+              backgroundColor: colorPalette,
+            },
+          ],
+        },
+        options: {
+          title: {
+            display: true,
+            position: "top",
+            text: `Top ${title} Games in 2020`,
+          },
+        },
+      });
+      // line chart
+      let lineChart = new Chart(lineCTX, {
+        type: "line",
+        data: {
+          labels: [
+            response.results[0].name,
+            response.results[1].name,
+            response.results[2].name,
+            response.results[3].name,
+            response.results[4].name,
+            response.results[5].name,
+          ],
+          datasets: [
+            {
+              data: [
+                response.results[0].metacritic,
+                response.results[1].metacritic,
+                response.results[2].metacritic,
+                response.results[3].metacritic,
+                response.results[4].metacritic,
+                response.results[5].metacritic,
+              ],
+              backgroundColor: colorPalette,
+            },
+          ],
         },
         options: {
           title: {
@@ -290,6 +333,9 @@ $(document).ready(function () {
 
 ////////////////////////////////////////////////////////////////////////////////////////// top chart logic
 const ctx = document.getElementById("topChart").getContext("2d");
+const doughnutCTX = document.getElementById("doughnutChart").getContext("2d");
+const lineCTX = document.getElementById("lineChart").getContext("2d");
+
 const colorPalette = [
   "black",
   "#0c0032",
@@ -309,7 +355,14 @@ const colorPalette = [
 // let oldData1 = [99, 80, 60, 66, 63, 18, 23];
 title = [];
 function updateChart() {
+  chart.reset();
   chart.update();
   chart.data.datasets[0].data = newData;
   chart.data.datasets[1].data = newData1;
 }
+
+// let clearCharts = () => {
+//     $("#topChart").remove();
+//     $("#topChartCard").append($("<canvas>", { id: "topChart" }));
+//   };
+//   clearCharts();
