@@ -3,7 +3,7 @@ $(document).ready(function () {
 
     // TODOS:
     // ADD CONTENT FOR BEFORE SEARCH or BROWSE
-    // CLEAR FUNCTION ABIlTY TO CLEAR AND SEARCH FOR NEW GAMES/GAME (DONE)
+
     // MAKE GAME GRID IMAGES ALL SAME SIZE
     // MAKE RESPONSIVE!!! (STARS ESPECIALLY)
     // ERROR HANDLING 
@@ -68,7 +68,7 @@ $(document).ready(function () {
             $('#modal-text').text(`No results please try again`);
         } else {
 
-            $(".col-auto").css("background-color", "rgba(35, 40, 40, .70)").css("border-radius", "5px");
+            $(".col-auto").css("background-color", "rgba(12, 0, 50, .7)").css("border-radius", "5px");
 
             // gameSlug = gameName.replace(/\s+/g, '-').toLowerCase();
 
@@ -91,7 +91,7 @@ $(document).ready(function () {
         let ordering = $(".order").attr("name").toLowerCase();
         // console.log(ordering)
 
-        $(".col-auto").css("background-color", "rgba(35, 40, 40, .70)").css("border-radius", "5px");
+        $(".col-auto").css("background-color", "rgba(12, 0, 50, .7)").css("border-radius", "5px");
 
         if (yearInput === "") {
             renderGameGridPlatOrder(platformId, ordering);
@@ -194,7 +194,8 @@ $(document).ready(function () {
                         class: "card-text text-center mx-auto",
                     }).rateYo({
                         rating: game[i].rating,
-                        readOnly: true
+                        readOnly: true,
+                        starWidth: "25px"
                     });
 
                     const userRatings = $("<p>", {
@@ -206,7 +207,7 @@ $(document).ready(function () {
 
                     // variable to create button that will add game to "favorites" library
                     const addButton = $("<button>", {
-                        class: "btn btn-outline-secondary btn-sm btn-block text-white",
+                        class: "btn btn-outline-secondary btn-block text-white",
                         id: "add-to-favorites-button",
                         type: "button",
                         "data-type": game[i].id,
@@ -312,7 +313,8 @@ $(document).ready(function () {
                         class: "card-text text-center mx-auto",
                     }).rateYo({
                         rating: game[i].rating,
-                        readOnly: true
+                        readOnly: true,
+                        starWidth: "25px"
                     });
 
                     const userRatings = $("<p>", {
@@ -324,7 +326,7 @@ $(document).ready(function () {
 
                     // variable to create button that will add game to "favorites" library
                     const addButton = $("<button>", {
-                        class: "btn btn-outline-secondary btn-sm btn-block text-white",
+                        class: "btn btn-outline-secondary btn-block text-white",
                         id: "add-to-favorites-button",
                         type: "button",
                         "data-type": game[i].id,
@@ -429,7 +431,8 @@ $(document).ready(function () {
                         class: "card-text text-center mx-auto",
                     }).rateYo({
                         rating: game[i].rating,
-                        readOnly: true
+                        readOnly: true,
+                        starWidth: "25px"
                     });
 
                     const userRatings = $("<p>", {
@@ -441,7 +444,7 @@ $(document).ready(function () {
 
                     // variable to create button that will add game to "favorites" library
                     const addButton = $("<button>", {
-                        class: "btn btn-outline-secondary btn-sm btn-block text-white",
+                        class: "btn btn-outline-secondary btn-block text-white",
                         id: "add-to-favorites-button",
                         type: "button",
                         "data-type": game[i].id,
@@ -483,7 +486,9 @@ $(document).ready(function () {
                     console.log(slugResponse);
 
                     const createCard = $("<div>", {
-                        class: "card text-center",
+                        class: "card text-center mx-auto",
+                        id: "single-card",
+                        style: "width: 60%;"
                     });
                     // append card to parent div (line 55 of addGame.html)
                     $(".col-auto").append(createCard);
@@ -521,7 +526,8 @@ $(document).ready(function () {
                         class: "card-text text-center mx-auto",
                     }).rateYo({
                         rating: slugResponse.rating,
-                        readOnly: true
+                        readOnly: true,
+                        starWidth: "25px"
                     });
 
                     cardBody.append(rating);
@@ -535,7 +541,7 @@ $(document).ready(function () {
 
 
                     const addButton = $("<button>", {
-                        class: "btn btn-outline-secondary btn-sm btn-block text-white",
+                        class: "btn btn-outline-secondary btn-block text-white",
                         id: "add-to-favorites-button",
                         type: "button",
                         "data-type": slugResponse.id,
