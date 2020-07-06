@@ -33,10 +33,21 @@
     </nav>
 
     <section>
-        <div class="container ">
+        <div class="container">
+
+
+
+            <div class="row">
+                <div class="col-md-6 browse-title">
+                    <h5 class="text-white ">Browse for Multiple Games</h5>
+                </div>
+                <div class="col-md-6 search-title">
+                    <h5 class="text-white ">Search for a Single Game</h5>
+                </div>
+            </div>
 
             <div class="row search-menu">
-                <div class="col-md-8">
+                <div class="col-md-8 d-inline-block">
 
 
 
@@ -79,7 +90,7 @@
 
 
 
-                    <button class="btn btn-dark text-white" id="browse-btn" type="button">Browse</button>
+                    <button class="btn btn-outline-secondary text-white" id="browse-btn" type="button">Browse</button>
                 </div>
 
               
@@ -132,9 +143,9 @@
 
                 <div class="col-md-4">
                     <form class="search form-inline input-group-append">
-                        <input class="form-control ml-auto" id="searchInput" type="search"
-                            placeholder="Search for a game" aria-label="Search">
-                        <button class="btn btn-outline-secondary text-white my-2 my-sm-0" type="button"> <i
+                        <input class="form-control ml-auto " id="searchInput" type="search"
+                            placeholder="Search for single game" aria-label="Search">
+                        <button class="btn btn-outline-secondary text-white my-2 my-sm-0 " type="button"> <i
                                 class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
                 </div>
@@ -175,7 +186,8 @@
                         <p id="modal-text"></p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn text-white" id="modal-button"
+                            data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
