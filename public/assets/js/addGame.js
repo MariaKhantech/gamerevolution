@@ -624,16 +624,15 @@ $(document).ready(function () {
     // variable that sets the slug to as data-name
     let gameSelect = $(this).data("name");
     // variable that sets the unique game id as the data-id
-    let gameID = $(this).data("id");
-
-
-    // console.log(`${ gameSelect } & ${ gameID }`);
+    let gameID = $(this).data("type");
 
     // sets game slug and unique game id as game_name and unique_id in database
     const newGame = {
       game_name: gameSelect,
       unique_id: gameID,
     };
+
+    console.log(newGame)
     // post request to our sever to add new game to database
     $.ajax("/api/addgames", {
       type: "POST",
