@@ -63,6 +63,12 @@ $(document).ready(() => {
 
 		//sets the aboutme section
 		$('#aboutMe').html(`<strong class="color-text">About: </strong> ${data.aboutMe}`);
+
+		//sets the avatar image
+		$('#user-profile').attr('src', data.avatarImg.substring(data.avatarImg.indexOf('/')));
+
+		//set the cover photo of the image
+		$('#cover-photo').css('background-image', "url(data.avatarImg.substring(data.avatarImg.indexOf('/')))");
 	};
 
 	//populate the modal form
@@ -110,6 +116,44 @@ $(document).ready(() => {
 		$('#editProfileForm').trigger('reset');
 	});
 
+	//handle the avatar file upload event
+	$('#avatar').change((event) => {
+		const file_data = $('#avatar').prop('files')[0];
+		const form_data = new FormData();
+		form_data.append('file', file_data);
+		//send the file to posted route
+		$.ajax({
+			url: '/api/profile/upload_avatar',
+			type: 'POST',
+			enctype: 'multipart/form-data',
+			data: form_data,
+			contentType: false,
+			processData: false,
+			cache: false
+		}).then(() => {
+			location.reload();
+		});
+	});
+
+	//handle the cover image file upload event
+	$('#coverImg').change((event) => {
+		const file_data = $('#coverImg').prop('files')[0];
+		const form_data = new FormData();
+		form_data.append('file', file_data);
+		//send the file to posted route
+		$.ajax({
+			url: '/api/profile/upload_coverImg',
+			type: 'POST',
+			enctype: 'multipart/form-data',
+			data: form_data,
+			contentType: false,
+			processData: false,
+			cache: false
+		}).then(() => {
+			location.reload();
+		});
+	});
+
 	//handles "=" or slash. convers iframe youtube source to a embedded url e.g: https://www.youtube.com/embed/fVsD8KfkTg0
 	const setEmbeddedYoutubeUrl = () => {
 		const youtubeUrl = $('#profileFav-youtube').val();
@@ -126,10 +170,6 @@ $(document).ready(() => {
 			$('#favoriteVideo').attr('src', embeddedUrl);
 		}
 	};
-
-	//when the user signs up and enter the profile for the very first time then
-	//open the modal using:
-	//$( "#editProfileBtn" ).trigger( "click" );
 
 	//get the latest profile information for the user
 	getProfileInfo();

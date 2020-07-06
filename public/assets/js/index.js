@@ -1,4 +1,4 @@
-//******smoke screen three.js */
+//******smoke screen three.js reference https://codepen.io/teolitto/pen/KwOVvL */
 
 $(document).ready(() => {
 	//===================== JS for the parallax plugin============================//
@@ -70,7 +70,7 @@ $(document).ready(() => {
 		scene.add(text);
 		//changes the lighting that is against the clouds, middle section + creates a darker smoke, left # lightens
 		light = new THREE.DirectionalLight(0xffffff, 0.5);
-		light.position.set(-1, 0, 2);
+		light.position.set(-1, 0, 3);
 		scene.add(light);
 
 		smokeTexture = THREE.ImageUtils.loadTexture(
