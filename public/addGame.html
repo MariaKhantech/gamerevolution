@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
     <link rel="stylesheet" href="assets/css/search.css" />
@@ -15,16 +16,16 @@
     <!--Fixed Navbar-->
     <nav class="navbar navbar-expand-lg fixed-top" id="navbarchange" role="navigation">
         <div class="container">
-            <a class="navbar-brand text-white" href="#">GamerEvolution</a>
+            <a class="navbar-brand text-white" href="index.html">GamerEvolution</a>
             <button class="navbar-toggler border-0" type="button" data-toggle="collapse"
                 data-target="#exCollapsingNavbar">
                 &#9776;
             </button>
             <div class="collapse navbar-collapse" id="exCollapsingNavbar">
                 <ul class="nav navbar-nav">
-                    <li class="nav-item"><a href="#" class="nav-link text-white">About</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-white">Search</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-white">Profiles</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link text-white">About</a></li>
+                    <li class="nav-item"><a href="addgame.html" class="nav-link text-white">Search</a></li>
+                    <li class="nav-item"><a href="profile.html" class="nav-link text-white">Profiles</a></li>
                 </ul>
 
             </div>
@@ -32,10 +33,12 @@
     </nav>
 
     <section>
-        <div class="container m-0">
+        <div class="container ">
 
-            <div class="row mt-3 search-menu ">
-                <div class="col-md-10 mx-auto">
+            <div class="row search-menu">
+                <div class="col-md-8">
+
+
 
                     <div class="btn-group">
                         <button class="btn btn-outline-secondary text-white platform" disabled>Select
@@ -48,11 +51,15 @@
                         </div>
                     </div>
 
-                    <div class="btn-group ">
-                        <form class="search form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" id="yearInput" type="search" placeholder="Enter Year">
+
+
+                    <div class="btn-group">
+                        <form class="search form-inline">
+                            <input class="form-control" id="yearInput" type="search" placeholder="Enter Year">
                         </form>
                     </div>
+
+
 
                     <div class="btn-group ">
                         <button type="button" class="btn btn-outline-secondary text-white order" name=""
@@ -68,32 +75,34 @@
                             <a class="dropdown-item order-item" name="created">Created</a>
                             <a class="dropdown-item order-item" name="rating">Rating</a>
                         </div>
-                        <button class="btn btn-outline-secondary text-white" id="browse-btn"
-                            type="button">Browse</button>
                     </div>
 
 
+
+                    <button class="btn btn-dark text-white" id="browse-btn" type="button">Browse</button>
                 </div>
-                <div class="col-md-2 mx-auto">
-                    <form class="search form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" id="searchInput" type="search" placeholder="Search"
-                            aria-label="Search">
-                        <button class="btn btn-outline-secondary text-white my-2 my-sm-0" type="button">Search</button>
+
+
+
+                <div class="col-md-4">
+                    <form class="search form-inline input-group-append">
+                        <input class="form-control ml-auto" id="searchInput" type="search"
+                            placeholder="Search for a game" aria-label="Search">
+                        <button class="btn btn-outline-secondary text-white my-2 my-sm-0" type="button"> <i
+                                class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
                 </div>
 
-
             </div>
 
-            <div class="row mt-5">
+
+            <div class="row mt-2">
                 <!-- GAME GRID -->
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <div class="container " id="game-grid">
                         <div class="row justify-content-between">
-                            <!-- PLATFORM TITLE -->
-                            <h3 class="text-white mx-auto platform-title"></h3>
                             <!-- AREA WHERE GAMES APPEAR -->
-                            <div class="col-auto mb-3 mt-5">
+                            <div class="col-auto">
 
                             </div>
 
@@ -103,6 +112,7 @@
                 </div>
             </div>
         </div>
+        </div>
 
         <!-- ALERT MODAL -->
         <div class="modal fade" id="alert-modal" tabindex="-1" role="dialog">
@@ -110,7 +120,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Alert!</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -118,7 +128,7 @@
                         <p id="modal-text"></p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn  btn-primary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>

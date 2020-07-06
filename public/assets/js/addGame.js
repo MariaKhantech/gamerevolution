@@ -1,5 +1,14 @@
 $(document).ready(function () {
 
+
+    // TODOS:
+    // ADD CONTENT FOR BEFORE SEARCH or BROWSE
+    // CLEAR FUNCTION ABIlTY TO CLEAR AND SEARCH FOR NEW GAMES/GAME (DONE)
+    // MAKE GAME GRID IMAGES ALL SAME SIZE
+    // MAKE RESPONSIVE!!! (STARS ESPECIALLY)
+    // ERROR HANDLING 
+    // VIDEOS FOR BROWSE (or images if no video..if no images then placekitten)
+
     // Function that populates side menu with list of RAWG platform names and sets data-ids equal to the rawg id number for platform
     const populatePlatformList = () => {
 
@@ -50,16 +59,28 @@ $(document).ready(function () {
     $('.search').on("click", "button", function (event) {
         event.preventDefault();
 
+        $(".col-auto").html("");
+
         let gameName = $("#searchInput").val().trim();
 
-        // gameSlug = gameName.replace(/\s+/g, '-').toLowerCase();
+        if (gameName === "") {
+            $('#alert-modal').modal('show');
+            $('#modal-text').text(`No results please try again`);
+        } else {
 
-        renderSingleGame(gameName);
+            $(".col-auto").css("background-color", "rgba(35, 40, 40, .70)").css("border-radius", "5px");
+
+            // gameSlug = gameName.replace(/\s+/g, '-').toLowerCase();
+
+            renderSingleGame(gameName);
+        }
     });
 
     // STILL WIP...how to refresh page on click of another platform title and only rendered those results in the game-gird.
     $("#browse-btn").on("click", function (event) {
         event.preventDefault();
+
+        $(".col-auto").html("");
 
         let platformId = $(".platform").val();
         // console.log(platformId);
@@ -69,6 +90,8 @@ $(document).ready(function () {
         // console.log(yearInput)
         let ordering = $(".order").attr("name").toLowerCase();
         // console.log(ordering)
+
+        $(".col-auto").css("background-color", "rgba(35, 40, 40, .70)").css("border-radius", "5px");
 
         if (yearInput === "") {
             renderGameGridPlatOrder(platformId, ordering);
@@ -101,7 +124,7 @@ $(document).ready(function () {
 
                     // variable to create card
                     const createCard = $("<div>", {
-                        class: "card d-inline-block mr-3 mt-3",
+                        class: "card d-inline-block",
                         style: "width: 30%;"
                     });
                     // append card to parent div (line 55 of addGame.html)
@@ -168,7 +191,7 @@ $(document).ready(function () {
                     });
 
                     const rawgRating = $("<p>", {
-                        class: "card-text text-center",
+                        class: "card-text text-center mx-auto",
                     }).rateYo({
                         rating: game[i].rating,
                         readOnly: true
@@ -220,7 +243,7 @@ $(document).ready(function () {
                     // variable to create card
                     const createCard = $("<div>", {
                         class: "card d-inline-block mr-3 mt-3",
-                        style: "width: 30%;"
+                        style: "width: 40%;"
                     });
                     // append card to parent div (line 55 of addGame.html)
                     $(".col-auto").append(createCard);
@@ -286,7 +309,7 @@ $(document).ready(function () {
                     });
 
                     const rawgRating = $("<p>", {
-                        class: "card-text text-center",
+                        class: "card-text text-center mx-auto",
                     }).rateYo({
                         rating: game[i].rating,
                         readOnly: true
@@ -403,7 +426,7 @@ $(document).ready(function () {
                     });
 
                     const rawgRating = $("<p>", {
-                        class: "card-text text-center",
+                        class: "card-text text-center mx-auto",
                     }).rateYo({
                         rating: game[i].rating,
                         readOnly: true
