@@ -3,6 +3,9 @@ $(document).ready(function () {
   let chart = new Chart(ctx, {
     type: "bar",
   });
+  // initialize popovers
+  $('[data-toggle="popover"]').popover();
+
   // Function that populates side menu with list of RAWG platform names and sets data-ids equal to the rawg id number for platform
   const populatePlatformList = () => {
     const platformUrl = `https://api.rawg.io/api/platforms`;
@@ -180,6 +183,18 @@ $(document).ready(function () {
 
         // append button to card body
         cardBody.append(addButton);
+
+        ////////////////////////////////////////////////make popover
+        const popover = $("<button>", {
+          class: "btn btn-lg btn-primary",
+          "data-toggle": "popover",
+          "data-placement": "bottom",
+          id: `${response.results[i].id}`,
+          text: "Must Play or Skip?",
+          trigger: "hover",
+          "data-content": "working!",
+        });
+        cardBody.append(popover);
       }
       ////////////////////////////////////////////////////////////////////////////////get info for new chart
       //TODO: clear chart when running
@@ -188,6 +203,7 @@ $(document).ready(function () {
       //TODO: allow changing chart type
       //TODO: allow addition of other data sets
       //TODO: switch color palette
+      //TODO: make pie data for how many people loved/hated the game for individual game
       // makes main chart
       let chart = new Chart(ctx, {
         type: "bar",
@@ -366,3 +382,29 @@ function updateChart() {
 //     $("#topChartCard").append($("<canvas>", { id: "topChart" }));
 //   };
 //   clearCharts();
+
+// popover chart
+// $('[data-toggle="popover"]').popover({
+//     html: true,
+//     content: '<canvas id="myChart" width="400" height="400"></canvas>',
+//   }).on('shown.bs.popover', function() {
+
+//     new Chart($('#myChart'), {
+//       // The type of chart we want to create
+//       type: 'line',
+
+//       // The data for our dataset
+//       data: {
+//         labels: ["January", "February", "March", "April", "May", "June", "July"],
+//         datasets: [{
+//           label: "My First dataset",
+//           backgroundColor: 'rgb(255, 99, 132)',
+//           borderColor: 'rgb(255, 99, 132)',
+//           data: [0, 10, 5, 2, 20, 30, 45],
+//         }]
+//       },
+
+//       // Configuration options go here
+//       options: {}
+//     });
+//////////////////////////////// popover js
