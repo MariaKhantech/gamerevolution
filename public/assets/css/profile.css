@@ -7,19 +7,17 @@ body {
 	padding-top: 50px;
 }
 /*changes the check out my games tab*/
-#posts-tab {
-	background-color: blue!important;
+#profile-tab {
+	background-color: blue !important;
 	color: white !important;
-	border-color:  #3500d3!important;
+	border-color: #3500d3 !important;
 	border-style: solid;
-	margin-left: 10px
+	margin-left: 10px;
 }
-
 
 #editProfileBtn {
 	width: 75px;
 	height: 50px;
-
 }
 
 .background-modal {
@@ -135,7 +133,7 @@ input {
 }
 /*post comments section*/
 #message {
-	background-color:#404040;
+	background-color: #404040;
 	color: white !important;
 }
 
@@ -145,7 +143,6 @@ input {
 	border-style: solid;
 	border-color: black;
 	color: white;
-
 }
 
 .left-section {
@@ -179,8 +176,6 @@ input {
 	overflow: hidden;
 	border: 1px solid black;
 }
-
-
 
 .current-game img {
 	width: 100%;
@@ -242,21 +237,20 @@ iframe {
 
 * {
 	box-sizing: border-box;
-  }
-  .show-grid {
+}
+.show-grid {
 	padding: 10px;
-  }
-  
-  .show-grid .row {
-	margin-bottom: 15px;
-  }
-  
-  .show-grid [class^=col-] {
-	  padding-top: 10px;
-	  padding-bottom: 10px;
-	  background-color: #eee;
-	  background-color: rgba(86,61,124,.15);
-	  border: 1px solid #ddd;
-	  border: 1px solid rgba(86,61,124,.2);
-  }
+}
 
+.show-grid .row {
+	margin-bottom: 15px;
+}
+
+.show-grid [class^=col-] {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #eee;
+	background-color: rgba(86, 61, 124, .15);
+	border: 1px solid #ddd;
+	border: 1px solid rgba(86, 61, 124, .2);
+}

@@ -1,14 +1,27 @@
 //******smoke screen three.js */
 
 $(document).ready(() => {
+	//===================== JS for the parallax plugin============================//
 	// object-fit polyfill run
 	objectFitImages();
 	/* init Jarallax */
 	jarallax(document.querySelectorAll('.jarallax'));
 	jarallax(document.querySelectorAll('.jarallax-keep-img'), { keepImg: true });
 
+	//=======================JS for the scroll in magic==========================//
+	var controller = new ScrollMagic.Controller();
+	let scrollScene = new ScrollMagic.Scene({
+		triggerElement: '#trigger1',
+		triggerHook: 0.9, // show, when scrolled 10% into view
+		duration: '80%', // hide 10% before exiting view (80% + 10% from bottom)
+		offset: 50 // move trigger to center of element
+	});
+	$('#reveal1').removeClass('d-none');
+	scrollScene.setClassToggle('#reveal1', 'd-block'); // add class to reveal
+	//scrollScene.addIndicators(); // add indicators (requires plugin)
+	scrollScene.addTo(controller);
 
-
+	//===================JS for THREE JS SMOKE BANNER============================//
 	let camera, scene, renderer, geometry, material, mesh;
 
 	window.addEventListener('resize', onWindowResize, false);
@@ -16,9 +29,8 @@ $(document).ready(() => {
 	//resizes the three js render size on when the window resized
 	function onWindowResize() {
 		renderer.setSize($('#smoke').innerWidth(), $('#smoke').innerHeight());
-		renderer.domElement.style.height = $('#smoke').innerHeight()
+		renderer.domElement.style.height = $('#smoke').innerHeight();
 	}
-	
 
 	initThreeJSSmokeCanvas();
 	animateSmokeCanvas();
@@ -93,7 +105,7 @@ $(document).ready(() => {
 	function evolveSmoke() {
 		let sp = smokeParticles.length;
 		while (sp--) {
-			smokeParticles[sp].rotation.z += delta * 0.1;
+			smokeParticles[sp].rotation.z += delta * 0.2;
 		}
 	}
 	//rotation of the smoke
@@ -104,8 +116,4 @@ $(document).ready(() => {
 		mesh.position.z = 100 + Math.sin(cubeSineDriver) * 500;
 		renderer.render(scene, camera);
 	}
-
-
-
-	
 });

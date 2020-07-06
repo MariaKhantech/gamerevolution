@@ -1,14 +1,17 @@
-
-
 * body {
 	background-color: black;
 }
 .animate__animated.animate__fadeIn {
 	--animate-duration: 3s;
-  }
+}
 
 .navbar {
 	background-color: black;
+	opacity: .8;
+}
+
+.text-white {
+	opacity: none !important;
 }
 #top-section1 {
 	background-color: black;
