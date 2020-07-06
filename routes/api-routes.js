@@ -1,4 +1,6 @@
 const db = require('../models');
+const passport = require("../config/passport");
+
 
 const router = require('express').Router();
 
@@ -47,4 +49,14 @@ router.post('/addgames', (req, res) => {
 			res.json(err);
 		});
 });
+
+//Passport Routes
+
+
+
+
+
+
+
+
 module.exports = router;
