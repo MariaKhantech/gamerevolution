@@ -58,10 +58,12 @@ $(document).ready(function () {
 
   });
 
-  $("#browse-btn").on("click", function (event) {
+  $("#search-button").on("click", function (event) {
     event.preventDefault();
 
     $("#game-area").html("");
+
+    $("#chart-button").prop('disabled', true);
 
 
     let gameName = $("#searchInput").val().trim();
@@ -85,6 +87,8 @@ $(document).ready(function () {
     event.preventDefault();
 
     $("#game-area").html("");
+
+    $("#chart-button").prop('disabled', false);
 
     let platformId = $(".platform").val();
     // console.log(platformId);
