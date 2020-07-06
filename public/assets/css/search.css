@@ -54,10 +54,12 @@ body {
     padding: 20px;
 }
 
-.col-md-8 {
+
+
+/* .col-md-8 {
     /* background: #282828; */
-    margin: 0px auto 0px auto;
-}
+    /* margin: 0px auto 0px auto; */
+/* } */ */
 
 .col-md-4 {
     /* background: #282828; */
@@ -68,7 +70,7 @@ body {
     margin: 25px auto 25px auto;
 }
 
-.col-auto {
+#game-area {
     margin: 0px auto 50px auto;
 }
 
