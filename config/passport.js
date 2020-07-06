@@ -4,17 +4,17 @@ LocalStrategy = require("passport-local").Strategy;
 
 passport.use(new LocalStrategy (
     (username, password, done) => {
-        User.findOne({username: username}, (err, user) => {
+        db.User.findOne({username: username}, (err, user) => {
             if(err) {
                 return done (err);
             };
-            if (!user) {
+            if (!dbUser) {
                 return done (null, false, {message: "Incorrect Usrname"});
             };
-            if (!user.validPassword(password)) {
+            if (!dbUser.validPassword(password)) {
                 return done(null, false, {message: "Incorrect Password"})
             }
-            return done (null, user);
+            return done (null, dbUser);
         });
     }
 ));
