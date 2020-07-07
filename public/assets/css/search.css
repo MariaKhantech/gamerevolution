@@ -1,6 +1,9 @@
 .make-black {
   background-color: black !important;
 }
+.make-white {
+  background-color: white !important;
+}
 
 body {
   background-color: black;

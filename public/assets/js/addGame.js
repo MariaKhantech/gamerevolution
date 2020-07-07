@@ -3,7 +3,9 @@
 $(document).ready(function () {
   // ////////////////////////////////////////////////////////////////initialize charts so we can use chart functions outside of response
   // set default chart variables
-  Chart.defaults.global.defaultFontColor = "white";
+  // Chart.defaults.global.defaultFontColor = "white";
+  //initialize toggle
+  $("#toggle-demo").bootstrapToggle();
 
   // let chart = new Chart(ctx, {
   //   type: "bar",
@@ -692,15 +694,35 @@ $(document).ready(function () {
                 response.results[4].metacritic,
                 response.results[5].metacritic,
               ],
-              backgroundColor: colorPalette,
+              // fillColor: "rgba(220, 220, 220, .5)",
+              // fill: true,
+              // backgroundColor: colorPaletteRGBTransparent,
+              fill: false,
+              backgroundColor: colorPaletteRGBOpaque,
+              borderColor: colorPaletteRGBTransparent,
             },
           ],
         },
         options: {
+          // fillColor: "rgba(220,220,220,0)",
+          defaultFontColor: "white",
           title: {
             display: true,
             position: "top",
             text: `Top ${title} Games in 2020`,
+          },
+          responsive: true,
+          maintainAspectRatio: true,
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                  suggestedMin: 0,
+                  suggestedMax: 0,
+                },
+              },
+            ],
           },
         },
       });
@@ -786,6 +808,27 @@ $(document).ready(function () {
       "#00e6e6",
       "#240090",
     ];
+    const colorPaletteRGBTransparent = [
+      "rgba(53,0,211,.4)",
+      "rgba(0,255,255,.4)",
+      "rgba(75,127,255,.4)",
+      "rgba(112,63,255,.4)",
+      "rgba(150,0,255,.4)",
+      "rgba(0,230,230,.4)",
+      "rgba(36,0,230,.4)",
+    ];
+    const colorPaletteRGBOpaque = [
+      "rgba(53,0,211,1)",
+      "rgba(0,255,255,1)",
+      "rgba(75,127,255,1)",
+      "rgba(112,63,255,1)",
+      "rgba(150,0,255,1)",
+      "rgba(0,230,230,1)",
+      "rgba(36,0,230,1)",
+    ];
+    // ctx.style.backgroundColor = "rgba(255,0,0,255)";
+
+    const borderPalette = ["red", "green", "yellow", "orange", "pink"];
     // let newData1 = [53, 52, 18, 68, 50, 38, 73];
     // let oldData = [0, 1, 10, 43, 23, 88, 23];
     // let newData = [10, 14, 18, 43, 21, 38, 63];
@@ -799,6 +842,20 @@ $(document).ready(function () {
     }
   }
   title = [];
+  // toggle light and dark mode. remember to do this for all charts
+  $("#toggle-demo").change(() => {
+    if ($("#topChartCard").hasClass("make-white")) {
+      $("#topChartCard").removeClass("make-white");
+      $("#topChartCard").addClass("make-black");
+      chart.options.defaultFontColor = "white";
+      chart.data.datasets[0].backgroundColor = colorPaletteRGBOpaque;
+    } else {
+      $("#topChartCard").removeClass("make-black");
+      $("#topChartCard").addClass("make-white");
+      chart.options.defaultFontColor = "black";
+      chart.data.datasets[0].backgroundColor = colorPaletteRGBTransparent;
+    }
+  });
 });
 
 /////////////////adding chart to plat order/game order/all calls
