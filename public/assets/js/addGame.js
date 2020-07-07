@@ -2,6 +2,8 @@
 
 $(document).ready(function () {
   // ////////////////////////////////////////////////////////////////initialize charts so we can use chart functions outside of response
+  // set default chart variables
+  Chart.defaults.global.defaultFontColor = "white";
 
   // let chart = new Chart(ctx, {
   //   type: "bar",
@@ -776,17 +778,13 @@ $(document).ready(function () {
     // ////////////////////////////////////////////////////////////////////////////////////////// top chart logic
 
     const colorPalette = [
-      "black",
-      "#0c0032",
-      "#190061",
-      "#240090",
       "#3500D3",
-      "#282828",
-      "#00ff9f",
-      "#00b8ff",
-      "#001eff",
-      "#bd00ff",
-      "#d600ff",
+      "#00ffff",
+      "#4b7fff",
+      "#703fff",
+      "#9600ff",
+      "#00e6e6",
+      "#240090",
     ];
     // let newData1 = [53, 52, 18, 68, 50, 38, 73];
     // let oldData = [0, 1, 10, 43, 23, 88, 23];
@@ -843,24 +841,20 @@ function renderSingleChart(searchInput) {
           title: {
             display: true,
             position: "top",
-            text: `Love or Skip ${searchResponse[0].slug}`,
+            text: `Love or Skip ${searchResponse[0].slug} %`,
           },
         },
       });
     });
   });
   const colorPalette = [
-    "black",
-    "#0c0032",
-    "#190061",
-    "#240090",
     "#3500D3",
-    "#282828",
-    "#00ff9f",
-    "#00b8ff",
-    "#001eff",
-    "#bd00ff",
-    "#d600ff",
+    "#00ffff",
+    "#4b7fff",
+    "#703fff",
+    "#9600ff",
+    "#00e6e6",
+    "#240090",
   ];
 }
 // bubble chart ref
