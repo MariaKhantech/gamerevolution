@@ -139,7 +139,7 @@ $(document).ready(function () {
           // variable to create card
           const createCard = $("<div>", {
             class: "card d-inline-block",
-            style: "width: 30%;",
+            style: "width: 21rem",
 
           });
           // append card to parent div (line 55 of addGame.html)
@@ -271,7 +271,7 @@ $(document).ready(function () {
           // variable to create card
           const createCard = $("<div>", {
             class: "card d-inline-block mr-3 mt-3",
-            style: "width: 40%;",
+            style: "width: 21rem",
 
           });
           // append card to parent div (line 55 of addGame.html)
@@ -402,7 +402,7 @@ $(document).ready(function () {
           // variable to create card
           const createCard = $("<div>", {
             class: "card d-inline-block mr-3 mt-3",
-            style: "width: 30%;",
+            style: "width: 21rem",
 
           });
           // append card to parent div (line 55 of addGame.html)
@@ -624,16 +624,15 @@ $(document).ready(function () {
     // variable that sets the slug to as data-name
     let gameSelect = $(this).data("name");
     // variable that sets the unique game id as the data-id
-    let gameID = $(this).data("id");
-
-
-    // console.log(`${ gameSelect } & ${ gameID }`);
+    let gameID = $(this).data("type");
 
     // sets game slug and unique game id as game_name and unique_id in database
     const newGame = {
       game_name: gameSelect,
       unique_id: gameID,
     };
+
+    console.log(newGame)
     // post request to our sever to add new game to database
     $.ajax("/api/addgames", {
       type: "POST",
