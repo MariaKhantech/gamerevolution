@@ -10,39 +10,109 @@ body {
 	background: #282828;
 }
 
-/* #platform-list {
-background: #282828 !important;
-    border-style: double;
-    border-color: #3500d3;
-    color: white;
-} */
-
-/* .platform-item { */
-    /* background: #282828 !important;
-    border-style: double;
-    border-color: #3500d3;
-    color: white; */
-/* } */
-
 
 .card {
     background: #282828 !important;
     border-style: double;
     border-color: #3500d3;
     color: white;  
+    margin: 10px 15px 10px 15px;
 }
 
+#single-card {
+    background: #282828 !important;
+    border-style: double;
+    border-color: #3500d3;
+    color: white;  
+    margin: 30px 15px 30px 15px;
+}
+.card-img-top {
+    object-fit: cover;
+}
 .img-thumbnail {
     background: #282828 !important;
     border-style: double;
     border-color: #3500d3;
+    object-fit: cover;
+    display: block;
+    margin: 0px auto 0px auto;
+    height: 250px;
 }
 
 .col-md-9 {
-    background: #282828;
+    /* background: #282828; */
     margin: 0px auto 0px auto;
 }
 
+    .browse-title  {
+    left: 1px;
+}
+.search-title {
+    text-align: right;
+    left: -3px;
+}
 .search-menu {
+    /* background-color: #3500d3; */
+    margin: 10px auto 0px auto;
+    border-style: double;
+    border-color: #3500d3;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+
+
+/* .col-md-8 {
+    /* background: #282828; */
+    /* margin: 0px auto 0px auto; */
+/* } */ */
+
+.col-md-4 {
+    /* background: #282828; */
     margin: 0px auto 0px auto;
 }
+
+.col-md-12 {
+    margin: 25px auto 25px auto;
+}
+
+#game-area {
+    margin: 0px auto 50px auto;
+}
+
+.modal-content {
+    background-color: #282828;
+    color: white;
+    border-style: double;
+    border-color: #3500d3;
+
+}
+
+.modal-header {
+    border-bottom: 1px solid #3500d3;
+}
+
+.modal-footer {
+    border-top: 1px solid #3500d3;
+}
+
+#add-to-favorites-button {
+    border-color: #6c757d;
+    background-color: black;
+}
+
+#add-to-favorites-button:hover {
+    background-color: #6c757d;
+}
+
+#modal-button{
+    border-color: #6c757d;
+    background-color: black;
+}
+
+#modal-button:hover{
+    border-color: #6c757d;
+    
+}
+
+
