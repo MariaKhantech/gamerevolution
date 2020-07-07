@@ -47,9 +47,9 @@ module.exports = (sequelize, DataTypes) => {
 		}
 	});
 	//this will add user id into profile
-	// Profile.associate = (models) => {
-	// 	Profile.belongsTo(models.User, { foreignKey: 'userId', targetKey: 'userId' });
-	// };
+	Profile.associate = (models) => {
+		Profile.belongsTo(models.User, { foreignKey: 'userId', targetKey: 'userId' });
+	};
 
 	return Profile;
 };
