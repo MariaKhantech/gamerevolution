@@ -267,3 +267,20 @@ iframe {
 	border: 1px solid #ddd;
 	border: 1px solid rgba(86, 61, 124, .2);
 }
+
+/* GUS LIBRARY GAME GRID STYLING */
+#profile-game-area {
+	margin: 0px auto 50px auto;
+}
+
+#game-card {
+	margin: 10px 15px 10px 15px;
+}
+
+.img-thumbnail {
+   
+    object-fit: cover;
+    display: block;
+    margin: 0px auto 0px auto;
+    height: 200px;
+}
