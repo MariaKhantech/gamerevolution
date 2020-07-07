@@ -13,13 +13,12 @@ $(document).ready(function () {
 
   // // Function that populates side menu with list of RAWG platform names and sets data-ids equal to the rawg id number for platform
   const populatePlatformList = () => {
-
     const platformUrl = `https://api.rawg.io/api/platforms`;
 
     $.get(platformUrl).then((response) => {
       // console.log(response.results);
 
-      let platforms = response.results
+      let platforms = response.results;
 
       for (let i = 0; i < platforms.length; i++) {
         // console.log(platforms[i].name);
@@ -33,29 +32,23 @@ $(document).ready(function () {
           text: platforms[i].name,
         });
 
-
         $(".platform-list").append(displayPlatformName);
       }
     });
-
-  }
+  };
 
   populatePlatformList();
 
-
   $(".platform-list").on("click", "a", function () {
-
     $(".platform:first-child").text($(this).text());
     $(".platform:first-child").val($(this).data("id"));
     $(".platform:first-child").attr("name", $(this).text());
   });
 
-
   $(".order-list").on("click", "a", function () {
     $(".order:first-child").text($(this).text());
     // $(".browse:first-child").val($(this).data("id"));
     $(".order:first-child").attr("name", $(this).text());
-
   });
 
   $("#browse-btn").on("click", function (event) {
@@ -63,9 +56,7 @@ $(document).ready(function () {
 
     $("#game-area").html("");
 
-
     let gameName = $("#searchInput").val().trim();
-
 
     if (gameName === "") {
       $("#alert-modal").modal("show");
@@ -136,7 +127,6 @@ $(document).ready(function () {
           const createCard = $("<div>", {
             class: "card d-inline-block",
             style: "width: 30%;",
-
           });
           // append card to parent div (line 55 of addGame.html)
           $("#game-area").append(createCard);
@@ -148,7 +138,6 @@ $(document).ready(function () {
               alt: "game-image",
 
               src: "https://placekitten.com/200/139",
-
             });
             createCard.append(cardImg);
           } else {
@@ -158,26 +147,21 @@ $(document).ready(function () {
               alt: "game-image",
 
               src: game[i].background_image,
-
             });
             createCard.append(cardImg);
           }
 
           // variable to create card body div
           const cardBody = $("<div>", {
-
             class: "card-body m-auto",
-
           });
           // append card body to parent .card div
           createCard.append(cardBody);
-
 
           // variable to display game title
           const cardTitle = $("<h6>", {
             class: "card-title text-center",
             text: game[i].name,
-
           });
           // append card title to card body
           cardBody.append(cardTitle);
@@ -188,7 +172,6 @@ $(document).ready(function () {
               class: "card-text text-center",
 
               text: `Released: N/A`,
-
             });
             cardBody.append(cardDescription);
           } else {
@@ -199,7 +182,6 @@ $(document).ready(function () {
               class: "card-text text-center",
 
               text: `Released: ${gameYear[0]}`,
-
             });
             cardBody.append(cardDescription);
           }
@@ -268,7 +250,6 @@ $(document).ready(function () {
           const createCard = $("<div>", {
             class: "card d-inline-block mr-3 mt-3",
             style: "width: 40%;",
-
           });
           // append card to parent div (line 55 of addGame.html)
           $("#game-area").append(createCard);
@@ -280,7 +261,6 @@ $(document).ready(function () {
               alt: "game-image",
 
               src: "https://placekitten.com/200/139",
-
             });
             createCard.append(cardImg);
           } else {
@@ -290,14 +270,12 @@ $(document).ready(function () {
               alt: "game-image",
 
               src: game[i].background_image,
-
             });
             createCard.append(cardImg);
           }
 
           // variable to create card body div
           const cardBody = $("<div>", {
-
             class: "card-body m-auto",
           });
           // append card body to parent .card div
@@ -351,7 +329,6 @@ $(document).ready(function () {
             text: `User Ratings: ${game[i].ratings_count}`,
           });
 
-
           cardBody.append(rawgPercentage, rawgRating, userRatings);
 
           // variable to create button that will add game to "favorites" library
@@ -365,7 +342,6 @@ $(document).ready(function () {
             "data-content": "Game added to library",
 
             text: `Add to Library`,
-
           });
 
           // append button to card body
@@ -373,9 +349,7 @@ $(document).ready(function () {
         }
       }
     });
-
   };
-
 
   const renderGameGridYearOrder = (year, ordering) => {
     let gamesURL = `https://rawg.io/api/games?dates=${year}-01-01,${year}-12-31&ordering=-${ordering}`;
@@ -389,17 +363,14 @@ $(document).ready(function () {
         $("#alert-modal").modal("show");
         $("#modal-text").text(`No results please try again`);
       } else {
-
         const game = response.results;
 
         // for loop to dynamically create and display a) Card/Card components and b) game data we want displayed to each card
         for (let i = 0; i < game.length; i++) {
-
           // variable to create card
           const createCard = $("<div>", {
             class: "card d-inline-block mr-3 mt-3",
             style: "width: 30%;",
-
           });
           // append card to parent div (line 55 of addGame.html)
           $("#game-area").append(createCard);
@@ -411,7 +382,6 @@ $(document).ready(function () {
               alt: "game-image",
 
               src: "https://placekitten.com/200/139",
-
             });
             createCard.append(cardImg);
           } else {
@@ -421,26 +391,21 @@ $(document).ready(function () {
               alt: "game-image",
 
               src: game[i].background_image,
-
             });
             createCard.append(cardImg);
           }
 
           // variable to create card body div
           const cardBody = $("<div>", {
-
             class: "card-body m-auto",
-
           });
           // append card body to parent .card div
           createCard.append(cardBody);
-
 
           // variable to display game title
           const cardTitle = $("<h6>", {
             class: "card-title text-center",
             text: game[i].name,
-
           });
           // append card title to card body
           cardBody.append(cardTitle);
@@ -451,7 +416,6 @@ $(document).ready(function () {
               class: "card-text text-center",
 
               text: `Released: N/A`,
-
             });
             cardBody.append(cardDescription);
           } else {
@@ -462,7 +426,6 @@ $(document).ready(function () {
               class: "card-text text-center",
 
               text: `Released: ${gameYear[0]}`,
-
             });
             cardBody.append(cardDescription);
           }
@@ -475,7 +438,6 @@ $(document).ready(function () {
             class: "card-text text-center",
 
             text: `Rating: ${percentage}%`,
-
           });
 
           const rawgRating = $("<p>", {
@@ -616,12 +578,10 @@ $(document).ready(function () {
   $("#game-area").on("click", "button", function (event) {
     event.preventDefault();
 
-
     // variable that sets the slug to as data-name
     let gameSelect = $(this).data("name");
     // variable that sets the unique game id as the data-id
     let gameID = $(this).data("id");
-
 
     // console.log(`${ gameSelect } & ${ gameID }`);
 
@@ -688,6 +648,8 @@ $(document).ready(function () {
   //   //TODO: allow changing chart type
   //   //TODO: allow addition of other data sets
   //   //TODO: switch color palette
+  // TODO: make doughnut and line chart make sense
+  // TODO: on hover love it or hate it
   //   // makes main chart
   let chartID = [];
   function renderCharts() {
@@ -695,6 +657,7 @@ $(document).ready(function () {
     $.get(
       `https://rawg.io/api/games?platforms=${id}&page_size=50&ordering=-added`
     ).then((response) => {
+      console.log(response);
       let chart = new Chart(ctx, {
         type: "bar",
         data: {
@@ -728,7 +691,7 @@ $(document).ready(function () {
           },
         },
       });
-      // TODO: make DONUT and LINE charts
+
       // donut chart
       let doughnutChart = new Chart(doughnutCTX, {
         type: "doughnut",
