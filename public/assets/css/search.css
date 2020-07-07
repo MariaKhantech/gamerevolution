@@ -26,11 +26,17 @@ body {
     color: white;  
     margin: 30px 15px 30px 15px;
 }
-
+.card-img-top {
+    object-fit: cover;
+}
 .img-thumbnail {
     background: #282828 !important;
     border-style: double;
     border-color: #3500d3;
+    object-fit: cover;
+    display: block;
+    margin: 0px auto 0px auto;
+    height: 250px;
 }
 
 .col-md-9 {
