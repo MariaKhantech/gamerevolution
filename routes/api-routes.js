@@ -1,4 +1,5 @@
 const db = require('../models');
+const passport = require("../config/passport");
 const router = require('express').Router();
 
 router.get('/', (req, res) => res.json('Sample API get endpoint'));
@@ -250,4 +251,52 @@ router.post('/addgames', (req, res) => {
 			res.json(err);
 		});
 });
+
+//Passport Routes
+
+//login route
+
+router.post("/api/login", passport.authenticate("local"), (req, res) => {
+	res.json(req.user)
+	// {
+	// 	// email: req.user.email,
+	// 	// id: req.user.id
+	// });
+});
+
+//logout & redirect to home page
+router.get("/logout", (req, res) => {
+	req.logout();
+	res.redirect("/");
+});
+
+//signup route, then redirect to home page
+router.post("/api/signUp", (req, res) => {
+	db.User.create({
+		firstName: req.body.firstName,
+		lastName: req.body.lastName,
+		username: req.body.username,
+		email: req.body.email,
+		password: req.body.password
+	}).then(()=> {
+		res.redirect("/api/profile");
+	}).catch(err => {
+		res.status(401).json(err);
+	});
+});
+
+//get user data
+router.get("/api/user-data", (req, res) => {
+	if(!req.user) {
+		res.json({});		//empty object if user not logged in
+	} else {
+		res.json({
+			email: req.user.email,
+			id: req.user.id
+		});
+	}
+});
+
+
+
 module.exports = router;

@@ -14,15 +14,31 @@ li {
 	background-color: black;
 	opacity: .8;
 }
+
+/*login modal window*/
+.px-3 {
+background-color: black;
+}
+
 #emailInput,
-#passwordInput {
-	background-color: #606060;
+#passwordInput{
+
+	background-color:white;
 	border-color: black;
 }
-.login-button {
+.login-button, .mt-2 {
 	background-color: #3500d3;
 	border-color: black;
 }
+
+.signUp-modal {
+	color: white;
+}
+
+#dropdownMenu1 {
+	color: white;
+}
+/*end sign up modal*/
 
 .text-white {
 	opacity: none !important;
