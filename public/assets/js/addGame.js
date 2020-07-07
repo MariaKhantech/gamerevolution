@@ -661,6 +661,9 @@ $(document).ready(function () {
   //   // makes main chart
   let chartID = [];
   function renderCharts() {
+    // enable tabs
+    $("#doughnut-tab").prop("disabled", false);
+    $("#line-tab").prop("disabled", false);
     id = chartID;
     $.get(
       `https://rawg.io/api/games?platforms=${id}&page_size=50&ordering=-added`
@@ -802,6 +805,10 @@ $(document).ready(function () {
 
 /////////////////adding chart to plat order/game order/all calls
 function renderSingleChart(searchInput) {
+  // disable other tabs
+  $("#doughnut-tab").prop("disabled", true);
+  $("#line-tab").prop("disabled", true);
+
   let searchURL = `https://rawg.io/api/games?search=${searchInput}`;
   let ctx = document.getElementById("topChart").getContext("2d");
 
