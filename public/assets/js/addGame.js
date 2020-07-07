@@ -1,3 +1,5 @@
+// const { json } = require("express");
+
 $(document).ready(function () {
   // ////////////////////////////////////////////////////////////////initialize charts so we can use chart functions outside of response
 
@@ -5,7 +7,7 @@ $(document).ready(function () {
   //   type: "bar",
   // });
   // initialize popovers
-  const ctx = document.getElementById("topChart").getContext("2d");
+  let ctx = document.getElementById("topChart").getContext("2d");
   const doughnutCTX = document.getElementById("doughnutChart").getContext("2d");
   const lineCTX = document.getElementById("lineChart").getContext("2d");
 
@@ -50,13 +52,13 @@ $(document).ready(function () {
     // $(".browse:first-child").val($(this).data("id"));
     $(".order:first-child").attr("name", $(this).text());
   });
-
+  //////////////////////////////////////////////////////////// single game search button
   $("#search-button").on("click", function (event) {
     event.preventDefault();
 
     $("#game-area").html("");
 
-    $("#chart-button").prop("disabled", true);
+    $("#chart-button").prop("disabled", false);
 
     let gameName = $("#searchInput").val().trim();
 
@@ -71,6 +73,8 @@ $(document).ready(function () {
       // gameSlug = gameName.replace(/\s+/g, '-').toLowerCase();
 
       renderSingleGame(gameName);
+      ///////////////////////////////////////////// render single chart here
+      renderSingleChart(gameName);
     }
   });
 
@@ -489,7 +493,7 @@ $(document).ready(function () {
         $("#alert-modal").modal("show");
         $("#modal-text").text(`No results please try again`);
       } else {
-        const searchResponse = response.results;
+        let searchResponse = response.results;
         // variable to create card
 
         let slugURL = `https://rawg.io/api/games/${searchResponse[0].slug}`;
@@ -797,3 +801,104 @@ $(document).ready(function () {
 });
 
 /////////////////adding chart to plat order/game order/all calls
+function renderSingleChart(searchInput) {
+  let searchURL = `https://rawg.io/api/games?search=${searchInput}`;
+  let ctx = document.getElementById("topChart").getContext("2d");
+
+  $.get(searchURL).then((response) => {
+    let searchResponse = response.results;
+
+    // variable to create card
+    let slugURL = `https://rawg.io/api/games/${searchResponse[0].slug}`;
+    $.get(slugURL).then((response) => {
+      let doughnutChart = new Chart(ctx, {
+        type: "doughnut",
+        data: {
+          labels: [
+            response.ratings[0].title,
+            response.ratings[1].title,
+            response.ratings[2].title,
+            response.ratings[3].title,
+          ],
+          datasets: [
+            {
+              data: [
+                response.ratings[0].percent,
+                response.ratings[1].percent,
+                response.ratings[2].percent,
+                response.ratings[3].percent,
+              ],
+              backgroundColor: colorPalette,
+            },
+          ],
+        },
+        options: {
+          title: {
+            display: true,
+            position: "top",
+            text: `Love or Skip ${searchResponse[0].slug}`,
+          },
+        },
+      });
+    });
+  });
+  const colorPalette = [
+    "black",
+    "#0c0032",
+    "#190061",
+    "#240090",
+    "#3500D3",
+    "#282828",
+    "#00ff9f",
+    "#00b8ff",
+    "#001eff",
+    "#bd00ff",
+    "#d600ff",
+  ];
+}
+// bubble chart ref
+// let chart = new Chart(ctx, {
+//   type: "bubble",
+//   data: {
+//     labels: [
+//       // recommended, meh, exceptional, skip
+//       response.ratings[0].title,
+//       response.ratings[1].title,
+//       response.ratings[2].title,
+//       response.ratings[3].title,
+//     ],
+//     datasets: [
+//       {
+//         label: [response.ratings[0].title],
+//         backgroundColor: "lightgreen",
+//         data: [{ x: 1.5, y: 3, r: response.ratings[0].percent }],
+//       },
+//       {
+//         label: [response.ratings[1].title],
+//         backgroundColor: "yellow",
+//         data: [{ x: 2, y: 1, r: response.ratings[1].percent }],
+//       },
+//       {
+//         label: [response.ratings[2].title],
+//         backgroundColor: "green",
+//         data: [{ x: 2.5, y: 3, r: response.ratings[2].percent }],
+//       },
+//       {
+//         label: [response.ratings[3].title],
+//         backgroundColor: "red",
+//         data: [{ x: 3, y: 1, r: response.ratings[2].percent }],
+//       },
+//     ],
+//   },
+//   options: {
+//     title: {
+//       display: true,
+//       position: "top",
+//       text: `Top ${title} Games in 2020`,
+//     },
+//     legend: {
+//       display: true,
+//       position: "top",
+//     },
+//   },
+// });
