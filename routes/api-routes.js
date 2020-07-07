@@ -1,7 +1,7 @@
 const db = require('../models');
-
-=======
 const passport = require("../config/passport");
+
+
 const { response } = require('express');
 
 
@@ -49,6 +49,7 @@ router.get('/profile:id', (req, res) => {
 		})
 		.then((dbUserProfile) => {
 			res.json(dbUserProfile);
+			//res.redirect('/profile?userId=2');
 		});
 });
 
@@ -67,7 +68,7 @@ router.post('/profile/create', (req, res) => {
 			twitchUserName: req.body.twitchUserName,
 			aboutMe: req.body.aboutMe,
 			coverImg: null,
-			avatarImg: null,
+			avatarImg: 'public/assets/images/public-images/default-image.png',
 			userId: 1
 		})
 		.then((result) => {
@@ -93,9 +94,7 @@ router.put('/profile/update:id', (req, res) => {
 				nickname: req.body.nickname,
 				discordUserName: req.body.discordUserName,
 				twitchUserName: req.body.twitchUserName,
-				aboutMe: req.body.aboutMe,
-				coverImg: null,
-				avatarImg: null
+				aboutMe: req.body.aboutMe
 			},
 			{
 				where: {
@@ -177,6 +176,69 @@ router.post('/profile/upload_coverImg', (req, res) => {
 	});
 });
 
+//=====================Api routes for favorite profile games ================== MARIA
+
+//Get information from the database
+router.get('/profile/selectedgames:id', (req, res) => {
+	db.ProfileSelectGames
+		.findOne({
+			where: {
+				userId: req.params.id
+			}
+		})
+		.then((dbUserGames) => {
+			res.json(dbUserGames);
+		});
+});
+
+//Creates information from the database
+router.post('/profile/selectedgames', (req, res) => {
+	console.log(req.body);
+	db.ProfileSelectGames
+		.create({
+			currentlyPlaying: req.body.currentlyPlaying,
+			favoriteGameOne: req.body.favoriteGameOne,
+			favoriteGameTwo: req.body.favoriteGameTwo,
+			favoriteGameThree: req.body.favoriteGameThree,
+			leastFavoriteOne: req.body.leastFavoriteOne,
+			leastFavoriteTwo: req.body.leastFavoriteTwo,
+			leastFavoriteThree: req.body.leastFavoriteThree,
+			userId: 2
+		})
+		.then((result) => {
+			console.log(`Posted data successfully`);
+			res.json(result);
+		})
+		.catch((err) => {
+			res.json(err);
+		});
+});
+
+//Updates the information from the database
+router.put('/profile/selectedgames/update:id', (req, res) => {
+	db.ProfileSelectGames
+		.update(
+			{
+				currentlyPlaying: req.body.currentlyPlaying,
+				favoriteGameOne: req.body.favoriteGameOne,
+				favoriteGameTwo: req.body.favoriteGameTwo,
+				favoriteGameThree: req.body.favoriteGameThree,
+				leastFavoriteOne: req.body.leastFavoriteOne,
+				leastFavoriteTwo: req.body.leastFavoriteTwo,
+				leastFavoriteThree: req.body.leastFavoriteThree
+			},
+			{
+				where: {
+					// userId: 1
+					userId: req.params.id
+				}
+			}
+		)
+		.then(function(dbPost) {
+			res.json(dbPost);
+		});
+});
+//================= ENDS MARIA================//
 //==================Gus============//
 
 // Using Game Model to insert new row into Games table in database
@@ -227,7 +289,9 @@ router.post("/api/signUp", (req, res) => {
 		username: req.body.username,
 		email: req.body.email,
 		password: req.body.password
-	}).then(() => {
+
+	}).then(()=> {
+
 		res.redirect("/api/profile");
 	}).catch(err => {
 		res.status(401).json(err);
@@ -236,7 +300,11 @@ router.post("/api/signUp", (req, res) => {
 
 //get user data
 router.get("/api/user-data", (req, res) => {
-	if (!req.user) {
+
+
+
+	if(!req.user) {
+
 		res.json({});		//empty object if user not logged in
 	} else {
 		res.json({
