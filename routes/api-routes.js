@@ -1,6 +1,9 @@
 const db = require('../models');
+
+=======
 const passport = require("../config/passport");
 const { response } = require('express');
+
 
 const router = require('express').Router();
 
@@ -49,7 +52,7 @@ router.get('/profile:id', (req, res) => {
 		});
 });
 
-//Creates a profile in the database 
+//Creates a profile in the database --Maria
 router.post('/profile/create', (req, res) => {
 	console.log(req.body);
 	db.Profile
@@ -63,6 +66,8 @@ router.post('/profile/create', (req, res) => {
 			discordUserName: req.body.discordUserName,
 			twitchUserName: req.body.twitchUserName,
 			aboutMe: req.body.aboutMe,
+			coverImg: null,
+			avatarImg: null,
 			userId: 1
 		})
 		.then((result) => {
@@ -74,8 +79,9 @@ router.post('/profile/create', (req, res) => {
 		});
 });
 
-//route to update a users profile
+//route to update a users profile -- Maria
 router.put('/profile/update:id', (req, res) => {
+	console.log(req.files, req.body);
 	db.Profile
 		.update(
 			{
@@ -87,7 +93,9 @@ router.put('/profile/update:id', (req, res) => {
 				nickname: req.body.nickname,
 				discordUserName: req.body.discordUserName,
 				twitchUserName: req.body.twitchUserName,
-				aboutMe: req.body.aboutMe
+				aboutMe: req.body.aboutMe,
+				coverImg: null,
+				avatarImg: null
 			},
 			{
 				where: {
@@ -99,6 +107,74 @@ router.put('/profile/update:id', (req, res) => {
 		.then(function (dbPost) {
 			res.json(dbPost);
 		});
+});
+
+//route to update the avatar profile image
+router.post('/profile/upload_avatar', (req, res) => {
+	const image = req.files.file;
+	const destination = 'public/assets/images/profile-images/' + image.name;
+	console.log(image, destination);
+	//move the image to assets/images/
+	image.mv(destination, (error) => {
+		if (error) {
+			console.error(error);
+			res.writeHead(500, { 'Content-Type': 'application/json' });
+			res.send(JSON.stringify({ status: 'error', message: error }));
+			return;
+		}
+
+		db.Profile
+			.update(
+				{
+					avatarImg: destination
+				},
+				{
+					where: {
+						userId: 2
+						//userId: req.params.id
+					}
+				}
+			)
+			.then(function(dbPost) {
+				res.json(dbPost);
+			});
+
+		console.log(`Posted data successfully`);
+	});
+});
+
+//route to update the cover img profile image
+router.post('/profile/upload_coverImg', (req, res) => {
+	const image = req.files.file;
+	const destination = 'public/assets/images/profile-images/' + image.name;
+	console.log(image, destination);
+	//move the image to assets/images/
+	image.mv(destination, (error) => {
+		if (error) {
+			console.error(error);
+			res.writeHead(500, { 'Content-Type': 'application/json' });
+			res.send(JSON.stringify({ status: 'error', message: error }));
+			return;
+		}
+
+		db.Profile
+			.update(
+				{
+					coverImg: destination
+				},
+				{
+					where: {
+						userId: 2
+						//userId: req.params.id
+					}
+				}
+			)
+			.then(function(dbPost) {
+				res.json(dbPost);
+			});
+
+		console.log(`Posted data successfully`);
+	});
 });
 
 //==================Gus============//
