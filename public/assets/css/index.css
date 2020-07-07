@@ -1,6 +1,11 @@
 * body {
 	background-color: black;
 }
+
+li {
+	list-style: none;
+}
+
 .animate__animated.animate__fadeIn {
 	--animate-duration: 3s;
 }
@@ -9,15 +14,31 @@
 	background-color: black;
 	opacity: .8;
 }
+
+/*login modal window*/
+.px-3 {
+background-color: black;
+}
+
 #emailInput,
-#passwordInput {
-	background-color: #606060;
+#passwordInput{
+
+	background-color:white;
 	border-color: black;
 }
-.login-button {
+.login-button, .mt-2 {
 	background-color: #3500d3;
 	border-color: black;
 }
+
+.signUp-modal {
+	color: white;
+}
+
+#dropdownMenu1 {
+	color: white;
+}
+/*end sign up modal*/
 
 .text-white {
 	opacity: none !important;
@@ -31,6 +52,8 @@
 	background: black;
 	width: 30rem;
 }
+
+/*top news background*/
 
 /* *******jarallax examples****/
 .jarallax-keep-img {

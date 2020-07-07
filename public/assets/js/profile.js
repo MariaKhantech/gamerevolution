@@ -8,6 +8,8 @@ $(document).ready(() => {
 			populateProfileInfo(data);
 			//populate modal
 			populateModalForm(data);
+			//load the user games
+			loadUserGames();
 			//set corrected youtube embedded video url
 			setEmbeddedYoutubeUrl();
 		});
@@ -68,7 +70,7 @@ $(document).ready(() => {
 		$('#user-profile').attr('src', data.avatarImg.substring(data.avatarImg.indexOf('/')));
 
 		//set the cover photo of the image
-		$('#cover-photo').css('background-image', "url(data.avatarImg.substring(data.avatarImg.indexOf('/')))");
+		//$('#cover-photo').css('background-image', "url(data.avatarImg.substring(data.avatarImg.indexOf('/')))");
 	};
 
 	//populate the modal form
@@ -83,6 +85,64 @@ $(document).ready(() => {
 		// $('#profile-discordserver').val();
 		$('#profile-twitchusername').val(data.twitchUserName);
 		$('#profile-aboutme').val(data.aboutMe);
+	};
+
+	//create an users selected games in the DB
+	const createSelectedGames = (gameData) => {
+		$.post('/api/profile/selectedgames', gameData).then((results) => {
+			console.log('update successful', results);
+			location.reload();
+		});
+	};
+
+	//update the users selected games in the DB
+	const updateSelectedGames = (gameData) => {
+		const userId = 2;
+		//take some profile data and update it in the database, exsiting
+		$.ajax('/api/profile/selectedgames/update' + userId, {
+			type: 'PUT',
+			data: gameData
+		}).then(() => {
+			//reload the page to get the updated list from the database
+			location.reload();
+		});
+	};
+
+	const loadUserGames = () => {
+		const userId = 2;
+		$.get('api/profile/selectedgames' + userId, (data) => {
+			//populate the modal data
+			populateGameModal(data);
+			//loop throught the data and populate the HTML
+			Object.entries(data).forEach((entry) => {
+				let searchGameUrl = `https://rawg.io/api/games?search=${entry[1]}`;
+
+				$.get(searchGameUrl).then((response) => {
+					if (response.count === 0) {
+						$('#alert-modal').modal('show');
+						$('#modal-text').text(`No results please try again`);
+					} else {
+						const searchResult = response.results;
+						//populate html elements with image and game from rawg data//
+						$(`#${entry[0]}Img`).attr('src', searchResult[0].background_image);
+						if (entry[0] === 'currentlyPlaying') {
+							$(`#${entry[0]}Name`).text(searchResult[0].name);
+						}
+					}
+				});
+			});
+		});
+	};
+
+	const populateGameModal = (data) => {
+		//set the profile name
+		$('#currentlyPlaying').val(data.currentlyPlaying);
+		$('#gameOne').val(data.favoriteGameOne);
+		$('#gameTwo').val(data.favoriteGameTwo);
+		$('#gameThree').val(data.favoriteGameThree);
+		$('#leastOne').val(data.leastFavoriteOne);
+		$('#leastTwo').val(data.leastFavoriteTwo);
+		$('#leastThree').val(data.leastFavoriteThree);
 	};
 
 	//*******Onclick functions to capature info from modals ******/
@@ -114,6 +174,29 @@ $(document).ready(() => {
 
 		//empty the edit profile modal form resets
 		$('#editProfileForm').trigger('reset');
+	});
+
+	// 	//Populating game choices into carousels and currently playing
+	$('#editGameDisplay').on('submit', (event) => {
+		//stop the page from refreshing
+		event.preventDefault();
+
+		//collect all the modal form data into the profileData object
+		const favGameData = {
+			currentlyPlaying: $('#currentlyPlaying').val(),
+			favoriteGameOne: $('#gameOne').val(),
+			favoriteGameTwo: $('#gameTwo').val(),
+			favoriteGameThree: $('#gameThree').val(),
+			leastFavoriteOne: $('#leastOne').val(),
+			leastFavoriteTwo: $('#leastTwo').val(),
+			leastFavoriteThree: $('#leastThree').val()
+		};
+
+		if ($('#profile-name').val().length === 0) {
+			createSelectedGames(favGameData);
+		} else {
+			updateSelectedGames(favGameData);
+		}
 	});
 
 	//handle the avatar file upload event
@@ -174,3 +257,25 @@ $(document).ready(() => {
 	//get the latest profile information for the user
 	getProfileInfo();
 });
+
+// Object.entries(favGameData).forEach((entry) => {
+// 	console.log(entry);
+// 	//Calling rawg data from api
+// 	let searchGameUrl = `https://rawg.io/api/games?search=${entry[1]}`;
+// 	console.log(searchGameUrl);
+
+// 	$.get(searchGameUrl).then((response) => {
+// 		if (response.count === 0) {
+// 			$('#alert-modal').modal('show');
+// 			$('#modal-text').text(`No results please try again`);
+// 		} else {
+// 			const searchResult = response.results;
+// 			console.log(searchResult[0]);
+// 			//populate html elements with image and game from rawg data//
+// 			$(`#${entry[0]}Img`).attr('src', searchResult[0].background_image);
+// 			$(`#${entry[0]}Name`).text(searchResult[0].name);
+// 		}
+// 	});
+// });
+//references for profile js: //
+//help with uploading avatars https://bezkoder.com/node-js-upload-image-mysql/ //

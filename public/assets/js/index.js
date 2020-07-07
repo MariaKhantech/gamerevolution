@@ -55,9 +55,9 @@ $(document).ready(() => {
 
 		textGeo = new THREE.PlaneGeometry(300, 300);
 		THREE.ImageUtils.crossOrigin = ''; //Need this to pull in crossdomain images from AWS
-		// textTexture = THREE.ImageUtils.loadTexture('../images/image1.jpg');
+		// textTexture = THREE.ImageUtils.loadTexture('../images/image1.jpg' colors the text);
 		textTexture = new THREE.TextureLoader().load('./assets/images/index-images/gamerevolution.jpg');
-		let colortext = new THREE.Color('rgb(117, 69, 255		)');
+		let colortext = new THREE.Color('rgb(255,255,255)');
 		textMaterial = new THREE.MeshLambertMaterial({
 			color: colortext,
 			opacity: 1,
