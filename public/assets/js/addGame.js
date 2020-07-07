@@ -139,7 +139,7 @@ $(document).ready(function () {
           // variable to create card
           const createCard = $("<div>", {
             class: "card d-inline-block",
-            style: "width: 30%;",
+            style: "width: 21rem",
 
           });
           // append card to parent div (line 55 of addGame.html)
@@ -271,7 +271,7 @@ $(document).ready(function () {
           // variable to create card
           const createCard = $("<div>", {
             class: "card d-inline-block mr-3 mt-3",
-            style: "width: 40%;",
+            style: "width: 21rem",
 
           });
           // append card to parent div (line 55 of addGame.html)
@@ -402,7 +402,7 @@ $(document).ready(function () {
           // variable to create card
           const createCard = $("<div>", {
             class: "card d-inline-block mr-3 mt-3",
-            style: "width: 30%;",
+            style: "width: 21rem",
 
           });
           // append card to parent div (line 55 of addGame.html)
