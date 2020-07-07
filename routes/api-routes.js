@@ -2,6 +2,9 @@ const db = require('../models');
 const passport = require("../config/passport");
 
 
+const { response } = require('express');
+
+
 const router = require('express').Router();
 
 router.get('/', (req, res) => res.json('Sample API get endpoint'));
@@ -46,10 +49,11 @@ router.get('/profile:id', (req, res) => {
 		})
 		.then((dbUserProfile) => {
 			res.json(dbUserProfile);
+			//res.redirect('/profile?userId=2');
 		});
 });
 
-//Creates a profile in the database 
+//Creates a profile in the database --Maria
 router.post('/profile/create', (req, res) => {
 	console.log(req.body);
 	db.Profile
@@ -63,6 +67,8 @@ router.post('/profile/create', (req, res) => {
 			discordUserName: req.body.discordUserName,
 			twitchUserName: req.body.twitchUserName,
 			aboutMe: req.body.aboutMe,
+			coverImg: null,
+			avatarImg: 'public/assets/images/public-images/default-image.png',
 			userId: 1
 		})
 		.then((result) => {
@@ -74,8 +80,9 @@ router.post('/profile/create', (req, res) => {
 		});
 });
 
-//route to update a users profile
+//route to update a users profile -- Maria
 router.put('/profile/update:id', (req, res) => {
+	console.log(req.files, req.body);
 	db.Profile
 		.update(
 			{
@@ -96,11 +103,142 @@ router.put('/profile/update:id', (req, res) => {
 				}
 			}
 		)
-		.then(function(dbPost) {
+		.then(function (dbPost) {
 			res.json(dbPost);
 		});
 });
 
+//route to update the avatar profile image
+router.post('/profile/upload_avatar', (req, res) => {
+	const image = req.files.file;
+	const destination = 'public/assets/images/profile-images/' + image.name;
+	console.log(image, destination);
+	//move the image to assets/images/
+	image.mv(destination, (error) => {
+		if (error) {
+			console.error(error);
+			res.writeHead(500, { 'Content-Type': 'application/json' });
+			res.send(JSON.stringify({ status: 'error', message: error }));
+			return;
+		}
+
+		db.Profile
+			.update(
+				{
+					avatarImg: destination
+				},
+				{
+					where: {
+						userId: 2
+						//userId: req.params.id
+					}
+				}
+			)
+			.then(function(dbPost) {
+				res.json(dbPost);
+			});
+
+		console.log(`Posted data successfully`);
+	});
+});
+
+//route to update the cover img profile image
+router.post('/profile/upload_coverImg', (req, res) => {
+	const image = req.files.file;
+	const destination = 'public/assets/images/profile-images/' + image.name;
+	console.log(image, destination);
+	//move the image to assets/images/
+	image.mv(destination, (error) => {
+		if (error) {
+			console.error(error);
+			res.writeHead(500, { 'Content-Type': 'application/json' });
+			res.send(JSON.stringify({ status: 'error', message: error }));
+			return;
+		}
+
+		db.Profile
+			.update(
+				{
+					coverImg: destination
+				},
+				{
+					where: {
+						userId: 2
+						//userId: req.params.id
+					}
+				}
+			)
+			.then(function(dbPost) {
+				res.json(dbPost);
+			});
+
+		console.log(`Posted data successfully`);
+	});
+});
+
+//=====================Api routes for favorite profile games ================== MARIA
+
+//Get information from the database
+router.get('/profile/selectedgames:id', (req, res) => {
+	db.ProfileSelectGames
+		.findOne({
+			where: {
+				userId: req.params.id
+			}
+		})
+		.then((dbUserGames) => {
+			res.json(dbUserGames);
+		});
+});
+
+//Creates information from the database
+router.post('/profile/selectedgames', (req, res) => {
+	console.log(req.body);
+	db.ProfileSelectGames
+		.create({
+			currentlyPlaying: req.body.currentlyPlaying,
+			favoriteGameOne: req.body.favoriteGameOne,
+			favoriteGameTwo: req.body.favoriteGameTwo,
+			favoriteGameThree: req.body.favoriteGameThree,
+			leastFavoriteOne: req.body.leastFavoriteOne,
+			leastFavoriteTwo: req.body.leastFavoriteTwo,
+			leastFavoriteThree: req.body.leastFavoriteThree,
+			userId: 2
+		})
+		.then((result) => {
+			console.log(`Posted data successfully`);
+			res.json(result);
+		})
+		.catch((err) => {
+			res.json(err);
+		});
+});
+
+//Updates the information from the database
+router.put('/profile/selectedgames/update:id', (req, res) => {
+	db.ProfileSelectGames
+		.update(
+			{
+				currentlyPlaying: req.body.currentlyPlaying,
+				favoriteGameOne: req.body.favoriteGameOne,
+				favoriteGameTwo: req.body.favoriteGameTwo,
+				favoriteGameThree: req.body.favoriteGameThree,
+				leastFavoriteOne: req.body.leastFavoriteOne,
+				leastFavoriteTwo: req.body.leastFavoriteTwo,
+				leastFavoriteThree: req.body.leastFavoriteThree
+			},
+			{
+				where: {
+					// userId: 1
+					userId: req.params.id
+				}
+			}
+		)
+		.then(function(dbPost) {
+			res.json(dbPost);
+		});
+});
+//================= ENDS MARIA================//
 //==================Gus============//
 
 // Using Game Model to insert new row into Games table in database
@@ -119,14 +257,22 @@ router.post('/addgames', (req, res) => {
 		});
 });
 
+router.get('/addgames', (req, res) => {
+	db.Game.findAll().then((result) => {
+		res.json(result);
+	})
+});
+
 //Passport Routes
 
 //login route
+
 router.post("/api/login", passport.authenticate("local"), (req, res) => {
-	res.json({
-		email: req.user.email,
-		id: req.user.id
-	});
+	res.json(req.user)
+	// {
+	// 	// email: req.user.email,
+	// 	// id: req.user.id
+	// });
 });
 
 //logout & redirect to home page
@@ -136,22 +282,30 @@ router.get("/logout", (req, res) => {
 });
 
 //signup route, then redirect to home page
-router.post("/api/signup", (req, res) => {
+router.post("/api/signUp", (req, res) => {
 	db.User.create({
 		firstName: req.body.firstName,
 		lastName: req.body.lastName,
 		username: req.body.username,
 		email: req.body.email,
 		password: req.body.password
+
 	}).then(()=> {
-		res.redirect("/");
+
+		res.redirect("/api/profile");
+	}).catch(err => {
+		res.status(401).json(err);
 	});
 });
 
 //get user data
 router.get("/api/user-data", (req, res) => {
+
+
+
 	if(!req.user) {
-		res.json({});
+
+		res.json({});		//empty object if user not logged in
 	} else {
 		res.json({
 			email: req.user.email,

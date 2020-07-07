@@ -16,6 +16,7 @@ body {
   background: #282828;
 }
 
+
 .card {
   background: #282828;
   border-style: double;
@@ -49,13 +50,14 @@ body {
   margin: 0px auto 0px auto;
 }
 
-.browse-title {
-  left: 1px;
+
+#chart-button {
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
+
 }
-.search-title {
-  text-align: right;
-  left: -3px;
-}
+
 .search-menu {
   /* background-color: #3500d3; */
   margin: 10px auto 0px auto;
@@ -65,14 +67,6 @@ body {
   padding: 20px;
 }
 
-/* .col-md-8 {
-    /* background: #282828; */
-/* margin: 0px auto 0px auto; */
-/* } */
-*/ .col-md-4 {
-  /* background: #282828; */
-  margin: 0px auto 0px auto;
-}
 
 .col-md-12 {
   margin: 25px auto 25px auto;
