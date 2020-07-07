@@ -1,5 +1,10 @@
 const db = require('../models');
 const passport = require("../config/passport");
+
+
+const { response } = require('express');
+
+
 const router = require('express').Router();
 
 router.get('/', (req, res) => res.json('Sample API get endpoint'));
@@ -98,7 +103,7 @@ router.put('/profile/update:id', (req, res) => {
 				}
 			}
 		)
-		.then(function(dbPost) {
+		.then(function (dbPost) {
 			res.json(dbPost);
 		});
 });
@@ -252,6 +257,12 @@ router.post('/addgames', (req, res) => {
 		});
 });
 
+router.get('/addgames', (req, res) => {
+	db.Game.findAll().then((result) => {
+		res.json(result);
+	})
+});
+
 //Passport Routes
 
 //login route
@@ -278,7 +289,9 @@ router.post("/api/signUp", (req, res) => {
 		username: req.body.username,
 		email: req.body.email,
 		password: req.body.password
+
 	}).then(()=> {
+
 		res.redirect("/api/profile");
 	}).catch(err => {
 		res.status(401).json(err);
@@ -287,7 +300,11 @@ router.post("/api/signUp", (req, res) => {
 
 //get user data
 router.get("/api/user-data", (req, res) => {
+
+
+
 	if(!req.user) {
+
 		res.json({});		//empty object if user not logged in
 	} else {
 		res.json({

@@ -148,25 +148,50 @@ $(document).ready(function () {
           $("#game-area").append(createCard);
 
           // if game has no background image fill card image with a placekitten holder (not permanent just TEMPORARY)
-          if (game[i].background_image === null) {
-            const cardImg = $("<img>", {
-              class: "card-img-top",
-              alt: "game-image",
+          // if (game[i].background_image === null) {
+          //   const cardImg = $("<img>", {
+          //     class: "card-img-top",
+          //     alt: "game-image",
 
-              src: "https://placekitten.com/200/139",
+          //     src: "https://placekitten.com/200/139",
 
-            });
-            createCard.append(cardImg);
-          } else {
-            // else fill card image with the game's background-image  from API
+          //   });
+          //   createCard.append(cardImg);
+          // } else {
+          //   // else fill card image with the game's background-image  from API
+          //   const cardImg = $("<img>", {
+          //     class: "img-thumbnail",
+          //     alt: "game-image",
+
+          //     src: game[i].background_image,
+
+          //   });
+          //   createCard.append(cardImg);
+          // }
+
+          if (game[i].clip === null) {
             const cardImg = $("<img>", {
               class: "img-thumbnail",
               alt: "game-image",
-
               src: game[i].background_image,
-
             });
             createCard.append(cardImg);
+          } else if (game[i].background_image === null) {
+            const cardImg = $("<img>", {
+              class: "img-thumbnail",
+              alt: "game-image",
+              src: "https://placekitten.com/200/139",
+            });
+            createCard.append(cardImg);
+          } else {
+            const cardVid = $("<video>", {
+              class: "img-thumbnail",
+              type: "video/mp4",
+              controls: "controls",
+              alt: "game-image",
+              src: game[i].clip.clip,
+            });
+            createCard.append(cardVid);
           }
 
           // variable to create card body div
@@ -279,27 +304,32 @@ $(document).ready(function () {
           // append card to parent div (line 55 of addGame.html)
           $("#game-area").append(createCard);
 
-          // if game has no background image fill card image with a placekitten holder (not permanent just TEMPORARY)
-          if (game[i].background_image === null) {
-            const cardImg = $("<img>", {
-              class: "card-img-top",
-              alt: "game-image",
-
-              src: "https://placekitten.com/200/139",
-
-            });
-            createCard.append(cardImg);
-          } else {
-            // else fill card image with the game's background-image  from API
+          // if game has no background image fill card image with a placekitten holder(not permanent just TEMPORARY)
+          if (game[i].clip === null) {
             const cardImg = $("<img>", {
               class: "img-thumbnail",
               alt: "game-image",
-
               src: game[i].background_image,
-
             });
             createCard.append(cardImg);
+          } else if (game[i].background_image === null) {
+            const cardImg = $("<img>", {
+              class: "img-thumbnail",
+              alt: "game-image",
+              src: "https://placekitten.com/200/139",
+            });
+            createCard.append(cardImg);
+          } else {
+            const cardVid = $("<video>", {
+              class: "img-thumbnail",
+              type: "video/mp4",
+              controls: "controls",
+              alt: "game-image",
+              src: game[i].clip.clip,
+            });
+            createCard.append(cardVid);
           }
+
 
           // variable to create card body div
           const cardBody = $("<div>", {
@@ -411,26 +441,31 @@ $(document).ready(function () {
           $("#game-area").append(createCard);
 
           // if game has no background image fill card image with a placekitten holder (not permanent just TEMPORARY)
-          if (game[i].background_image === null) {
-            const cardImg = $("<img>", {
-              class: "card-img-top",
-              alt: "game-image",
-
-              src: "https://placekitten.com/200/139",
-
-            });
-            createCard.append(cardImg);
-          } else {
-            // else fill card image with the game's background-image  from API
+          if (game[i].clip === null) {
             const cardImg = $("<img>", {
               class: "img-thumbnail",
               alt: "game-image",
-
               src: game[i].background_image,
-
             });
             createCard.append(cardImg);
+          } else if (game[i].background_image === null) {
+            const cardImg = $("<img>", {
+              class: "img-thumbnail",
+              alt: "game-image",
+              src: "https://placekitten.com/200/139",
+            });
+            createCard.append(cardImg);
+          } else {
+            const cardVid = $("<video>", {
+              class: "img-thumbnail",
+              type: "video/mp4",
+              controls: "controls",
+              alt: "game-image",
+              src: game[i].clip.clip,
+            });
+            createCard.append(cardVid);
           }
+
 
           // variable to create card body div
           const cardBody = $("<div>", {
@@ -654,6 +689,131 @@ $(document).ready(function () {
       });
   });
 
+  const getUserGames = () => {
+    return $.ajax({
+      url: "/api/addgames",
+      method: "GET",
+    }).then((result) => {
+      // console.log(result);
+
+      let dbGames = result;
+
+      for (let i = 0; i < dbGames.length; i++) {
+        // console.log(dbGames[i].game_name);
+
+        let slugURL = `https://rawg.io/api/games/${dbGames[i].game_name}`;
+
+        $.get(slugURL).then((response) => {
+
+
+          console.log(response);
+
+          const createCard = $("<div>", {
+            class: "card d-inline-block",
+            style: "width: 21rem",
+
+          });
+          // append card to parent div (line 55 of addGame.html)
+          $("#game-area").append(createCard);
+
+          if (response.clip != null) {
+            const cardVid = $("<video>", {
+              class: "img-thumbnail",
+              type: "video/mp4",
+              controls: "controls",
+              alt: "game-image",
+              src: response.clip.clip,
+            });
+            createCard.append(cardVid);
+
+          } else if (response.clip === null) {
+            const cardImg = $("<img>", {
+              class: "img-thumbnail",
+              alt: "game-image",
+              src: response.background_image,
+            });
+            createCard.append(cardImg);
+          } else {
+            const cardImg = $("<img>", {
+              class: "img-thumbnail",
+              alt: "game-image",
+              src: "https://placekitten.com/200/139",
+            });
+            createCard.append(cardImg);
+          }
+          const cardBody = $("<div>", {
+
+            class: "card-body m-auto",
+
+          });
+          // append card body to parent .card div
+          createCard.append(cardBody);
+
+          const cardTitle = $("<h6>", {
+            class: "card-title text-center",
+            text: response.name,
+
+          });
+          // append card title to card body
+          cardBody.append(cardTitle);
+
+          if (response.released === null) {
+            const cardDescription = $("<p>", {
+              class: "card-text text-center",
+
+              text: `Released: N/A`,
+
+            });
+            cardBody.append(cardDescription);
+          } else {
+            // else set card description to game release year and append to card body
+            const gameYear = response.released.split("-");
+
+            const cardDescription = $("<p>", {
+              class: "card-text text-center",
+
+              text: `Released: ${gameYear[0]}`,
+
+            });
+            cardBody.append(cardDescription);
+          }
+
+          const percentage = Math.round((response.rating / 5) * 100);
+
+          const rawgPercentage = $("<p>", {
+            class: "card-text text-center",
+
+            text: `Rating: ${percentage}%`,
+          });
+
+          const rawgRating = $("<p>", {
+            class: "card-text text-center mx-auto",
+          }).rateYo({
+            rating: response.rating,
+            readOnly: true,
+            starWidth: "25px",
+          });
+
+          const userRatings = $("<p>", {
+            class: "card-text text-center",
+            text: `User Ratings: ${response.ratings_count}`,
+          });
+
+          cardBody.append(rawgPercentage, rawgRating, userRatings);
+
+
+
+        });
+
+      }
+
+
+    });
+
+  }
+
+  getUserGames();
+
   // let clearCharts = () => {
   //   $("#topChart").remove();
   //   $("#topChartCard").append($("<canvas>", { id: "topChart" }));
@@ -832,6 +992,9 @@ $(document).ready(function () {
     }
   }
   title = [];
+
+
+
 });
 
 /////////////////adding chart to plat order/game order/all calls
