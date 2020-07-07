@@ -33,12 +33,12 @@ router.get("/login", (req, res) => {
 	if (req.user) {
 		res.redirect("/profile");
 	}
-	res.sendFile(path.join(__dirname, "../public/profile.html"));
+	res.sendFile(path.join(__dirname, "../public/login.html"));
 });
 
 //link authenticated
 //will redirect to sign up page if user clicks Profile link
-router.get("/members", isAuthenticated, (req, res) => {
+router.get("/profile", isAuthenticated, (req, res) => {
 	res.sendFile(path.join(__dirname, "../public/profile.html"));
 })
 
