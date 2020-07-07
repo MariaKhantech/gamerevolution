@@ -63,6 +63,7 @@ $(document).ready(function () {
 
     $("#game-area").html("");
 
+    $("#chart-button").hide();
     $("#chart-button").prop('disabled', true);
 
 
@@ -88,6 +89,7 @@ $(document).ready(function () {
 
     $("#game-area").html("");
 
+    $("#chart-button").show();
     $("#chart-button").prop('disabled', false);
 
     let platformId = $(".platform").val();

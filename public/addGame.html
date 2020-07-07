@@ -38,17 +38,15 @@
 
   <section>
     <div class="container">
-      <div class="row">
-        <div class="col-md-6 browse-title">
-          <h5 class="text-white">Browse for Multiple Games</h5>
-        </div>
-        <div class="col-md-6 search-title">
-          <h5 class="text-white">Search for a Single Game</h5>
-        </div>
-      </div>
 
       <div class="row search-menu">
-        <div class="col-auto d-inline-block">
+
+
+
+
+
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 d-inline-block">
+          <h5 class="text-white browse-title mr-auto">Browse for Multiple Games</h5>
           <div class="btn-group">
             <button class="btn btn-outline-secondary text-white platform" disabled>
               Select Platform
@@ -83,91 +81,98 @@
               <a class="dropdown-item order-item" name="created">Created</a>
               <a class="dropdown-item order-item" name="rating">Rating</a>
             </div>
+            <button class="btn btn-outline-secondary text-white ml-1" id="browse-btn" type="button">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+
           </div>
-
-          <button class="btn btn-outline-secondary text-white" id="browse-btn" type="button">
-            Browse
-          </button>
         </div>
 
-        <div class="col-auto d-inline-block">
-          <button class="btn btn-outline-secondary text-white" id="chart-button" type="button" data-toggle="collapse"
-            data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            Top Game Charts
-          </button>
-        </div>
-
-        <div class="col-auto">
-          <form class="search form-inline input-group-append">
-            <input class="form-control ml-auto" id="searchInput" type="search" placeholder="Search for single game"
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 d-inline-block">
+          <h5 class="text-white search-title">Search for a Single Game</h5>
+          <form class="search form-inline input-group-append mt-1">
+            <input class="form-control" id="searchInput" type="search" placeholder="Search for single game"
               aria-label="Search" />
             <button class="btn btn-outline-secondary text-white my-2 my-sm-0" id="search-button" type="button">
               <i class="fa fa-search" aria-hidden="true"></i>
             </button>
           </form>
         </div>
+
       </div>
 
 
-      <div class="row mt-2">
-        <div class="col-md-9">
-          <!-- Chart Dropdown -->
-
-          <div class="collapse" id="collapseExample">
-            <!-- start nav tabs -->
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" id="top-tab" data-toggle="tab" href="#TOP" role="tab" aria-controls="home"
-                  aria-selected="true">TOP</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="doughnut-tab" data-toggle="tab" href="#doughnut" role="tab"
-                  aria-controls="profile" aria-selected="false">Doughnut</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="line-tab" data-toggle="tab" href="#line" role="tab" aria-controls="contact"
-                  aria-selected="false">Line</a>
-              </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-              <div class="tab-pane fade show active" id="TOP" role="tabpanel" aria-labelledby="top-tab">
-                <!-- main chart -->
-                <div class="card card-body" id="topChartCard">
-                  <canvas id="topChart"></canvas>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="doughnut" role="tabpanel" aria-labelledby="doughnut-tab">
-                <!-- doughnut chart -->
-                <div class="card card-body" id="topChartCard">
-                  <canvas id="doughnutChart"></canvas>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="line" role="tabpanel" aria-labelledby="line-tab">
-                <!-- Line chart -->
-                <div class="card card-body" id="topChartCard">
-                  <canvas id="lineChart"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- end Chart Dropdown -->
-
-        <div class="row mt-2">
-          <!-- GAME GRID -->
-          <div class="col-md-12">
-            <div class="container" id="game-grid">
-              <div class="row justify-content-between">
-                <!-- AREA WHERE GAMES APPEAR -->
-                <div class="col-auto" id="game-area"></div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
     </div>
+
+    <div class="row mt-3">
+
+      <button class="btn btn-outline-secondary text-white" id="chart-button" type="button" data-toggle="collapse"
+        data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Top Game Charts
+      </button>
+
+    </div>
+
+    <div class="row mt-2 mx-auto">
+      <div class="col-md-9">
+        <!-- Chart Dropdown -->
+
+        <div class="collapse" id="collapseExample">
+          <!-- start nav tabs -->
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="top-tab" data-toggle="tab" href="#TOP" role="tab" aria-controls="home"
+                aria-selected="true">TOP</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="doughnut-tab" data-toggle="tab" href="#doughnut" role="tab"
+                aria-controls="profile" aria-selected="false">Doughnut</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="line-tab" data-toggle="tab" href="#line" role="tab" aria-controls="contact"
+                aria-selected="false">Line</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="TOP" role="tabpanel" aria-labelledby="top-tab">
+              <!-- main chart -->
+              <div class="card card-body" id="topChartCard">
+                <canvas id="topChart"></canvas>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="doughnut" role="tabpanel" aria-labelledby="doughnut-tab">
+              <!-- doughnut chart -->
+              <div class="card card-body" id="topChartCard">
+                <canvas id="doughnutChart"></canvas>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="line" role="tabpanel" aria-labelledby="line-tab">
+              <!-- Line chart -->
+              <div class="card card-body" id="topChartCard">
+                <canvas id="lineChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end Chart Dropdown -->
+
+      <div class="row mt-2 mx-auto">
+        <!-- GAME GRID -->
+        <div class="col-md-12">
+          <div class="container" id="game-grid">
+            <div class="row justify-content-between">
+              <!-- AREA WHERE GAMES APPEAR -->
+              <div class="col-auto" id="game-area"></div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
 
     <!-- ALERT MODAL -->
     <div class="modal fade" id="alert-modal" tabindex="-1" role="dialog">
@@ -190,6 +195,7 @@
           </div>
         </div>
       </div>
+    </div>
     </div>
   </section>
 
