@@ -1,11 +1,17 @@
+// const { json } = require("express");
+
 $(document).ready(function () {
   // ////////////////////////////////////////////////////////////////initialize charts so we can use chart functions outside of response
+  // set default chart variables
+  // Chart.defaults.global.defaultFontColor = "white";
+  //initialize toggle
+  $("#toggle-demo").bootstrapToggle();
 
   // let chart = new Chart(ctx, {
   //   type: "bar",
   // });
   // initialize popovers
-  const ctx = document.getElementById("topChart").getContext("2d");
+  let ctx = document.getElementById("topChart").getContext("2d");
   const doughnutCTX = document.getElementById("doughnutChart").getContext("2d");
   const lineCTX = document.getElementById("lineChart").getContext("2d");
 
@@ -13,13 +19,12 @@ $(document).ready(function () {
 
   // // Function that populates side menu with list of RAWG platform names and sets data-ids equal to the rawg id number for platform
   const populatePlatformList = () => {
-
     const platformUrl = `https://api.rawg.io/api/platforms`;
 
     $.get(platformUrl).then((response) => {
       // console.log(response.results);
 
-      let platforms = response.results
+      let platforms = response.results;
 
       for (let i = 0; i < platforms.length; i++) {
         // console.log(platforms[i].name);
@@ -33,42 +38,37 @@ $(document).ready(function () {
           text: platforms[i].name,
         });
 
-
         $(".platform-list").append(displayPlatformName);
       }
     });
-
-  }
+  };
 
   populatePlatformList();
 
-
   $(".platform-list").on("click", "a", function () {
-
     $(".platform:first-child").text($(this).text());
     $(".platform:first-child").val($(this).data("id"));
     $(".platform:first-child").attr("name", $(this).text());
   });
 
-
   $(".order-list").on("click", "a", function () {
     $(".order:first-child").text($(this).text());
     // $(".browse:first-child").val($(this).data("id"));
     $(".order:first-child").attr("name", $(this).text());
-
   });
-
+  //////////////////////////////////////////////////////////// single game search button
   $("#search-button").on("click", function (event) {
     event.preventDefault();
 
     $("#game-area").html("");
 
+
     $("#chart-button").hide();
     $("#chart-button").prop('disabled', true);
 
 
-    let gameName = $("#searchInput").val().trim();
 
+    let gameName = $("#searchInput").val().trim();
 
     if (gameName === "") {
       $("#alert-modal").modal("show");
@@ -81,6 +81,8 @@ $(document).ready(function () {
       // gameSlug = gameName.replace(/\s+/g, '-').toLowerCase();
 
       renderSingleGame(gameName);
+      ///////////////////////////////////////////// render single chart here
+      renderSingleChart(gameName);
     }
   });
 
@@ -89,8 +91,10 @@ $(document).ready(function () {
 
     $("#game-area").html("");
 
+
     $("#chart-button").show();
     $("#chart-button").prop('disabled', false);
+
 
     let platformId = $(".platform").val();
     // console.log(platformId);
@@ -142,7 +146,6 @@ $(document).ready(function () {
           const createCard = $("<div>", {
             class: "card d-inline-block",
             style: "width: 21rem",
-
           });
           // append card to parent div (line 55 of addGame.html)
           $("#game-area").append(createCard);
@@ -152,6 +155,7 @@ $(document).ready(function () {
           //   const cardImg = $("<img>", {
           //     class: "card-img-top",
           //     alt: "game-image",
+
 
           //     src: "https://placekitten.com/200/139",
 
@@ -174,13 +178,16 @@ $(document).ready(function () {
               class: "img-thumbnail",
               alt: "game-image",
               src: game[i].background_image,
+
             });
             createCard.append(cardImg);
           } else if (game[i].background_image === null) {
             const cardImg = $("<img>", {
               class: "img-thumbnail",
               alt: "game-image",
+
               src: "https://placekitten.com/200/139",
+
             });
             createCard.append(cardImg);
           } else {
@@ -196,19 +203,15 @@ $(document).ready(function () {
 
           // variable to create card body div
           const cardBody = $("<div>", {
-
             class: "card-body m-auto",
-
           });
           // append card body to parent .card div
           createCard.append(cardBody);
-
 
           // variable to display game title
           const cardTitle = $("<h6>", {
             class: "card-title text-center",
             text: game[i].name,
-
           });
           // append card title to card body
           cardBody.append(cardTitle);
@@ -219,7 +222,6 @@ $(document).ready(function () {
               class: "card-text text-center",
 
               text: `Released: N/A`,
-
             });
             cardBody.append(cardDescription);
           } else {
@@ -230,7 +232,6 @@ $(document).ready(function () {
               class: "card-text text-center",
 
               text: `Released: ${gameYear[0]}`,
-
             });
             cardBody.append(cardDescription);
           }
@@ -299,7 +300,6 @@ $(document).ready(function () {
           const createCard = $("<div>", {
             class: "card d-inline-block mr-3 mt-3",
             style: "width: 21rem",
-
           });
           // append card to parent div (line 55 of addGame.html)
           $("#game-area").append(createCard);
@@ -309,14 +309,18 @@ $(document).ready(function () {
             const cardImg = $("<img>", {
               class: "img-thumbnail",
               alt: "game-image",
+
               src: game[i].background_image,
+
             });
             createCard.append(cardImg);
           } else if (game[i].background_image === null) {
             const cardImg = $("<img>", {
               class: "img-thumbnail",
               alt: "game-image",
+
               src: "https://placekitten.com/200/139",
+
             });
             createCard.append(cardImg);
           } else {
@@ -333,7 +337,6 @@ $(document).ready(function () {
 
           // variable to create card body div
           const cardBody = $("<div>", {
-
             class: "card-body m-auto",
           });
           // append card body to parent .card div
@@ -387,7 +390,6 @@ $(document).ready(function () {
             text: `User Ratings: ${game[i].ratings_count}`,
           });
 
-
           cardBody.append(rawgPercentage, rawgRating, userRatings);
 
           // variable to create button that will add game to "favorites" library
@@ -401,7 +403,6 @@ $(document).ready(function () {
             "data-content": "Game added to library",
 
             text: `Add to Library`,
-
           });
 
           // append button to card body
@@ -409,9 +410,7 @@ $(document).ready(function () {
         }
       }
     });
-
   };
-
 
   const renderGameGridYearOrder = (year, ordering) => {
     let gamesURL = `https://rawg.io/api/games?dates=${year}-01-01,${year}-12-31&ordering=-${ordering}`;
@@ -425,17 +424,14 @@ $(document).ready(function () {
         $("#alert-modal").modal("show");
         $("#modal-text").text(`No results please try again`);
       } else {
-
         const game = response.results;
 
         // for loop to dynamically create and display a) Card/Card components and b) game data we want displayed to each card
         for (let i = 0; i < game.length; i++) {
-
           // variable to create card
           const createCard = $("<div>", {
             class: "card d-inline-block mr-3 mt-3",
             style: "width: 21rem",
-
           });
           // append card to parent div (line 55 of addGame.html)
           $("#game-area").append(createCard);
@@ -445,14 +441,18 @@ $(document).ready(function () {
             const cardImg = $("<img>", {
               class: "img-thumbnail",
               alt: "game-image",
+
               src: game[i].background_image,
+
             });
             createCard.append(cardImg);
           } else if (game[i].background_image === null) {
             const cardImg = $("<img>", {
               class: "img-thumbnail",
               alt: "game-image",
+
               src: "https://placekitten.com/200/139",
+
             });
             createCard.append(cardImg);
           } else {
@@ -469,19 +469,15 @@ $(document).ready(function () {
 
           // variable to create card body div
           const cardBody = $("<div>", {
-
             class: "card-body m-auto",
-
           });
           // append card body to parent .card div
           createCard.append(cardBody);
-
 
           // variable to display game title
           const cardTitle = $("<h6>", {
             class: "card-title text-center",
             text: game[i].name,
-
           });
           // append card title to card body
           cardBody.append(cardTitle);
@@ -492,7 +488,6 @@ $(document).ready(function () {
               class: "card-text text-center",
 
               text: `Released: N/A`,
-
             });
             cardBody.append(cardDescription);
           } else {
@@ -503,7 +498,6 @@ $(document).ready(function () {
               class: "card-text text-center",
 
               text: `Released: ${gameYear[0]}`,
-
             });
             cardBody.append(cardDescription);
           }
@@ -516,7 +510,6 @@ $(document).ready(function () {
             class: "card-text text-center",
 
             text: `Rating: ${percentage}%`,
-
           });
 
           const rawgRating = $("<p>", {
@@ -564,7 +557,7 @@ $(document).ready(function () {
         $("#alert-modal").modal("show");
         $("#modal-text").text(`No results please try again`);
       } else {
-        const searchResponse = response.results;
+        let searchResponse = response.results;
         // variable to create card
 
         let slugURL = `https://rawg.io/api/games/${searchResponse[0].slug}`;
@@ -657,7 +650,6 @@ $(document).ready(function () {
   $("#game-area").on("click", "button", function (event) {
     event.preventDefault();
 
-
     // variable that sets the slug to as data-name
     let gameSelect = $(this).data("name");
     // variable that sets the unique game id as the data-id
@@ -669,7 +661,7 @@ $(document).ready(function () {
       unique_id: gameID,
     };
 
-    console.log(newGame)
+    console.log(newGame);
     // post request to our sever to add new game to database
     $.ajax("/api/addgames", {
       type: "POST",
@@ -853,13 +845,19 @@ $(document).ready(function () {
   //   //TODO: allow changing chart type
   //   //TODO: allow addition of other data sets
   //   //TODO: switch color palette
+  // TODO: make doughnut and line chart make sense
+  // TODO: on hover love it or hate it
   //   // makes main chart
   let chartID = [];
   function renderCharts() {
+    // enable tabs
+    $("#doughnut-tab").prop("disabled", false);
+    $("#line-tab").prop("disabled", false);
     id = chartID;
     $.get(
       `https://rawg.io/api/games?platforms=${id}&page_size=50&ordering=-added`
     ).then((response) => {
+      console.log(response);
       let chart = new Chart(ctx, {
         type: "bar",
         data: {
@@ -881,19 +879,39 @@ $(document).ready(function () {
                 response.results[4].metacritic,
                 response.results[5].metacritic,
               ],
-              backgroundColor: colorPalette,
+              // fillColor: "rgba(220, 220, 220, .5)",
+              // fill: true,
+              // backgroundColor: colorPaletteRGBTransparent,
+              fill: false,
+              backgroundColor: colorPaletteRGBOpaque,
+              borderColor: colorPaletteRGBTransparent,
             },
           ],
         },
         options: {
+          // fillColor: "rgba(220,220,220,0)",
+          defaultFontColor: "white",
           title: {
             display: true,
             position: "top",
             text: `Top ${title} Games in 2020`,
           },
+          responsive: true,
+          maintainAspectRatio: true,
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                  suggestedMin: 0,
+                  suggestedMax: 0,
+                },
+              },
+            ],
+          },
         },
       });
-      // TODO: make DONUT and LINE charts
+
       // donut chart
       let doughnutChart = new Chart(doughnutCTX, {
         type: "doughnut",
@@ -967,18 +985,35 @@ $(document).ready(function () {
     // ////////////////////////////////////////////////////////////////////////////////////////// top chart logic
 
     const colorPalette = [
-      "black",
-      "#0c0032",
-      "#190061",
-      "#240090",
       "#3500D3",
-      "#282828",
-      "#00ff9f",
-      "#00b8ff",
-      "#001eff",
-      "#bd00ff",
-      "#d600ff",
+      "#00ffff",
+      "#4b7fff",
+      "#703fff",
+      "#9600ff",
+      "#00e6e6",
+      "#240090",
     ];
+    const colorPaletteRGBTransparent = [
+      "rgba(53,0,211,.4)",
+      "rgba(0,255,255,.4)",
+      "rgba(75,127,255,.4)",
+      "rgba(112,63,255,.4)",
+      "rgba(150,0,255,.4)",
+      "rgba(0,230,230,.4)",
+      "rgba(36,0,230,.4)",
+    ];
+    const colorPaletteRGBOpaque = [
+      "rgba(53,0,211,1)",
+      "rgba(0,255,255,1)",
+      "rgba(75,127,255,1)",
+      "rgba(112,63,255,1)",
+      "rgba(150,0,255,1)",
+      "rgba(0,230,230,1)",
+      "rgba(36,0,230,1)",
+    ];
+    // ctx.style.backgroundColor = "rgba(255,0,0,255)";
+
+    const borderPalette = ["red", "green", "yellow", "orange", "pink"];
     // let newData1 = [53, 52, 18, 68, 50, 38, 73];
     // let oldData = [0, 1, 10, 43, 23, 88, 23];
     // let newData = [10, 14, 18, 43, 21, 38, 63];
@@ -993,8 +1028,122 @@ $(document).ready(function () {
   }
   title = [];
 
-
+  // toggle light and dark mode. remember to do this for all charts
+  $("#toggle-demo").change(() => {
+    if ($("#topChartCard").hasClass("make-white")) {
+      $("#topChartCard").removeClass("make-white");
+      $("#topChartCard").addClass("make-black");
+      chart.options.defaultFontColor = "white";
+      chart.data.datasets[0].backgroundColor = colorPaletteRGBOpaque;
+    } else {
+      $("#topChartCard").removeClass("make-black");
+      $("#topChartCard").addClass("make-white");
+      chart.options.defaultFontColor = "black";
+      chart.data.datasets[0].backgroundColor = colorPaletteRGBTransparent;
+    }
+  });
 
 });
 
 /////////////////adding chart to plat order/game order/all calls
+function renderSingleChart(searchInput) {
+  // disable other tabs
+  $("#doughnut-tab").prop("disabled", true);
+  $("#line-tab").prop("disabled", true);
+
+  let searchURL = `https://rawg.io/api/games?search=${searchInput}`;
+  let ctx = document.getElementById("topChart").getContext("2d");
+
+  $.get(searchURL).then((response) => {
+    let searchResponse = response.results;
+
+    // variable to create card
+    let slugURL = `https://rawg.io/api/games/${searchResponse[0].slug}`;
+    $.get(slugURL).then((response) => {
+      let doughnutChart = new Chart(ctx, {
+        type: "doughnut",
+        data: {
+          labels: [
+            response.ratings[0].title,
+            response.ratings[1].title,
+            response.ratings[2].title,
+            response.ratings[3].title,
+          ],
+          datasets: [
+            {
+              data: [
+                response.ratings[0].percent,
+                response.ratings[1].percent,
+                response.ratings[2].percent,
+                response.ratings[3].percent,
+              ],
+              backgroundColor: colorPalette,
+            },
+          ],
+        },
+        options: {
+          title: {
+            display: true,
+            position: "top",
+            text: `Love or Skip ${searchResponse[0].slug} %`,
+          },
+        },
+      });
+    });
+  });
+  const colorPalette = [
+    "#3500D3",
+    "#00ffff",
+    "#4b7fff",
+    "#703fff",
+    "#9600ff",
+    "#00e6e6",
+    "#240090",
+  ];
+}
+// bubble chart ref
+// let chart = new Chart(ctx, {
+//   type: "bubble",
+//   data: {
+//     labels: [
+//       // recommended, meh, exceptional, skip
+//       response.ratings[0].title,
+//       response.ratings[1].title,
+//       response.ratings[2].title,
+//       response.ratings[3].title,
+//     ],
+//     datasets: [
+//       {
+//         label: [response.ratings[0].title],
+//         backgroundColor: "lightgreen",
+//         data: [{ x: 1.5, y: 3, r: response.ratings[0].percent }],
+//       },
+//       {
+//         label: [response.ratings[1].title],
+//         backgroundColor: "yellow",
+//         data: [{ x: 2, y: 1, r: response.ratings[1].percent }],
+//       },
+//       {
+//         label: [response.ratings[2].title],
+//         backgroundColor: "green",
+//         data: [{ x: 2.5, y: 3, r: response.ratings[2].percent }],
+//       },
+//       {
+//         label: [response.ratings[3].title],
+//         backgroundColor: "red",
+//         data: [{ x: 3, y: 1, r: response.ratings[2].percent }],
+//       },
+//     ],
+//   },
+//   options: {
+//     title: {
+//       display: true,
+//       position: "top",
+//       text: `Top ${title} Games in 2020`,
+//     },
+//     legend: {
+//       display: true,
+//       position: "top",
+//     },
+//   },
+// });
