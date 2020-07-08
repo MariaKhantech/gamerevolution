@@ -321,7 +321,13 @@ $(document).ready(() => {
 						const cardDescription = $("<p>", {
 							class: "card-text text-center",
 
+
+						
+
+
+
 							text: `Released: N/A`,
+
 
 						});
 						cardBody.append(cardDescription);
@@ -346,6 +352,7 @@ $(document).ready(() => {
 						text: `Rating: ${percentage}%`,
 					});
 
+
 					const rawgRating = $("<p>", {
 						class: "card-text text-center mx-auto",
 					}).rateYo({
@@ -354,10 +361,12 @@ $(document).ready(() => {
 						starWidth: "25px",
 					});
 
+
 					const userRatings = $("<p>", {
 						class: "card-text text-center",
 						text: `User Ratings: ${response.ratings_count}`,
 					});
+
 
 					cardBody.append(rawgPercentage, rawgRating, userRatings);
 
@@ -376,6 +385,7 @@ $(document).ready(() => {
 
 					// append button to card body
 					cardBody.append(deleteButton);
+
 
 				});
 

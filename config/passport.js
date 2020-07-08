@@ -1,16 +1,19 @@
 const passport = require("passport");
-LocalStrategy = require("passport-local").Strategy;
-
+const LocalStrategy = require("passport-local").Strategy;
+const db = require("../models")
 
 passport.use(new LocalStrategy (
-    (username, password, done) => {
+    {
+        email: "email"
+    },
+    (email, password, done) => {
         db.User.findOne({
             where: {
-                username: username
+                email: email
             }
         }).then(dbUser => {
             if (!dbUser) {
-                return done (null, false, {message: "Incorrect Usrname"});
+                return done(null, false, {message: "Incorrect Email"});
         } else if (!dbUser.validPassword(password)) {
             return done(null, false, {message: "Incorrect Password"});
         }

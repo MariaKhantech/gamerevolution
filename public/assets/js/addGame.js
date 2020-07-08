@@ -63,6 +63,7 @@ $(document).ready(function () {
     $("#game-area").html("");
 
 
+
     $("#chart-button").show();
     $("#chart-button").prop('disabled', false);
 
@@ -90,7 +91,6 @@ $(document).ready(function () {
     event.preventDefault();
 
     $("#game-area").html("");
-
 
     $("#chart-button").show();
     $("#chart-button").prop('disabled', false);
@@ -155,9 +155,7 @@ $(document).ready(function () {
           //   const cardImg = $("<img>", {
           //     class: "card-img-top",
           //     alt: "game-image",
-
-
-          //     src: "https://placekitten.com/200/139",
+      //     src: "https://placekitten.com/200/139",
 
           //   });
           //   createCard.append(cardImg);
@@ -173,12 +171,20 @@ $(document).ready(function () {
           //   createCard.append(cardImg);
           // }
 
+
+
           if (game[i].clip === null) {
             const cardImg = $("<img>", {
               class: "img-thumbnail",
               alt: "game-image",
               src: game[i].background_image,
 
+
+          if (game[i].clip === null) {
+            const cardImg = $("<img>", {
+              class: "img-thumbnail",
+              alt: "game-image",
+              src: game[i].background_image,
             });
             createCard.append(cardImg);
           } else if (game[i].background_image === null) {
@@ -187,6 +193,10 @@ $(document).ready(function () {
               alt: "game-image",
 
               src: "https://placekitten.com/200/139",
+
+
+            
+
 
             });
             createCard.append(cardImg);
@@ -310,7 +320,10 @@ $(document).ready(function () {
               class: "img-thumbnail",
               alt: "game-image",
 
+
+
               src: game[i].background_image,
+
 
             });
             createCard.append(cardImg);
@@ -319,7 +332,11 @@ $(document).ready(function () {
               class: "img-thumbnail",
               alt: "game-image",
 
+
+
+
               src: "https://placekitten.com/200/139",
+
 
             });
             createCard.append(cardImg);
@@ -442,7 +459,11 @@ $(document).ready(function () {
               class: "img-thumbnail",
               alt: "game-image",
 
+
+
+
               src: game[i].background_image,
+
 
             });
             createCard.append(cardImg);
@@ -451,7 +472,10 @@ $(document).ready(function () {
               class: "img-thumbnail",
               alt: "game-image",
 
+
+
               src: "https://placekitten.com/200/139",
+
 
             });
             createCard.append(cardImg);
@@ -1028,6 +1052,8 @@ $(document).ready(function () {
   }
   title = [];
 
+
+
   // toggle light and dark mode. remember to do this for all charts
   $("#toggle-demo").change(() => {
     if ($("#topChartCard").hasClass("make-white")) {
@@ -1042,6 +1068,7 @@ $(document).ready(function () {
       chart.data.datasets[0].backgroundColor = colorPaletteRGBTransparent;
     }
   });
+
 
 });
 

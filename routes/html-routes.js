@@ -19,21 +19,26 @@ router.get('/addgame', (req, res) => {
 	res.sendFile(path.join(__dirname, '../public/addgame.html'));
 });
 
+
+//======PASSPORT ROUTES======//
 //route for user when logging in, if exists, send to profile page
 //if does not exist, send to sign up page
 router.get("/", (req, res) => {
-	if (req.user) {
+	if (req.User) {
 		res.redirect("/profile");
 	}
 	res.sendFile(path.join(__dirname, "../public/signUp.html"));
+
 });
 
 //login & send to profile page
-router.get("/login", (req, res) => {
-	if (req.user) {
+router.get("/index", (req, res) => {
+	if (req.User) {
 		res.redirect("/profile");
-	}
-	res.sendFile(path.join(__dirname, "../public/login.html"));
+	} 
+	res.sendFile(path.join(__dirname, "../public/index.html"));
+
+
 });
 
 //link authenticated

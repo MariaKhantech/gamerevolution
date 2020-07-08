@@ -263,16 +263,19 @@ router.get('/addgames', (req, res) => {
 	})
 });
 
+
+//======================Shannon=======================//
+
 //Passport Routes
 
 //login route
 
 router.post("/api/login", passport.authenticate("local"), (req, res) => {
-	res.json(req.user)
-	// {
-	// 	// email: req.user.email,
-	// 	// id: req.user.id
-	// });
+	res.json(
+	{
+		email: req.User.email,
+		id: req.User.id
+	});
 });
 
 //logout & redirect to home page
@@ -282,7 +285,8 @@ router.get("/logout", (req, res) => {
 });
 
 //signup route, then redirect to home page
-router.post("/api/signUp", (req, res) => {
+router.post("/api/signup", (req, res) => {
+	console.log(req.body);
 	db.User.create({
 		firstName: req.body.firstName,
 		lastName: req.body.lastName,
@@ -291,8 +295,7 @@ router.post("/api/signUp", (req, res) => {
 		password: req.body.password
 
 	}).then(()=> {
-
-		res.redirect("/api/profile");
+		res.redirect(307, "/api/login");
 	}).catch(err => {
 		res.status(401).json(err);
 	});

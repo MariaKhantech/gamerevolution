@@ -274,6 +274,10 @@ iframe {
 }
 
 #game-card {
+
+	margin: 10px 15px 10px 15px;
+
+
 	background: #282828;
   border-style: double;
   border-color: #3500d3;
@@ -290,4 +294,5 @@ iframe {
     margin: 0px auto 0px auto;
     height: 200px;
 }
+
 
