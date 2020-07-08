@@ -321,7 +321,13 @@ $(document).ready(() => {
 						const cardDescription = $("<p>", {
 							class: "card-text text-center",
 
+
+						
+
+
+
 							text: `Released: N/A`,
+
 
 						});
 						cardBody.append(cardDescription);
@@ -346,21 +352,39 @@ $(document).ready(() => {
 						text: `Rating: ${percentage}%`,
 					});
 
-					// const rawgRating = $("<p>", {
-					// 	class: "card-text text-center mx-auto",
-					// }).rateYo({
-					// 	rating: response.rating,
-					// 	readOnly: true,
-					// 	starWidth: "25px",
-					// });
+
+					const rawgRating = $("<p>", {
+						class: "card-text text-center mx-auto",
+					}).rateYo({
+						rating: response.rating,
+						readOnly: true,
+						starWidth: "25px",
+					});
+
 
 					const userRatings = $("<p>", {
 						class: "card-text text-center",
 						text: `User Ratings: ${response.ratings_count}`,
 					});
 
-					cardBody.append(rawgPercentage, userRatings);
-					// rawgRating,
+
+					cardBody.append(rawgPercentage, rawgRating, userRatings);
+
+					// variable to create button that will add game to "favorites" library
+					const deleteButton = $("<button>", {
+						class: "btn btn-outline-danger btn-block ",
+						id: "delete-button",
+						type: "button",
+						"data-type": response.id,
+						"data-name": response.slug,
+						"data-toggle": "popover",
+						"data-content": "Game removed from library",
+
+						text: `Remove from Library`,
+					});
+
+					// append button to card body
+					cardBody.append(deleteButton);
 
 
 				});
