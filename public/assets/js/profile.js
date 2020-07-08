@@ -1,24 +1,50 @@
 $(document).ready(() => {
 	//function gets profile information by calling the get route/api/profile route
+	let userData;
+
 	const getProfileInfo = () => {
-		const userId = 2;
-		$.get('api/profile' + userId, (data) => {
-			console.log(data);
-			//populate porile info
-			populateProfileInfo(data);
-			//populate modal
-			populateModalForm(data);
-			//load the user games
-			loadUserGames();
-			//set corrected youtube embedded video url
-			setEmbeddedYoutubeUrl();
+		$.get('api/user-data', () => { }).then((result) => {
+			console.log(result);
+			userData = result;
+			//sets the username
+			$('#username').text(result.username);
+			//check if profile exists
+			$.get('api/profile' + result.userId, (data) => {
+				if (!data) {
+					//create them an empty profile
+					createProfile(data);
+				}
+				//populate porile info
+				populateProfileInfo(data);
+				//populate modal
+				populateModalForm(data);
+				//load the user games
+				loadUserGames();
+				//set corrected youtube embedded video url
+				setEmbeddedYoutubeUrl();
+			});
 		});
 	};
+
+	const getUserData = () => {
+		let userData;
+		$.get('api/user-data', (data) => {
+			return data;
+		}).then((result) => {
+			return result;
+		});
+	};
+
+	$('#signOut').on('click', function () {
+		$.get('api/logout', (data) => {
+			console.log(data);
+		});
+	});
 
 	//funnction that creates a new profile by calling the post route /api/profile/create
 	const createProfile = (profileData) => {
 		$.post('/api/profile/create', profileData).then((results) => {
-			console.log('update successful', results);
+			console.log('created profile', results);
 			location.reload();
 		});
 	};
@@ -26,8 +52,9 @@ $(document).ready(() => {
 	//TODO- create function that updates a profile (PUT)
 	const updateProfile = (profileData) => {
 		const userId = 2;
+		console.log(userData);
 		//take some profile data and update it in the database, exsiting
-		$.ajax('/api/profile/update' + userId, {
+		$.ajax('/api/profile/update' + userData.userId, {
 			type: 'PUT',
 			data: profileData
 		}).then(() => {
@@ -38,6 +65,7 @@ $(document).ready(() => {
 
 	//populates profile page with the profile information from the database
 	const populateProfileInfo = (data) => {
+		console.log(data);
 		//set the profile name
 		$('#profileName').text(data.profileName);
 
@@ -66,6 +94,7 @@ $(document).ready(() => {
 		//sets the aboutme section
 		$('#aboutMe').html(`<strong class="color-text">About: </strong> ${data.aboutMe}`);
 
+		console.log(data.avatarImg.substring(data.avatarImg.indexOf('/')));
 		//sets the avatar image
 		$('#user-profile').attr('src', data.avatarImg.substring(data.avatarImg.indexOf('/')));
 
@@ -149,7 +178,7 @@ $(document).ready(() => {
 	$('#editProfileForm').on('submit', (event) => {
 		//stop the page from refreshing
 		event.preventDefault();
-
+		console.log(userData);
 		//collect all the modal form data into the profileData object
 		const profileData = {
 			profileName: $('#profile-name').val(),
@@ -261,8 +290,8 @@ $(document).ready(() => {
 	const getUserGames = () => {
 		let userID = 1;
 		return $.ajax({
-			url: `/api/addgames${userID}`,
-			method: "GET",
+			url: '/api/addgames',
+			method: 'GET'
 		}).then((result) => {
 			console.log(result);
 
@@ -274,151 +303,105 @@ $(document).ready(() => {
 				let slugURL = `https://rawg.io/api/games/${dbGames[i].game_name}`;
 
 				$.get(slugURL).then((response) => {
-
-
 					console.log(response);
 
-					const createCard = $("<div>", {
-						class: "card d-inline-block ",
-						id: "game-card",
-						style: "width: 15rem",
-
+					const createCard = $('<div>', {
+						class: 'card d-inline-block ',
+						id: 'game-card',
+						style: 'width: 18rem'
 					});
 					// append card to parent div (line 55 of addGame.html)
-					$("#profile-game-area").append(createCard);
+					$('#profile-game-area').append(createCard);
 
 					if (response.background_image === null) {
-						const cardImg = $("<img>", {
-							class: "img-thumbnail",
-							alt: "game-image",
-							src: "https://placekitten.com/200/139",
+						const cardImg = $('<img>', {
+							class: 'img-thumbnail',
+							alt: 'game-image',
+							src: 'https://placekitten.com/200/139'
 						});
 						createCard.append(cardImg);
 					} else {
-						const cardImg = $("<img>", {
-							class: "img-thumbnail",
-							alt: "game-image",
-							src: response.background_image,
+						const cardImg = $('<img>', {
+							class: 'img-thumbnail',
+							alt: 'game-image',
+							src: response.background_image
 						});
 						createCard.append(cardImg);
 					}
-					const cardBody = $("<div>", {
-
-						class: "card-body m-auto",
-
+					const cardBody = $('<div>', {
+						class: 'card-body m-auto'
 					});
 					// append card body to parent .card div
 					createCard.append(cardBody);
 
-					const cardTitle = $("<h6>", {
-						class: "card-title text-center",
-						text: response.name,
-
+					const cardTitle = $('<h6>', {
+						class: 'card-title text-center',
+						text: response.name
 					});
 					// append card title to card body
 					cardBody.append(cardTitle);
 
 					if (response.released === null) {
-						const cardDescription = $("<p>", {
-							class: "card-text text-center",
+						const cardDescription = $('<p>', {
+							class: 'card-text text-center',
 
-
-
-
-
-
-							text: `Released: N/A`,
-
-
+							text: `Released: N/A`
 						});
 						cardBody.append(cardDescription);
 					} else {
 						// else set card description to game release year and append to card body
-						const gameYear = response.released.split("-");
+						const gameYear = response.released.split('-');
 
-						const cardDescription = $("<p>", {
-							class: "card-text text-center",
+						const cardDescription = $('<p>', {
+							class: 'card-text text-center',
 
-							text: `Released: ${gameYear[0]}`,
-
+							text: `Released: ${gameYear[0]}`
 						});
 						cardBody.append(cardDescription);
 					}
 
-					const percentage = Math.round((response.rating / 5) * 100);
+					const percentage = Math.round(response.rating / 5 * 100);
 
-					const rawgPercentage = $("<p>", {
-						class: "card-text text-center",
+					const rawgPercentage = $('<p>', {
+						class: 'card-text text-center',
 
-						text: `Rating: ${percentage}%`,
+						text: `Rating: ${percentage}%`
 					});
 
-
-					const rawgRating = $("<p>", {
-						class: "card-text text-center mx-auto",
+					const rawgRating = $('<p>', {
+						class: 'card-text text-center mx-auto'
 					}).rateYo({
 						rating: response.rating,
 						readOnly: true,
-						starWidth: "25px",
+						starWidth: '25px'
 					});
 
-
-					const userRatings = $("<p>", {
-						class: "card-text text-center",
-						text: `User Ratings: ${response.ratings_count}`,
+					const userRatings = $('<p>', {
+						class: 'card-text text-center',
+						text: `User Ratings: ${response.ratings_count}`
 					});
-
 
 					cardBody.append(rawgPercentage, rawgRating, userRatings);
 
 					// variable to create button that will add game to "favorites" library
-					const deleteButton = $("<button>", {
-						class: "btn btn-outline-danger btn-block ",
-						id: "delete-button",
-						type: "button",
-						"data-type": response.id,
-						"data-name": response.slug,
-						"data-toggle": "popover",
-						"data-content": "Game removed from library",
+					const deleteButton = $('<button>', {
+						class: 'btn btn-outline-danger btn-block ',
+						id: 'delete-button',
+						type: 'button',
+						'data-type': response.id,
+						'data-name': response.slug,
+						'data-toggle': 'popover',
+						'data-content': 'Game removed from library',
 
-						text: `Remove from Library`,
+						text: `Remove from Library`
 					});
 
 					// append button to card body
 					cardBody.append(deleteButton);
-
-
 				});
-
 			}
-
-
 		});
-
-	}
+	};
 
 	getUserGames();
-	// ///////////////////////////////////////
 });
-
-// Object.entries(favGameData).forEach((entry) => {
-// 	console.log(entry);
-// 	//Calling rawg data from api
-// 	let searchGameUrl = `https://rawg.io/api/games?search=${entry[1]}`;
-// 	console.log(searchGameUrl);
-
-// 	$.get(searchGameUrl).then((response) => {
-// 		if (response.count === 0) {
-// 			$('#alert-modal').modal('show');
-// 			$('#modal-text').text(`No results please try again`);
-// 		} else {
-// 			const searchResult = response.results;
-// 			console.log(searchResult[0]);
-// 			//populate html elements with image and game from rawg data//
-// 			$(`#${entry[0]}Img`).attr('src', searchResult[0].background_image);
-// 			$(`#${entry[0]}Name`).text(searchResult[0].name);
-// 		}
-// 	});
-// });
-//references for profile js: //
-//help with uploading avatars https://bezkoder.com/node-js-upload-image-mysql/ //

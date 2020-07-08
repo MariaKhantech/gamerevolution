@@ -1,43 +1,9 @@
 const db = require('../models');
-const passport = require("../config/passport");
-
-
-const { response } = require('express');
-
-
+const passport = require('../config/passport');
 const router = require('express').Router();
 
 router.get('/', (req, res) => res.json('Sample API get endpoint'));
 //==================== Maria =====================//
-
-// //testing one to one between user and profile -maria
-// db.User
-// .create({
-// 	firstName: 'Maria',
-// 	lastName: 'Khan',
-// 	userName: 'U2ThaZ4',
-// 	password: 'masked',
-// 	email: 'mariag@gmail.com'
-// })
-// .then((user) => {
-// 	console.log(user.get());
-// });
-
-// //testing for creating the database in profiles -maria
-// db.Profile.create({
-// 	profileName: 'Gamer Chick',
-// 	bio: 'I am loving the new Ninjala game on switch!',
-// 	favoriteYoutubeVideoUrl: 'https://www.youtube.com/embed/snjhDUQktMs',
-// 	twitchUrl: 'www.twitchuserurl.com',
-// 	youtubeChannelUrl: 'https://www.youtube.com/channel/UC8pGicAcTKSJNf_70gC7m8w',
-// 	nickname: 'bestgamergirl',
-// 	discordUserName: 'GamerChick#4444',
-// 	twitchUserName: 'BossChickgamer23',
-// 	aboutMe: 'I have played for 10 years and will die gaming.',
-// 	coverImg: '/asssets/img/image1.png',
-// 	avatarImg: '/assets/imv/avatarimg.png',
-// 	userId: 1
-// });
 
 //connects to the database to retrieve one profile using the user ID
 router.get('/profile:id', (req, res) => {
@@ -55,11 +21,11 @@ router.get('/profile:id', (req, res) => {
 
 //Creates a profile in the database --Maria
 router.post('/profile/create', (req, res) => {
-	console.log(req.body);
+	console.log(req.user);
 	db.Profile
 		.create({
-			profileName: req.body.profileName,
-			bio: req.body.profileBio,
+			profileName: 'ProfileName',
+			bio: 'Fill out your bio',
 			favoriteYoutubeVideoUrl: req.body.favoriteYoutubeVideoUrl,
 			twitchUrl: req.body.twitch_icon_url,
 			youtubeChannelUrl: req.body.youtube_icon_url,
@@ -68,8 +34,8 @@ router.post('/profile/create', (req, res) => {
 			twitchUserName: req.body.twitchUserName,
 			aboutMe: req.body.aboutMe,
 			coverImg: null,
-			avatarImg: 'public/assets/images/public-images/default-image.png',
-			userId: 1
+			avatarImg: 'public/assets/images/profile-images/default-image.png',
+			userId: req.user.userId
 		})
 		.then((result) => {
 			console.log(`Posted data successfully`);
@@ -82,7 +48,7 @@ router.post('/profile/create', (req, res) => {
 
 //route to update a users profile -- Maria
 router.put('/profile/update:id', (req, res) => {
-	console.log(req.files, req.body);
+	console.log('HELLO');
 	db.Profile
 		.update(
 			{
@@ -112,7 +78,7 @@ router.put('/profile/update:id', (req, res) => {
 router.post('/profile/upload_avatar', (req, res) => {
 	const image = req.files.file;
 	const destination = 'public/assets/images/profile-images/' + image.name;
-	console.log(image, destination);
+	console.log(req);
 	//move the image to assets/images/
 	image.mv(destination, (error) => {
 		if (error) {
@@ -129,8 +95,7 @@ router.post('/profile/upload_avatar', (req, res) => {
 				},
 				{
 					where: {
-						userId: 2
-						//userId: req.params.id
+						userId: req.user.userId
 					}
 				}
 			)
@@ -193,7 +158,7 @@ router.get('/profile/selectedgames:id', (req, res) => {
 
 //Creates information from the database
 router.post('/profile/selectedgames', (req, res) => {
-	console.log(req.body);
+	//console.log(req.body);
 	db.ProfileSelectGames
 		.create({
 			currentlyPlaying: req.body.currentlyPlaying,
@@ -272,62 +237,54 @@ router.post('/addgames', (req, res) => {
 });
 
 
-
-
-
 //======================Shannon=======================//
-
-//Passport Routes
-
+//===================Passport Routes==================//
+//====================================================//
 //login route
-
-router.post("/login", passport.authenticate("local"), (req, res) => {
-	res.json(
-		{
-			email: req.User.email,
-			id: req.User.id
-		});
-});
-
-//logout & redirect to home page
-router.get("/logout", (req, res) => {
-	req.logout();
-	res.redirect("/");
-});
-
-//signup route, then redirect to home page
-router.post("/signup", (req, res) => {
-	console.log(req.body);
-	db.User.create({
-		firstName: req.body.firstName,
-		lastName: req.body.lastName,
-		username: req.body.username,
-		email: req.body.email,
-		password: req.body.password
-
-	}).then(() => {
-		res.redirect(307, "/login");
-	}).catch(err => {
-		res.status(401).json(err);
+router.post('/login', passport.authenticate('local'), (req, res) => {
+	res.json({
+		email: req.user.email,
+		id: req.user.userId
 	});
 });
 
+//logout & redirect to home page (TODO)
+router.get('/logout', (req, res) => {
+	req.logout();
+	res.redirect('/');
+});
+
+//signup route, then redirect to home page
+router.post('/signup', (req, res) => {
+	console.log(req.body);
+	db.User
+		.create({
+			firstName: req.body.firstName,
+			lastName: req.body.lastName,
+			username: req.body.username,
+			email: req.body.email,
+			password: req.body.password
+		})
+		.then(() => {
+			res.redirect(307, '/api/login');
+		})
+		.catch((err) => {
+			res.status(401).json(err);
+		});
+});
+
 //get user data
-router.get("/user-data", (req, res) => {
-
-
-
+router.get('/user-data', (req, res) => {
+	console.log('Get user data');
 	if (!req.user) {
-
-		res.json({});		//empty object if user not logged in
+		res.json({}); //empty object if user not logged in
 	} else {
 		res.json({
 			email: req.user.email,
-			id: req.user.id
+			userId: req.user.userId,
+			username: req.user.username
 		});
 	}
 });
-
-
 
 module.exports = router;
