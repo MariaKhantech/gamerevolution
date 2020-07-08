@@ -1,0 +1,20 @@
+#navbarchange {
+	background: #282828;
+}
+
+body {
+	background-color: black;
+}
+
+/* top of the registration card*/
+.top-card {
+	margin-top: 10rem !important;
+}
+
+#button-submit {
+	background-color: #3500d3;
+}
+.feature-header {
+	background-color: #3500d3;
+	color: white;
+}
