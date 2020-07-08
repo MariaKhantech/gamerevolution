@@ -1,7 +1,7 @@
 //for authentication
 
 $(document).ready(() => {
-    const loginForm = $("form.login");
+    const loginForm = $("form#login");
     const emailInput = $("input#emailInput");
     const passwordInput = $("input#passwordInput");
 
