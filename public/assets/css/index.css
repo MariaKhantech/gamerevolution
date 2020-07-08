@@ -1,6 +1,15 @@
 * body {
 	background-color: black;
 }
+/*carousel */
+/* div.cara-img {
+	max-height: 200px !important;
+	height: 200px !important;
+} */
+/* #fav-card1 {
+	max-height: 200px;
+
+} */
 
 li {
 	list-style: none;
@@ -15,6 +24,7 @@ li {
 	opacity: .8;
 }
 
+
 /*login modal window*/
 .px-3 {
 background-color: black;
@@ -26,7 +36,7 @@ background-color: black;
 	background-color:white;
 	border-color: black;
 }
-.login-button, .mt-2 {
+.login-button, .login-dropdown {
 	background-color: #3500d3;
 	border-color: black;
 }
