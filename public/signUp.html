@@ -5,52 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/signup.css">
 
-    <title>Document</title>
+
+    <title>GamerEvolution</title>
 </head>
 <body>
-    <h1>Sign Up</h1>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+
+  <nav class="navbar navbar-expand-lg fixed-top mb-5" id="navbarchange" role="navigation">
+    <div class="container">
+        <a class="navbar-brand text-white" href="index.html">GamerEvolution</a>
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+            &#9776;
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="#">Features</a>
-                <a class="nav-item nav-link" href="#">Pricing</a>
-                <!-- Login modal -->
-                <a class="nav-item nav-link" href="#exampleModal" data-toggle = "modal" data-target="#exampleModal">Login</a>
-            </div>
-          </div>
-      </nav>
-      <!-- Sign Up Form -->
-      <form class="signUpForm">
-        <div class="form-group">
-          <label for="firstNameInput">First Name</label>
-          <input type="text" class="form-control" id="firstName">
+        <div class="collapse navbar-collapse" id="exCollapsingNavbar">
+            <ul class="nav navbar-nav">
+                <li class="nav-item"><a href="about.html" class="nav-link text-white">About</a></li>
+                <li class="nav-item"><a href="addGame.html" class="nav-link text-white">Game Search</a></li>
+                <li class="nav-item"><a href="searchProfiles.html" class="nav-link text-white">Profiles</a></li>
+                
+            </ul>
+            <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
+                <li class="dropdown order-1">
+                    <button type="button" id="dropdownMenu1"  class="btn btn-outline-secondary text-white ">Sign Out <span class="caret"></span></button>
+                </li>
+            </ul>
         </div>
-        <div class="form-group">
-          <label for="lastNameInput">Last Name</label>
-          <input type="text" class="form-control" id="lastName">
-        </div>
-        <div class="form-group">
-          <label for="usernameInput">Username</label>
-          <input type="text" class="form-control" id="username">
-        </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="emailInput" class="form-control" id="email" aria-describedby="emailHelp">
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        <div class="form-group">
-          <label for="passwordInput">Password</label>
-          <input type="password" class="form-control" id="password">
-        </div>
-        <input type="submit" class="btn" value="Sign Up"/>
-      </form>
+    </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+<div class="card top-card">
+  <div class="card-header feature-header font-weight-bold">
+    CREATE A USER PROFILE
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Registration</h5>
+   <!-- Sign Up Form -->
+   <form class="signUpForm">
+    <div class="form-group">
+      <label for="firstNameInput">First Name</label>
+      <input type="text" class="form-control" id="firstName">
+    </div>
+    <div class="form-group">
+      <label for="lastNameInput">Last Name</label>
+      <input type="text" class="form-control" id="lastName">
+    </div>
+    <div class="form-group">
+      <label for="usernameInput">Username</label>
+      <input type="text" class="form-control" id="username">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="emailInput" class="form-control" id="email" aria-describedby="emailHelp">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="passwordInput">Password</label>
+      <input type="password" class="form-control" id="password">
+    </div>
+    <input type="submit" class="btn text-white" id="button-submit" value="Sign Up"/>
+  </form>
+    <!-- <a href="#" class="btn btn-primary" id="butto-submit">Submit</a> -->
+  </div>
+</div>
+<!--column end div-->
+</div>
+<!--row end div-->
+</div>
+<!--container end div-->
+</div>
+      
 
       
       <script type="text/javascript" src="https://unpkg.com/jarallax@~1.11.0/dist/jarallax.min.js"></script>
