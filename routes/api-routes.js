@@ -134,7 +134,7 @@ router.post('/profile/upload_avatar', (req, res) => {
 					}
 				}
 			)
-			.then(function(dbPost) {
+			.then(function (dbPost) {
 				res.json(dbPost);
 			});
 
@@ -168,7 +168,7 @@ router.post('/profile/upload_coverImg', (req, res) => {
 					}
 				}
 			)
-			.then(function(dbPost) {
+			.then(function (dbPost) {
 				res.json(dbPost);
 			});
 
@@ -234,19 +234,33 @@ router.put('/profile/selectedgames/update:id', (req, res) => {
 				}
 			}
 		)
-		.then(function(dbPost) {
+		.then(function (dbPost) {
 			res.json(dbPost);
 		});
 });
 //================= ENDS MARIA================//
 //==================Gus============//
 
-// Using Game Model to insert new row into Games table in database
+
+router.get('/addgames:id', (req, res) => {
+	db.Game
+		.findAll({
+			where: {
+				userId: req.params.id
+			}
+		})
+		.then((result) => {
+			res.json(result);
+			console.log(result);
+		});
+});
+
 router.post('/addgames', (req, res) => {
 	db.Game
 		.create({
 			game_name: req.body.game_name,
-			unique_id: req.body.unique_id
+			unique_id: req.body.unique_id,
+			userId: 1
 		})
 		.then((result) => {
 			console.log(`Added game successfully`);
@@ -257,11 +271,8 @@ router.post('/addgames', (req, res) => {
 		});
 });
 
-router.get('/addgames', (req, res) => {
-	db.Game.findAll().then((result) => {
-		res.json(result);
-	})
-});
+
+
 
 
 //======================Shannon=======================//
@@ -272,10 +283,10 @@ router.get('/addgames', (req, res) => {
 
 router.post("/login", passport.authenticate("local"), (req, res) => {
 	res.json(
-	{
-		email: req.User.email,
-		id: req.User.id
-	});
+		{
+			email: req.User.email,
+			id: req.User.id
+		});
 });
 
 //logout & redirect to home page
@@ -294,7 +305,7 @@ router.post("/signup", (req, res) => {
 		email: req.body.email,
 		password: req.body.password
 
-	}).then(()=> {
+	}).then(() => {
 		res.redirect(307, "/login");
 	}).catch(err => {
 		res.status(401).json(err);
@@ -306,7 +317,7 @@ router.get("/user-data", (req, res) => {
 
 
 
-	if(!req.user) {
+	if (!req.user) {
 
 		res.json({});		//empty object if user not logged in
 	} else {

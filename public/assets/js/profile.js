@@ -259,11 +259,12 @@ $(document).ready(() => {
 
 	// //////////////GUS GET REQUEST FOR GAMES
 	const getUserGames = () => {
+		let userID = 1;
 		return $.ajax({
-			url: "/api/addgames",
+			url: `/api/addgames${userID}`,
 			method: "GET",
 		}).then((result) => {
-			// console.log(result);
+			console.log(result);
 
 			let dbGames = result;
 
