@@ -280,7 +280,7 @@ $(document).ready(() => {
 					const createCard = $("<div>", {
 						class: "card d-inline-block ",
 						id: "game-card",
-						style: "width: 18rem",
+						style: "width: 15rem",
 
 					});
 					// append card to parent div (line 55 of addGame.html)
@@ -322,7 +322,7 @@ $(document).ready(() => {
 							class: "card-text text-center",
 
 
-						
+
 
 
 
