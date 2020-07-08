@@ -270,7 +270,7 @@ router.get('/addgames', (req, res) => {
 
 //login route
 
-router.post("/api/login", passport.authenticate("local"), (req, res) => {
+router.post("/login", passport.authenticate("local"), (req, res) => {
 	res.json(
 	{
 		email: req.User.email,
@@ -285,7 +285,7 @@ router.get("/logout", (req, res) => {
 });
 
 //signup route, then redirect to home page
-router.post("/api/signup", (req, res) => {
+router.post("/signup", (req, res) => {
 	console.log(req.body);
 	db.User.create({
 		firstName: req.body.firstName,
@@ -295,14 +295,14 @@ router.post("/api/signup", (req, res) => {
 		password: req.body.password
 
 	}).then(()=> {
-		res.redirect(307, "/api/login");
+		res.redirect(307, "/login");
 	}).catch(err => {
 		res.status(401).json(err);
 	});
 });
 
 //get user data
-router.get("/api/user-data", (req, res) => {
+router.get("/user-data", (req, res) => {
 
 
 
