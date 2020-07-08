@@ -19,36 +19,40 @@ $(document).ready(() => {
             email: emailInput.val().trim(),
             password: passwordInput.val().trim()
         };
+        console.log(userData);
 
             //checks if user enetered all criteria - returns if not
-            if (!userData.firstName || !userData.lastName || !userData.username || !userData.email || !userData.password) {
-                return;
-            }
+            // if (!userData.firstName || !userData.lastName || !userData.username || !userData.email || !userData.password) {
+            //     return;
+            // }
 
     //run signUp when all data is input
     signUp(userData.firstName, userData.lastName, userData.username, userData.email, userData.password);
         //get values of all input
-        firstNameInput.val("");
-        lastNameInput.val("");
-        usernameInput.val("");
-        emailInput.val("");
-        passwordInput.val("")
+        // firstNameInput.val("");
+        // lastNameInput.val("");
+        // usernameInput.val("");
+        // emailInput.val("");
+        // passwordInput.val("");
     });
 
-    signUp(firstName, lastName, username, email, password => {
-        //post to signUp
-        $.post("/api/signUp", {
-            firstName: firstName,
-            lastName: lastName,
-            username: username,
-            email: email,
-            password: password
+    function signUp(firstNameParam, lastNameParam, usernameParam, emailParam, passwordParam) {
+        console.log(firstNameParam, lastNameParam, usernameParam, emailParam, passwordParam);
+        // post to signUp
+        $.post("/api/signup", {
+            firstName: firstNameParam,
+            lastName: lastNameParam,
+            username: usernameParam,
+            email: emailParam,
+            password: passwordParam
         //redirect to profile page once logged in
-        }) .then(() => { 
-            window.location.replace("/profile")
-        });
-        if (err) {
-            throw (err);
-        };
-    });
+        }).then(() => { 
+            console.log("It somewhat works! :)");
+            // window.location.replace("/profile");
+        }).catch(err => {
+            if (err) {
+                throw (err);
+            };    
+        })
+    };
 });
