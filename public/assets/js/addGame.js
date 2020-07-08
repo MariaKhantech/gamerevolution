@@ -63,8 +63,8 @@ $(document).ready(function () {
     $("#game-area").html("");
 
 
-    $("#chart-button").hide();
-    $("#chart-button").prop('disabled', true);
+    $("#chart-button").show();
+    $("#chart-button").prop('disabled', false);
 
 
 
