@@ -274,13 +274,20 @@ iframe {
 }
 
 #game-card {
+	background: #282828;
+  border-style: double;
+  border-color: #3500d3;
+  color: white;
 	margin: 10px 15px 10px 15px;
 }
 
 .img-thumbnail {
-   
+	background: #282828 !important;
+	border-style: double;
+	border-color: #3500d3;
     object-fit: cover;
     display: block;
     margin: 0px auto 0px auto;
     height: 200px;
 }
+
