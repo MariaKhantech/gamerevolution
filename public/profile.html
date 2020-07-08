@@ -5,13 +5,18 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< HEAD
     <title>GamerEvolution</title>
 
+=======
+    <!-- Rate Yo CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css" />
+>>>>>>> d103557026b39444fd4e20f9689b4be634ad7884
     <!-- Bootstrap and Fontawesome CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
         integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
-    
+
     <!--starting snippet-->
 
     <link rel="stylesheet" href="./assets/css/profile.css">
@@ -22,220 +27,232 @@
 
     <!--MAIN BOOTSTRAP CONTAINER-->
 
-    
-<!--Fixed Navbar-->
-<nav class="navbar navbar-expand-lg fixed-top" id="navbarchange" role="navigation">
 
-    <div class="container">
-        <a class="navbar-brand text-white" href="index.html">GamerEvolution</a>
-        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
-            &#9776;
-        </button>
-        <div class="collapse navbar-collapse" id="exCollapsingNavbar">
-            <ul class="nav navbar-nav">
-                <li class="nav-item"><a href="about.html" class="nav-link text-white">About</a></li>
-                <li class="nav-item"><a href="addGame.html" class="nav-link text-white">Game Search</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white">Profiles</a></li>
-                
-            </ul>
-            <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
-                <li class="dropdown order-1">
-                    <button type="button" id="dropdownMenu1"  class="btn btn-outline-secondary text-white ">Sign Out <span class="caret"></span></button>
-                </li>
-            </ul>
+    <!--Fixed Navbar-->
+    <nav class="navbar navbar-expand-lg fixed-top" id="navbarchange" role="navigation">
+
+        <div class="container">
+            <a class="navbar-brand text-white" href="index.html">GamerEvolution</a>
+            <button class="navbar-toggler border-0" type="button" data-toggle="collapse"
+                data-target="#exCollapsingNavbar">
+                &#9776;
+            </button>
+            <div class="collapse navbar-collapse" id="exCollapsingNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item"><a href="about.html" class="nav-link text-white">About</a></li>
+                    <li class="nav-item"><a href="addGame.html" class="nav-link text-white">Game Search</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link text-white">Profiles</a></li>
+
+                </ul>
+                <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
+                    <li class="dropdown order-1">
+                        <button type="button" id="dropdownMenu1" class="btn btn-outline-secondary text-white ">Sign Out
+                            <span class="caret"></span></button>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
-  
+    </nav>
+
     <!--MAIN BOOTSTRAP CONTAINER-->
-<div class="container">
-    
-    <!--members cover photo-->
-    <div class="img" id="cover-photo" style="background-image: url(https://steamcdn-a.akamaihd.net/steam/apps/884530/header.jpg?t=1530762913);height: 350px;background-size: cover;">
-        <label for="file-upload">
-            <i class="fas fa-camera" ></i>
-        </label>
-        <input id="coverImg" type="file"/>
-    </div>
+    <div class="container">
+
+        <!--members cover photo-->
+        <div class="img" id="cover-photo"
+            style="background-image: url(https://steamcdn-a.akamaihd.net/steam/apps/884530/header.jpg?t=1530762913);height: 350px;background-size: cover;">
+            <label for="file-upload">
+                <i class="fas fa-camera"></i>
+            </label>
+            <input id="coverImg" type="file" />
+        </div>
 
 
-    <!--members avatar photo and bio-->
-    <div class="card border" id="avatar-background">
-        <!--edit bio here to pop a modal-->
-            
+        <!--members avatar photo and bio-->
+        <div class="card border" id="avatar-background">
+            <!--edit bio here to pop a modal-->
+
             <!-- Button trigger MODAL -->
-            <button type="button" class="btn btn-primary" id = "editProfileBtn" data-toggle="modal" data-target="#exampleModal"><i class="icon-pencil"></i> edit</button>
-        
+            <button type="button" class="btn btn-primary" id="editProfileBtn" data-toggle="modal"
+                data-target="#exampleModal"><i class="icon-pencil"></i> edit</button>
+
             <!--Modal contents-->
 
-            <div class="modal fade" id="exampleModal"  data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header background-modal">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span class="text-white" aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body bg-dark text-white border-colors">
-                    <form id="editProfileForm">
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Profile Name:</label>
-                        <input type="text" class="form-control required border-colors" required="" id="profile-name">
+            <div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header background-modal">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span class="text-white" aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body bg-dark text-white border-colors">
+                            <form id="editProfileForm">
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Profile Name:</label>
+                                    <input type="text" class="form-control required border-colors" required=""
+                                        id="profile-name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Bio:</label>
+                                    <input type="text" class="form-control border-colors" required="" id="bio">
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Your Discord Server:</label>
+                                    <input type="text" class="form-control border-colors" id="profile-discord">
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Your Twitch URL:</label>
+                                    <input type="text" class="form-control border-colors" id="profile-twitchurl">
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Your YouTube URL:</label>
+                                    <input type="text" class="form-control border-colors" id="profile-youtube">
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Enter your favorite Youtube
+                                        URL:</label>
+                                    <input type="text" class="form-control border-colors" id="profileFav-youtube">
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Gamer Nickname:</label>
+                                    <input type="text" class="form-control border-colors" id="profile-gamernickname">
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Discord Username:</label>
+                                    <input type="text" class="form-control border-colors" id="profile-discordusername">
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">twitch Username:</label>
+                                    <input type="text" class="form-control border-colors" id="profile-twitchusername">
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">About me:</label>
+                                    <input type="text" class="form-control border-colors" id="profile-aboutme">
+                                </div>
+                                <br>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer background-modal">
+                            <button type="button" class="btn bg-dark text-white" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Bio:</label>
-                        <input type="text" class="form-control border-colors" required="" id="bio">
-                        </div>
-                        <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Your Discord Server:</label>
-                        <input type="text" class="form-control border-colors" id="profile-discord">
-                        </div>
-                        <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Your Twitch URL:</label>
-                        <input type="text" class="form-control border-colors" id="profile-twitchurl">
-                        </div>
-                        <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Your YouTube URL:</label>
-                        <input type="text" class="form-control border-colors" id="profile-youtube">
-                        </div>
-                        <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Enter your favorite Youtube URL:</label>
-                        <input type="text" class="form-control border-colors" id="profileFav-youtube">
-                        </div>
-                        <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Gamer Nickname:</label>
-                        <input type="text" class="form-control border-colors" id="profile-gamernickname">
-                        </div>
-                        <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Discord Username:</label>
-                        <input type="text" class="form-control border-colors" id="profile-discordusername">
-                        </div>
-                        <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">twitch Username:</label>
-                        <input type="text" class="form-control border-colors" id="profile-twitchusername">
-                        </div>
-                        <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">About me:</label>
-                        <input type="text" class="form-control border-colors" id="profile-aboutme">
-                        </div>
-                        <br>
-                        <button type="submit" class="btn btn-primary">Save</button>
-                    </form>
                 </div>
-                <div class="modal-footer background-modal">
-                    <button type="button" class="btn bg-dark text-white" data-dismiss="modal">Close</button>
-                </div>
-                </div>
-            </div>
             </div>
 
 
-        <!--avatar image card-->
-        <div class="card shadow-none border-0 mx-auto text-center" id="avatar-card" style="width: 15rem;">
-            <img id="user-profile" src="" class="card-img-top img-fluid rounded mx-auto d-block" alt="...">
-            
-            <!--https://stackoverflow.com/questions/33553785/replace-input-file-with-my-own-button-in-the-form-->
-            <label for="avatar" class="custom-file-upload">
-                <i class="fas fa-camera fa-lg" ></i>
-            </label>
-            <input id="avatar" type="file" name='avatar_pic'/>
-            
-            <!--biography section-->
-            <div class="card-body">
-                <h2 id = "profileName" class="card-title text-white"></h2>
-                <p class="card-text text-white" id="profileBio"></p>
-                <!--social media buttons-->
-                <p class="text-white text-center"><i>Follow or add me on:</i></p>
-                <i class="fab fa-discord fa-3x" aria-hidden="true"></i>
-                <a href="" id="twitch_icon_url"><i class="fab fa-twitch fa-3x" aria-hidden="true"></i></a>
-                <a href="" id="youtube_icon_url"><i class="fab fa-youtube-square fa-3x" aria-hidden="true"></i> </a>
+            <!--avatar image card-->
+            <div class="card shadow-none border-0 mx-auto text-center" id="avatar-card" style="width: 15rem;">
+                <img id="user-profile" src="" class="card-img-top img-fluid rounded mx-auto d-block" alt="...">
 
+                <!--https://stackoverflow.com/questions/33553785/replace-input-file-with-my-own-button-in-the-form-->
+                <label for="avatar" class="custom-file-upload">
+                    <i class="fas fa-camera fa-lg"></i>
+                </label>
+                <input id="avatar" type="file" name='avatar_pic' />
+
+                <!--biography section-->
+                <div class="card-body">
+                    <h2 id="profileName" class="card-title text-white"></h2>
+                    <p class="card-text text-white" id="profileBio"></p>
+                    <!--social media buttons-->
+                    <p class="text-white text-center"><i>Follow or add me on:</i></p>
+                    <i class="fab fa-discord fa-3x" aria-hidden="true"></i>
+                    <a href="" id="twitch_icon_url"><i class="fab fa-twitch fa-3x" aria-hidden="true"></i></a>
+                    <a href="" id="youtube_icon_url"><i class="fab fa-youtube-square fa-3x" aria-hidden="true"></i> </a>
+
+                </div>
             </div>
+
         </div>
+        <!--end of avatar section-->
 
-    </div>
-    <!--end of avatar section-->
-    
         <!--top 3 friends-->>
-    <div class="row justify-content-md-center no-gutters bg-light position-relative friends-row mx-auto mb-5" id="top-three-friends">
-        <h3 class="text-center">Top 3 Gamer friends:</h3>
+        <div class="row justify-content-md-center no-gutters bg-light position-relative friends-row mx-auto mb-5"
+            id="top-three-friends">
+            <h3 class="text-center">Top 3 Gamer friends:</h3>
 
-        <!--friend 1-->
-        <div class = "col-md-auto">
-            <div class="friend1 text-center">
-                <img class ="friends" src="assets/images/profile-images/gamergirl3.png" alt="">
-                <h3 class="text-center">AminaDPS</h3>
+            <!--friend 1-->
+            <div class="col-md-auto">
+                <div class="friend1 text-center">
+                    <img class="friends" src="assets/images/profile-images/gamergirl3.png" alt="">
+                    <h3 class="text-center">AminaDPS</h3>
+                </div>
             </div>
-        </div>
-        
-        <!--friend 2-->
-        <div class = "col-md-auto">
-            <div class="friend2 text-center">
 
-                <img class ="friends" src="assets/images/profile-images/gamergirl2.png" alt="">
-                <h3 class="text-center">CottonCandy2.0</h3>
+            <!--friend 2-->
+            <div class="col-md-auto">
+                <div class="friend2 text-center">
 
+                    <img class="friends" src="assets/images/profile-images/gamergirl2.png" alt="">
+                    <h3 class="text-center">CottonCandy2.0</h3>
+
+                </div>
             </div>
-        </div>
 
-        <!--friend 3-->
-        <div class = "col-md-auto">
-            <div class="friend3 text-center">
-                <img class ="friends" src="assets/images/profile-images/gamerguy.png" alt="">
-                <h3 class="text-center">GameJoe</h3>
+            <!--friend 3-->
+            <div class="col-md-auto">
+                <div class="friend3 text-center">
+                    <img class="friends" src="assets/images/profile-images/gamerguy.png" alt="">
+                    <h3 class="text-center">GameJoe</h3>
+                </div>
             </div>
-        </div>
         </div>
         <!--end of top 3 friends-->
 
-    
-    <!--DEFINES THE TABBED LIST-->
-    <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile-content" role="tab" aria-controls="profile-content" aria-selected="true">Profile</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="games-tab" data-toggle="tab" role="tab" aria-controls="game-content" aria-selected="false" href="#game-content">Game Library</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="friends-tab" data-toggle="tab" role="tab" aria-controls="friends-content" aria-selected="false" href="#friends-content">Friends</a>
-        </li>
-    </ul>
+
+        <!--DEFINES THE TABBED LIST-->
+        <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile-content" role="tab"
+                    aria-controls="profile-content" aria-selected="true">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="games-tab" data-toggle="tab" role="tab" aria-controls="game-content"
+                    aria-selected="false" href="#game-content">Game Library</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="friends-tab" data-toggle="tab" role="tab" aria-controls="friends-content"
+                    aria-selected="false" href="#friends-content">Friends</a>
+            </li>
+        </ul>
 
 
-    <div class="tab-content" id="myTabContent">
+        <div class="tab-content" id="myTabContent">
 
-        <!--PROFILE TAB-->
-        <div class="tab-pane fade active show" id="profile-content" role="tabpanel" aria-labelledby="profile-tab">
-            <!--MAIN ROW -->
-            <div class="row ">
+            <!--PROFILE TAB-->
+            <div class="tab-pane fade active show" id="profile-content" role="tabpanel" aria-labelledby="profile-tab">
+                <!--MAIN ROW -->
+                <div class="row ">
 
-                <!--FIRST COLUMN-->
-                <div class="col-lg-3">
-                    <div class="card left-section">
-                        <div class="card-body">
-                            <div class="h5 text-blue">@GamerChick</div>
-                            <div class="h7" id ="profileNickname"></div>
-                            <div class="h7" id="discordUserName"></div>
-                            <div class="h7" id="twitchUserName"></div>
-                            <div class="h7" id="aboutMe">
+                    <!--FIRST COLUMN-->
+                    <div class="col-lg-3">
+                        <div class="card left-section">
+                            <div class="card-body">
+                                <div class="h5 text-blue">@GamerChick</div>
+                                <div class="h7" id="profileNickname"></div>
+                                <div class="h7" id="discordUserName"></div>
+                                <div class="h7" id="twitchUserName"></div>
+                                <div class="h7" id="aboutMe">
 
+                                </div>
                             </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item background-grey">
+                                    <div class="h6 text-muted">Followers</div>
+                                    <div class="h5">5.2342</div>
+                                </li>
+                                <li class="list-group-item background-grey">
+                                    <div class="h6 text-muted">Following</div>
+                                    <div class="h5">6758</div>
+                                </li>
+                            </ul>
                         </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item background-grey">
-                                <div class="h6 text-muted">Followers</div>
-                                <div class="h5">5.2342</div>
-                            </li>
-                            <li class="list-group-item background-grey">
-                                <div class="h6 text-muted">Following</div>
-                                <div class="h5">6758</div>
-                            </li>
-                        </ul>
-                    </div>
 
 
+<<<<<<< HEAD
                     <!--carousel for My top 3 picks-->
                     <div class="card left-section">
                         <div class="card-body background-grey" id="fav-card1">
@@ -256,349 +273,427 @@
                                     <div class="carousel-item active cara-img">
                                         <img src="assets/images/profile-images/rsz_1ori.png" id="favoriteGameThreeImg" class="d-block w-100" alt="...">
                                     </div>
+=======
+                        <!--carousel for My top 3 picks-->
+                        <div class="card left-section">
+                            <div class="card-body background-grey">
+                                <h3 class="card-title text-center">Top 3 Favorite Games</h3>
+                                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class=""></li>
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="1" class=""></li>
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="2" class="active">
+                                        </li>
+                                    </ol>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item">
+                                            <img src="assets/images/profile-images/rsz_1ori.png" id="favoriteGameOneImg"
+                                                class="d-block w-100" alt="...">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="assets/images/profile-images/rsz_1ori.png" id="favoriteGameTwoImg"
+                                                class="d-block w-100" alt="...">
+                                        </div>
+                                        <div class="carousel-item active">
+                                            <img src="assets/images/profile-images/rsz_1ori.png"
+                                                id="favoriteGameThreeImg" class="d-block w-100" alt="...">
+                                        </div>
+>>>>>>> d103557026b39444fd4e20f9689b4be634ad7884
 
+                                    </div>
+                                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                                        data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                                        data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
                                 </div>
-                                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
+
                             </div>
-
                         </div>
-                    </div>
-                    <!--My Least Favorite Games carousel-->
-                    <div class="card left-section">
-                        <div class="card-body">
-                            <h3 class="card-title text-center">Top 3 Least Favorite Games</h3>
-                            <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    <li data-target="#carouselExampleIndicators1" data-slide-to="0" class=""></li>
-                                    <li data-target="#carouselExampleIndicators1" data-slide-to="1" class=""></li>
-                                    <li data-target="#carouselExampleIndicators1" data-slide-to="2" class="active"></li>
-                                </ol>
-                                <div class="carousel-inner">
-                                    <div class="carousel-item">
-                                        <img src="assets/images/profile-images/rsz_1ori.png" id="leastFavoriteOneImg" class="d-block w-100" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="assets/images/profile-images/rsz_1ori.png" id="leastFavoriteTwoImg" class="d-block w-100" alt="...">
-                                    </div>
-                                    <div class="carousel-item active">
-                                        <img src="assets/images/profile-images/rsz_1ori.png" id="leastFavoriteThreeImg" class="d-block w-100" alt="...">
-                                    </div>
+                        <!--My Least Favorite Games carousel-->
+                        <div class="card left-section">
+                            <div class="card-body">
+                                <h3 class="card-title text-center">Top 3 Least Favorite Games</h3>
+                                <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel">
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#carouselExampleIndicators1" data-slide-to="0" class=""></li>
+                                        <li data-target="#carouselExampleIndicators1" data-slide-to="1" class=""></li>
+                                        <li data-target="#carouselExampleIndicators1" data-slide-to="2" class="active">
+                                        </li>
+                                    </ol>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item">
+                                            <img src="assets/images/profile-images/rsz_1ori.png"
+                                                id="leastFavoriteOneImg" class="d-block w-100" alt="...">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="assets/images/profile-images/rsz_1ori.png"
+                                                id="leastFavoriteTwoImg" class="d-block w-100" alt="...">
+                                        </div>
+                                        <div class="carousel-item active">
+                                            <img src="assets/images/profile-images/rsz_1ori.png"
+                                                id="leastFavoriteThreeImg" class="d-block w-100" alt="...">
+                                        </div>
 
+                                    </div>
+                                    <a class="carousel-control-prev" href="#carouselExampleIndicators1" role="button"
+                                        data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselExampleIndicators1" role="button"
+                                        data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
                                 </div>
-                                <a class="carousel-control-prev" href="#carouselExampleIndicators1" role="button" data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" href="#carouselExampleIndicators1" role="button" data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
+
                             </div>
+                        </div>
+                        <!--modal button for populating the fav and least fav games-->
+                        <button type="button" class="btn btn-primary mt-2" id="editGameBtn" data-toggle="modal"
+                            data-target="#faveGameModal"><i class="icon-pencil"></i> Edit Game Display</button>
 
-                        </div>
-                    </div>
-                    <!--modal button for populating the fav and least fav games-->
-                    <button type="button" class="btn btn-primary mt-2" id = "editGameBtn" data-toggle="modal" data-target="#faveGameModal"><i class="icon-pencil"></i> Edit Game Display</button>
-        
-            <!--Modal contents-->
+                        <!--Modal contents-->
 
-            <div class="modal fade" id="faveGameModal"  data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="faveGameModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header background-modal">
-                    <h5 class="modal-title" id="edit-game-h5">Edit Games Display</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span class="text-white" aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body bg-dark text-white border-colors">
-                    <form id="editGameDisplay">
-                    <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Game Currently Playing:</label>
-                            <input type="text" class="form-control border-colors" id="currentlyPlaying">
-                            </div>
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Favorite Game one:</label>
-                        <input type="text" class="form-control required border-colors"  id="gameOne">
-                    </div>
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Favorite game two:</label>
-                        <input type="text" class="form-control border-colors"  id="gameTwo">
-                        </div>
-                        <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Favorite game three:</label>
-                        <input type="text" class="form-control border-colors" id="gameThree">
-                        </div>
-                        <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Least favorite game one:</label>
-                        <input type="text" class="form-control border-colors" id="leastOne">
-                        </div>
-                        <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Least favorite game two:</label>
-                        <input type="text" class="form-control border-colors" id="leastTwo">
-                        </div>
-                        <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">least favorite game three:</label>
-                        <input type="text" class="form-control border-colors" id="leastThree">
-                        </div>
-                        <br>
-                        <button type="submit" class="btn btn-primary" >Save</button>
-                    </form>
-                </div>
-                <div class="modal-footer background-modal">
-                    <button type="button" class="btn bg-dark text-white" data-dismiss="modal">Close</button>
-                </div>
-                </div>
-            </div>
-            </div>
-
-                </div>
-                
-
-
-                <!--MIDDLE COLUMN-->
-                <div class="col-lg-6 gedf-main">
-                    
-                    <!--YOUTUBE CHANNEL-->
-                    <div class="card social-timeline-card comments">
-                        <div class="card-body">
-                            <div class="tab-content" id="myTabContent">
-                            <h5 class="card-title text-center">Favorite Youtuber</h5>
-                                <div>
-                                    <iframe id="favoriteVideo" width="560" height="315" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                
-                            
-                            </div>
-                            </div>
-                        </div>   
-                    </div> 
-                    
-                    <!--THE FIRST COMMENTS BOX-->
-                    <div class="card social-timeline-card comments">
-                        <div class="card-header post-comments">
-                            <ul class="nav nav-tabs card-header-tabs" id="" role="tablist">
-                                <li class="nav-item post-comments">
-                                    <a class="nav-link active posts-tab " id="comment-button" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="true">Share Gaming Tips</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="images-tab" data-toggle="tab" role="tab" aria-controls="images" aria-selected="false" href="#images">Share Images</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="card-body">
-                            <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade active show" id="posts" role="tabpanel" aria-labelledby="posts-tab">
-                                    <div class="form-group">
-                                        <label class="sr-only " for="message">post</label>
-                                        <textarea class="form-control " id="message" rows="3" placeholder="What are you thinking?"></textarea>
+                        <div class="modal fade" id="faveGameModal" data-backdrop="static" tabindex="-1" role="dialog"
+                            aria-labelledby="faveGameModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header background-modal">
+                                        <h5 class="modal-title" id="edit-game-h5">Edit Games Display</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span class="text-white" aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
-
+                                    <div class="modal-body bg-dark text-white border-colors">
+                                        <form id="editGameDisplay">
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="col-form-label">Game Currently
+                                                    Playing:</label>
+                                                <input type="text" class="form-control border-colors"
+                                                    id="currentlyPlaying">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="col-form-label">Favorite Game
+                                                    one:</label>
+                                                <input type="text" class="form-control required border-colors"
+                                                    id="gameOne">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="col-form-label">Favorite game
+                                                    two:</label>
+                                                <input type="text" class="form-control border-colors" id="gameTwo">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="col-form-label">Favorite game
+                                                    three:</label>
+                                                <input type="text" class="form-control border-colors" id="gameThree">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="col-form-label">Least favorite game
+                                                    one:</label>
+                                                <input type="text" class="form-control border-colors" id="leastOne">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="col-form-label">Least favorite game
+                                                    two:</label>
+                                                <input type="text" class="form-control border-colors" id="leastTwo">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="col-form-label">least favorite game
+                                                    three:</label>
+                                                <input type="text" class="form-control border-colors" id="leastThree">
+                                            </div>
+                                            <br>
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer background-modal">
+                                        <button type="button" class="btn bg-dark text-white"
+                                            data-dismiss="modal">Close</button>
+                                    </div>
                                 </div>
-                                <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
-                                    <div class="form-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="customFile">
-                                            <label class="custom-file-label" for="customFile">Upload image</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <!--MIDDLE COLUMN-->
+                    <div class="col-lg-6 gedf-main">
+
+                        <!--YOUTUBE CHANNEL-->
+                        <div class="card social-timeline-card comments">
+                            <div class="card-body">
+                                <div class="tab-content" id="myTabContent">
+                                    <h5 class="card-title text-center">Favorite Youtuber</h5>
+                                    <div>
+                                        <iframe id="favoriteVideo" width="560" height="315" src="" frameborder="0"
+                                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--THE FIRST COMMENTS BOX-->
+                        <div class="card social-timeline-card comments">
+                            <div class="card-header post-comments">
+                                <ul class="nav nav-tabs card-header-tabs" id="" role="tablist">
+                                    <li class="nav-item post-comments">
+                                        <a class="nav-link active posts-tab " id="comment-button" data-toggle="tab"
+                                            href="#posts" role="tab" aria-controls="posts" aria-selected="true">Share
+                                            Gaming Tips</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="images-tab" data-toggle="tab" role="tab"
+                                            aria-controls="images" aria-selected="false" href="#images">Share Images</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade active show" id="posts" role="tabpanel"
+                                        aria-labelledby="posts-tab">
+                                        <div class="form-group">
+                                            <label class="sr-only " for="message">post</label>
+                                            <textarea class="form-control " id="message" rows="3"
+                                                placeholder="What are you thinking?"></textarea>
+                                        </div>
+
+                                    </div>
+                                    <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
+                                        <div class="form-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="customFile">
+                                                <label class="custom-file-label" for="customFile">Upload image</label>
+                                            </div>
+                                        </div>
+                                        <div class="py-4"></div>
+                                    </div>
+                                </div>
+
+                                <div class="btn-toolbar justify-content-between">
+                                    <div class="btn-group">
+
+                                        <button type="submit" class="btn btn-theme-primary" id="post-btn">Post</button>
+
+                                        <button type="submit" class="btn btn-theme-primary">share</button>
+                                    </div>
+                                    <div class="btn-group">
+                                        <button id="btnGroupDrop1" type="button" class="btn btn-link dropdown-toggle"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-globe"></i>
+                                        </button>
+                                        <div class="dropdown-menu " aria-labelledby="btnGroupDrop1">
+                                            <a class="dropdown-item" href="#"><i class="fa fa-globe"></i> Public</a>
+                                            <a class="dropdown-item" href="#"><i class="fa fa-users"></i> Friends</a>
+                                            <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Just me</a>
+                                        </div>
+
+                                        <!-- >>>>>>> 5ea39829cc71cfe6015c0fd1191cccfd6a07f7a1 -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!--COMMENTS THAT ARE ON THE MEMBERS PROFILE-->
+                        <div class="card social-timeline-card comments">
+                            <div class="card-header">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="mr-2">
+                                            <img class="rounded-circle" width="45"
+                                                src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                                        </div>
+                                        <div class="ml-2">
+                                            <div class="h5 m-0 text-blue">@GamerChick</div>
+                                            <div class="h7 text-muted">Miracles Lee Cross</div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>10 min ago</div>
+                                <a class="card-link" href="#">
+                                    <h5 class="card-title">Lorem ipsum dolor sit amet, consectetur adip.</h5>
+                                </a>
+                                <img src="img/gallery/1a.jpg" alt="" class="img-fluid">
+
+                            </div>
+                            <div class="card-footer">
+                                <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
+                                <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
+                                <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
+                            </div>
+                        </div>
+                        <!-- Post /////-->
+
+                        <!--COMMENTS THAT ARE ON THE MEMBERS PROFILE-->
+                        <div class="card social-timeline-card comments">
+                            <div class="card-header">
+                                <div class="d-flex justify-content-between align-items-center">
+
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="mr-2">
+                                            <img class="rounded-circle" width="45"
+                                                src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="">
+                                        </div>
+                                        <div class="ml-2">
+                                            <div class="h5 m-0 text-blue">@JaneSmith</div>
+                                            <div class="h7 text-muted">Miracles Lee Cross</div>
                                         </div>
                                     </div>
-                                    <div class="py-4"></div>
                                 </div>
                             </div>
+                            <div class="card-body">
+                                <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> 10 min ago</div>
+                                <a class="card-link" href="#">
+                                    <h5 class="card-title"> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Velit consectetur
+                                        deserunt illo esse distinctio.</h5>
+                                </a>
+                                <p class="card-text">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam omnis nihil, aliquam
+                                    est, voluptates officiis iure soluta alias vel odit, placeat reiciendis ut libero!
+                                    Quas aliquid natus cumque quae repellendus. Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Ipsa, excepturi. Doloremque, reprehenderit! Quos in maiores,
+                                    soluta doloremque molestiae reiciendis libero expedita assumenda fuga quae.
+                                    Consectetur id molestias itaque facere? Hic!
+                                </p>
+                            </div>
 
-                            <div class="btn-toolbar justify-content-between">
-                                <div class="btn-group">
 
-                                    <button type="submit" class="btn btn-theme-primary" id="post-btn">Post</button>
-
-                                    <button type="submit" class="btn btn-theme-primary">share</button>
-                                </div>
-                                <div class="btn-group">
-                                    <button id="btnGroupDrop1" type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa fa-globe"></i>
-                                    </button>
-                                    <div class="dropdown-menu " aria-labelledby="btnGroupDrop1">
-                                        <a class="dropdown-item" href="#"><i class="fa fa-globe"></i> Public</a>
-                                        <a class="dropdown-item" href="#"><i class="fa fa-users"></i> Friends</a>
-                                        <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Just me</a>
-                                    </div>
-                                  
-<!-- >>>>>>> 5ea39829cc71cfe6015c0fd1191cccfd6a07f7a1 -->
-                                </div>
+                            <div class="card-footer">
+                                <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
+                                <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
+                                <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
                             </div>
                         </div>
-                    </div>
-
-                    
-                    <!--COMMENTS THAT ARE ON THE MEMBERS PROFILE-->
-                    <div class="card social-timeline-card comments">
-                        <div class="card-header">
-                            <div class="d-flex justify-content-between align-items-center">
+                        <!-- Post /////-->
+                        <!--- \\\\\\\Post-->
+                        <div class="card social-timeline-card comments">
+                            <div class="card-header">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <div class="mr-2">
-                                        <img class="rounded-circle" width="45" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                                    </div>
-                                    <div class="ml-2">
-                                        <div class="h5 m-0 text-blue">@GamerChick</div>
-                                        <div class="h7 text-muted">Miracles Lee Cross</div>
-                                    </div>
 
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="mr-2">
+                                            <img class="rounded-circle" width="45"
+                                                src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
+                                        </div>
+                                        <div class="ml-2">
+                                            <div class="h5 m-0 text-blue">@JaneSmith</div>
+                                            <div class="h7 text-muted">Miracles Lee Cross</div>
+                                        </div>
 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>10 min ago</div>
-                            <a class="card-link" href="#">
-                                <h5 class="card-title">Lorem ipsum dolor sit amet, consectetur adip.</h5>
-                            </a>
-                            <img src="img/gallery/1a.jpg" alt="" class="img-fluid">
-
-                        </div>
-                        <div class="card-footer">
-                            <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
-                            <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-                            <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
-                        </div>
-                    </div>
-                    <!-- Post /////-->
-
-                    <!--COMMENTS THAT ARE ON THE MEMBERS PROFILE-->
-                    <div class="card social-timeline-card comments">
-                        <div class="card-header">
-                            <div class="d-flex justify-content-between align-items-center">
-
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="mr-2">
-                                        <img class="rounded-circle" width="45" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="">
-                                    </div>
-                                    <div class="ml-2">
-                                        <div class="h5 m-0 text-blue">@JaneSmith</div>
-                                        <div class="h7 text-muted">Miracles Lee Cross</div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> 10 min ago</div>
-                            <a class="card-link" href="#">
-                                <h5 class="card-title"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit consectetur
-                                                deserunt illo esse distinctio.</h5>
-                            </a>
-                            <p class="card-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam omnis nihil, aliquam est, voluptates officiis iure soluta alias vel odit, placeat reiciendis ut libero! Quas aliquid natus cumque quae repellendus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, excepturi. Doloremque, reprehenderit! Quos in maiores, soluta doloremque molestiae reiciendis libero expedita assumenda fuga quae. Consectetur id molestias itaque facere? Hic!
-                            </p>
-                        </div>
-
-
-                        <div class="card-footer">
-                            <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
-                            <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-                            <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
-                        </div>
-                    </div>
-                    <!-- Post /////-->
-                    <!--- \\\\\\\Post-->
-                    <div class="card social-timeline-card comments">
-                        <div class="card-header">
-                            <div class="d-flex justify-content-between align-items-center">
-
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="mr-2">
-                                        <img class="rounded-circle" width="45" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
-                                    </div>
-                                    <div class="ml-2">
-                                        <div class="h5 m-0 text-blue">@JaneSmith</div>
-                                        <div class="h7 text-muted">Miracles Lee Cross</div>
-                                    </div>
-
-                                </div>
+                            <div class="card-body">
+                                <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> Hace 40 min</div>
+                                <a class="card-link" href="#">
+                                    <h5 class="card-title">Totam non adipisci hic! Possimus ducimus amet, dolores illo
+                                        ipsum quos
+                                        cum.</h5>
+                                </a>
+                                <p class="card-text">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam sunt fugit
+                                    reprehenderit consectetur exercitationem odio, quam nobis? Officiis, similique,
+                                    harum voluptate, facilis voluptas pariatur dolorum tempora sapiente eius maxime
+                                    quaerat.
+                                    <a href="https://mega.nz/#!1J01nRIb!lMZ4B_DR2UWi9SRQK5TTzU1PmQpDtbZkMZjAIbv97hU"
+                                        target="_blank">https://mega.nz/#!1J01nRIb!lMZ4B_DR2UWi9SRQK5TTzU1PmQpDtbZkMZjAIbv97hU</a>
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
+                                <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
+                                <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> Hace 40 min</div>
-                            <a class="card-link" href="#">
-                                <h5 class="card-title">Totam non adipisci hic! Possimus ducimus amet, dolores illo ipsum quos
-                                                cum.</h5>
-                            </a>
-                            <p class="card-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam sunt fugit reprehenderit consectetur exercitationem odio, quam nobis? Officiis, similique, harum voluptate, facilis voluptas pariatur dolorum tempora sapiente eius maxime quaerat.
-                                <a href="https://mega.nz/#!1J01nRIb!lMZ4B_DR2UWi9SRQK5TTzU1PmQpDtbZkMZjAIbv97hU" target="_blank">https://mega.nz/#!1J01nRIb!lMZ4B_DR2UWi9SRQK5TTzU1PmQpDtbZkMZjAIbv97hU</a>
-                            </p>
-                        </div>
-                        <div class="card-footer">
-                            <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
-                            <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-                            <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
-                        </div>
+
+                        <!-- Post /////-->
                     </div>
 
-                    <!-- Post /////-->
-                </div>
 
 
 
+                    <!--COLUMN 3-->
+                    <div class="col-lg-3">
 
-                <!--COLUMN 3-->
-                <div class="col-lg-3">  
-                    
-                    <div class="card social-timeline-card left-section">
-                        <div class="card-body">
-                            <h4 class="card-title text-center">Game Currently Playing</h5>
-                                
+                        <div class="card social-timeline-card left-section">
+                            <div class="card-body">
+                                <h4 class="card-title text-center">Game Currently Playing</h5>
+
                                     <div class="left current-game mx-auto">
-                                        <img class="img-fluid currently-playing-img" id="currentlyPlayingImg" src="assets/images/profile-images/rsz_1ori.png" alt="">
-                                </div>
-                                <h4 class="text-center" id="currentlyPlayingName">game</h4>
-                            
+                                        <img class="img-fluid currently-playing-img" id="currentlyPlayingImg"
+                                            src="assets/images/profile-images/rsz_1ori.png" alt="">
+                                    </div>
+                                    <h4 class="text-center" id="currentlyPlayingName">game</h4>
+
+                            </div>
+                        </div>
+
+                        <div class="card social-timeline-card left-section">
+                            <div class="card-body">
+                                <h4 class="card-title text-center">Discord Server</h5>
+
+
+                                    <iframe src="https://discordapp.com/widget?id=670020368593059850&theme=dark"
+                                        width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
+
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="card social-timeline-card left-section">
+                            <div class="card-body">
+                                <h4 class="card-title text-center">Discord Live Chat</h5>
+
+                                    <!--DISCORD LIVE CHAT WIDGETBOT-->
+                                    <iframe src="https://e.widgetbot.io/channels/670020368593059850/670020368593059853"
+                                        height="600" width="800"></iframe>
+
+
+                            </div>
+
                         </div>
                     </div>
 
-                <div class="card social-timeline-card left-section">
-                    <div class="card-body">
-                        <h4 class="card-title text-center">Discord Server</h5>
-
-
-                            <iframe src="https://discordapp.com/widget?id=670020368593059850&theme=dark" width="350"
-                                height="500" allowtransparency="true" frameborder="0"></iframe>
-
-
-
+                    <div class="row section">
+                        <!--section for charts-->
+                        <div class="col-lg-1"></div>
                     </div>
-                </div>
-
-
-                    <div class="card social-timeline-card left-section">
-                        <div class="card-body">
-                            <h4 class="card-title text-center">Discord Live Chat</h5>
-                                
-                                <!--DISCORD LIVE CHAT WIDGETBOT-->   
-                                <iframe src="https://e.widgetbot.io/channels/670020368593059850/670020368593059853" height="600" width="800"></iframe>
-                                
-                            
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="row section">
-                    <!--section for charts-->
-                    <div class="col-lg-1"></div>
                 </div>
             </div>
-        </div>
 
 
-        <!--GAME LIBRARY TAB-->
-        <div class="tab-pane fade" id="game-content" role="tabpanel" aria-labelledby="games-tab">
+            <!--GAME LIBRARY TAB-->
+            <div class="tab-pane fade" id="game-content" role="tabpanel" aria-labelledby="games-tab">
                 <div class="container show-grid">
-                    <div class="row ">
+                    <div class="row justify-content-between">
+
+                        <!-- AREA WHERE GAMES APPEAR -->
+                        <div class="col-md-12 " id="profile-game-area">
+
+                        </div>
+
+
+                        <!-- <div class="col-md-1 bg-primary text-white">.col-md-1</div>
                         <div class="col-md-1 bg-primary text-white">.col-md-1</div>
                         <div class="col-md-1 bg-primary text-white">.col-md-1</div>
                         <div class="col-md-1 bg-primary text-white">.col-md-1</div>
@@ -609,27 +704,26 @@
                         <div class="col-md-1 bg-primary text-white">.col-md-1</div>
                         <div class="col-md-1 bg-primary text-white">.col-md-1</div>
                         <div class="col-md-1 bg-primary text-white">.col-md-1</div>
-                        <div class="col-md-1 bg-primary text-white">.col-md-1</div>
-                        <div class="col-md-1 bg-primary text-white">.col-md-1</div>
+                        <div class="col-md-1 bg-primary text-white">.col-md-1</div> -->
                     </div>
                     <div class="row">
-                <div class="col-md-8 bg-primary text-white">.col-md-8</div>
-                <div class="col-md-4 bg-primary text-white">.col-md-4</div>
-                </div>
-                <div class="row">
-                <div class="col-md-4 bg-primary text-white">.col-md-4</div>
-                <div class="col-md-4 bg-primary text-white">.col-md-4</div>
-                <div class="col-md-4 bg-primary text-white">.col-md-4</div>
-                </div>
-                <div class="row">
-                <div class="col-md-6 bg-primary text-white">.col-md-6</div>
-                <div class="col-md-6 bg-primary text-white">.col-md-6</div>
+                        <div class="col-md-8 bg-primary text-white">.col-md-8</div>
+                        <div class="col-md-4 bg-primary text-white">.col-md-4</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 bg-primary text-white">.col-md-4</div>
+                        <div class="col-md-4 bg-primary text-white">.col-md-4</div>
+                        <div class="col-md-4 bg-primary text-white">.col-md-4</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 bg-primary text-white">.col-md-6</div>
+                        <div class="col-md-6 bg-primary text-white">.col-md-6</div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        
-        <!--FRIENDS TAB-->
+
+            <!--FRIENDS TAB-->
             <div class="tab-pane fade" id="friends-content" role="tabpanel" aria-labelledby="friends-tab">
                 <div class="container show-grid">
                     <div class="row ">
@@ -649,23 +743,29 @@
                 </div>
             </div>
 
+        </div>
+        <!--END OF TABBED CONTENT-->
+
     </div>
-    <!--END OF TABBED CONTENT-->
+    <!--END OF CONTAINER-->
 
-</div>
-<!--END OF CONTAINER-->
 
-    
-<!--ending snippet-->
+    <!--ending snippet-->
     <!-- Optional JavaScript -->
     <!-- Popper.js first, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
     <script src="assets/js/profile.js"></script>
 
     <!--reference to bootdey.com template https://www.bootdey.com/snippets/view/bs4-social-tiemeline#html-->
-  </body>
+</body>
 
 
 </html>
