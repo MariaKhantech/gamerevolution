@@ -217,6 +217,9 @@ router.get('/addgames:id', (req, res) => {
 		.then((result) => {
 			res.json(result);
 			console.log(result);
+		})
+		.catch((err) => {
+			res.json(err);
 		});
 });
 
@@ -225,7 +228,8 @@ router.post('/addgames', (req, res) => {
 		.create({
 			game_name: req.body.game_name,
 			unique_id: req.body.unique_id,
-			userId: 1
+			userId: req.user.userId
+
 		})
 		.then((result) => {
 			console.log(`Added game successfully`);
