@@ -26,14 +26,17 @@ router.get("/", (req, res) => {
 		res.redirect("/profile");
 	}
 	res.sendFile(path.join(__dirname, "../public/signUp.html"));
+
 });
 
 //login & send to profile page
 router.get("/login", (req, res) => {
 	if (req.user) {
 		res.redirect("/profile");
-	}
-	res.sendFile(path.join(__dirname, "../public/login.html"));
+	} 
+	res.sendFile(path.join(__dirname, "../public/index.html"));
+
+
 });
 
 //link authenticated

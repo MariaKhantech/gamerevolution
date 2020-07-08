@@ -2,7 +2,7 @@
 
 //create new user
 module.exports = (sequelize, DataTypes) => {
-	const User = sequelize.define('user', {
+	const User = sequelize.define('User', {
 		firstName: {
 			type: DataTypes.STRING,
 			allowNull: false
@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false
 		},
 		username: {
-			type: DataTypes.TEXT,
+			type: DataTypes.STRING,
 			allowNull: false,
 			unique: true
 		},

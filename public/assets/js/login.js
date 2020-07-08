@@ -17,7 +17,8 @@ $(document).ready(() => {
         if (!userData.email || !userData.password) {
             return;
         }
-
+        console.log(userData)
+        
         //then login user
         loginUser(userData.email, userData.password);
         emailInput.val("");
@@ -31,6 +32,7 @@ $(document).ready(() => {
             email: email,
             password: password
         }).then(() => {
+
             window.location.replace("/profile");
         });
     };
