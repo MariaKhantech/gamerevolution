@@ -145,6 +145,7 @@ $(document).ready(function () {
 
           const createCard = $("<div>", {
             class: "card d-inline-block",
+            id: "multi-card",
             style: "width: 21rem",
           })
 
@@ -258,6 +259,7 @@ $(document).ready(function () {
 
           const createCard = $("<div>", {
             class: "card d-inline-block mr-3 mt-3",
+            id: "multi-card",
             style: "width: 21rem",
           });
 
@@ -369,6 +371,7 @@ $(document).ready(function () {
 
           const createCard = $("<div>", {
             class: "card d-inline-block mr-3 mt-3",
+            id: "multi-card",
             style: "width: 21rem",
           });
 

@@ -18,12 +18,17 @@ body {
 
 
 
-.card {
+#multi-card {
   background: #282828;
   border-style: double;
   border-color: #3500d3;
   color: white;
   margin: 10px 15px 10px 15px;
+  transition: transform .2s;
+}
+
+#multi-card:hover {
+  transform: scale(1.05);
 }
 
 #single-card {
@@ -32,10 +37,13 @@ body {
   border-color: #3500d3;
   color: white;
   margin: 30px 15px 30px 15px;
+  transition: transform .2s;
 }
-.card-img-top {
-  object-fit: cover;
+
+#single-card:hover {
+  transform: scale(1.01);
 }
+
 .img-thumbnail {
   background: #282828 !important;
   border-style: double;
@@ -97,6 +105,8 @@ body {
 
 #add-to-favorites-button:hover {
   background-color: #6c757d;
+  box-shadow: 0px 15px 20px #3500d3;
+  transform: translateY(-7px);
 }
 
 #modal-button {
