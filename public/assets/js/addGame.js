@@ -19,15 +19,12 @@ $(document).ready(function () {
 
   //Function to populate "Select Platforms" dropdown
   const populatePlatformList = () => {
-
     const platformUrl = `https://api.rawg.io/api/platforms`;
 
     $.get(platformUrl).then((response) => {
-
       let platforms = response.results;
 
       for (let i = 0; i < platforms.length; i++) {
-
         const displayPlatformName = $("<a>", {
           class: "dropdown-item platform-item",
           type: "button",
@@ -63,7 +60,7 @@ $(document).ready(function () {
     $("#game-area").html("");
 
     $("#chart-button").show();
-    $("#chart-button").prop('disabled', false);
+    $("#chart-button").prop("disabled", false);
 
     let gameName = $("#searchInput").val().trim();
 
@@ -81,11 +78,10 @@ $(document).ready(function () {
   $("#browse-btn").on("click", function (event) {
     event.preventDefault();
 
-
     $("#game-area").html("");
 
     $("#chart-button").show();
-    $("#chart-button").prop('disabled', false);
+    $("#chart-button").prop("disabled", false);
 
     let platformId = $(".platform").val();
 
@@ -115,32 +111,27 @@ $(document).ready(function () {
     } else {
       renderGameGridAll(platformId, yearInput, ordering);
     }
-
   });
 
   // Render Game Grid ALL options have input
   const renderGameGridAll = (id, year, ordering) => {
-
     let gamesURL = `https://rawg.io/api/games?platforms=${id}&dates=${year}-01-01,${year}-12-31&ordering=-${ordering}&page_size=50`;
 
     $.get(gamesURL).then((response) => {
-
       renderCharts();
 
       if (response.count === 0) {
         $("#alert-modal").modal("show");
         $("#modal-text").text(`No results please try again`);
       } else {
-
         const game = response.results;
 
         for (let i = 0; i < game.length; i++) {
-
           const createCard = $("<div>", {
             class: "card d-inline-block",
             id: "multi-card",
             style: "width: 20rem",
-          })
+          });
 
           $("#game-area").append(createCard);
 
@@ -156,7 +147,6 @@ $(document).ready(function () {
               class: "img-thumbnail",
               alt: "game-image",
               src: "https://placekitten.com/200/139",
-
             });
             createCard.append(cardImg);
           } else {
@@ -239,7 +229,6 @@ $(document).ready(function () {
     let gamesURL = `https://rawg.io/api/games?platforms=${id}&ordering=-${ordering}`;
 
     $.get(gamesURL).then((response) => {
-
       renderCharts();
 
       if (response.count === 0) {
@@ -249,7 +238,6 @@ $(document).ready(function () {
         const game = response.results;
 
         for (let i = 0; i < game.length; i++) {
-
           const createCard = $("<div>", {
             class: "card d-inline-block mr-3 mt-3",
             id: "multi-card",
@@ -361,7 +349,6 @@ $(document).ready(function () {
         const game = response.results;
 
         for (let i = 0; i < game.length; i++) {
-
           const createCard = $("<div>", {
             class: "card d-inline-block mr-3 mt-3",
             id: "multi-card",
@@ -378,9 +365,7 @@ $(document).ready(function () {
             });
 
             createCard.append(cardImg);
-
           } else if (game[i].background_image === null) {
-
             const cardImg = $("<img>", {
               class: "img-thumbnail",
               alt: "game-image",
@@ -388,9 +373,7 @@ $(document).ready(function () {
             });
 
             createCard.append(cardImg);
-
           } else {
-
             const cardVid = $("<video>", {
               class: "img-thumbnail",
               type: "video/mp4",
@@ -400,7 +383,6 @@ $(document).ready(function () {
             });
 
             createCard.append(cardVid);
-
           }
           const cardBody = $("<div>", {
             class: "card-body m-auto",
@@ -416,16 +398,13 @@ $(document).ready(function () {
           cardBody.append(cardTitle);
 
           if (game[i].released === null) {
-
             const cardDescription = $("<p>", {
               class: "card-text text-center",
               text: `Released: N/A`,
             });
 
             cardBody.append(cardDescription);
-
           } else {
-
             const gameYear = game[i].released.split("-");
 
             const cardDescription = $("<p>", {
@@ -477,11 +456,9 @@ $(document).ready(function () {
   };
 
   const renderSingleGame = (searchInput) => {
-
     let searchURL = `https://rawg.io/api/games?search=${searchInput}`;
 
     $.get(searchURL).then((response) => {
-
       if (response.count === 0) {
         $("#alert-modal").modal("show");
         $("#modal-text").text(`No results please try again`);
@@ -599,7 +576,6 @@ $(document).ready(function () {
         }
       });
   });
-
 
   // let clearCharts = () => {
   //   $("#topChart").remove();
@@ -729,7 +705,9 @@ $(document).ready(function () {
                 response.results[4].metacritic,
                 response.results[5].metacritic,
               ],
-              backgroundColor: colorPalette,
+              backgroundColor: colorPaletteRGBTransparent,
+              borderColor: colorPaletteRGBOpaque,
+              fill: true,
             },
           ],
         },
@@ -763,7 +741,9 @@ $(document).ready(function () {
                 response.results[4].metacritic,
                 response.results[5].metacritic,
               ],
-              backgroundColor: colorPalette,
+              backgroundColor: colorPaletteRGBTransparent,
+              borderColor: colorPaletteRGBOpaque,
+              fill: true,
             },
           ],
         },
@@ -823,8 +803,6 @@ $(document).ready(function () {
   }
   title = [];
 
-
-
   // toggle light and dark mode. remember to do this for all charts
   $("#toggle-demo").change(() => {
     if ($("#topChartCard").hasClass("make-white")) {
@@ -839,8 +817,6 @@ $(document).ready(function () {
       chart.data.datasets[0].backgroundColor = colorPaletteRGBTransparent;
     }
   });
-
-
 });
 
 /////////////////adding chart to plat order/game order/all calls
