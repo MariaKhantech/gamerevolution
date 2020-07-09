@@ -14,7 +14,9 @@ $(document).ready(function () {
   let ctx = document.getElementById("topChart").getContext("2d");
   const doughnutCTX = document.getElementById("doughnutChart").getContext("2d");
   const lineCTX = document.getElementById("lineChart").getContext("2d");
-
+  let chart = createChart(ctx, "bar");
+  let doughnutChart = createChart(doughnutCTX, "doughnut");
+  let lineChart = createChart(lineCTX, "line");
   $('[data-toggle="popover"]').popover();
 
   //Function to populate "Select Platforms" dropdown
@@ -921,3 +923,31 @@ function renderSingleChart(searchInput) {
 //     },
 //   },
 // });
+function createChart(ctx, type) {
+  new Chart(ctx, {
+    type: type,
+    data: {
+      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+      datasets: [
+        {
+          label: "Population (millions)",
+          backgroundColor: [
+            "#3e95cd",
+            "#8e5ea2",
+            "#3cba9f",
+            "#e8c3b9",
+            "#c45850",
+          ],
+          data: [2478, 5267, 734, 784, 433],
+        },
+      ],
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: "Predicted world population (millions) in 2050",
+      },
+    },
+  });
+}
