@@ -1,24 +1,82 @@
 $(document).ready(() => {
 	//function gets profile information by calling the get route/api/profile route
+	let userData;
+
 	const getProfileInfo = () => {
-		const userId = 2;
-		$.get('api/profile' + userId, (data) => {
-			console.log(data);
-			//populate porile info
-			populateProfileInfo(data);
-			//populate modal
-			populateModalForm(data);
-			//load the user games
-			loadUserGames();
-			//set corrected youtube embedded video url
-			setEmbeddedYoutubeUrl();
+		$.get('api/user-data', () => { }).then((result) => {
+			console.log(result);
+			userData = result;
+			//sets the username
+			$('#username').text(`@${result.username}`);
+
+			//check if profile exists
+			$.get('api/profile' + result.userId, (data) => {
+				if (!data) {
+					//create them an empty profile
+					createProfile(data);
+				}
+				//populate porile info
+				populateProfileInfo(data);
+				//populate modal
+				populateModalForm(data);
+				//load the user games
+				loadUserGames();
+				//set corrected youtube embedded video url
+				setEmbeddedYoutubeUrl();
+				//Get user comments //
+				getCommentData(result);
+			});
 		});
 	};
+
+	const getCommentData = (result) => {
+		$.get('api/profile/comment' + result.userId, () => { }).then((data) => {
+			//grab the avatar to use in the comments section
+			commentImg = $('#user-profile').attr('src');
+			commentUsername = $('#username').text();
+
+			//loop through the list of comments in the data obkect
+			Object.entries(data).forEach((entry) => {
+				console.log(entry);
+				createComment(entry[1].comments, commentUsername, commentImg);
+			});
+		});
+	};
+
+	//comment button on user profile//
+	$('#post-btn').on('click', (event) => {
+		//event.preventDefault();
+		// $.post('api/user/comment', (data) => {
+		console.log('works');
+		//grab the value from the text box
+		const userComment = $('#message').val();
+		//checking if the entry is blank if so do not send to database to create an emtpy column
+		if (userComment === '') {
+			alert('no comment provided.');
+			return;
+		}
+		//create an object to store the comment variable
+		const userCommentData = {
+			comment: userComment
+		};
+
+		//post putting comment into the database
+		$.post('/api/profile/comment', userCommentData).then((results) => {
+			console.log('user posts', results);
+			location.reload();
+		});
+	});
+
+	$('#signOut').on('click', function () {
+		$.get('/api/logout', (data) => {
+			window.location.replace('/');
+		});
+	});
 
 	//funnction that creates a new profile by calling the post route /api/profile/create
 	const createProfile = (profileData) => {
 		$.post('/api/profile/create', profileData).then((results) => {
-			console.log('update successful', results);
+			console.log('created profile', results);
 			location.reload();
 		});
 	};
@@ -26,8 +84,9 @@ $(document).ready(() => {
 	//TODO- create function that updates a profile (PUT)
 	const updateProfile = (profileData) => {
 		const userId = 2;
+		console.log(userData);
 		//take some profile data and update it in the database, exsiting
-		$.ajax('/api/profile/update' + userId, {
+		$.ajax('/api/profile/update' + userData.userId, {
 			type: 'PUT',
 			data: profileData
 		}).then(() => {
@@ -38,6 +97,7 @@ $(document).ready(() => {
 
 	//populates profile page with the profile information from the database
 	const populateProfileInfo = (data) => {
+		console.log(data);
 		//set the profile name
 		$('#profileName').text(data.profileName);
 
@@ -66,6 +126,7 @@ $(document).ready(() => {
 		//sets the aboutme section
 		$('#aboutMe').html(`<strong class="color-text">About: </strong> ${data.aboutMe}`);
 
+		console.log(data.avatarImg.substring(data.avatarImg.indexOf('/')));
 		//sets the avatar image
 		$('#user-profile').attr('src', data.avatarImg.substring(data.avatarImg.indexOf('/')));
 
@@ -110,7 +171,7 @@ $(document).ready(() => {
 
 	const loadUserGames = () => {
 		const userId = 2;
-		$.get('api/profile/selectedgames' + userId, (data) => {
+		$.get('api/profile/selectedgames' + userData.userId, (data) => {
 			//populate the modal data
 			populateGameModal(data);
 			//loop throught the data and populate the HTML
@@ -149,7 +210,7 @@ $(document).ready(() => {
 	$('#editProfileForm').on('submit', (event) => {
 		//stop the page from refreshing
 		event.preventDefault();
-
+		console.log(userData);
 		//collect all the modal form data into the profileData object
 		const profileData = {
 			profileName: $('#profile-name').val(),
@@ -192,7 +253,7 @@ $(document).ready(() => {
 			leastFavoriteThree: $('#leastThree').val()
 		};
 
-		if ($('#profile-name').val().length === 0) {
+		if ($('#currentlyPlayingImg').attr('src').endsWith('default-selectedGame.jpg')) {
 			createSelectedGames(favGameData);
 		} else {
 			updateSelectedGames(favGameData);
@@ -254,170 +315,182 @@ $(document).ready(() => {
 		}
 	};
 
+	//huge div copied from the html to dynamically append a comment to middle column
+	const createComment = (comment, username, imgSrc) => {
+		$('#middle-column').append(
+			`<div class="card social-timeline-card comments">
+			<div class="card-header">
+				<div class="d-flex justify-content-between align-items-center">
+					<div class="d-flex justify-content-between align-items-center">
+						<div class="mr-2">
+							<img id='comment-img' class="rounded-circle" width="45"
+								src="${imgSrc}" alt="">
+						</div>
+						<div class="ml-2">
+							<div id ='comment-user1' class="h5 m-0 text-blue">${username}</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>10 min ago</div>
+				<p class="card-text">${comment}</p>
+			</div>
+			<div class="card-footer">
+				<a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
+				<a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
+				<a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
+			</div>
+		</div>`
+		);
+	};
+
 	//get the latest profile information for the user
 	getProfileInfo();
 
 	// //////////////GUS GET REQUEST FOR GAMES
 	const getUserGames = () => {
-		return $.ajax({
-			url: "/api/addgames",
-			method: "GET",
-		}).then((result) => {
-			// console.log(result);
+		$.ajax({
+			url: `api/user-data`,
+			method: 'GET'
+		}).then((data) => {
 
-			let dbGames = result;
-
-			for (let i = 0; i < dbGames.length; i++) {
-				// console.log(dbGames[i].game_name);
-
-				let slugURL = `https://rawg.io/api/games/${dbGames[i].game_name}`;
-
-				$.get(slugURL).then((response) => {
+			$.ajax({
+				url: `/api/addgames${data.userId}`,
+				method: 'GET'
+			}).then((results) => {
 
 
-					console.log(response);
+				let dbGames = results;
 
-					const createCard = $("<div>", {
-						class: "card d-inline-block ",
-						id: "game-card",
-						style: "width: 18rem",
+				for (let i = 0; i < dbGames.length; i++) {
 
-					});
-					// append card to parent div (line 55 of addGame.html)
-					$("#profile-game-area").append(createCard);
+					let slugURL = `https://rawg.io/api/games/${dbGames[i].game_name}`;
 
-					if (response.background_image === null) {
-						const cardImg = $("<img>", {
-							class: "img-thumbnail",
-							alt: "game-image",
-							src: "https://placekitten.com/200/139",
+					$.get(slugURL).then((response) => {
+
+						const createCard = $('<div>', {
+							class: 'card d-inline-block ',
+							id: 'game-card',
+							style: 'width: 15rem'
 						});
-						createCard.append(cardImg);
-					} else {
-						const cardImg = $("<img>", {
-							class: "img-thumbnail",
-							alt: "game-image",
-							src: response.background_image,
+
+						$('#profile-game-area').append(createCard);
+
+						if (response.background_image === null) {
+							const cardImg = $('<img>', {
+								class: 'img-thumbnail',
+								alt: 'game-image',
+								src: 'https://placekitten.com/200/139'
+							});
+							createCard.append(cardImg);
+						} else {
+							const cardImg = $('<img>', {
+								class: 'img-thumbnail',
+								alt: 'game-image',
+								src: response.background_image
+							});
+							createCard.append(cardImg);
+						}
+						const cardBody = $('<div>', {
+							class: 'card-body m-auto'
 						});
-						createCard.append(cardImg);
-					}
-					const cardBody = $("<div>", {
 
-						class: "card-body m-auto",
+						createCard.append(cardBody);
 
-					});
-					// append card body to parent .card div
-					createCard.append(cardBody);
-
-					const cardTitle = $("<h6>", {
-						class: "card-title text-center",
-						text: response.name,
-
-					});
-					// append card title to card body
-					cardBody.append(cardTitle);
-
-					if (response.released === null) {
-						const cardDescription = $("<p>", {
-							class: "card-text text-center",
-
-
-						
-
-
-
-							text: `Released: N/A`,
-
-
+						const cardTitle = $('<h6>', {
+							class: 'card-title text-center',
+							text: response.name
 						});
-						cardBody.append(cardDescription);
-					} else {
-						// else set card description to game release year and append to card body
-						const gameYear = response.released.split("-");
 
-						const cardDescription = $("<p>", {
-							class: "card-text text-center",
+						cardBody.append(cardTitle);
 
-							text: `Released: ${gameYear[0]}`,
+						if (response.released === null) {
+							const cardDescription = $('<p>', {
+								class: 'card-text text-center',
 
+								text: `Released: N/A`
+							});
+							cardBody.append(cardDescription);
+						} else {
+
+							const gameYear = response.released.split('-');
+
+							const cardDescription = $('<p>', {
+								class: 'card-text text-center',
+
+								text: `Released: ${gameYear[0]}`
+							});
+							cardBody.append(cardDescription);
+						}
+
+						const percentage = Math.round(response.rating / 5 * 100);
+
+						const rawgPercentage = $('<p>', {
+							class: 'card-text text-center',
+
+							text: `Rating: ${percentage}%`
 						});
-						cardBody.append(cardDescription);
-					}
 
-					const percentage = Math.round((response.rating / 5) * 100);
+						const rawgRating = $('<p>', {
+							class: 'card-text text-center mx-auto'
+						}).rateYo({
+							rating: response.rating,
+							readOnly: true,
+							starWidth: '25px'
+						});
 
-					const rawgPercentage = $("<p>", {
-						class: "card-text text-center",
+						const userRatings = $('<p>', {
+							class: 'card-text text-center',
+							text: `User Ratings: ${response.ratings_count}`
+						});
 
-						text: `Rating: ${percentage}%`,
+						cardBody.append(rawgPercentage, rawgRating, userRatings);
+
+
+						const deleteButton = $('<button>', {
+							class: 'btn btn-outline-danger btn-block ',
+							id: 'delete-button',
+							type: 'button',
+							'data-type': response.id,
+							'data-name': response.slug,
+							'data-toggle': 'popover',
+							'data-content': 'Game removed from library',
+							text: `Remove from Library`
+						});
+
+						cardBody.append(deleteButton);
 					});
-
-
-					const rawgRating = $("<p>", {
-						class: "card-text text-center mx-auto",
-					}).rateYo({
-						rating: response.rating,
-						readOnly: true,
-						starWidth: "25px",
-					});
-
-
-					const userRatings = $("<p>", {
-						class: "card-text text-center",
-						text: `User Ratings: ${response.ratings_count}`,
-					});
-
-
-					cardBody.append(rawgPercentage, rawgRating, userRatings);
-
-					// variable to create button that will add game to "favorites" library
-					const deleteButton = $("<button>", {
-						class: "btn btn-outline-danger btn-block ",
-						id: "delete-button",
-						type: "button",
-						"data-type": response.id,
-						"data-name": response.slug,
-						"data-toggle": "popover",
-						"data-content": "Game removed from library",
-
-						text: `Remove from Library`,
-					});
-
-					// append button to card body
-					cardBody.append(deleteButton);
-
-
-				});
-
-			}
-
-
+				}
+			});
 		});
-
-	}
+	};
 
 	getUserGames();
-	// ///////////////////////////////////////
+
+	$('#profile-game-area').on('click', 'button', function (event) {
+		event.preventDefault();
+		let name = $(this).data('name');
+		console.log(name);
+
+		$.ajax({
+			url: `api/user-data`,
+			method: 'GET'
+		}).then((data) => {
+			const userGame = {
+				game_name: name,
+				userId: data.userId
+			}
+			$.ajax(`/api/addgames${data.userId}`, {
+				type: "DELETE",
+				data: userGame
+			}).then((result) => {
+				$('#profile-game-area').empty();
+				getUserGames();
+			})
+		});
+	});
+
+
 });
-
-// Object.entries(favGameData).forEach((entry) => {
-// 	console.log(entry);
-// 	//Calling rawg data from api
-// 	let searchGameUrl = `https://rawg.io/api/games?search=${entry[1]}`;
-// 	console.log(searchGameUrl);
-
-// 	$.get(searchGameUrl).then((response) => {
-// 		if (response.count === 0) {
-// 			$('#alert-modal').modal('show');
-// 			$('#modal-text').text(`No results please try again`);
-// 		} else {
-// 			const searchResult = response.results;
-// 			console.log(searchResult[0]);
-// 			//populate html elements with image and game from rawg data//
-// 			$(`#${entry[0]}Img`).attr('src', searchResult[0].background_image);
-// 			$(`#${entry[0]}Name`).text(searchResult[0].name);
-// 		}
-// 	});
-// });
-//references for profile js: //
-//help with uploading avatars https://bezkoder.com/node-js-upload-image-mysql/ //

@@ -3,12 +3,12 @@ module.exports = (sequelize, DataTypes) => {
         game_name: DataTypes.STRING,
         unique_id: DataTypes.INTEGER,
     });
-    return Game;
 
     Game.associate = (models) => {
-        Game.belongsTo(models.User, { foreignKey: "userId", targetKey: "userId" });
-    }
+        Game.belongsTo(models.User, { foreignKey: 'userId', targetKey: 'userId' });
+    };
 
+    return Game;
 };
 
 
