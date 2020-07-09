@@ -240,6 +240,22 @@ router.post('/addgames', (req, res) => {
 		});
 });
 
+router.delete('/addgames:id', (req, res) => {
+	db.Game
+		.destroy({
+			where: {
+				game_name: req.body.game_name,
+				userId: req.user.userId
+			}
+		})
+		.then((result) => {
+			console.log(`Deleted game successfully`);
+			res.json(result);
+		})
+		.catch((err) => {
+			res.json(err);
+		});
+});
 
 //======================Shannon=======================//
 //===================Passport Routes==================//

@@ -408,4 +408,29 @@ $(document).ready(() => {
 	};
 
 	getUserGames();
+
+	$('#profile-game-area').on('click', 'button', function (event) {
+		event.preventDefault();
+		let name = $(this).data('name');
+		console.log(name);
+
+		$.ajax({
+			url: `api/user-data`,
+			method: 'GET'
+		}).then((data) => {
+			const userGame = {
+				game_name: name,
+				userId: data.userId
+			}
+			$.ajax(`/api/addgames${data.userId}`, {
+				type: "DELETE",
+				data: userGame
+			}).then((result) => {
+				$('#profile-game-area').empty();
+				getUserGames();
+			})
+		});
+	});
+
+
 });
