@@ -281,16 +281,15 @@ iframe {
 
 /* GUS LIBRARY GAME GRID STYLING */
 #profile-game-area {
-	margin: 0px auto 50px auto;
+	margin: 10px auto 50px auto;
 }
 
 #game-card {
 	margin: 10px 15px 10px 15px;
-
 	background: #282828;
-	border-style: double;
-	border-color: #3500d3;
-	color: white;
+  	border-style: double;
+ 	 border-color: #3500d3;
+  	color: white;
 	margin: 10px 15px 10px 15px;
 }
 

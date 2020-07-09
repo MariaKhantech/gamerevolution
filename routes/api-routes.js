@@ -70,7 +70,7 @@ router.put('/profile/update:id', (req, res) => {
 				}
 			}
 		)
-		.then(function(dbPost) {
+		.then(function (dbPost) {
 			res.json(dbPost);
 		});
 });
@@ -100,7 +100,7 @@ router.post('/profile/upload_avatar', (req, res) => {
 					}
 				}
 			)
-			.then(function(dbPost) {
+			.then(function (dbPost) {
 				res.json(dbPost);
 			});
 
@@ -134,7 +134,7 @@ router.post('/profile/upload_coverImg', (req, res) => {
 					}
 				}
 			)
-			.then(function(dbPost) {
+			.then(function (dbPost) {
 				res.json(dbPost);
 			});
 
@@ -200,7 +200,7 @@ router.put('/profile/selectedgames/update:id', (req, res) => {
 				}
 			}
 		)
-		.then(function(dbPost) {
+		.then(function (dbPost) {
 			res.json(dbPost);
 		});
 });
@@ -241,12 +241,30 @@ router.get('/profile/comment:id', (req, res) => {
 //================= ENDS MARIA================//
 //==================Gus============//
 
-// Using Game Model to insert new row into Games table in database
+
+router.get('/addgames:id', (req, res) => {
+	db.Game
+		.findAll({
+			where: {
+				userId: req.params.id
+			}
+		})
+		.then((result) => {
+			res.json(result);
+			console.log(result);
+		})
+		.catch((err) => {
+			res.json(err);
+		});
+});
+
 router.post('/addgames', (req, res) => {
 	db.Game
 		.create({
 			game_name: req.body.game_name,
-			unique_id: req.body.unique_id
+			unique_id: req.body.unique_id,
+			userId: req.user.userId
+
 		})
 		.then((result) => {
 			console.log(`Added game successfully`);
@@ -257,10 +275,21 @@ router.post('/addgames', (req, res) => {
 		});
 });
 
-router.get('/addgames', (req, res) => {
-	db.Game.findAll().then((result) => {
-		res.json(result);
-	});
+router.delete('/addgames:id', (req, res) => {
+	db.Game
+		.destroy({
+			where: {
+				game_name: req.body.game_name,
+				userId: req.user.userId
+			}
+		})
+		.then((result) => {
+			console.log(`Deleted game successfully`);
+			res.json(result);
+		})
+		.catch((err) => {
+			res.json(err);
+		});
 });
 
 //======================Shannon=======================//
