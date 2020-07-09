@@ -3,7 +3,7 @@ $(document).ready(() => {
 	let userData;
 
 	const getProfileInfo = () => {
-		$.get('api/user-data', () => {}).then((result) => {
+		$.get('api/user-data', () => { }).then((result) => {
 			console.log(result);
 			userData = result;
 			//sets the username
@@ -35,7 +35,7 @@ $(document).ready(() => {
 		});
 	};
 
-	$('#signOut').on('click', function() {
+	$('#signOut').on('click', function () {
 		$.get('api/logout', (data) => {
 			console.log(data);
 		});
@@ -288,119 +288,149 @@ $(document).ready(() => {
 
 	// //////////////GUS GET REQUEST FOR GAMES
 	const getUserGames = () => {
-		return $.ajax({
-			url: '/api/addgames',
+		$.ajax({
+			url: `api/user-data`,
 			method: 'GET'
-		}).then((result) => {
-			// console.log(result);
+		}).then((data) => {
+			// console.log(data);
+			$.ajax({
+				url: `/api/addgames${data.userId}`,
+				method: 'GET'
+			}).then((results) => {
+				// console.log(results);
 
-			let dbGames = result;
+				let dbGames = results;
 
-			for (let i = 0; i < dbGames.length; i++) {
-				// console.log(dbGames[i].game_name);
+				for (let i = 0; i < dbGames.length; i++) {
 
-				let slugURL = `https://rawg.io/api/games/${dbGames[i].game_name}`;
+					let slugURL = `https://rawg.io/api/games/${dbGames[i].game_name}`;
 
-				$.get(slugURL).then((response) => {
-					console.log(response);
+					$.get(slugURL).then((response) => {
+						console.log(response);
 
-					const createCard = $('<div>', {
-						class: 'card d-inline-block ',
-						id: 'game-card',
-						style: 'width: 18rem'
-					});
-					// append card to parent div (line 55 of addGame.html)
-					$('#profile-game-area').append(createCard);
-
-					if (response.background_image === null) {
-						const cardImg = $('<img>', {
-							class: 'img-thumbnail',
-							alt: 'game-image',
-							src: 'https://placekitten.com/200/139'
+						const createCard = $('<div>', {
+							class: 'card d-inline-block ',
+							id: 'game-card',
+							style: 'width: 15rem'
 						});
-						createCard.append(cardImg);
-					} else {
-						const cardImg = $('<img>', {
-							class: 'img-thumbnail',
-							alt: 'game-image',
-							src: response.background_image
+						// append card to parent div (line 55 of addGame.html)
+						$('#profile-game-area').append(createCard);
+
+						if (response.background_image === null) {
+							const cardImg = $('<img>', {
+								class: 'img-thumbnail',
+								alt: 'game-image',
+								src: 'https://placekitten.com/200/139'
+							});
+							createCard.append(cardImg);
+						} else {
+							const cardImg = $('<img>', {
+								class: 'img-thumbnail',
+								alt: 'game-image',
+								src: response.background_image
+							});
+							createCard.append(cardImg);
+						}
+						const cardBody = $('<div>', {
+							class: 'card-body m-auto'
 						});
-						createCard.append(cardImg);
-					}
-					const cardBody = $('<div>', {
-						class: 'card-body m-auto'
-					});
-					// append card body to parent .card div
-					createCard.append(cardBody);
+						// append card body to parent .card div
+						createCard.append(cardBody);
 
-					const cardTitle = $('<h6>', {
-						class: 'card-title text-center',
-						text: response.name
-					});
-					// append card title to card body
-					cardBody.append(cardTitle);
+						const cardTitle = $('<h6>', {
+							class: 'card-title text-center',
+							text: response.name
+						});
+						// append card title to card body
+						cardBody.append(cardTitle);
 
-					if (response.released === null) {
-						const cardDescription = $('<p>', {
+						if (response.released === null) {
+							const cardDescription = $('<p>', {
+								class: 'card-text text-center',
+
+								text: `Released: N/A`
+							});
+							cardBody.append(cardDescription);
+						} else {
+							// else set card description to game release year and append to card body
+							const gameYear = response.released.split('-');
+
+							const cardDescription = $('<p>', {
+								class: 'card-text text-center',
+
+								text: `Released: ${gameYear[0]}`
+							});
+							cardBody.append(cardDescription);
+						}
+
+						const percentage = Math.round(response.rating / 5 * 100);
+
+						const rawgPercentage = $('<p>', {
 							class: 'card-text text-center',
 
-							text: `Released: N/A`
+							text: `Rating: ${percentage}%`
 						});
-						cardBody.append(cardDescription);
-					} else {
-						// else set card description to game release year and append to card body
-						const gameYear = response.released.split('-');
 
-						const cardDescription = $('<p>', {
+						const rawgRating = $('<p>', {
+							class: 'card-text text-center mx-auto'
+						}).rateYo({
+							rating: response.rating,
+							readOnly: true,
+							starWidth: '25px'
+						});
+
+						const userRatings = $('<p>', {
 							class: 'card-text text-center',
-
-							text: `Released: ${gameYear[0]}`
+							text: `User Ratings: ${response.ratings_count}`
 						});
-						cardBody.append(cardDescription);
-					}
 
-					const percentage = Math.round(response.rating / 5 * 100);
+						cardBody.append(rawgPercentage, rawgRating, userRatings);
 
-					const rawgPercentage = $('<p>', {
-						class: 'card-text text-center',
+						// variable to create button that will add game to "favorites" library
+						const deleteButton = $('<button>', {
+							class: 'btn btn-outline-danger btn-block ',
+							id: 'delete-button',
+							type: 'button',
+							'data-type': response.id,
+							'data-name': response.slug,
+							'data-toggle': 'popover',
+							'data-content': 'Game removed from library',
 
-						text: `Rating: ${percentage}%`
+							text: `Remove from Library`
+						});
+
+						// append button to card body
+						cardBody.append(deleteButton);
 					});
-
-					const rawgRating = $('<p>', {
-						class: 'card-text text-center mx-auto'
-					}).rateYo({
-						rating: response.rating,
-						readOnly: true,
-						starWidth: '25px'
-					});
-
-					const userRatings = $('<p>', {
-						class: 'card-text text-center',
-						text: `User Ratings: ${response.ratings_count}`
-					});
-
-					cardBody.append(rawgPercentage, rawgRating, userRatings);
-
-					// variable to create button that will add game to "favorites" library
-					const deleteButton = $('<button>', {
-						class: 'btn btn-outline-danger btn-block ',
-						id: 'delete-button',
-						type: 'button',
-						'data-type': response.id,
-						'data-name': response.slug,
-						'data-toggle': 'popover',
-						'data-content': 'Game removed from library',
-
-						text: `Remove from Library`
-					});
-
-					// append button to card body
-					cardBody.append(deleteButton);
-				});
-			}
+				}
+			});
 		});
 	};
 
 	getUserGames();
+
+	$('#profile-game-area').on('click', 'button', function (event) {
+		event.preventDefault();
+		let name = $(this).data('name');
+		console.log(name);
+
+		$.ajax({
+			url: `api/user-data`,
+			method: 'GET'
+		}).then((data) => {
+			const userGame = {
+				game_name: name,
+				userId: data.userId
+			}
+			$.ajax(`/api/addgames${data.userId}`, {
+				type: "DELETE",
+				data: userGame
+			}).then((result) => {
+				$('#profile-game-area').empty();
+				getUserGames();
+			})
+		});
+	});
+
+
 });
