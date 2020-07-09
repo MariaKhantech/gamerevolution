@@ -13,10 +13,18 @@ body {
 }
 
 #navbarchange {
-  background: #282828;
+  background-color: black;
+  opacity: .8;
+  font-size: 20px;
+  margin: 0;
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
 }
 
-
+#top-news {
+	background: black;
+	width: 30rem;
+}
 
 #multi-card {
   background: #282828;
@@ -59,7 +67,6 @@ body {
   margin: 0px auto 0px auto;
 }
 
-
 .search-menu {
     /* background-color: #3500d3; */
     margin: 10px auto 0px auto;
@@ -76,11 +83,14 @@ body {
     display: none;
 }
 .col-md-12 {
-  margin: 25px auto 25px auto;
+  margin: 10px auto 25px auto;
+  
 }
 
 #game-area {
   margin: 0px auto 50px auto;
+  background-color: rgba(12, 0, 50, .7);
+  border-radius: 5px;
 }
 
 .modal-content {
@@ -117,3 +127,5 @@ body {
 #modal-button:hover {
   border-color: #6c757d;
 }
+
+

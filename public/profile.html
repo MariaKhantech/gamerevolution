@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
         integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet"> -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 
     <link rel="stylesheet" href="./assets/css/profile.css">
@@ -33,7 +34,8 @@
                 <ul class="nav navbar-nav">
                     <li class="nav-item"><a href="about.html" class="nav-link text-white">About</a></li>
                     <li class="nav-item"><a href="addGame.html" class="nav-link text-white">Game Search</a></li>
-                    <li class="nav-item"><a href="searchProfiles.html" class="nav-link text-white">Profile Search</a></li>
+                    <li class="nav-item"><a href="searchProfiles.html" class="nav-link text-white">Profile Search</a>
+                    </li>
                     <li class="nav-item"><a href="profile.html" class="nav-link text-white">My Profile</a></li>
 
                 </ul>
@@ -59,16 +61,17 @@
             <input id="coverImg" type="file" />
         </div>
 
-           <!--starting snippet reference https://www.bootdey.com/snippets/view/bs4-social-tiemeline#html-->
+        <!--starting snippet reference https://www.bootdey.com/snippets/view/bs4-social-tiemeline#html-->
         <!--members avatar photo and bio-->
         <div class="card border" id="avatar-background">
             <!--edit bio here to pop a modal-->
 
             <!-- Button trigger MODAL -->
-            <button type="button" class="btn btn-primary" id="editProfileBtn" data-toggle="modal" data-placement="bottom" title="Edit Profile"
-                data-target="#exampleModal"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-primary" id="editProfileBtn" data-toggle="modal"
+                data-placement="bottom" title="Edit Profile" data-target="#exampleModal"><i class="fa fa-pencil fa-2x"
+                    aria-hidden="true"></i></button>
 
-                
+
 
             <!--Modal contents-->
 
@@ -246,26 +249,30 @@
                         </div>
 
 
-                    <!--carousel for My top 3 picks-->
-                    <div class="card left-section">
-                        <div class="card-body background-grey" id="fav-card1">
-                            <h3 class="card-title text-center">Top 3 Favorite Games</h3>
-                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class=""></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="1" class=""></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="2" class="active"></li>
-                                </ol>
-                                <div class="carousel-inner">
-                                    <div class="carousel-item cara-img">
-                                        <img  src="assets/images/profile-images/default-selectedGame.jpg" id="favoriteGameOneImg" class="d-block w-100" alt="...">
-                                    </div>
-                                    <div class="carousel-item cara-img">
-                                        <img src="assets/images/profile-images/default-selectedGame.jpg"  id="favoriteGameTwoImg" class="d-block w-100" alt="...">
-                                    </div>
-                                    <div class="carousel-item active cara-img">
-                                        <img src="assets/images/profile-images/default-selectedGame.jpg" id="favoriteGameThreeImg" class="d-block w-100" alt="...">
-                                    </div>
+                        <!--carousel for My top 3 picks-->
+                        <div class="card left-section">
+                            <div class="card-body background-grey" id="fav-card1">
+                                <h3 class="card-title text-center">Top 3 Favorite Games</h3>
+                                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class=""></li>
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="1" class=""></li>
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="2" class="active">
+                                        </li>
+                                    </ol>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item cara-img">
+                                            <img src="assets/images/profile-images/default-selectedGame.jpg"
+                                                id="favoriteGameOneImg" class="d-block w-100" alt="...">
+                                        </div>
+                                        <div class="carousel-item cara-img">
+                                            <img src="assets/images/profile-images/default-selectedGame.jpg"
+                                                id="favoriteGameTwoImg" class="d-block w-100" alt="...">
+                                        </div>
+                                        <div class="carousel-item active cara-img">
+                                            <img src="assets/images/profile-images/default-selectedGame.jpg"
+                                                id="favoriteGameThreeImg" class="d-block w-100" alt="...">
+                                        </div>
 
                                     </div>
                                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
@@ -323,9 +330,9 @@
                             </div>
                         </div>
                         <!--modal button for populating the fav and least fav games-->
-                        <button type="button" class="btn btn-primary mt-2 edit-game-btn" id="editGameBtn" data-toggle="modal"
-                            data-target="#faveGameModal">  Edit Game Display</button>
-                            
+                        <button type="button" class="btn btn-primary mt-2 edit-game-btn" id="editGameBtn"
+                            data-toggle="modal" data-target="#faveGameModal"> Edit Game Display</button>
+
 
                         <!--Modal contents-->
 
@@ -395,7 +402,7 @@
 
 
                     <!--MIDDLE COLUMN-->
-                    <div id ="middle-column" class="col-lg-6 gedf-main">
+                    <div id="middle-column" class="col-lg-6 gedf-main">
 
                         <!--YOUTUBE CHANNEL-->
                         <div class="card social-timeline-card comments">
@@ -475,8 +482,8 @@
                         </div>
 
 
-                       
-                      
+
+
                     </div>
 
 
@@ -544,19 +551,6 @@
 
                         </div>
 
-
-                        <!-- <div class="col-md-1 bg-primary text-white">.col-md-1</div>
-                        <div class="col-md-1 bg-primary text-white">.col-md-1</div>
-                        <div class="col-md-1 bg-primary text-white">.col-md-1</div>
-                        <div class="col-md-1 bg-primary text-white">.col-md-1</div>
-                        <div class="col-md-1 bg-primary text-white">.col-md-1</div>
-                        <div class="col-md-1 bg-primary text-white">.col-md-1</div>
-                        <div class="col-md-1 bg-primary text-white">.col-md-1</div>
-                        <div class="col-md-1 bg-primary text-white">.col-md-1</div>
-                        <div class="col-md-1 bg-primary text-white">.col-md-1</div>
-                        <div class="col-md-1 bg-primary text-white">.col-md-1</div>
-                        <div class="col-md-1 bg-primary text-white">.col-md-1</div>
-                        <div class="col-md-1 bg-primary text-white">.col-md-1</div> -->
                     </div>
                     <div class="row">
                         <div class="col-md-8 bg-primary text-white">.col-md-8</div>
