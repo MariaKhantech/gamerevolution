@@ -30,7 +30,7 @@ $(document).ready(() => {
 	};
 
 	const getCommentData = (result) => {
-		$.get('api/profile/comment' + result.userId, () => {}).then((data) => {
+		$.get('api/profile/comment' + result.userId, () => { }).then((data) => {
 			//grab the avatar to use in the comments section
 			commentImg = $('#user-profile').attr('src');
 			commentUsername = $('#username').text();
@@ -67,7 +67,7 @@ $(document).ready(() => {
 		});
 	});
 
-	$('#signOut').on('click', function() {
+	$('#signOut').on('click', function () {
 		$.get('/api/logout', (data) => {
 			window.location.replace('/');
 		});
@@ -355,12 +355,12 @@ $(document).ready(() => {
 			url: `api/user-data`,
 			method: 'GET'
 		}).then((data) => {
-			// console.log(data);
+
 			$.ajax({
 				url: `/api/addgames${data.userId}`,
 				method: 'GET'
 			}).then((results) => {
-				// console.log(results);
+
 
 				let dbGames = results;
 
@@ -369,14 +369,13 @@ $(document).ready(() => {
 					let slugURL = `https://rawg.io/api/games/${dbGames[i].game_name}`;
 
 					$.get(slugURL).then((response) => {
-						console.log(response);
 
 						const createCard = $('<div>', {
 							class: 'card d-inline-block ',
 							id: 'game-card',
 							style: 'width: 15rem'
 						});
-						// append card to parent div (line 55 of addGame.html)
+
 						$('#profile-game-area').append(createCard);
 
 						if (response.background_image === null) {
@@ -397,14 +396,14 @@ $(document).ready(() => {
 						const cardBody = $('<div>', {
 							class: 'card-body m-auto'
 						});
-						// append card body to parent .card div
+
 						createCard.append(cardBody);
 
 						const cardTitle = $('<h6>', {
 							class: 'card-title text-center',
 							text: response.name
 						});
-						// append card title to card body
+
 						cardBody.append(cardTitle);
 
 						if (response.released === null) {
@@ -415,7 +414,7 @@ $(document).ready(() => {
 							});
 							cardBody.append(cardDescription);
 						} else {
-							// else set card description to game release year and append to card body
+
 							const gameYear = response.released.split('-');
 
 							const cardDescription = $('<p>', {
@@ -449,7 +448,7 @@ $(document).ready(() => {
 
 						cardBody.append(rawgPercentage, rawgRating, userRatings);
 
-						// variable to create button that will add game to "favorites" library
+
 						const deleteButton = $('<button>', {
 							class: 'btn btn-outline-danger btn-block ',
 							id: 'delete-button',
@@ -458,11 +457,9 @@ $(document).ready(() => {
 							'data-name': response.slug,
 							'data-toggle': 'popover',
 							'data-content': 'Game removed from library',
-
 							text: `Remove from Library`
 						});
 
-						// append button to card body
 						cardBody.append(deleteButton);
 					});
 				}
