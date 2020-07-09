@@ -7,7 +7,8 @@ $(document).ready(() => {
 			console.log(result);
 			userData = result;
 			//sets the username
-			$('#username').text(result.username);
+			$('#username').text(`@${result.username}`);
+
 			//check if profile exists
 			$.get('api/profile' + result.userId, (data) => {
 				if (!data) {
@@ -22,22 +23,53 @@ $(document).ready(() => {
 				loadUserGames();
 				//set corrected youtube embedded video url
 				setEmbeddedYoutubeUrl();
+				//Get user comments //
+				getCommentData(result);
 			});
 		});
 	};
 
-	const getUserData = () => {
-		let userData;
-		$.get('api/user-data', (data) => {
-			return data;
-		}).then((result) => {
-			return result;
+	const getCommentData = (result) => {
+		$.get('api/profile/comment' + result.userId, () => {}).then((data) => {
+			//grab the avatar to use in the comments section
+			commentImg = $('#user-profile').attr('src');
+			commentUsername = $('#username').text();
+
+			//loop through the list of comments in the data obkect
+			Object.entries(data).forEach((entry) => {
+				console.log(entry);
+				createComment(entry[1].comments, commentUsername, commentImg);
+			});
 		});
 	};
 
+	//comment button on user profile//
+	$('#post-btn').on('click', (event) => {
+		//event.preventDefault();
+		// $.post('api/user/comment', (data) => {
+		console.log('works');
+		//grab the value from the text box
+		const userComment = $('#message').val();
+		//checking if the entry is blank if so do not send to database to create an emtpy column
+		if (userComment === '') {
+			alert('no comment provided.');
+			return;
+		}
+		//create an object to store the comment variable
+		const userCommentData = {
+			comment: userComment
+		};
+
+		//post putting comment into the database
+		$.post('/api/profile/comment', userCommentData).then((results) => {
+			console.log('user posts', results);
+			location.reload();
+		});
+	});
+
 	$('#signOut').on('click', function() {
-		$.get('api/logout', (data) => {
-			console.log(data);
+		$.get('/api/logout', (data) => {
+			window.location.replace('/');
 		});
 	});
 
@@ -139,7 +171,7 @@ $(document).ready(() => {
 
 	const loadUserGames = () => {
 		const userId = 2;
-		$.get('api/profile/selectedgames' + userId, (data) => {
+		$.get('api/profile/selectedgames' + userData.userId, (data) => {
 			//populate the modal data
 			populateGameModal(data);
 			//loop throught the data and populate the HTML
@@ -221,7 +253,7 @@ $(document).ready(() => {
 			leastFavoriteThree: $('#leastThree').val()
 		};
 
-		if ($('#profile-name').val().length === 0) {
+		if ($('#currentlyPlayingImg').attr('src').endsWith('default-selectedGame.jpg')) {
 			createSelectedGames(favGameData);
 		} else {
 			updateSelectedGames(favGameData);
@@ -281,6 +313,37 @@ $(document).ready(() => {
 			let embeddedUrl = `https://www.youtube.com/embed/${youtubeUniqueId}`;
 			$('#favoriteVideo').attr('src', embeddedUrl);
 		}
+	};
+
+	//huge div copied from the html to dynamically append a comment to middle column
+	const createComment = (comment, username, imgSrc) => {
+		$('#middle-column').append(
+			`<div class="card social-timeline-card comments">
+			<div class="card-header">
+				<div class="d-flex justify-content-between align-items-center">
+					<div class="d-flex justify-content-between align-items-center">
+						<div class="mr-2">
+							<img id='comment-img' class="rounded-circle" width="45"
+								src="${imgSrc}" alt="">
+						</div>
+						<div class="ml-2">
+							<div id ='comment-user1' class="h5 m-0 text-blue">${username}</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>10 min ago</div>
+				<p class="card-text">${comment}</p>
+			</div>
+			<div class="card-footer">
+				<a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
+				<a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
+				<a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
+			</div>
+		</div>`
+		);
 	};
 
 	//get the latest profile information for the user

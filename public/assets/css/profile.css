@@ -21,6 +21,7 @@ body {
 	border-style: solid;
 	margin-left: 10px;
 }
+/*friends section image*/
 
 .currently-playing-img {
 	max-width: 100%;
@@ -29,9 +30,21 @@ body {
 
 /*edits the edit profile button for profile*/
 #editProfileBtn {
-	width: 75px;
+	width: 50px;
 	height: 50px;
+	background-color: #3500d3;
+	padding: 0;
+	border: none;
+	background: none;
 }
+
+/*edit game button */
+.edit-game-btn {
+	background-color: #3500d3;
+	border-color: black;
+}
+
+/*edit game modal */
 
 .background-modal {
 	background-color: black !important;
@@ -43,10 +56,6 @@ body {
 	border-style: solid;
 	border-color: #3500d3;
 }
-/* .form-control {
-	border-style: solid;
-	border-color: #3500d3;
-} */
 
 /*edits the avatar on the profile*/
 #user-profile {
@@ -74,7 +83,7 @@ body {
 }
 
 /*social media buttons*/
-.fab {
+.fa {
 	padding: 10px;
 	font-size: 25px;
 	text-align: center;
@@ -82,15 +91,12 @@ body {
 	margin: 3px 1px;
 	border-radius: 50%;
 }
-.fa-discord {
-	background: #727cf5;
-	color: white;
-}
+
 .fa-twitch {
 	background: purple;
 	color: white;
 }
-.fa-youtube-square {
+.fa-youtube {
 	background: red;
 	color: white;
 }
@@ -131,9 +137,14 @@ input {
 /*edits the friends section on the profile page*/
 .friends {
 	border-radius: 50%;
-	width: 25% !important;
+	/* width: 25% !important; */
 	border-style: solid;
 	border-color: #3500d3;
+	display: block;
+	max-width: 180px;
+	max-height: 180px;
+	width: auto;
+	height: auto;
 }
 .friends-row {
 	width: 75%;
@@ -274,14 +285,12 @@ iframe {
 }
 
 #game-card {
-
 	margin: 10px 15px 10px 15px;
 
-
 	background: #282828;
-  border-style: double;
-  border-color: #3500d3;
-  color: white;
+	border-style: double;
+	border-color: #3500d3;
+	color: white;
 	margin: 10px 15px 10px 15px;
 }
 
@@ -289,10 +298,8 @@ iframe {
 	background: #282828 !important;
 	border-style: double;
 	border-color: #3500d3;
-    object-fit: cover;
-    display: block;
-    margin: 0px auto 0px auto;
-    height: 200px;
+	object-fit: cover;
+	display: block;
+	margin: 0px auto 0px auto;
+	height: 200px;
 }
-
-

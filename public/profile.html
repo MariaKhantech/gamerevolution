@@ -12,19 +12,14 @@
     <!-- Bootstrap and Fontawesome CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
         integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-    <!--starting snippet-->
 
     <link rel="stylesheet" href="./assets/css/profile.css">
 </head>
 
 <body>
-
-
-    <!--MAIN BOOTSTRAP CONTAINER-->
-
-
     <!--Fixed Navbar-->
     <nav class="navbar navbar-expand-lg fixed-top" id="navbarchange" role="navigation">
 
@@ -38,7 +33,8 @@
                 <ul class="nav navbar-nav">
                     <li class="nav-item"><a href="about.html" class="nav-link text-white">About</a></li>
                     <li class="nav-item"><a href="addGame.html" class="nav-link text-white">Game Search</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-white">Profiles</a></li>
+                    <li class="nav-item"><a href="searchProfiles.html" class="nav-link text-white">Profile Search</a></li>
+                    <li class="nav-item"><a href="profile.html" class="nav-link text-white">My Profile</a></li>
 
                 </ul>
                 <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
@@ -58,19 +54,21 @@
         <div class="img" id="cover-photo"
             style="background-image: url(https://steamcdn-a.akamaihd.net/steam/apps/884530/header.jpg?t=1530762913);height: 350px;background-size: cover;">
             <label for="file-upload">
-                <i class="fas fa-camera"></i>
+                <i class="fa fa-camera"></i>
             </label>
             <input id="coverImg" type="file" />
         </div>
 
-
+           <!--starting snippet reference https://www.bootdey.com/snippets/view/bs4-social-tiemeline#html-->
         <!--members avatar photo and bio-->
         <div class="card border" id="avatar-background">
             <!--edit bio here to pop a modal-->
 
             <!-- Button trigger MODAL -->
-            <button type="button" class="btn btn-primary" id="editProfileBtn" data-toggle="modal"
-                data-target="#exampleModal"><i class="icon-pencil"></i> edit</button>
+            <button type="button" class="btn btn-primary" id="editProfileBtn" data-toggle="modal" data-placement="bottom" title="Edit Profile"
+                data-target="#exampleModal"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></button>
+
+                
 
             <!--Modal contents-->
 
@@ -146,7 +144,7 @@
 
                 <!--https://stackoverflow.com/questions/33553785/replace-input-file-with-my-own-button-in-the-form-->
                 <label for="avatar" class="custom-file-upload">
-                    <i class="fas fa-camera fa-lg"></i>
+                    <i class="fa fa-camera fa-lg"></i>
                 </label>
                 <input id="avatar" type="file" name='avatar_pic' />
 
@@ -156,9 +154,8 @@
                     <p class="card-text text-white" id="profileBio"></p>
                     <!--social media buttons-->
                     <p class="text-white text-center"><i>Follow or add me on:</i></p>
-                    <i class="fab fa-discord fa-3x" aria-hidden="true"></i>
-                    <a href="" id="twitch_icon_url"><i class="fab fa-twitch fa-3x" aria-hidden="true"></i></a>
-                    <a href="" id="youtube_icon_url"><i class="fab fa-youtube-square fa-3x" aria-hidden="true"></i> </a>
+                    <a href="" id="twitch_icon_url"><i class="fa fa-twitch fa-2x mx-auto" aria-hidden="true"></i></a>
+                    <a href="" id="youtube_icon_url"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i> </a>
 
                 </div>
             </div>
@@ -181,9 +178,9 @@
 
             <!--friend 2-->
             <div class="col-md-auto">
-                <div class="friend2 text-center">
+                <div class="friend2">
 
-                    <img class="friends" src="assets/images/profile-images/gamergirl2.png" alt="">
+                    <img class="friends mx-auto" src="assets/images/profile-images/girlgamer.png" alt="">
                     <h3 class="text-center">CottonCandy2.0</h3>
 
                 </div>
@@ -192,7 +189,7 @@
             <!--friend 3-->
             <div class="col-md-auto">
                 <div class="friend3 text-center">
-                    <img class="friends" src="assets/images/profile-images/gamerguy.png" alt="">
+                    <img class="friends" src="assets/images/profile-images/girlgamer.png" alt="">
                     <h3 class="text-center">GameJoe</h3>
                 </div>
             </div>
@@ -261,13 +258,13 @@
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="carousel-item cara-img">
-                                        <img  src="assets/images/profile-images/rsz_1ori.png" id="favoriteGameOneImg" class="d-block w-100" alt="...">
+                                        <img  src="assets/images/profile-images/default-selectedGame.jpg" id="favoriteGameOneImg" class="d-block w-100" alt="...">
                                     </div>
                                     <div class="carousel-item cara-img">
-                                        <img src="assets/images/profile-images/rsz_1ori.png"  id="favoriteGameTwoImg" class="d-block w-100" alt="...">
+                                        <img src="assets/images/profile-images/default-selectedGame.jpg"  id="favoriteGameTwoImg" class="d-block w-100" alt="...">
                                     </div>
                                     <div class="carousel-item active cara-img">
-                                        <img src="assets/images/profile-images/rsz_1ori.png" id="favoriteGameThreeImg" class="d-block w-100" alt="...">
+                                        <img src="assets/images/profile-images/default-selectedGame.jpg" id="favoriteGameThreeImg" class="d-block w-100" alt="...">
                                     </div>
 
                                     </div>
@@ -298,15 +295,15 @@
                                     </ol>
                                     <div class="carousel-inner">
                                         <div class="carousel-item">
-                                            <img src="assets/images/profile-images/rsz_1ori.png"
+                                            <img src="assets/images/profile-images/default-selectedGame.jpg"
                                                 id="leastFavoriteOneImg" class="d-block w-100" alt="...">
                                         </div>
                                         <div class="carousel-item">
-                                            <img src="assets/images/profile-images/rsz_1ori.png"
+                                            <img src="assets/images/profile-images/default-selectedGame.jpg"
                                                 id="leastFavoriteTwoImg" class="d-block w-100" alt="...">
                                         </div>
                                         <div class="carousel-item active">
-                                            <img src="assets/images/profile-images/rsz_1ori.png"
+                                            <img src="assets/images/profile-images/default-selectedGame.jpg"
                                                 id="leastFavoriteThreeImg" class="d-block w-100" alt="...">
                                         </div>
 
@@ -326,8 +323,9 @@
                             </div>
                         </div>
                         <!--modal button for populating the fav and least fav games-->
-                        <button type="button" class="btn btn-primary mt-2" id="editGameBtn" data-toggle="modal"
-                            data-target="#faveGameModal"><i class="icon-pencil"></i> Edit Game Display</button>
+                        <button type="button" class="btn btn-primary mt-2 edit-game-btn" id="editGameBtn" data-toggle="modal"
+                            data-target="#faveGameModal">  Edit Game Display</button>
+                            
 
                         <!--Modal contents-->
 
@@ -381,7 +379,7 @@
                                                 <input type="text" class="form-control border-colors" id="leastThree">
                                             </div>
                                             <br>
-                                            <button type="submit" class="btn btn-primary">Save</button>
+                                            <button type="submit" class="btn btn-primary edit-game-btn">Save</button>
                                         </form>
                                     </div>
                                     <div class="modal-footer background-modal">
@@ -397,7 +395,7 @@
 
 
                     <!--MIDDLE COLUMN-->
-                    <div class="col-lg-6 gedf-main">
+                    <div id ="middle-column" class="col-lg-6 gedf-main">
 
                         <!--YOUTUBE CHANNEL-->
                         <div class="card social-timeline-card comments">
@@ -477,124 +475,8 @@
                         </div>
 
 
-                        <!--COMMENTS THAT ARE ON THE MEMBERS PROFILE-->
-                        <div class="card social-timeline-card comments">
-                            <div class="card-header">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="mr-2">
-                                            <img class="rounded-circle" width="45"
-                                                src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                                        </div>
-                                        <div class="ml-2">
-                                            <div class="h5 m-0 text-blue">@GamerChick</div>
-                                            <div class="h7 text-muted">Miracles Lee Cross</div>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>10 min ago</div>
-                                <a class="card-link" href="#">
-                                    <h5 class="card-title">Lorem ipsum dolor sit amet, consectetur adip.</h5>
-                                </a>
-                                <img src="img/gallery/1a.jpg" alt="" class="img-fluid">
-
-                            </div>
-                            <div class="card-footer">
-                                <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
-                                <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-                                <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
-                            </div>
-                        </div>
-                        <!-- Post /////-->
-
-                        <!--COMMENTS THAT ARE ON THE MEMBERS PROFILE-->
-                        <div class="card social-timeline-card comments">
-                            <div class="card-header">
-                                <div class="d-flex justify-content-between align-items-center">
-
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="mr-2">
-                                            <img class="rounded-circle" width="45"
-                                                src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="">
-                                        </div>
-                                        <div class="ml-2">
-                                            <div class="h5 m-0 text-blue">@JaneSmith</div>
-                                            <div class="h7 text-muted">Miracles Lee Cross</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> 10 min ago</div>
-                                <a class="card-link" href="#">
-                                    <h5 class="card-title"> Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Velit consectetur
-                                        deserunt illo esse distinctio.</h5>
-                                </a>
-                                <p class="card-text">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam omnis nihil, aliquam
-                                    est, voluptates officiis iure soluta alias vel odit, placeat reiciendis ut libero!
-                                    Quas aliquid natus cumque quae repellendus. Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Ipsa, excepturi. Doloremque, reprehenderit! Quos in maiores,
-                                    soluta doloremque molestiae reiciendis libero expedita assumenda fuga quae.
-                                    Consectetur id molestias itaque facere? Hic!
-                                </p>
-                            </div>
-
-
-                            <div class="card-footer">
-                                <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
-                                <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-                                <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
-                            </div>
-                        </div>
-                        <!-- Post /////-->
-                        <!--- \\\\\\\Post-->
-                        <div class="card social-timeline-card comments">
-                            <div class="card-header">
-                                <div class="d-flex justify-content-between align-items-center">
-
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="mr-2">
-                                            <img class="rounded-circle" width="45"
-                                                src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
-                                        </div>
-                                        <div class="ml-2">
-                                            <div class="h5 m-0 text-blue">@JaneSmith</div>
-                                            <div class="h7 text-muted">Miracles Lee Cross</div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> Hace 40 min</div>
-                                <a class="card-link" href="#">
-                                    <h5 class="card-title">Totam non adipisci hic! Possimus ducimus amet, dolores illo
-                                        ipsum quos
-                                        cum.</h5>
-                                </a>
-                                <p class="card-text">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam sunt fugit
-                                    reprehenderit consectetur exercitationem odio, quam nobis? Officiis, similique,
-                                    harum voluptate, facilis voluptas pariatur dolorum tempora sapiente eius maxime
-                                    quaerat.
-                                    <a href="https://mega.nz/#!1J01nRIb!lMZ4B_DR2UWi9SRQK5TTzU1PmQpDtbZkMZjAIbv97hU"
-                                        target="_blank">https://mega.nz/#!1J01nRIb!lMZ4B_DR2UWi9SRQK5TTzU1PmQpDtbZkMZjAIbv97hU</a>
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
-                                <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-                                <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
-                            </div>
-                        </div>
-
-                        <!-- Post /////-->
+                       
+                      
                     </div>
 
 
@@ -609,9 +491,9 @@
 
                                     <div class="left current-game mx-auto">
                                         <img class="img-fluid currently-playing-img" id="currentlyPlayingImg"
-                                            src="assets/images/profile-images/rsz_1ori.png" alt="">
+                                            src="assets/images/profile-images/default-selectedGame.jpg" alt="">
                                     </div>
-                                    <h4 class="text-center" id="currentlyPlayingName">game</h4>
+                                    <h4 class="text-center" id="currentlyPlayingName">TBD</h4>
 
                             </div>
                         </div>

@@ -2,7 +2,6 @@ const db = require('../models');
 const passport = require('../config/passport');
 const router = require('express').Router();
 
-router.get('/', (req, res) => res.json('Sample API get endpoint'));
 //==================== Maria =====================//
 
 //connects to the database to retrieve one profile using the user ID
@@ -18,6 +17,8 @@ router.get('/profile:id', (req, res) => {
 			//res.redirect('/profile?userId=2');
 		});
 });
+
+//
 
 //Creates a profile in the database --Maria
 router.post('/profile/create', (req, res) => {
@@ -168,7 +169,7 @@ router.post('/profile/selectedgames', (req, res) => {
 			leastFavoriteOne: req.body.leastFavoriteOne,
 			leastFavoriteTwo: req.body.leastFavoriteTwo,
 			leastFavoriteThree: req.body.leastFavoriteThree,
-			userId: 2
+			userId: req.user.userId
 		})
 		.then((result) => {
 			console.log(`Posted data successfully`);
@@ -203,6 +204,40 @@ router.put('/profile/selectedgames/update:id', (req, res) => {
 			res.json(dbPost);
 		});
 });
+
+//creates a user comment //
+router.post('/profile/comment', (req, res) => {
+	console.log(req.body);
+	db.Comments
+		.create({
+			comments: req.body.comment,
+			userId: req.user.userId
+		})
+		.then((result) => {
+			console.log(`Posted data successfully`);
+			res.json(result);
+		})
+		.catch((err) => {
+			res.json(err);
+		});
+});
+
+//gets a user comment
+router.get('/profile/comment:id', (req, res) => {
+	db.Comments
+		.findAll({
+			where: {
+				userId: req.params.id
+			},
+			order: [ [ 'createdAt', 'DESC' ] ],
+			limit: 5
+		})
+		.then((dbUserComments) => {
+			res.json(dbUserComments);
+			//res.redirect('/profile?userId=2');
+		});
+});
+
 //================= ENDS MARIA================//
 //==================Gus============//
 
