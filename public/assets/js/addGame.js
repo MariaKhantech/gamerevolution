@@ -71,10 +71,6 @@ $(document).ready(function () {
       $("#alert-modal").modal("show");
       $("#modal-text").text(`Please enter a valid game title!`);
     } else {
-      $("#game-area")
-        .css("background-color", "rgba(12, 0, 50, .7)")
-        .css("border-radius", "5px");
-
       renderSingleGame(gameName);
       ///////////////////////////////////////////// render single chart here
       renderSingleChart(gameName);
@@ -84,6 +80,7 @@ $(document).ready(function () {
   // Multiple game search on-click
   $("#browse-btn").on("click", function (event) {
     event.preventDefault();
+
 
     $("#game-area").html("");
 
@@ -110,10 +107,6 @@ $(document).ready(function () {
       title.push(platformName);
     }
     chartTitle();
-
-    $("#game-area")
-      .css("background-color", "rgba(12, 0, 50, .7)")
-      .css("border-radius", "5px");
 
     if (yearInput === "") {
       renderGameGridPlatOrder(platformId, ordering);
@@ -146,7 +139,7 @@ $(document).ready(function () {
           const createCard = $("<div>", {
             class: "card d-inline-block",
             id: "multi-card",
-            style: "width: 21rem",
+            style: "width: 20rem",
           })
 
           $("#game-area").append(createCard);
