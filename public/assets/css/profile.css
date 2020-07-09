@@ -288,9 +288,14 @@ iframe {
 	margin: 10px 15px 10px 15px;
 	background: #282828;
   	border-style: double;
- 	 border-color: #3500d3;
+ 	border-color: #3500d3;
   	color: white;
 	margin: 10px 15px 10px 15px;
+	transition: transform .2s;
+}
+
+#game-card:hover {
+	transform: scale(1.05);
 }
 
 .img-thumbnail {
@@ -301,4 +306,9 @@ iframe {
 	display: block;
 	margin: 0px auto 0px auto;
 	height: 200px;
+	
+}
+
+#delete-button:hover {
+	transform: translateY(-7px);
 }
