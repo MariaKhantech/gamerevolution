@@ -22,5 +22,11 @@ $(document).ready(() => {
     console.log($("#carousel").data("carousel").nearestItem());
   })
 
+  
+  const fadeInMario = () => {
+    $('#paper-mario1').fadeIn(4000).removeClass('d-none');
+  }
+
+  fadeInMario();
 });
 
