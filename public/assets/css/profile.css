@@ -5,7 +5,36 @@ body {
 	margin-top: 20px;
 	color: black;
 	padding-top: 50px;
+	font-size: 20px;
 }
+
+/*navbar background color*/
+.navbar {
+	background-color: #282828;
+	opacity: .8;
+	
+}
+
+/*drop down background color*/
+.background-dropdown {
+	background-color: #282828;
+	color:white;
+}
+
+/* .my-account {
+
+  } */
+
+
+
+
+.text-white {
+	opacity: none !important;
+}
+#top-section1 {
+	background-color: black;
+}
+/*///////////////*/
 #post-btn {
 	background-color: #3500d3;
 	color: white;
