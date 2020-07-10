@@ -238,6 +238,38 @@ router.get('/profile/comment:id', (req, res) => {
 		});
 });
 
+//gets all profiles
+router.get('/profile/searchAll', (req, res) => {
+	db.Profile
+		.findAll()
+		.then((result) => {
+			res.json(result);
+		})
+		.catch((err) => {
+			res.json(err);
+		});
+});
+
+//finds one user for profile searching friends
+router.get('/profile/searchUser:username', (req, res) => {
+
+	db.User
+		.findOne({
+			where: {
+				username: req.params.username
+			 },
+			 include: [db.Profile]
+		})
+		.then((result) => {
+			res.json(result);
+		})
+		.catch((err) => {
+			res.json(err);
+		});
+});
+
+
+
 //================= ENDS MARIA================//
 //==================Gus============//
 

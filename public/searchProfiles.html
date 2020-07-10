@@ -1,55 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GamerEvolution</title>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>GamerEvolution</title>
 
-        <!-- Bootstrap and Fontawesome CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
-        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+          <!-- Bootstrap and Fontawesome CSS -->
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+          integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/searchProfiles.css">
+      <link rel="stylesheet" type="text/css" href="assets/css/searchProfiles.css">
 
-</head>
-<body>
+  </head>
+  <body>
 
-    <!--Fixed Navbar-->
-    <nav class="navbar navbar-expand-lg" id="navbarchange" role="navigation">
+      <!--Fixed Navbar-->
+      <nav class="navbar navbar-expand-lg" id="navbarchange" role="navigation">
 
-      <div class="container">
-          <a class="navbar-brand text-white" href="index.html">GamerEvolution</a>
-          <button class="navbar-toggler border-0" type="button" data-toggle="collapse"
-              data-target="#exCollapsingNavbar">
-              &#9776;
-          </button>
-          <div class="collapse navbar-collapse" id="exCollapsingNavbar">
-              <ul class="nav navbar-nav">
-                  <li class="nav-item"><a href="about.html" class="nav-link text-white">About</a></li>
-                  <li class="nav-item"><a href="addGame.html" class="nav-link text-white">Game Search</a></li>
-                  <li class="nav-item"><a href="searchProfiles.html" class="nav-link text-white">Profile Search</a></li>
-                  <li class="nav-item"><a href="profile.html" class="nav-link text-white">My Profile</a></li>
+        <div class="container">
+            <a class="navbar-brand text-white" href="index.html">GamerEvolution</a>
+            <button class="navbar-toggler border-0" type="button" data-toggle="collapse"
+                data-target="#exCollapsingNavbar">
+                &#9776;
+            </button>
+            <div class="collapse navbar-collapse" id="exCollapsingNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item"><a href="about.html" class="nav-link text-white">About</a></li>
+                    <li class="nav-item"><a href="addGame.html" class="nav-link text-white">Game Search</a></li>
+                    <li class="nav-item"><a href="searchProfiles.html" class="nav-link text-white">Profile Search</a></li>
+                    <li class="nav-item"><a href="profile.html" class="nav-link text-white">My Profile</a></li>
 
-              </ul>
-              <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
-                  <li class="dropdown order-1">
-                      <button type="button" id="signOut" class="btn btn-outline-secondary text-white ">Sign Out
-                          <span class="caret"></span></button>
-                  </li>
-              </ul>
-          </div>
-      </div>
-  </nav>
-    <!--navbar ends-->
+                </ul>
+                <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
+                    <li class="dropdown order-1">
+                        <button type="button" id="signOut" class="btn btn-outline-secondary text-white ">Sign Out
+                            <span class="caret"></span></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+      <!--navbar ends-->
 
-    <div class="container mt-5 ">
-
+      <div class="container mt-5 ">
+        <h4 class="text-white text-center">Profile Search</h4>
+        <div class="row">
+          <div class="col-lg-3 mx-auto">
+        <div class="input-group mb-3">
+         
+          <input id="searchInput" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
       
-        <div class="row mx-auto style-row">
-          <div id="carousel">
-          <div class="card cloud9-item text-center" style="width: 18rem;">
-            <img src="assets/images/profile-images/girlgamer.png" class="card-img-top" alt="...">
+        <button class="btn btn-outline-secondary text-white ml-1" id="browse-btn" type="button">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+            
+        </div>
+        </div>
+
+        
+          <div class="row mx-auto style-row mt-5">
+            <div id="carousel">
+            <div class="card cloud9-item text-center" style="width: 18rem;">
+              <img id="profile-card"src="assets/images/profile-images/girlgamer.png" class="card-img-top img-portfolio" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" id="profileName">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Add Profile</a>
+              </div>
+            </div>
+
+
+          <div class="card cloud9-item card-size" style="width: 18rem; ">
+            <img src="assets/images/profile-images/girlgamer.png" class="card-img-top img-portfolio" alt="...">
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -57,67 +80,63 @@
             </div>
           </div>
 
+          <div class="card cloud9-item" style="width: 20rem;">
+            <img src="assets/images/profile-images/girlgamer.png" class="card-img-top img-portfolio" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Add Profile</a>
+            </div>
+          </div>
 
-        <div class="card cloud9-item card-size" style="width: 18rem; ">
-          <img src="assets/images/profile-images/girlgamer.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Add Profile</a>
+          <div class="card cloud9-item" style="width: 20rem;">
+            <img src="assets/images/profile-images/girlgamer.png" class="card-img-top img-portfolio" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Add Profile</a>
+            </div>
+          </div>
+
+          <div class="card cloud9-item" style="width: 18rem;">
+            <img src="assets/images/profile-images/girlgamer.png" class="card-img-top img-portfolio" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Add Profile</a>
+            </div>
+          </div>
+
+          
+        </div> 
+          <div class="row text-center" id="buttons">
+            <div id="buttons">
+              <button class="left raise button">←</button></a>
+              <button class="right raise button"> →
+            </button>
           </div>
         </div>
 
-        <div class="card cloud9-item" style="width: 20rem;">
-          <img src="assets/images/profile-images/girlgamer.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Add Profile</a>
-          </div>
-        </div>
+        <!-- <audio id="audiolvl"  autoplay="autoplay">
+          <source src="assets/sounds/its-me-mario.mp3" type="audio/mpeg">
+          </audio> -->
 
-        <div class="card cloud9-item" style="width: 20rem;">
-          <img src="assets/images/profile-images/girlgamer.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Add Profile</a>
-          </div>
-        </div>
+      <div class=""><img class ="brick" src="assets/images/search-profile-img/mariobrick.png"></div>
 
-        <div class="card cloud9-item" style="width: 18rem;">
-          <img src="assets/images/profile-images/girlgamer.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Add Profile</a>
-          </div>
-        </div>
+    <div class="float-left d-none" id="paper-mario1"><img class="paper-mario" src="assets/images/search-profile-img/papermario.png"></div>
 
-        
-      </div> 
-        <div class="row text-center" id="buttons">
-          <div id="buttons">
-            <button class="left raise button">←</button></a>
-             <button class="right raise button"> →
-          </button>
-        </div>
-      </div>
+  </div>
+  
+  </div>
 
-   
-
- </div>
- 
-</div>
-
-        <!-- Optional JavaScript -->
-    <!-- Popper.js first, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="assets/plugin/3dhovercar/3D-Cover-Flow-Style-Image-Carousel-Plugin-with-jQuery-Cloud-9-Carousel/jquery.cloud9carousel.js"></script>
-    <script src="assets/plugin/3dhovercar/3D-Cover-Flow-Style-Image-Carousel-Plugin-with-jQuery-Cloud-9-Carousel/jquery.reflection.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-    
-    <script src="assets/js/searchProfiles.js"></script>
-</body>
-</html>
+          <!-- Optional JavaScript -->
+      <!-- Popper.js first, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="assets/plugin/3dhovercar/3D-Cover-Flow-Style-Image-Carousel-Plugin-with-jQuery-Cloud-9-Carousel/jquery.cloud9carousel.js"></script>
+      <script src="assets/plugin/3dhovercar/3D-Cover-Flow-Style-Image-Carousel-Plugin-with-jQuery-Cloud-9-Carousel/jquery.reflection.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+      
+      <script src="assets/js/searchProfiles.js"></script>
+  </body>
+  </html>

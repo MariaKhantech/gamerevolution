@@ -36,6 +36,10 @@ module.exports = (sequelize, DataTypes) => {
 		}
 	});
 
+	User.associate = (models) => {
+		User.hasOne(models.Profile, { foreignKey: 'userId' });
+	}
+
 	User.prototype.validPassword = function(password) {
 		return password === this.password;
 	  };

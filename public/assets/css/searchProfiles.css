@@ -1,13 +1,40 @@
 body {
   background-color: black;
   padding-bottom: 70px;
+  font-size: 20px;
 }
 
 div.row.style-row {
-	/* box-shadow: 0 4px 20px 0 #5e0ce2, 0 10px 50px 0 #5e0ce2; 
-	*/
-	box-shadow: 0px 0px 10px 20px rgba(94,12,226, .65);
+	box-shadow: 0px 0px 10px 20px rgba(94,12,226, .550);
 }
+
+.brick {
+  height: 50px;
+  margin-left: 15px;
+}
+
+
+ .paper-mario {
+	width: 100px;
+  height: 100%;
+  animation: spin 1s linear alternate-reverse infinite;
+	background: url(public\assets\images\search-profile-img\papermario.png);
+
+}
+
+#paper-mario1 {
+  margin-top: 10px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+} 
+
 
 
 .style-row {
@@ -15,10 +42,11 @@ div.row.style-row {
   border-color: #5e0ce2;
   background-color: #00008b;
   padding: 50px;
+  padding-bottom: 5px;
 }
 
 /* images in cards*/
-img {
+.img-portfolio {
 	border-radius: 40%;
 }
 

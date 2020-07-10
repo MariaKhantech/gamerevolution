@@ -23,6 +23,12 @@ li {
 	background-color: black;
 	opacity: .8;
 }
+/*drop down background color*/
+.background-dropdown {
+	background-color: black;
+	color:white;
+}
+
 
 
 /*login modal window*/
