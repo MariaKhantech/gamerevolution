@@ -241,7 +241,7 @@ $(document).ready(function () {
           const createCard = $("<div>", {
             class: "card d-inline-block mr-3 mt-3",
             id: "multi-card",
-            style: "width: 21rem",
+            style: "width: 20rem",
           });
 
           $("#game-area").append(createCard);
@@ -352,7 +352,7 @@ $(document).ready(function () {
           const createCard = $("<div>", {
             class: "card d-inline-block mr-3 mt-3",
             id: "multi-card",
-            style: "width: 21rem",
+            style: "width: 20rem",
           });
 
           $("#game-area").append(createCard);
@@ -470,9 +470,9 @@ $(document).ready(function () {
           let slugResponse = response;
 
           const createCard = $("<div>", {
-            class: "card text-center mx-auto",
+            class: "card text-center mx-auto mt-2",
             id: "single-card",
-            style: "width: 60%;",
+            style: "width: 55%;",
           });
 
           $("#game-area").append(createCard);
