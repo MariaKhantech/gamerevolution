@@ -4,7 +4,7 @@ body {
 }
 
 div.row.style-row {
-	box-shadow: 0px 0px 10px 20px rgba(94,12,226, .40), rgba(231, 228, 235, 0.55);
+	box-shadow: 0px 0px 10px 20px rgba(94,12,226, .550);
 }
 
 .brick {
@@ -22,7 +22,7 @@ div.row.style-row {
 }
 
 #paper-mario1 {
-  margin-top: 100px;
+  margin-top: 10px;
 }
 
 @keyframes spin {
@@ -59,21 +59,6 @@ div.row.style-row {
   font-size: 30px;
 }
 /*end of navbar change*/
-
-/*search menu */
-.search-menu {
- 
-  margin: 10px auto 0px auto;
-  border-style: double;
-  border-color: #3500d3;
-  border-radius: 10px;
-  padding: 20px;
-}
-
-/* .search-profile {
-  margin-right: 3rem !important;
-} */
-
 /*plugin for carousel*/
 #carousel .cloud9-item, #buttons button {
   cursor: pointer;

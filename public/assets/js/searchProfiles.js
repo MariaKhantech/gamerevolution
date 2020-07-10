@@ -28,5 +28,34 @@ $(document).ready(() => {
   }
 
   fadeInMario();
+
+  function triggerExplosion() {
+		let explosionAudio = $('<Audio></Audio>');
+		explosionAudio[0].src = 'assets/sounds/explosion.wav';
+		explosionAudio[0].play();
+		//stop audio for spaceship engine//
+		$('#audiospaceship')[0].pause();
+
+		//used to edit the animation, speed of explosion animation//
+		$('#explodeship').explode({
+			omitLastLine: false,
+			radius: 80,
+			minRadius: 20,
+			release: true,
+			fadeTime: 300,
+			recycle: true,
+			recycleDelay: 10,
+			fill: true,
+			explodeTime: 300,
+			maxAngle: 360,
+			gravity: 0,
+			round: false,
+			groundDistance: 400,
+			ignoreCompelete: false,
+			land: true
+		});
+	}
+
+
 });
 
