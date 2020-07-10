@@ -28,7 +28,7 @@ $(document).ready(() => {
 			});
 		});
 	};
-
+//function TODO COMMENT
 	const getCommentData = (result) => {
 		$.get('api/profile/comment' + result.userId, () => { }).then((data) => {
 			//grab the avatar to use in the comments section

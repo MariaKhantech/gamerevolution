@@ -1,7 +1,8 @@
 
 $(document).ready(() => {
 
-  $("#carousel").Cloud9Carousel( {
+	//////////////////////animation js///////////
+ $("#carousel").Cloud9Carousel( {
     buttonLeft: $("#buttons > .left"),
     buttonRight: $("#buttons > .right"),
     autoPlay: 0,
@@ -16,7 +17,7 @@ $(document).ready(() => {
  
 
   });
-  console.log($("#carousel").data("carousel").itemsRotated());
+  console.log($("#carousel").data("carousel").nearestItem());
 
   $('.left').on('click', (event) =>{
     console.log($("#carousel").data("carousel").nearestItem());
@@ -57,5 +58,55 @@ $(document).ready(() => {
 	}
 
 
+
+	//funcionality js///
+
+const showAllProfiles = () => {
+	$.get('/api/profile/searchUser', () => { }).then((data) => {
+
+	});
+}
+
+$('#browse-btn').on('click', (event) => {
+	console.log('works');
+	const searchValue = $("#searchInput").val();
+	if (searchValue === "") {
+		return 
+	} 
+	$.get('/api/profile/searchUser' + searchValue, () => { }).then((data) => {
+		console.log("this is search profile data")
+		console.log(data);
+		console.log($("#carousel").data("carousel").nearestItem().element);
+		//create a profile card//
+		 $("#carousel").data("carousel").nearestItem().element=
+		 
+		//  let searchProfileCard = createProfileCard(data.Profile.avatarImg, data.username, data.Profile.bio);
+
+		$("#carousel").data("carousel").nearestItem() 
+		// const profileCardImg = $("#profile-card").attr("src");
+		// const profileName = $("#profileName").text();
+		// const profileBio = $("profileBio").text();
+
+		// data.username
+		// data.Profile.avatarImg
+		
+		});	
 });
 
+	const createProfileCard = (imgsrc, profileName, profileBio) => {
+		return $("#middle-column").append(
+			` <div id="carousel">
+            <div class="card cloud9-item text-center" style="width: 18rem;">
+              <img id="profile-card"src="${imgsrc}" class="card-img-top img-portfolio" alt="...">
+              <div class="card-body">
+                <h5 class="${profileName}" id="profileName">Card title</h5>
+                <p class="card-text">${profileBio}</p>
+                <a href="#" class="btn btn-primary">Add Profile</a>
+              </div>
+            </div>`
+		)
+
+
+	}
+
+});
