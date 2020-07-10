@@ -623,6 +623,9 @@ $(document).ready(function () {
   //   // makes main chart
   let chartID = [];
   function renderCharts() {
+    // chart.update();
+    // lineChart.update();
+    // doughnutChart.update();
     // enable tabs
     $("#doughnut-tab").prop("disabled", false);
     $("#line-tab").prop("disabled", false);
@@ -655,13 +658,16 @@ $(document).ready(function () {
               // fillColor: "rgba(220, 220, 220, .5)",
               // fill: true,
               // backgroundColor: colorPaletteRGBTransparent,
-              fill: false,
+              fill: true,
               backgroundColor: colorPaletteRGBTransparent,
               borderColor: colorPaletteRGBOpaque,
             },
           ],
         },
         options: {
+          legend: {
+            display: false,
+          },
           // fillColor: "rgba(220,220,220,0)",
           defaultFontColor: "white",
           title: {
@@ -750,6 +756,9 @@ $(document).ready(function () {
           ],
         },
         options: {
+          legend: {
+            display: false,
+          },
           title: {
             display: true,
             position: "top",
@@ -807,14 +816,29 @@ $(document).ready(function () {
 
   // toggle light and dark mode. remember to do this for all charts
   $("#toggle-demo").change(() => {
-    if ($("#topChartCard").hasClass("make-white")) {
+    if (
+      $("#topChartCard").hasClass("make-white") ||
+      $("#doughnutCard").hasClass("make-white") ||
+      $("#lineCard").hasClass("make-white")
+    ) {
       $("#topChartCard").removeClass("make-white");
+      $("#doughnutCard").removeClass("make-white");
+      $("#lineCard").removeClass("make-white");
+
       $("#topChartCard").addClass("make-black");
+      $("#doughnutCard").addClass("make-black");
+      $("#lineCard").addClass("make-black");
       chart.options.defaultFontColor = "white";
       chart.data.datasets[0].backgroundColor = colorPaletteRGBOpaque;
     } else {
       $("#topChartCard").removeClass("make-black");
+      $("#doughnutCard").removeClass("make-black");
+      $("#lineCard").removeClass("make-black");
+
       $("#topChartCard").addClass("make-white");
+      $("#doughtnutCard").addClass("make-white");
+      $("#lineCard").addClass("make-white");
+
       chart.options.defaultFontColor = "black";
       chart.data.datasets[0].backgroundColor = colorPaletteRGBTransparent;
     }
@@ -853,7 +877,9 @@ function renderSingleChart(searchInput) {
                 response.ratings[2].percent,
                 response.ratings[3].percent,
               ],
-              backgroundColor: colorPalette,
+              backgroundColor: colorPaletteRGBTransparent,
+              borderColor: colorPaletteRGBOpaque,
+              fill: true,
             },
           ],
         },
@@ -867,14 +893,23 @@ function renderSingleChart(searchInput) {
       });
     });
   });
-  const colorPalette = [
-    "#3500D3",
-    "#00ffff",
-    "#4b7fff",
-    "#703fff",
-    "#9600ff",
-    "#00e6e6",
-    "#240090",
+  const colorPaletteRGBTransparent = [
+    "rgba(53,0,211,.4)",
+    "rgba(0,255,255,.4)",
+    "rgba(75,127,255,.4)",
+    "rgba(112,63,255,.4)",
+    "rgba(150,0,255,.4)",
+    "rgba(0,230,230,.4)",
+    "rgba(36,0,230,.4)",
+  ];
+  const colorPaletteRGBOpaque = [
+    "rgba(53,0,211,1)",
+    "rgba(0,255,255,1)",
+    "rgba(75,127,255,1)",
+    "rgba(112,63,255,1)",
+    "rgba(150,0,255,1)",
+    "rgba(0,230,230,1)",
+    "rgba(36,0,230,1)",
   ];
 }
 // bubble chart ref
