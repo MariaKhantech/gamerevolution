@@ -28,125 +28,152 @@ h4.display-4 {
     padding-left: 30px;
 } */
 
-
-
 /* personal images w/ info */
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  margin: 0;
-  font-family: "Montserrat", sans-serif;
-  font-size: 20px;
-  background-color:black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	margin: 0;
+	font-family: "Montserrat", sans-serif;
+	font-size: 20px;
+	background-color: black;
 }
 
+/*navbar background color*/
+.navbar {
+	background-color: #282828;
+	opacity: .8;
+}
+
+/*drop down background color*/
+.background-dropdown {
+	background-color: #282828;
+	color: white;
+}
+
+/*logo on navbar*/
+#GamerEvolutionLogo {
+	font-size: 30px;
+}
+/*end navbar*/
+
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
 }
 .container__image_M {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background-image: url("https://arhsharbinger.com/wp-content/uploads/2019/01/aquaman-box-office-900x600.jpg");
-    background-size: cover;
-    transition: ease-in-out 0.3s;
-    z-index: 2;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	background-image: url("https://arhsharbinger.com/wp-content/uploads/2019/01/aquaman-box-office-900x600.jpg");
+	background-size: cover;
+	transition: ease-in-out 0.3s;
+	z-index: 2;
 }
 .container__image_C {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background-image: url("https://akns-images.eonline.com/eol_images/Entire_Site/2019021/rs_600x600-190121052851-Captura_de_pantalla_2019-01-21_a_las_10.40.07.png?fit=around|700:700&output-quality=90&crop=700:700;center,top");
-    background-size: cover;
-    transition: ease-in-out 0.3s;
-    z-index: 2;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	background-image: url("https://akns-images.eonline.com/eol_images/Entire_Site/2019021/rs_600x600-190121052851-Captura_de_pantalla_2019-01-21_a_las_10.40.07.png?fit=around|700:700&output-quality=90&crop=700:700;center,top");
+	background-size: cover;
+	transition: ease-in-out 0.3s;
+	z-index: 2;
 }
 
 .container__image_S {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background-image: url("https://i.pinimg.com/originals/65/0c/f3/650cf3b54d44e628bbeb9890f113523c.jpg");
-    background-size: cover;
-    transition: ease-in-out 0.3s;
-    z-index: 2;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	background-image: url("https://i.pinimg.com/originals/65/0c/f3/650cf3b54d44e628bbeb9890f113523c.jpg");
+	background-size: cover;
+	transition: ease-in-out 0.3s;
+	z-index: 2;
 }
-
 
 .container__image_G {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background-image: url("https://imgix.bustle.com/uploads/image/2020/6/17/9d67f705-d6cb-4e44-a98d-37c21108cef5-tony-iron-man.jpg");
-    background-size: cover;
-    transition: ease-in-out 0.3s;
-    z-index: 2;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	background-image: url("https://imgix.bustle.com/uploads/image/2020/6/17/9d67f705-d6cb-4e44-a98d-37c21108cef5-tony-iron-man.jpg");
+	background-size: cover;
+	transition: ease-in-out 0.3s;
+	z-index: 2;
 }
 
-
-.container__image_M:before, .container__image_C:before, .container__image_S:before, .container__image_G:before {
-    content: " ";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-    background: inherit;
-    background-position: bottom;
-    filter: blur(40px) saturate(0%);
-    transform: scaleX(0.4);
-    transition: ease-in-out 0.4s;
-    border-radius: 120px;
-    transform-origin: right;
-    opacity: 0;
-    z-index: -1;
+.container__image_M:before,
+.container__image_C:before,
+.container__image_S:before,
+.container__image_G:before {
+	content: " ";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	background: inherit;
+	background-position: bottom;
+	filter: blur(40px) saturate(0%);
+	transform: scaleX(0.4);
+	transition: ease-in-out 0.4s;
+	border-radius: 120px;
+	transform-origin: right;
+	opacity: 0;
+	z-index: -1;
 }
 
-.container__image_M .container__info, .container__image_C .container__info, .container__image_S .container__info, .container__image_G .container__info {
-    position: relative;
-    line-height: 1.8;
-    transition: ease-in-out 0.3s;
-    opacity: 0;
+.container__image_M .container__info,
+.container__image_C .container__info,
+.container__image_S .container__info,
+.container__image_G .container__info {
+	position: relative;
+	line-height: 1.8;
+	transition: ease-in-out 0.3s;
+	opacity: 0;
 }
-.container__image_M .container__location, .container__image_C .container__location, .container__image_S .container__location, .container__image_G .container__location {
-    transition-delay: 0.15s;
+.container__image_M .container__location,
+.container__image_C .container__location,
+.container__image_S .container__location,
+.container__image_G .container__location {
+	transition-delay: 0.15s;
 }
-.container__image_M:hover, .container__image_C:hover, .container__image_S:hover, .container__image_G:hover {
-    border-radius: 0;
-    width: 250px;
-    height: 250px;
-    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(9, 55, 53, 0.08), 0px 16px 24px rgba(9, 55, 53, 0.1), 0px 24px 32px rgba(9, 55, 53, 0.14);
+.container__image_M:hover,
+.container__image_C:hover,
+.container__image_S:hover,
+.container__image_G:hover {
+	border-radius: 0;
+	width: 250px;
+	height: 250px;
+	box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(9, 55, 53, 0.08), 0px 16px 24px rgba(9, 55, 53, 0.1),
+		0px 24px 32px rgba(9, 55, 53, 0.14);
 }
 /* .container__image_M:hover:before {
     width: 100%;
@@ -154,19 +181,21 @@ body {
     filter: blur(10px) saturate(100%);
     transform: scale(2.8) translate3d(-18%, 0px, 0px);
 } */
-.container__image_M:hover .container__info, .container__image_C:hover .container__info, .container__image_S:hover .container__info, .container__image_G:hover .container__info {
-    transform: translate3d(-60%, 0px, 0px);
-    opacity: 1;
+.container__image_M:hover .container__info,
+.container__image_C:hover .container__info,
+.container__image_S:hover .container__info,
+.container__image_G:hover .container__info {
+	transform: translate3d(-60%, 0px, 0px);
+	opacity: 1;
 }
-  
+
 .link {
-    border-bottom: 1px solid transparent;
-    color: #06c0a8;
-    text-decoration: none;
-    transition: ease-in 0.13s;
+	border-bottom: 1px solid transparent;
+	color: #06c0a8;
+	text-decoration: none;
+	transition: ease-in 0.13s;
 }
 .link:hover {
-    background-color: #06c0a8;
-    color: #ffffff;
+	background-color: #06c0a8;
+	color: #ffffff;
 }
-  
