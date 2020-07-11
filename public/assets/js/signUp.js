@@ -27,12 +27,6 @@ $(document).ready(() => {
 
 		//run signUp when all data is input
 		signUp(userData.firstName, userData.lastName, userData.username, userData.email, userData.password);
-		//get values of all input
-		// firstNameInput.val("");
-		// lastNameInput.val("");
-		// usernameInput.val("");
-		// emailInput.val("");
-		// passwordInput.val("");
 	});
 
 	function signUp(firstNameParam, lastNameParam, usernameParam, emailParam, passwordParam) {
