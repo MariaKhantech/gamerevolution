@@ -21,7 +21,7 @@ const strategyVal = $("#strategyVal");
 let userData = [];
 const ctx = document.getElementById("userChart").getContext("2d");
 //set chart font to white
-Chart.defaults.global.defaultFontColor = "white";
+Chart.defaults.global.defaultFontColor = "black";
 //initilize chart
 let userRadarChart = new Chart(ctx, {
   type: "radar",
@@ -48,22 +48,24 @@ let userRadarChart = new Chart(ctx, {
     ],
   },
   options: {
+    backgroundColor: "black",
     fontColor: "white",
     legend: {
       labels: {
-        fontColor: "white",
+        fontColor: "black",
       },
     },
     scale: {
       gridLines: {
-        color: "white",
+        color: "black",
       },
       angleLines: {
         display: false,
       },
       ticks: {
-        suggestedMin: 1,
-        suggestedMax: 10,
+        display: false,
+        // suggestedMin: 1,
+        // suggestedMax: 10,
       },
     },
   },
@@ -112,14 +114,15 @@ saveStatBtn.on("click", () => {
     options: {
       scale: {
         gridLines: {
-          color: "white",
+          color: "black",
         },
         angleLines: {
           display: false,
         },
         ticks: {
-          suggestedMin: 1,
-          suggestedMax: 10,
+          display: false,
+          // suggestedMin: 1,
+          // suggestedMax: 10,
         },
       },
     },
@@ -133,5 +136,9 @@ saveStatBtn.on("click", () => {
 function updateUserChart() {
   userRadarChart.update();
   userRadarChart.data.datasets.data = userData;
+}
+
+function updateRadar() {
+  userRadarChart.options.backgroundColor = "white";
 }
 // decide size of chart by 5 or 10?
