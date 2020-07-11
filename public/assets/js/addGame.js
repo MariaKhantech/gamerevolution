@@ -962,10 +962,16 @@ function createChart(ctx, type) {
   new Chart(ctx, {
     type: type,
     data: {
-      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+      labels: [
+        "Metal Gear Solid 5",
+        "Animal Crossing: New Horizons",
+        "Bioshock: Collection",
+        "OverWatch",
+        "The Witcher 3: Wild Hunt",
+      ],
       datasets: [
         {
-          label: "Population (millions)",
+          label: "Metacritic Score",
           backgroundColor: [
             "#3e95cd",
             "#8e5ea2",
@@ -973,7 +979,7 @@ function createChart(ctx, type) {
             "#e8c3b9",
             "#c45850",
           ],
-          data: [2478, 5267, 734, 784, 433],
+          data: [78, 67, 73, 78, 93],
         },
       ],
     },
@@ -981,7 +987,7 @@ function createChart(ctx, type) {
       legend: { display: false },
       title: {
         display: true,
-        text: "Predicted world population (millions) in 2050",
+        text: "Top Games 2020",
       },
     },
   });
