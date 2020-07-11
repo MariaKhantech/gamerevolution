@@ -11,8 +11,49 @@ div.row.style-row {
 .brick {
   height: 50px;
   margin-left: 15px;
+  margin-bottom: 1px !important;
+
 }
 
+/*style profile cards*/
+.style-p-card {
+  background-color: black;
+
+}
+
+.style-card {
+  background-color: black;
+  padding: 20px;
+  height: 100%;
+}
+
+
+/*styles the text in the profile card*/
+.card-text {
+  font-size: 15px;
+}
+.card-add-btn {
+  background-color: #5e0ce2;
+  border-color: white;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 15vw !important;
+  object-fit: cover;
+}
+
+/* images in cards*/
+.img-portfolio {
+  height: 10%;
+  border-radius: 40%;
+  border-style: solid;
+  border-color: #5e0ce2;
+  box-shadow:  0 0 2px #fff, 0 0 5px #fff, 0 0 10px #a515b8, 0 0 10px #bf08c5, 0 0 10px #ff0080, 0 0 40px blueviolet , 0 0 75px blue;;
+ 
+}
+
+/*end styling the profile cards */
 
  .paper-mario {
 	width: 100px;
@@ -45,15 +86,10 @@ div.row.style-row {
   padding-bottom: 5px;
 }
 
-/* images in cards*/
-.img-portfolio {
-	border-radius: 40%;
-}
-
 /*change the navbar*/
 #navbarchange {
   background: #282828;
-  font-size: 20px;
+ 
 }
 
 #GamerEvolutionLogo {

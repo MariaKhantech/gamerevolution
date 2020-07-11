@@ -1,44 +1,77 @@
 
 $(document).ready(() => {
 
-	//////////////////////animation js///////////
- $("#carousel").Cloud9Carousel( {
-    buttonLeft: $("#buttons > .left"),
-    buttonRight: $("#buttons > .right"),
-    autoPlay: 0,
-    bringToFront: true,
-    yRadius:100,
-    xRadius: 600,
-    mirror: {
-      gap: 12,     /* 12 pixel gap between item and reflection */
-      height: 0.2, /* 20% of item height */
-      opacity: 0.4 /* 40% opacity at the top */
-    }
- 
+	//returns a profile card div
+	const createProfileCard = (imgsrc, profileName, profileBio) => {
+		return $(`<div class="col-lg-3 ,mb-5">
+		<div class="card text-center style-card" style="width: 18rem;">
+		  <img id="profile-card"src="${imgsrc}" class="card-img-top img-portfolio img-fluid" alt="...">
+		  <div class="card-body">
+			<h5 class="card-title text-white style-p-card" id="profileName">${profileName}</h5>
+			<hr class="text-white">
+			<p class="card-text text-white style-p-card">${profileBio}.</p>
+			<a href="#" class="btn btn-primary card-add-btn">Add Profile</a>
+		  </div>
+		</div>
+	  </div>
+	`);
+	}
 
-  });
-  console.log($("#carousel").data("carousel").nearestItem());
+	//call the route to return all profiles to be rendrered on the page
+	const showAllProfiles = () => {
+		$.get("/api/profile/searchAll", () => {
+		}).then((result) => {
+			//looping through the list of results
+			Object.entries(result).forEach((entry) => {
+				console.log(entry);
+				//holding profile card div
+				const srcImg = entry[1].Profile.avatarImg.substring(entry[1].Profile.avatarImg.indexOf('/'));
+				
+				const cardHTML = createProfileCard(srcImg, entry[1].username, entry[1].Profile.bio );
+				
+				//appending profile card onto profile-grid
+				$("#profile-grid").append(cardHTML);
+			});	
+		});
+	}
 
-  $('.left').on('click', (event) =>{
-    console.log($("#carousel").data("carousel").nearestItem());
-  })
+	const runProfileSearch = (searchValue) => {
+		$.get('/api/profile/searchUser' + searchValue, () => { }).then((data) => {
+			//invalid profile name
+			if(!data) {
+				alert ("profile does not exist");
+				return;
+			}
+			//clear the profile grid
+			$("#profile-grid").html("");
+			//append to the profil grid
+			const srcImg = data.Profile.avatarImg.substring(data.Profile.avatarImg.indexOf('/'));
+			const cardHTML = createProfileCard(srcImg, data.username, data.Profile.bio );
+			$("#profile-grid").append(cardHTML);
+	
+		});	
+	}
 
-  
-  const fadeInMario = () => {
-    $('#paper-mario1').fadeIn(4000).removeClass('d-none');
-  }
+	//mario fades intp the page
+	const fadeInMario = () => {
+		$('#paper-mario1').fadeIn(4000).removeClass('d-none');
+	}
 
-  fadeInMario();
+	fadeInMario();
+	showAllProfiles();
 
-  function triggerExplosion() {
-		let explosionAudio = $('<Audio></Audio>');
-		explosionAudio[0].src = 'assets/sounds/explosion.wav';
-		explosionAudio[0].play();
-		//stop audio for spaceship engine//
-		$('#audiospaceship')[0].pause();
+//   function triggerExplosion() {
+		// let explosionAudio = $('<Audio></Audio>');
+		// explosionAudio[0].src = 'assets/sounds/explosion.wav';
+		// explosionAudio[0].play();
+		// //stop audio for spaceship engine//
+		// $('#audiospaceship')[0].pause();
 
-		//used to edit the animation, speed of explosion animation//
-		$('#explodeship').explode({
+		//used to edit the animation, speed of explosion animation/
+
+		$('.brick').explode();
+
+		$('.brick').explode({
 			omitLastLine: false,
 			radius: 80,
 			minRadius: 20,
@@ -47,7 +80,7 @@ $(document).ready(() => {
 			recycle: true,
 			recycleDelay: 10,
 			fill: true,
-			explodeTime: 300,
+			explodeTime: 100,
 			maxAngle: 360,
 			gravity: 0,
 			round: false,
@@ -55,58 +88,40 @@ $(document).ready(() => {
 			ignoreCompelete: false,
 			land: true
 		});
-	}
+	// }
+
+	$('.brick').explodeRestore();
 
 
+	// $('.brick').on("", function(event) {
+	// 	triggerExplosion();
 
-	//funcionality js///
-
-const showAllProfiles = () => {
-	$.get('/api/profile/searchUser', () => { }).then((data) => {
-
+	$('#browse-btn').on('click', (event) => {
+		const searchValue = $("#searchInput").val();
+		if (searchValue === "") {
+			$("#profile-grid").html("");
+			showAllProfiles();
+			return;
+		}
+		runProfileSearch(searchValue);
 	});
-}
 
-$('#browse-btn').on('click', (event) => {
-	console.log('works');
-	const searchValue = $("#searchInput").val();
-	if (searchValue === "") {
-		return 
-	} 
-	$.get('/api/profile/searchUser' + searchValue, () => { }).then((data) => {
-		console.log("this is search profile data")
-		console.log(data);
-		console.log($("#carousel").data("carousel").nearestItem().element);
-		//create a profile card//
-		 $("#carousel").data("carousel").nearestItem().element=
-		 
-		//  let searchProfileCard = createProfileCard(data.Profile.avatarImg, data.username, data.Profile.bio);
 
-		$("#carousel").data("carousel").nearestItem() 
-		// const profileCardImg = $("#profile-card").attr("src");
-		// const profileName = $("#profileName").text();
-		// const profileBio = $("profileBio").text();
+	//toggle nav bar link if the user is logged in
+	$.get('/api/user-data', () => { }).then((result) => {		
+		if(result.userId) {
+			$('#myprofilelink').removeClass('d-none')
+			$('#signOut').parent().removeClass('d-none');
+			$('#loginBtn').addClass('d-none');
+		} 
+	});
 
-		// data.username
-		// data.Profile.avatarImg
-		
-		});	
+	//handle sign out btn
+	$('#signOut').on('click', function () {
+		$.get('/api/logout', (data) => {
+			window.location.replace('/');
+		});
+	});
 });
 
-	const createProfileCard = (imgsrc, profileName, profileBio) => {
-		return $("#middle-column").append(
-			` <div id="carousel">
-            <div class="card cloud9-item text-center" style="width: 18rem;">
-              <img id="profile-card"src="${imgsrc}" class="card-img-top img-portfolio" alt="...">
-              <div class="card-body">
-                <h5 class="${profileName}" id="profileName">Card title</h5>
-                <p class="card-text">${profileBio}</p>
-                <a href="#" class="btn btn-primary">Add Profile</a>
-              </div>
-            </div>`
-		)
 
-
-	}
-
-});
