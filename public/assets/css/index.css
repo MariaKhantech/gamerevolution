@@ -1,6 +1,11 @@
 * body {
 	background-color: black;
+	font-size: 20px;
+	font-family: "Montserrat", sans-serif;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
 /*tiktok video*/
 .right-mariohv {
 	margin-right: 10rem !important;
@@ -16,8 +21,6 @@
 /*mario king image and logo */
 .mario-king {
 	margin-top: 300px;
-
-	
 }
 
 .mario-logo {
@@ -42,22 +45,25 @@ li {
 /*drop down background color*/
 .background-dropdown {
 	background-color: black;
-	color:white;
+	color: white;
 }
-
+/*logo on navbar*/
+#GamerEvolutionLogo {
+	font-size: 30px;
+}
 
 /*login modal window*/
 .px-3 {
-background-color: black;
+	background-color: black;
 }
 
 #emailInput,
-#passwordInput{
-
-	background-color:white;
+#passwordInput {
+	background-color: white;
 	border-color: black;
 }
-.login-button, .login-dropdown {
+.login-button,
+.login-dropdown {
 	background-color: #3500d3;
 	border-color: black;
 }
