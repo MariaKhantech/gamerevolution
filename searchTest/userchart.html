@@ -18,13 +18,14 @@
       <!-- Chart -->
       
       <div class="card-body">
-        <button id="userGaugeBtn">Gauge</button>
+        
       <canvas id="userChart"></canvas>
     </div>
   </div>
 </div>
 <!-- Button trigger modal -->
 <div class="text-center">
+  <button id="userGaugeBtn">Gauge</button>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" id="userStatStartBtn">
     Launch User Stats
   </button>
@@ -43,69 +44,70 @@
             <!-- MODAL FORM -->
             <form>
               <div class="form-row">
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-6">
                     <!-- change label for -->
                   <label>From 1 to 10 How much do you like to play on a Console?</label>
                   <input type="number" class="form-control" id="consoleVal" placeholder="Enter a number" max='10' default='0'>
               </div>
-              <div class="form-row">
-                <div class="form-group col-md-12">
+              
+                <div class="form-group col-md-6">
                     <!-- change label for -->
-                  <label>From 1 to 10 How much do you like to play on a PC?</label>
+                  <label>How much do you like to play on a PC?</label>
                   <input type="number" class="form-control" id="pcVal" placeholder="Enter a number" max='10' default='0'>
-              </div>
+                  </div>
+                </div>
               <div class="form-row">
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-6">
                     <!-- change label for -->
-                  <label>From 1 to 10 How much do you like to play Online?</label>
+                  <label>How much do you like to play Online?</label>
                   <input type="number" class="form-control" id="onlineVal" placeholder="Enter a number" max='10' default='0'>
               </div>
-              <div class="form-row">
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-6">
                     <!-- change label for -->
-                  <label>From 1 to 10 How much do you like to play Offline?</label>
+                  <label>How much do you like to play Offline?</label>
                   <input type="number" class="form-control" id="offlineVal" placeholder="Enter a number" max='10' default='0'>
+              </div>
               </div>
                   <!-- shooter -->
                   <div class="form-row">
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-6">
                         <!-- change label for -->
-                      <label>From 1 to 10 How much do you like to play Shooters?</label>
+                      <label>How much do you like to play Shooters?</label>
                       <input type="number" class="form-control" id="shooterVal" placeholder="Enter a number" max='10' default='0'>
                   </div>
-                </div>
+                
                 <!-- racing -->
-                <div class="form-row">
-                  <div class="form-group col-md-12">
-                    <label>From 1 to 10 How much do you like to play Racing Games?</label>
+                
+                  <div class="form-group col-md-6">
+                    <label>How much do you like to play Racing Games?</label>
                     <input type="number" class="form-control" id="racingVal" placeholder="Enter a number" max='10' default='0'>
                 </div>
               </div>
                 <!-- RPG -->
                 <div class="form-row">
-                  <div class="form-group col-md-12">
-                    <label>From 1 to 10 How much do you like to play RPG Games?</label>
+                  <div class="form-group col-md-6">
+                    <label>How much do you like to play RPG Games?</label>
                     <input type="number" class="form-control" id="rpgVal" placeholder="Enter a number" max='10' default='0'>
                 </div>
-              </div>
+              
                 <!-- Action -->
-                <div class="form-row">
-                  <div class="form-group col-md-12">
-                    <label>From 1 to 10 How much do you like to play Action Games?</label>
+                
+                  <div class="form-group col-md-6">
+                    <label>How much do you like to play Action Games?</label>
                     <input type="number" class="form-control" id="actionVal" placeholder="Enter a number" max='10' default='0'>
                 </div>
               </div>
                 <!-- Adventure -->
                 <div class="form-row">
-                  <div class="form-group col-md-12">
-                    <label>From 1 to 10 How much do you like to play Adventure Games?</label>
+                  <div class="form-group col-md-6">
+                    <label>How much do you like to play Adventure Games?</label>
                     <input type="number" class="form-control" id="adventureVal" placeholder="Enter a number" max='10' default='0'>
                 </div>
-              </div>
+              
                 <!-- Strategy -->
-                <div class="form-row">
-                  <div class="form-group col-md-12">
-                    <label>From 1 to 10 How much do you like to play Strategy Games?</label>
+                
+                  <div class="form-group col-md-6">
+                    <label>How much do you like to play Strategy Games?</label>
                     <input type="number" class="form-control" id="strategyVal" placeholder="Enter a number" max='10' default='0'>
                 </div>
               </div>
@@ -114,6 +116,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary" id="saveStatsBtn" data-dismiss="modal">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss='modal' id='rollStatsBtn'>Roll Stats</button>
         </div>
       </div>
     </div>
