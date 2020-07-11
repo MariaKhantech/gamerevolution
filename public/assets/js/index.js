@@ -116,4 +116,22 @@ $(document).ready(() => {
 		mesh.position.z = 100 + Math.sin(cubeSineDriver) * 500;
 		renderer.render(scene, camera);
 	}
+
+	//====================check user data==================//
+	
+	//toggle nav bar link if the user is logged in
+	$.get('/api/user-data', () => { }).then((result) => {		
+		if(result.userId) {
+			$('#myprofilelink').removeClass('d-none')
+			$('#signOut').parent().removeClass('d-none');
+			$('#loginBtn').addClass('d-none');
+		} 
+	});
+
+	//handle sign out btn
+	$('#signOut').on('click', function () {
+		$.get('/api/logout', (data) => {
+			window.location.replace('/');
+		});
+	});
 });

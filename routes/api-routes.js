@@ -240,8 +240,10 @@ router.get('/profile/comment:id', (req, res) => {
 
 //gets all profiles
 router.get('/profile/searchAll', (req, res) => {
-	db.Profile
-		.findAll()
+	db.User
+		.findAll({
+			 include: [db.Profile]
+		})
 		.then((result) => {
 			res.json(result);
 		})
@@ -363,6 +365,7 @@ router.post('/signup', (req, res) => {
 //get user data
 router.get('/user-data', (req, res) => {
 	console.log('Get user data');
+	console.log(req.user);
 	if (!req.user) {
 		res.json({}); //empty object if user not logged in
 	} else {
