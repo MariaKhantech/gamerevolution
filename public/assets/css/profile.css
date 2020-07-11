@@ -1,32 +1,33 @@
 /* reference: Help with layout from https://www.bootdey.com/snippets/*/
 
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
 body {
 	background-color: black;
 	margin-top: 20px;
 	color: black;
 	padding-top: 50px;
 	font-size: 20px;
+	font-family: "Montserrat", sans-serif;
 }
 
 /*navbar background color*/
 .navbar {
 	background-color: #282828;
 	opacity: .8;
-	
 }
 
 /*drop down background color*/
 .background-dropdown {
 	background-color: #282828;
-	color:white;
+	color: white;
 }
 
-/* .my-account {
-
-  } */
-
-
-
+/*logo on navbar*/
+#GamerEvolutionLogo {
+	font-size: 30px;
+}
+/*end navbar*/
 
 .text-white {
 	opacity: none !important;
@@ -34,7 +35,7 @@ body {
 #top-section1 {
 	background-color: black;
 }
-/*///////////////*/
+/*/ //////////////*/
 #post-btn {
 	background-color: #3500d3;
 	color: white;
@@ -95,10 +96,7 @@ body {
 	border-color: #727cf5;
 	margin-top: 18px;
 }
-/*navbar background color*/
-#navbarchange {
-	background: #282828;
-}
+
 /* changes background to elements and text white */
 .background-grey {
 	background-color: #282828;
@@ -316,9 +314,9 @@ iframe {
 #game-card {
 	margin: 10px 15px 10px 15px;
 	background: #282828;
-  	border-style: double;
- 	border-color: #3500d3;
-  	color: white;
+	border-style: double;
+	border-color: #3500d3;
+	color: white;
 	margin: 10px 15px 10px 15px;
 	transition: transform .2s;
 }
@@ -335,7 +333,6 @@ iframe {
 	display: block;
 	margin: 0px auto 0px auto;
 	height: 200px;
-	
 }
 
 #delete-button:hover {
@@ -347,12 +344,12 @@ iframe {
 	color: white;
 	border-style: double;
 	border-color: #3500d3;
-  }
-  
-  #load-header {
+}
+
+#load-header {
 	border-bottom: 1px solid #3500d3;
-  }
-  
-  #load-footer {
+}
+
+#load-footer {
 	border-top: 1px solid #3500d3;
-  }
+}
