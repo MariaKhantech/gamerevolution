@@ -13,14 +13,18 @@ body {
 }
 
 #navbarchange {
-  background-color: black;
+  background-color: #282828;;
   opacity: .8;
   font-size: 20px;
   margin: 0;
 	line-height: 1.5;
-	-webkit-font-smoothing: antialiased;
+
 }
 
+.background-dropdown {
+	background-color: #282828;;
+	color:white;
+}
 
 #multi-card {
   background: #282828;
@@ -126,5 +130,3 @@ body {
 #modal-button:hover {
   border-color: #6c757d;
 }
-
-
