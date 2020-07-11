@@ -1,3 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+* {
+	box-sizing: border-box;
+}
+
 .make-black {
   background-color: black !important;
 }
@@ -7,23 +12,27 @@
 
 body {
   background-color: black;
-   margin-top: 20px;
-  color: black;
-  padding-top: 50px; 
+	margin-top: 20px;
+	color: black;
+	padding-top: 50px;
+	font-size: 20px;
+	font-family: "Montserrat", sans-serif;
 }
 
-#navbarchange {
-  background-color: #282828;;
-  opacity: .8;
-  font-size: 20px;
-  margin: 0;
-	line-height: 1.5;
-
+.navbar {
+	background-color: #282828;
+	opacity: .8;
 }
 
+/*drop down background color*/
 .background-dropdown {
-	background-color: #282828;;
-	color:white;
+	background-color: #282828;
+	color: white;
+}
+
+/*logo on navbar*/
+#GamerEvolutionLogo {
+	font-size: 30px;
 }
 
 #multi-card {
