@@ -14,20 +14,19 @@ $(document).ready(function () {
   let ctx = document.getElementById("topChart").getContext("2d");
   const doughnutCTX = document.getElementById("doughnutChart").getContext("2d");
   const lineCTX = document.getElementById("lineChart").getContext("2d");
-
+  let chart = createChart(ctx, "bar");
+  let doughnutChart = createChart(doughnutCTX, "doughnut");
+  let lineChart = createChart(lineCTX, "line");
   $('[data-toggle="popover"]').popover();
 
   //Function to populate "Select Platforms" dropdown
   const populatePlatformList = () => {
-
     const platformUrl = `https://api.rawg.io/api/platforms`;
 
     $.get(platformUrl).then((response) => {
-
       let platforms = response.results;
 
       for (let i = 0; i < platforms.length; i++) {
-
         const displayPlatformName = $("<a>", {
           class: "dropdown-item platform-item",
           type: "button",
@@ -63,7 +62,7 @@ $(document).ready(function () {
     $("#game-area").html("");
 
     $("#chart-button").show();
-    $("#chart-button").prop('disabled', false);
+    $("#chart-button").prop("disabled", false);
 
     let gameName = $("#searchInput").val().trim();
 
@@ -81,11 +80,10 @@ $(document).ready(function () {
   $("#browse-btn").on("click", function (event) {
     event.preventDefault();
 
-
     $("#game-area").html("");
 
     $("#chart-button").show();
-    $("#chart-button").prop('disabled', false);
+    $("#chart-button").prop("disabled", false);
 
     let platformId = $(".platform").val();
 
@@ -115,32 +113,27 @@ $(document).ready(function () {
     } else {
       renderGameGridAll(platformId, yearInput, ordering);
     }
-
   });
 
   // Render Game Grid ALL options have input
   const renderGameGridAll = (id, year, ordering) => {
-
     let gamesURL = `https://rawg.io/api/games?platforms=${id}&dates=${year}-01-01,${year}-12-31&ordering=-${ordering}&page_size=50`;
 
     $.get(gamesURL).then((response) => {
-
       renderCharts();
 
       if (response.count === 0) {
         $("#alert-modal").modal("show");
         $("#modal-text").text(`No results please try again`);
       } else {
-
         const game = response.results;
 
         for (let i = 0; i < game.length; i++) {
-
           const createCard = $("<div>", {
             class: "card d-inline-block",
             id: "multi-card",
             style: "width: 20rem",
-          })
+          });
 
           $("#game-area").append(createCard);
 
@@ -156,7 +149,6 @@ $(document).ready(function () {
               class: "img-thumbnail",
               alt: "game-image",
               src: "https://placekitten.com/200/139",
-
             });
             createCard.append(cardImg);
           } else {
@@ -239,7 +231,6 @@ $(document).ready(function () {
     let gamesURL = `https://rawg.io/api/games?platforms=${id}&ordering=-${ordering}`;
 
     $.get(gamesURL).then((response) => {
-
       renderCharts();
 
       if (response.count === 0) {
@@ -249,11 +240,10 @@ $(document).ready(function () {
         const game = response.results;
 
         for (let i = 0; i < game.length; i++) {
-
           const createCard = $("<div>", {
             class: "card d-inline-block mr-3 mt-3",
             id: "multi-card",
-            style: "width: 21rem",
+            style: "width: 20rem",
           });
 
           $("#game-area").append(createCard);
@@ -361,11 +351,10 @@ $(document).ready(function () {
         const game = response.results;
 
         for (let i = 0; i < game.length; i++) {
-
           const createCard = $("<div>", {
             class: "card d-inline-block mr-3 mt-3",
             id: "multi-card",
-            style: "width: 21rem",
+            style: "width: 20rem",
           });
 
           $("#game-area").append(createCard);
@@ -378,9 +367,7 @@ $(document).ready(function () {
             });
 
             createCard.append(cardImg);
-
           } else if (game[i].background_image === null) {
-
             const cardImg = $("<img>", {
               class: "img-thumbnail",
               alt: "game-image",
@@ -388,9 +375,7 @@ $(document).ready(function () {
             });
 
             createCard.append(cardImg);
-
           } else {
-
             const cardVid = $("<video>", {
               class: "img-thumbnail",
               type: "video/mp4",
@@ -400,7 +385,6 @@ $(document).ready(function () {
             });
 
             createCard.append(cardVid);
-
           }
           const cardBody = $("<div>", {
             class: "card-body m-auto",
@@ -416,16 +400,13 @@ $(document).ready(function () {
           cardBody.append(cardTitle);
 
           if (game[i].released === null) {
-
             const cardDescription = $("<p>", {
               class: "card-text text-center",
               text: `Released: N/A`,
             });
 
             cardBody.append(cardDescription);
-
           } else {
-
             const gameYear = game[i].released.split("-");
 
             const cardDescription = $("<p>", {
@@ -477,11 +458,9 @@ $(document).ready(function () {
   };
 
   const renderSingleGame = (searchInput) => {
-
     let searchURL = `https://rawg.io/api/games?search=${searchInput}`;
 
     $.get(searchURL).then((response) => {
-
       if (response.count === 0) {
         $("#alert-modal").modal("show");
         $("#modal-text").text(`No results please try again`);
@@ -493,9 +472,9 @@ $(document).ready(function () {
           let slugResponse = response;
 
           const createCard = $("<div>", {
-            class: "card text-center mx-auto",
+            class: "card text-center mx-auto mt-2",
             id: "single-card",
-            style: "width: 60%;",
+            style: "width: 55%;",
           });
 
           $("#game-area").append(createCard);
@@ -600,7 +579,6 @@ $(document).ready(function () {
       });
   });
 
-
   // let clearCharts = () => {
   //   $("#topChart").remove();
   //   $("#topChartCard").append($("<canvas>", { id: "topChart" }));
@@ -645,6 +623,9 @@ $(document).ready(function () {
   //   // makes main chart
   let chartID = [];
   function renderCharts() {
+    // chart.update();
+    // lineChart.update();
+    // doughnutChart.update();
     // enable tabs
     $("#doughnut-tab").prop("disabled", false);
     $("#line-tab").prop("disabled", false);
@@ -677,13 +658,16 @@ $(document).ready(function () {
               // fillColor: "rgba(220, 220, 220, .5)",
               // fill: true,
               // backgroundColor: colorPaletteRGBTransparent,
-              fill: false,
-              backgroundColor: colorPaletteRGBOpaque,
-              borderColor: colorPaletteRGBTransparent,
+              fill: true,
+              backgroundColor: colorPaletteRGBTransparent,
+              borderColor: colorPaletteRGBOpaque,
             },
           ],
         },
         options: {
+          legend: {
+            display: false,
+          },
           // fillColor: "rgba(220,220,220,0)",
           defaultFontColor: "white",
           title: {
@@ -729,7 +713,9 @@ $(document).ready(function () {
                 response.results[4].metacritic,
                 response.results[5].metacritic,
               ],
-              backgroundColor: colorPalette,
+              backgroundColor: colorPaletteRGBTransparent,
+              borderColor: colorPaletteRGBOpaque,
+              fill: true,
             },
           ],
         },
@@ -763,11 +749,16 @@ $(document).ready(function () {
                 response.results[4].metacritic,
                 response.results[5].metacritic,
               ],
-              backgroundColor: colorPalette,
+              backgroundColor: colorPaletteRGBTransparent,
+              borderColor: colorPaletteRGBOpaque,
+              fill: true,
             },
           ],
         },
         options: {
+          legend: {
+            display: false,
+          },
           title: {
             display: true,
             position: "top",
@@ -823,24 +814,35 @@ $(document).ready(function () {
   }
   title = [];
 
-
-
   // toggle light and dark mode. remember to do this for all charts
   $("#toggle-demo").change(() => {
-    if ($("#topChartCard").hasClass("make-white")) {
+    if (
+      $("#topChartCard").hasClass("make-white") ||
+      $("#doughnutCard").hasClass("make-white") ||
+      $("#lineCard").hasClass("make-white")
+    ) {
       $("#topChartCard").removeClass("make-white");
+      $("#doughnutCard").removeClass("make-white");
+      $("#lineCard").removeClass("make-white");
+
       $("#topChartCard").addClass("make-black");
+      $("#doughnutCard").addClass("make-black");
+      $("#lineCard").addClass("make-black");
       chart.options.defaultFontColor = "white";
       chart.data.datasets[0].backgroundColor = colorPaletteRGBOpaque;
     } else {
       $("#topChartCard").removeClass("make-black");
+      $("#doughnutCard").removeClass("make-black");
+      $("#lineCard").removeClass("make-black");
+
       $("#topChartCard").addClass("make-white");
+      $("#doughtnutCard").addClass("make-white");
+      $("#lineCard").addClass("make-white");
+
       chart.options.defaultFontColor = "black";
       chart.data.datasets[0].backgroundColor = colorPaletteRGBTransparent;
     }
   });
-
-
 });
 
 /////////////////adding chart to plat order/game order/all calls
@@ -875,7 +877,9 @@ function renderSingleChart(searchInput) {
                 response.ratings[2].percent,
                 response.ratings[3].percent,
               ],
-              backgroundColor: colorPalette,
+              backgroundColor: colorPaletteRGBTransparent,
+              borderColor: colorPaletteRGBOpaque,
+              fill: true,
             },
           ],
         },
@@ -889,14 +893,23 @@ function renderSingleChart(searchInput) {
       });
     });
   });
-  const colorPalette = [
-    "#3500D3",
-    "#00ffff",
-    "#4b7fff",
-    "#703fff",
-    "#9600ff",
-    "#00e6e6",
-    "#240090",
+  const colorPaletteRGBTransparent = [
+    "rgba(53,0,211,.4)",
+    "rgba(0,255,255,.4)",
+    "rgba(75,127,255,.4)",
+    "rgba(112,63,255,.4)",
+    "rgba(150,0,255,.4)",
+    "rgba(0,230,230,.4)",
+    "rgba(36,0,230,.4)",
+  ];
+  const colorPaletteRGBOpaque = [
+    "rgba(53,0,211,1)",
+    "rgba(0,255,255,1)",
+    "rgba(75,127,255,1)",
+    "rgba(112,63,255,1)",
+    "rgba(150,0,255,1)",
+    "rgba(0,230,230,1)",
+    "rgba(36,0,230,1)",
   ];
 }
 // bubble chart ref
@@ -945,3 +958,31 @@ function renderSingleChart(searchInput) {
 //     },
 //   },
 // });
+function createChart(ctx, type) {
+  new Chart(ctx, {
+    type: type,
+    data: {
+      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+      datasets: [
+        {
+          label: "Population (millions)",
+          backgroundColor: [
+            "#3e95cd",
+            "#8e5ea2",
+            "#3cba9f",
+            "#e8c3b9",
+            "#c45850",
+          ],
+          data: [2478, 5267, 734, 784, 433],
+        },
+      ],
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: "Predicted world population (millions) in 2050",
+      },
+    },
+  });
+}

@@ -341,3 +341,18 @@ iframe {
 #delete-button:hover {
 	transform: translateY(-7px);
 }
+
+#load-content {
+	background-color: #282828;
+	color: white;
+	border-style: double;
+	border-color: #3500d3;
+  }
+  
+  #load-header {
+	border-bottom: 1px solid #3500d3;
+  }
+  
+  #load-footer {
+	border-top: 1px solid #3500d3;
+  }
