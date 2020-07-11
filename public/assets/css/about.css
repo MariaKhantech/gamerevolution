@@ -65,7 +65,7 @@ body {
 }
 /*end navbar*/
 
-.container {
+/* .container {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -199,4 +199,4 @@ body {
 .link:hover {
 	background-color: #06c0a8;
 	color: #ffffff;
-}
+} */
