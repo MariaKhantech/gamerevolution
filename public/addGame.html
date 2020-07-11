@@ -29,8 +29,18 @@
       <div class="collapse navbar-collapse" id="exCollapsingNavbar">
         <ul class="nav navbar-nav">
           <li class="nav-item"><a href="about.html" class="nav-link text-white">About</a></li>
-          <li class="nav-item"><a href="addgame.html" class="nav-link text-white">Search</a></li>
-          <li class="nav-item"><a href="searchProfiles.html" class="nav-link text-white">Profile Search</a></li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Search
+            </a>
+            <div class="dropdown-menu background-dropdown" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item text-white hover" href="addGame.html">Game Search</a>
+              <a class="dropdown-item text-white hover" href="searchProfiles.html">Profile Search</a>
+              <!-- <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div> -->
           <li class="nav-item"><a href="profile.html" class="nav-link text-white">My Profile</a></li>
         </ul>
       </div>
@@ -55,9 +65,9 @@
 
 
           <div class="btn-group">
-            <form class="search form-inline">
-              <input class="form-control" id="yearInput" type="search" placeholder="Enter Year" />
-            </form>
+
+            <input class="form-control" id="yearInput" type="search" placeholder="Enter Year" />
+
           </div>
 
 
@@ -65,8 +75,8 @@
             <button type=" button" class="btn btn-outline-secondary text-white order" name="" disabled>
               Ordering
             </button>
-            <button type="button" class="btn btn-secondary text-white dropdown-toggle dropdown-toggle-split"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button type="button" class="btn btn-secondary text-white dropdown-toggle dropdown-toggle-split "
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-describedby="button-addon2">
               <span class="sr-only">Toggle Dropdown</span>
             </button>
             <div class="dropdown-menu dropdown-menu-right order-list">
@@ -85,18 +95,21 @@
 
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 d-inline-block">
           <h5 class="text-white search-title">Search for a Single Game</h5>
-          <form class="search form-inline input-group-append mt-1">
+          <div class="input-group mb-3 w-75 input-group-append mt-1">
             <input class="form-control" id="searchInput" type="search" placeholder="Enter Game Title"
-              aria-label="Search" />
+              aria-label="Search" aria-describedby="button-addon2" />
             <button class="btn btn-outline-secondary text-white my-2 my-sm-0" id="search-button" type="button">
               <i class="fa fa-search" aria-hidden="true"></i>
             </button>
-          </form>
+          </div>
         </div>
 
       </div>
     </div>
 
+    <!-- <div class="input-group mb-3 w-75 input-group-append">
+      <input type="text" class="form-control" id="city-input" type="text" placeholder="U.S. City"
+        aria-describedby="button-addon2"> -->
 
     <div class="row mt-3">
       <button class="btn btn-outline-secondary text-white" id="chart-button" type=" button" data-toggle="collapse"
@@ -164,7 +177,7 @@
             </div>
             <!-- AREA WHERE GAMES APPEAR -->
             <div class="col-auto" id="game-area">
-              <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+              <div id="carouselExampleCaptions" class="carousel slide carousel-fade " data-ride="carousel">
                 <ol class="carousel-indicators">
                   <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
                   <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
