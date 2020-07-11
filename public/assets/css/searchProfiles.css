@@ -1,22 +1,107 @@
+body {
+  background-color: black;
+  padding-bottom: 70px;
+  font-size: 20px;
+}
+
+div.row.style-row {
+	box-shadow: 0px 0px 10px 20px rgba(94,12,226, .550);
+}
+
+.brick {
+  height: 50px;
+  margin-left: 15px;
+  margin-bottom: 1px !important;
+
+}
+
+/*style profile cards*/
+.style-p-card {
+  background-color: black;
+
+}
+
+.style-card {
+  background-color: black;
+  padding: 20px;
+  height: 100%;
+}
+
+
+/*styles the text in the profile card*/
+.card-text {
+  font-size: 15px;
+}
+.card-add-btn {
+  background-color: #5e0ce2;
+  border-color: white;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 15vw !important;
+  object-fit: cover;
+}
+
+/* images in cards*/
+.img-portfolio {
+  height: 10%;
+  border-radius: 40%;
+  border-style: solid;
+  border-color: #5e0ce2;
+  box-shadow:  0 0 2px #fff, 0 0 5px #fff, 0 0 10px #a515b8, 0 0 10px #bf08c5, 0 0 10px #ff0080, 0 0 40px blueviolet , 0 0 75px blue;;
+ 
+}
+
+/*end styling the profile cards */
+
+ .paper-mario {
+	width: 100px;
+  height: 100%;
+  animation: spin 1s linear alternate-reverse infinite;
+	background: url(public\assets\images\search-profile-img\papermario.png);
+
+}
+
+#paper-mario1 {
+  margin-top: 10px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+} 
+
+
+
+.style-row {
+  border-style: solid;
+  border-color: #5e0ce2;
+  background-color: #00008b;
+  padding: 50px;
+  padding-bottom: 5px;
+}
+
+/*change the navbar*/
 #navbarchange {
-	background: #282828;
-	font-size: 20px;
+  background: #282828;
+ 
 }
 
 #GamerEvolutionLogo {
-	font-size: 30px;
+  font-size: 30px;
 }
-
-body {
-	background-color: black;
-	z-index: 500;
-}
-
-.top-margin {
-	margin-top: 500px !important;
-}
-
+/*end of navbar change*/
 /*plugin for carousel*/
 #carousel .cloud9-item, #buttons button {
-	cursor: pointer;
-  }
+  cursor: pointer;
+}
+
+#carousel {
+  height: 675px;
+}
+

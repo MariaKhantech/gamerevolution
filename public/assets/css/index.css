@@ -1,15 +1,31 @@
 * body {
 	background-color: black;
 }
-/*carousel */
-/* div.cara-img {
-	max-height: 200px !important;
-	height: 200px !important;
-} */
-/* #fav-card1 {
-	max-height: 200px;
+/*tiktok video*/
+.right-mariohv {
+	margin-right: 10rem !important;
+}
+/*h5*/
+.top-funny {
+	border-style: solid;
+	border-color: #3500d3;
+	padding: 1rem;
+	background-color: rgb(7, 7, 77);
+	margin-left: 3rem;
+}
+/*mario king image and logo */
+.mario-king {
+	margin-top: 300px;
 
-} */
+	
+}
+
+.mario-logo {
+	border-style: solid;
+	border-color: #3500d3;
+	height: 400px;
+}
+/*mario king and logo ends*/
 
 li {
 	list-style: none;
@@ -22,6 +38,11 @@ li {
 .navbar {
 	background-color: black;
 	opacity: .8;
+}
+/*drop down background color*/
+.background-dropdown {
+	background-color: black;
+	color:white;
 }
 
 

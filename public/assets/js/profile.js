@@ -28,7 +28,7 @@ $(document).ready(() => {
 			});
 		});
 	};
-
+//function TODO COMMENT
 	const getCommentData = (result) => {
 		$.get('api/profile/comment' + result.userId, () => { }).then((data) => {
 			//grab the avatar to use in the comments section
@@ -474,6 +474,12 @@ $(document).ready(() => {
 		let name = $(this).data('name');
 		console.log(name);
 
+		// Alert modal show
+
+
+
+
+
 		$.ajax({
 			url: `api/user-data`,
 			method: 'GET'
@@ -486,6 +492,11 @@ $(document).ready(() => {
 				type: "DELETE",
 				data: userGame
 			}).then((result) => {
+				$('#load-modal').modal('show');
+
+				setTimeout(function () {
+					$('#load-modal').modal('hide');
+				}, 1500);
 				$('#profile-game-area').empty();
 				getUserGames();
 			})

@@ -1,6 +1,6 @@
 
-
-
+<!doctype html>
+<html lang="en">
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -22,19 +22,34 @@
   <!--NAVBAR-->
   <nav class="navbar navbar-expand-lg fixed-top" role="navigation">
     <div class="container">
-      <a class="navbar-brand text-white" href="#">GamerEvolution</a>
+      <a class="navbar-brand text-white" href="index.html">GamerEvolution</a>
       <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
         &#9776;
       </button>
       <div class="collapse navbar-collapse" id="exCollapsingNavbar">
         <ul class="nav navbar-nav">
           <li class="nav-item"><a href="about.html" class="nav-link text-white">About</a></li>
-          <li class="nav-item"><a href="addgame.html" class="nav-link text-white">Search</a></li>
-          <li class="nav-item"><a href="searchProfiles.html" class="nav-link text-white">Profile Search</a></li>
-          <li class="nav-item"><a href="profile.html" class="nav-link text-white">My Profile</a></li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 Search
+                </a>
+                <div class="dropdown-menu background-dropdown" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item text-white hover" href="addGame.html">Game Search</a>
+                  <a class="dropdown-item text-white hover" href="searchProfiles.html">Profile Search</a>
+                  <!-- <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div> -->
+                <!-- <li class="nav-item"><a href="profile.html" class="nav-link text-white">My Profile</a></li> -->
+          
         </ul>
         <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
-          <li class="dropdown order-1">
+          <li class="nav-item my-account pr-2 d-none" id="myprofilelink"><a href="profile.html" class="nav-link text-white mt-2 "><h6>My Profile</h5></u></a></li>
+            <li class="dropdown order-1 d-none" >
+              <button type="button" id="signOut" class="btn btn-outline-secondary text-white ">Sign Out
+                  <span class="caret"></span></button>
+          </li>
+          <li class="dropdown order-1" id="loginBtn">
             <button type="button" id="dropdownMenu1" data-toggle="dropdown"
               class="btn btn-outline-secondary dropdown-toggle">Login <span class="caret"></span></button>
             <ul class="dropdown-menu dropdown-menu-right mt-2 login-dropdown">
@@ -99,7 +114,7 @@
         
             <div class="col-l-4">
                    
-              <h3 class="text-white">Top News</h3>
+              <h3 class="text-white text-center">Top News</h3>
               <div class="card top-news" >
                 <a href="https://www.newworld.com/en-us"> <img src="https://i.ytimg.com/vi/aCohj2GyuZw/maxresdefault.jpg" class="card-img-top" alt="Amazon new mmo"> </a>
                 <div class="card-body">
@@ -110,13 +125,13 @@
             
             <div class="col-l-4 border-primary mb-3">
 
-                    <h3 class="text-white">New Release</h3>
+                    <h3 class="text-white">New Release GAME OF THE DAY</h3>
                     <div class="card top-news" >
                       <a href="https://papermario.nintendo.com/?cid=N1050-01%3Ach%3Dpdpd"><img src="https://cdn.mos.cms.futurecdn.net/yKhDHyCg82CiPpXzJhqrn9-650-80.jpg.webp" class="card-img-top" alt="new paper mario game"></a>
                       <div class="card-body">
                         <p class="card-text text-white">Nintendo Switch
                           Release date: July 17, 2020
-                          A brand new Paper Mario game is en route, much to the surprise of series' fans. Paper Mario: The Origami King is a pun-packed adventure in a papercraft world, where our heroes Mario and Luigi are accompanied by a new companion called Olivia. </p>
+                          A brand new Paper Mario game is en route, much to the surprise of series' fans. Paper Mario: The Origami King is a pun-packed adventure in a papercraft world, where our heroes Mario and Luigi are accompanied by a new companion called Olivia. The hype is unreal! </p>
                       </div>
                 </div>
               </div>
@@ -205,7 +220,7 @@
                   
                 </div>
               </div> -->
-
+<!-- 
               <div class="row">
             <div class="col-l-4">
               <h3 class="text-white">Top News</h3>
@@ -216,9 +231,9 @@
                 </div>
               </div>
             </div>
-            </div>
-            
-            <div class="col-l-4 border-primary mb-3">
+            </div> -->
+            <div class="row">
+            <div class="col-l-6 border-primary mb-3 ">
                 <!-- <div class="card bg-dark text-white">
 
                     <img src="assets/images/profile-images/practice images/image5.jpg" class="card-img animate__animated animate__fadeIn" alt="...">
@@ -227,36 +242,40 @@
                     </div> -->
 
 
-                    <h3 class="text-white">Top News</h3>
+                    <!-- <h3 class="text-white">Top News</h3>
                     <div class="card top-news mx-auto" >
-                      <img src="https://cdn.mos.cms.futurecdn.net/yKhDHyCg82CiPpXzJhqrn9-650-80.jpg.webp" class="card-img-top" alt="...">
+                      <img src="https://www.facebook.com/justin.youranus.5/posts/699402220843774" class="card-img-top" alt="...">
                       <div class="card-body">
                         <p class="card-text text-white">Platform(s): Nintendo Switch
                           Release date: July 17, 2020
                           A brand new Paper Mario game is en route, much to the surprise of series' fans. Paper Mario: The Origami King is a pun-packed adventure in a papercraft world, where our heroes Mario and Luigi are accompanied by a new companion called Olivia. </p>
                       </div>
-                </div>
-              </div>
-
-              <div class="col-l-4">
-                <!-- <div class="card bg-dark text-white">
-
-                    <img src="assets/images/profile-images/practice images/image6.jpg " class="card-img animate__animated animate__fadeIn" alt="...">
-                    <div class="card-img-overlay">
-                      <h5 class="card-title">Sonic</h5>
-                    </div>
                 </div> -->
 
-
-                <h3 class="text-white">Top News</h3>
-                <div class="card top-news float-right" >
-                  <img src="https://images.ctfassets.net/j95d1p8hsuun/5oPz2BdqcUsElMOSLSL7aI/88b9ff547971e0bf770b1d53a3ef0ef5/stag-thumb.jpg" class="card-img-top" alt="...">
+                <div class="card top-news right-mariohv mb-3 text-center" >
+                  <h1 class="text-white text-center top-funny">Top funniest home video</h1>
+                  <div class="fb-post mt-2" data-href="https://www.facebook.com/justin.youranus.5/posts/699402220843774" data-show-text="false" data-width=""><blockquote cite="https://developers.facebook.com/justin.youranus.5/posts/699402220843774" class="fb-xfbml-parse-ignore"><p> 💀😂💀</p>Posted by <a href="https://www.facebook.com/justin.youranus.5">Jamathé Johnson</a> on&nbsp;<a href="https://developers.facebook.com/justin.youranus.5/posts/699402220843774">Thursday, June 18, 2020</a></blockquote></div>
                   <div class="card-body">
-                    <p class="card-text text-white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="card-text text-white text center">Check out our choice for the funniest home video of the day, that relates to gaming.</p>
                   </div>
                 </div>
               </div>
+
+          
+               
+              <div class="col-lg-6">
+              <!--mario images-->
+              <div><img class="mario-logo" src="assets/images/index-images/paper-mario-oriigami-logo.png"></div>
+              <div class="col-lg-3 float-right ">
+                <img class="mario-king " src="assets/images/index-images/paper-mario.png">
+              </div>
             </div>
+               
+                
+
+            </div>
+          </div>
+
           </div>
           </div>
     </div>
@@ -318,6 +337,9 @@
 	</section>
 	<!-- ./Footer -->
 
+
+  <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0&appId=217104075057104&autoLogAppEvents=1" nonce="BJcEh9X5"></script>
  <!-- JS for Jarallax -->
  <script type="text/javascript" src="https://unpkg.com/jarallax@~1.11.0/dist/jarallax.min.js"></script>
  <script type="text/javascript" src="https://unpkg.com/jarallax@~1.11.0/dist/jarallax-video.min.js"></script>
