@@ -62,9 +62,9 @@
       <div class="row search-menu">
         <!-- Search Menu -->
         <!-- MULTI-GAME SEARCH -->
-        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 d-inline-block">
+        <div class="col-xs-6 col-sm-6 col-md-8 col-lg-8" id="menu-box">
           <h5 class="text-white browse-title mr-auto">Search for Multiple Games</h5>
-          <div class="btn-group">
+          <div class="btn-group mb-3 mt-3">
             <button class="btn btn-outline-secondary text-white platform" disabled>
               Select Platform
             </button>
@@ -72,16 +72,16 @@
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="sr-only">Toggle Dropdown</span>
             </button>
-            <div class="dropdown-menu dropdown-menu-right platform-list"></div>
+            <div class="dropdown-menu dropdown-menu-right platform-list" id="platform-drop"></div>
           </div>
 
 
-          <div class="btn-group">
+          <div class="btn-group mb-3 mt-3">
             <input class="form-control" id="yearInput" type="search" placeholder="Enter Year" />
           </div>
 
 
-          <div class="btn-group">
+          <div class="btn-group mb-3 mt-3">
             <button type=" button" class="btn btn-outline-secondary text-white order" name="" disabled>
               Ordering
             </button>
@@ -102,12 +102,12 @@
           </div>
         </div>
         <!-- SINGLE GAME SEARCH -->
-        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 d-inline-block">
+        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4" id="menu-box">
           <h5 class="text-white search-title">Search for a Single Game</h5>
-          <div class="input-group mb-3 w-75 input-group-append mt-1">
+          <div class="input-group mb-3 mt-3">
             <input class="form-control" id="searchInput" type="search" placeholder="Enter Game Title"
-              aria-label="Search" aria-describedby="button-addon2" />
-            <button class="btn btn-outline-secondary text-white my-2 my-sm-0" id="search-button" type="button">
+              aria-label="Search" />
+            <button class="btn btn-outline-secondary text-white" id="search-button" type="button">
               <i class="fa fa-search" aria-hidden="true"></i>
             </button>
           </div>
