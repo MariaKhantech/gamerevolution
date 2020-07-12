@@ -149,7 +149,7 @@
 
 
             <!--avatar image card-->
-            <div class="card shadow-none border-0 mx-auto text-center" id="avatar-card" style="width: 15rem;">
+            <div class="card shadow-none border-0 mx-auto text-center" id="avatar-card" style="width: 20rem;">
                 <img id="user-profile" src="" class="card-img-top img-fluid rounded mx-auto d-block" alt="...">
 
                 <!--https://stackoverflow.com/questions/33553785/replace-input-file-with-my-own-button-in-the-form-->
@@ -164,8 +164,8 @@
                     <p class="card-text text-white" id="profileBio"></p>
                     <!--social media buttons-->
                     <p class="text-white text-center"><i>Follow or add me on:</i></p>
-                    <a href="" id="twitch_icon_url"><i class="fa fa-twitch fa-2x mx-auto" aria-hidden="true"></i></a>
-                    <a href="" id="youtube_icon_url"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i> </a>
+                    <a href="" target="_blank" id="twitch_icon_url"><i class="fa fa-twitch fa-2x mx-auto" aria-hidden="true"></i></a>
+                    <a href="" target="_blank" id="youtube_icon_url"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i> </a>
 
                 </div>
             </div>
@@ -176,33 +176,7 @@
         <!--top 3 friends-->>
         <div class="row justify-content-md-center no-gutters bg-light position-relative friends-row mx-auto mb-5"
             id="top-three-friends">
-            <h3 class="text-center">Top 3 Gamer friends:</h3>
-
-            <!--friend 1-->
-            <div class="col-md-auto">
-                <div class="friend1 text-center">
-                    <img class="friends" src="assets/images/profile-images/gamergirl3.png" alt="">
-                    <h3 class="text-center">AminaDPS</h3>
-                </div>
-            </div>
-
-            <!--friend 2-->
-            <div class="col-md-auto">
-                <div class="friend2">
-
-                    <img class="friends mx-auto" src="assets/images/profile-images/girlgamer.png" alt="">
-                    <h3 class="text-center">CottonCandy2.0</h3>
-
-                </div>
-            </div>
-
-            <!--friend 3-->
-            <div class="col-md-auto">
-                <div class="friend3 text-center">
-                    <img class="friends" src="assets/images/profile-images/girlgamer.png" alt="">
-                    <h3 class="text-center">GameJoe</h3>
-                </div>
-            </div>
+            <h3 class="text-center">Top Gamer friends:</h3>
         </div>
         <!--end of top 3 friends-->
 
@@ -239,9 +213,7 @@
                                 <div class="h7" id="profileNickname"></div>
                                 <div class="h7" id="discordUserName"></div>
                                 <div class="h7" id="twitchUserName"></div>
-                                <div class="h7" id="aboutMe">
-
-                                </div>
+                                <div class="h7" id="aboutMe"></div>
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item background-grey">
@@ -512,15 +484,24 @@
                             </div>
                         </div>
 
+                        
+                        <div class="card social-timeline-card left-section">
+                            <!--CALEB CHART GOES IN HERER-->
+                            <div
+                              class="chart-container"
+                              style="position: relative; height: 40vh; width: 80vw;"
+                            >
+                              <canvas id="topChart"></canvas>
+                            </div>
+                            <!--END OF CALEB CHART-->
+                          </div>
+
+
                         <div class="card social-timeline-card left-section">
                             <div class="card-body">
                                 <h4 class="card-title text-center">Discord Server</h5>
-
-
                                     <iframe src="https://discordapp.com/widget?id=670020368593059850&theme=dark"
                                         width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
-
-
 
                             </div>
                         </div>
@@ -529,12 +510,9 @@
                         <div class="card social-timeline-card left-section">
                             <div class="card-body">
                                 <h4 class="card-title text-center">Discord Live Chat</h5>
-
                                     <!--DISCORD LIVE CHAT WIDGETBOT-->
                                     <iframe src="https://e.widgetbot.io/channels/670020368593059850/670020368593059853"
                                         height="600" width="800"></iframe>
-
-
                             </div>
 
                         </div>
@@ -638,6 +616,8 @@
         crossorigin="anonymous"></script>
         <!--gus--->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+        <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="assets/js/profile.js"></script>
 
 </body>

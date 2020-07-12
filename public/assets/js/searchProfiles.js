@@ -4,8 +4,8 @@ $(document).ready(() => {
 	let pixels = 0;
 	//returns a profile card div
 	const createProfileCard = (imgsrc, profileName, profileBio, userId) => {
-		return $(`<div class="col-lg-3 ,mb-5">
-		<div class="card text-center style-card" style="width: 18rem;">
+		return $(`<div class="col-lg-4 mb-5">
+		<div class="card text-center style-card" style="width: 15rem;">
 		  <img id="profile-card"src="${imgsrc}" class="card-img-top img-portfolio img-fluid" alt="...">
 		  <div class="card-body">
 			<h5 class="card-title text-white style-p-card" id="profileName">${profileName}</h5>
@@ -61,7 +61,6 @@ $(document).ready(() => {
 			userData = result;
 			$('#myprofilelink').removeClass('d-none');
 			$('#signOut').parent().removeClass('d-none');
-			$('#loginBtn').addClass('d-none');
 		} else {
 			//disable add profile BTN
 			disableBtn = 'disabled';
