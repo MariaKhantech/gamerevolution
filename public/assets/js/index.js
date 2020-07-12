@@ -118,20 +118,46 @@ $(document).ready(() => {
 	}
 
 	//====================check user data==================//
-	
+
 	//toggle nav bar link if the user is logged in
-	$.get('/api/user-data', () => { }).then((result) => {		
-		if(result.userId) {
-			$('#myprofilelink').removeClass('d-none')
+	$.get('/api/user-data', () => {}).then((result) => {
+		if (result.userId) {
+			$('#myprofilelink').removeClass('d-none');
 			$('#signOut').parent().removeClass('d-none');
 			$('#loginBtn').addClass('d-none');
-		} 
+		}
 	});
 
 	//handle sign out btn
-	$('#signOut').on('click', function () {
+	$('#signOut').on('click', function() {
 		$.get('/api/logout', (data) => {
 			window.location.replace('/');
 		});
 	});
+	//calling api data to present 3 top games into cards html//
+	let searchTopThree = `https://api.rawg.io/api/games?dates=2020-01-01%2C2020-12-31&ordering=-rating&page=2&page_size=3`;
+
+	// loops to top three results
+	$.get(searchTopThree).then((response) => {
+		console.log(response);
+		response.results.forEach((element) => {
+			console.log(element);
+			const createdCard = createTopThreeCard(element.background_image, element.name);
+			//appending the div onto the element//
+			$('#topGameCards').append(createdCard);
+		});
+	});
+
+	//creates div to hold card image text overlay
+	let createTopThreeCard = (imgsrc, gameName) => {
+		return $(` <div class="col-l-4 "  id= "reveal1">
+		<div class="card bg-dark text-white">
+		  <img src="${imgsrc}" class="card-img animate__animated animate__fadeIn" alt="...">
+		  <div class="card-img-overlay">
+			<h4 class="card-title"><b>${gameName}</b></h4>
+		  </div>
+		</div>
+		
+	  </div>`);
+	};
 });
