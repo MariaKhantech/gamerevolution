@@ -48,6 +48,14 @@ li {
 	font-size: 30px;
 }
 
+/*ps5-xbox logo*/
+.xbox-ps5 {
+	width: 30rem;
+	border-style: solid;
+	border-color: #3500d3;
+	margin: 5%;
+}
+
 /*login modal window*/
 .px-3 {
 	background-color: black;

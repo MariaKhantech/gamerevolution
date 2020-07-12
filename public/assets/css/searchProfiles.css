@@ -9,6 +9,22 @@ body {
 	font-family: "Montserrat", sans-serif;
 }
 
+.search-box {
+	margin: 40px auto 0px auto;
+	border-style: double;
+	border-color: #3500d3;
+	border-radius: 10px;
+	padding: 20px;
+}
+
+.container {
+	width: 1000px !important;
+}
+
+/* .row {
+	width: none !important;
+} */
+
 /*navbar background color*/
 .navbar {
 	background-color: #282828;
