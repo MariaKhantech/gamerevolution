@@ -130,9 +130,10 @@ $(document).ready(function () {
 
         for (let i = 0; i < game.length; i++) {
           const createCard = $("<div>", {
-            class: "card d-inline-block",
+            class: "card",
             id: "multi-card",
-            style: "width: 20rem",
+            style: "width: auto; max-width: 19rem;",
+
           });
 
           $("#game-area").append(createCard);
@@ -241,9 +242,9 @@ $(document).ready(function () {
 
         for (let i = 0; i < game.length; i++) {
           const createCard = $("<div>", {
-            class: "card d-inline-block mr-3 mt-3",
+            class: "card ",
             id: "multi-card",
-            style: "width: 20rem",
+            style: "width: auto; max-width: 19rem;",
           });
 
           $("#game-area").append(createCard);
@@ -352,9 +353,9 @@ $(document).ready(function () {
 
         for (let i = 0; i < game.length; i++) {
           const createCard = $("<div>", {
-            class: "card d-inline-block mr-3 mt-3",
+            class: "card ",
             id: "multi-card",
-            style: "width: 20rem",
+            style: "width: auto; max-width: 19rem;",
           });
 
           $("#game-area").append(createCard);
@@ -472,9 +473,9 @@ $(document).ready(function () {
           let slugResponse = response;
 
           const createCard = $("<div>", {
-            class: "card text-center mx-auto mt-2",
+            class: "card text-center ",
             id: "single-card",
-            style: "width: 55%;",
+            style: "width: auto; max-width: 600px;",
           });
 
           $("#game-area").append(createCard);
@@ -505,6 +506,7 @@ $(document).ready(function () {
           const cardTitle = $("<h5>", {
             class: "card-title text-white",
             text: slugResponse.name,
+
           });
           cardBody.append(cardTitle);
 
@@ -514,6 +516,7 @@ $(document).ready(function () {
             rating: slugResponse.rating,
             readOnly: true,
             starWidth: "25px",
+
           });
 
           cardBody.append(rating);
@@ -521,6 +524,7 @@ $(document).ready(function () {
           const cardDescription = $("<p>", {
             class: "card-text",
             text: slugResponse.description_raw,
+
           });
 
           cardBody.append(cardDescription);
