@@ -130,9 +130,9 @@ $(document).ready(function() {
 
 				for (let i = 0; i < game.length; i++) {
 					const createCard = $('<div>', {
-						class: 'card d-inline-block',
+						class: 'card',
 						id: 'multi-card',
-						style: 'width: 20rem'
+						style: 'width: auto; max-width: 19rem;'
 					});
 
 					$('#game-area').append(createCard);
@@ -241,9 +241,9 @@ $(document).ready(function() {
 
 				for (let i = 0; i < game.length; i++) {
 					const createCard = $('<div>', {
-						class: 'card d-inline-block mr-3 mt-3',
+						class: 'card ',
 						id: 'multi-card',
-						style: 'width: 20rem'
+						style: 'width: auto; max-width: 19rem;'
 					});
 
 					$('#game-area').append(createCard);
@@ -352,9 +352,9 @@ $(document).ready(function() {
 
 				for (let i = 0; i < game.length; i++) {
 					const createCard = $('<div>', {
-						class: 'card d-inline-block mr-3 mt-3',
+						class: 'card ',
 						id: 'multi-card',
-						style: 'width: 20rem'
+						style: 'width: auto; max-width: 19rem;'
 					});
 
 					$('#game-area').append(createCard);
@@ -472,9 +472,9 @@ $(document).ready(function() {
 					let slugResponse = response;
 
 					const createCard = $('<div>', {
-						class: 'card text-center mx-auto mt-2',
+						class: 'card text-center ',
 						id: 'single-card',
-						style: 'width: 55%;'
+						style: 'width: auto; max-width: 600px;'
 					});
 
 					$('#game-area').append(createCard);
@@ -579,13 +579,12 @@ $(document).ready(function() {
 			});
 	});
 
-	///=================show sign out and my profile link if a user is signed in===============//
-	//check if a uer is signed in
+	//toggle nav bar link if the user is logged in
 	$.get('/api/user-data', () => {}).then((result) => {
 		if (result.userId) {
-			userData = result;
 			$('#myprofilelink').removeClass('d-none');
 			$('#signOut').parent().removeClass('d-none');
+			$('#loginBtn').addClass('d-none');
 		}
 	});
 

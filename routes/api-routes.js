@@ -228,7 +228,7 @@ router.get('/profile/comment:id', (req, res) => {
 			where: {
 				userId: req.params.id
 			},
-			order: [ [ 'createdAt', 'DESC' ] ],
+			order: [['createdAt', 'DESC']],
 			limit: 5
 		})
 		.then((dbUserComments) => {
@@ -240,7 +240,9 @@ router.get('/profile/comment:id', (req, res) => {
 router.get('/profile/searchAll', (req, res) => {
 	db.User
 		.findAll({
+
 			include: [ db.Profile ]
+
 		})
 		.then((result) => {
 			res.json(result);
@@ -257,7 +259,9 @@ router.get('/profile/searchUser:username', (req, res) => {
 			where: {
 				username: req.params.username
 			},
+
 			include: [ db.Profile ]
+
 		})
 		.then((result) => {
 			res.json(result);
@@ -300,6 +304,8 @@ router.get('/profile/friends:id', (req, res) => {
 //================= ENDS MARIA================//
 //==================Gus============//
 
+// Query to find all games by user ID (aka user game)
+
 router.get('/addgames:id', (req, res) => {
 	db.Game
 		.findAll({
@@ -316,6 +322,7 @@ router.get('/addgames:id', (req, res) => {
 		});
 });
 
+// Query to add new game to DB (add game to library)
 router.post('/addgames', (req, res) => {
 	db.Game
 		.create({
@@ -332,6 +339,7 @@ router.post('/addgames', (req, res) => {
 		});
 });
 
+// Query to delete game from DB (delete from game library)
 router.delete('/addgames:id', (req, res) => {
 	db.Game
 		.destroy({

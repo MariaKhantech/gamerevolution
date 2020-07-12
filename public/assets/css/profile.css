@@ -338,7 +338,9 @@ iframe {
 #delete-button:hover {
 	transform: translateY(-7px);
 }
+/* end of profile game library area */
 
+/* Load modal Styling */
 #load-content {
 	background-color: #282828;
 	color: white;
@@ -353,3 +355,4 @@ iframe {
 #load-footer {
 	border-top: 1px solid #3500d3;
 }
+/* End of load modal */
