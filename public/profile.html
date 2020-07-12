@@ -18,6 +18,7 @@
 
 
     <link rel="stylesheet" href="./assets/css/profile.css">
+    <link rel='stylesheet' href='./assets/css/userchart.css'>
 </head>
 
 <body>
@@ -460,7 +461,118 @@
                             </div>
                         </div>
 
-
+ <!--CALEB CHART GOES IN HERER-->
+                        <!-- <div class="card"> -->
+                                <!-- Chart -->
+                                
+                                <div class="card social-timeline-card comments col-lg-12" id="userChartCard">
+                                    <h4 class="card-title text-center">User Stats</h5>
+                                <canvas id="userChart"></canvas>
+                                <div class="text-center">
+                                    <button id="userGaugeBtn">Gauge</button>
+                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" id="userStatStartBtn">
+                                      Launch User Stats
+                                    </button>
+                                  </div>
+                              </div>
+                          <!-- Button trigger modal -->
+                         
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">User Stats</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body" id="questionDiv">
+                                      <!-- MODAL FORM -->
+                                      <form>
+                                        <div class="form-row">
+                                          <div class="form-group col-md-6">
+                                              <!-- change label for -->
+                                            <label>From 1 to 10 How much do you like to play on a Console?</label>
+                                            <input type="number" class="form-control" id="consoleVal" placeholder="Enter a number" max='10' default='0'>
+                                        </div>
+                                        
+                                          <div class="form-group col-md-6">
+                                              <!-- change label for -->
+                                            <label>How much do you like to play on a PC?</label>
+                                            <input type="number" class="form-control" id="pcVal" placeholder="Enter a number" max='10' default='0'>
+                                            </div>
+                                          </div>
+                                        <div class="form-row">
+                                          <div class="form-group col-md-6">
+                                              <!-- change label for -->
+                                            <label>How much do you like to play Online?</label>
+                                            <input type="number" class="form-control" id="onlineVal" placeholder="Enter a number" max='10' default='0'>
+                                        </div>
+                                          <div class="form-group col-md-6">
+                                              <!-- change label for -->
+                                            <label>How much do you like to play Offline?</label>
+                                            <input type="number" class="form-control" id="offlineVal" placeholder="Enter a number" max='10' default='0'>
+                                        </div>
+                                        </div>
+                                            <!-- shooter -->
+                                            <div class="form-row">
+                                              <div class="form-group col-md-6">
+                                                  <!-- change label for -->
+                                                <label>How much do you like to play Shooters?</label>
+                                                <input type="number" class="form-control" id="shooterVal" placeholder="Enter a number" max='10' default='0'>
+                                            </div>
+                                          
+                                          <!-- racing -->
+                                          
+                                            <div class="form-group col-md-6">
+                                              <label>How much do you like to play Racing Games?</label>
+                                              <input type="number" class="form-control" id="racingVal" placeholder="Enter a number" max='10' default='0'>
+                                          </div>
+                                        </div>
+                                          <!-- RPG -->
+                                          <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                              <label>How much do you like to play RPG Games?</label>
+                                              <input type="number" class="form-control" id="rpgVal" placeholder="Enter a number" max='10' default='0'>
+                                          </div>
+                                        
+                                          <!-- Action -->
+                                          
+                                            <div class="form-group col-md-6">
+                                              <label>How much do you like to play Action Games?</label>
+                                              <input type="number" class="form-control" id="actionVal" placeholder="Enter a number" max='10' default='0'>
+                                          </div>
+                                        </div>
+                                          <!-- Adventure -->
+                                          <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                              <label>How much do you like to play Adventure Games?</label>
+                                              <input type="number" class="form-control" id="adventureVal" placeholder="Enter a number" max='10' default='0'>
+                                          </div>
+                                        
+                                          <!-- Strategy -->
+                                          
+                                            <div class="form-group col-md-6">
+                                              <label>How much do you like to play Strategy Games?</label>
+                                              <input type="number" class="form-control" id="strategyVal" placeholder="Enter a number" max='10' default='0'>
+                                          </div>
+                                        </div>
+                                  </form>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" id="saveStatsBtn" data-dismiss="modal">Save changes</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss='modal' id='rollStatsBtn'>Roll Stats</button>
+                                  </div>
+                                </div>
+                                </div>
+                                </div>
+                              <!-- </div> -->
+                            
+                            
+                                
+                            <!--END OF CALEB CHART-->
 
 
                     </div>
@@ -485,15 +597,8 @@
                         </div>
 
                         
-                        <div class="card social-timeline-card left-section">
-                            <!--CALEB CHART GOES IN HERER-->
-                            <div
-                              class="chart-container"
-                              style="position: relative; height: 40vh; width: 80vw;"
-                            >
-                              <canvas id="topChart"></canvas>
-                            </div>
-                            <!--END OF CALEB CHART-->
+                        <div class="card social-timeline-card left-section" >
+                           
                           </div>
 
 
@@ -602,7 +707,8 @@
     </div>
     <!--END OF CONTAINER-->
 
-
+ <!-- Chart.js -->
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <!--ending snippet-->
     <!-- Optional JavaScript -->
     <!-- Popper.js first, then Bootstrap JS -->
@@ -619,7 +725,7 @@
         <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="assets/js/profile.js"></script>
-
+<script src='assets/js/userchart.js'></script>
 </body>
 
 

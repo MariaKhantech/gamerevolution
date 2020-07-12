@@ -1,9 +1,7 @@
-// TODO: prompt user with questions
-// TODO: open with modal
-// TODO: once user inputs generate graphs
 // TODO: save graph data so that it can be reloaded on specific page
 //TODO: upload an average of user data for base chart data
-//TODO: make gauge chart
+//TODO: fix text color
+//TODO: make it fit in the card
 const questionDiv = $("#questionDiv");
 const statStartBtn = $("#userStatStartBtn");
 const saveStatBtn = $("#saveStatsBtn");
