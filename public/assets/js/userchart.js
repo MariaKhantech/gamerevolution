@@ -19,9 +19,17 @@ const strategyVal = $("#strategyVal");
 let userData = [];
 const ctx = document.getElementById("userChart").getContext("2d");
 //set chart font to white
-$("#gauge-toggle").bootstrapToggle();
+$("#gauge-toggle").bootstrapToggle({
+  on: "gauge",
+  off: "radar",
+});
+$("#light-toggle").bootstrapToggle({
+  on: "off",
+  off: "light",
+});
 
-Chart.defaults.global.defaultFontColor = "black";
+// Chart.defaults.global.defaultFontColor = "black";
+// Chart.defaults.global.defaultGridLinesColor = "gray";
 //initilize chart
 createUserChart("radar");
 // updates chart on click,
@@ -75,15 +83,15 @@ function createUserChart(type) {
     },
     options: {
       backgroundColor: "black",
-      fontColor: "white",
+      // fontColor: "white",
       legend: {
         labels: {
-          fontColor: "black",
+          // fontColor: "white",
         },
       },
       scale: {
         gridLines: {
-          color: "black",
+          // color: "black",
         },
         angleLines: {
           display: false,
@@ -140,10 +148,10 @@ function makeDonut() {
       rotation: 1 * Math.PI,
       cutOutPercentage: 60,
       backgroundColor: "black",
-      fontColor: "white",
+      // fontColor: "white",
       legend: {
         labels: {
-          fontColor: "black",
+          // fontColor: "white",
         },
       },
     },
@@ -180,7 +188,17 @@ $("#gauge-toggle").change(() => {
     makeUserChart();
   }
 });
-
+///////////////////////////////////////// light toggle
+$("#light-toggle").change(() => {
+  if ($("#userChartCard").hasClass("make-white")) {
+    $("#userChartCard").removeClass("make-white");
+    userRadarChart.fontColor = "black";
+    userRadarChart.update();
+  } else {
+    $("#userChartCard").addClass("make-white");
+    userRadarChart.fontColor = "white";
+  }
+});
 function makeUserChart() {
   userData = [
     consoleVal.val(),

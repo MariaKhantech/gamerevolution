@@ -362,6 +362,7 @@ iframe {
 }
 .make-white {
   background-color: white !important;
+  color: #282828;
 }
 
 .white-border {
