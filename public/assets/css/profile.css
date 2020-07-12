@@ -3,356 +3,371 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 body {
-	background-color: black;
-	margin-top: 20px;
-	color: black;
-	padding-top: 50px;
-	font-size: 20px;
-	font-family: "Montserrat", sans-serif;
+  background-color: black;
+  margin-top: 20px;
+  color: black;
+  padding-top: 50px;
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
 }
 
 /*navbar background color*/
 .navbar {
-	background-color: #282828;
-	opacity: .8;
+  background-color: #282828;
+  opacity: 0.8;
 }
 
 /*drop down background color*/
 .background-dropdown {
-	background-color: #282828;
-	color: white;
+  background-color: #282828;
+  color: white;
 }
 
 /*logo on navbar*/
 #GamerEvolutionLogo {
-	font-size: 30px;
+  font-size: 30px;
 }
 /*end navbar*/
 
 .text-white {
-	opacity: none !important;
+  opacity: none !important;
 }
 #top-section1 {
-	background-color: black;
+  background-color: black;
 }
 /*/ //////////////*/
 #post-btn {
-	background-color: #3500d3;
-	color: white;
-	margin-top: 10px !important;
-	border-color: black;
-	border-style: solid;
+  background-color: #3500d3;
+  color: white;
+  margin-top: 10px !important;
+  border-color: black;
+  border-style: solid;
 }
 /*changes the check out my games tab*/
 #profile-tab {
-	background-color: #3500d3 !important;
-	color: white !important;
-	border-color: #3500d3 !important;
-	border-style: solid;
-	margin-left: 10px;
+  background-color: #3500d3 !important;
+  color: white !important;
+  border-color: #3500d3 !important;
+  border-style: solid;
+  margin-left: 10px;
 }
 /*friends section image*/
 
 .currently-playing-img {
-	max-width: 100%;
-	height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 /*edits the edit profile button for profile*/
 #editProfileBtn {
-	width: 50px;
-	height: 50px;
-	background-color: #3500d3;
-	padding: 0;
-	border: none;
-	background: none;
+  width: 50px;
+  height: 50px;
+  background-color: #3500d3;
+  padding: 0;
+  border: none;
+  background: none;
 }
 
 /*edit game button */
 .edit-game-btn {
-	background-color: #3500d3;
-	border-color: black;
+  background-color: #3500d3;
+  border-color: black;
 }
 
 /*edit game modal */
 
 .background-modal {
-	background-color: black !important;
-	color: white;
-	border-style: solid;
-	border-color: #3500d3;
+  background-color: black !important;
+  color: white;
+  border-style: solid;
+  border-color: #3500d3;
 }
 .border-colors {
-	border-style: solid;
-	border-color: #3500d3;
+  border-style: solid;
+  border-color: #3500d3;
 }
 
 /*edits the avatar on the profile*/
 #user-profile {
-	color: white;
-	width: 175px !important;
-	border-radius: 50% !important;
-	border-style: solid;
-	border-color: #727cf5;
-	margin-top: 18px;
+  color: white;
+  width: 175px !important;
+  border-radius: 50% !important;
+  border-style: solid;
+  border-color: #727cf5;
+  margin-top: 18px;
 }
 
 /* changes background to elements and text white */
 .background-grey {
-	background-color: #282828;
-	color: white;
-	border-style: solid;
-	border-color: #3500d3;
+  background-color: #282828;
+  color: white;
+  border-style: solid;
+  border-color: #3500d3;
 }
 /*changes the followers section*/
 .color-text {
-	color: #727cf5;
+  color: #727cf5;
 }
 
 /*social media buttons*/
 .fa {
-	padding: 10px;
-	font-size: 25px;
-	text-align: center;
-	text-decoration: none;
-	margin: 3px 1px;
-	border-radius: 50%;
+  padding: 10px;
+  font-size: 25px;
+  text-align: center;
+  text-decoration: none;
+  margin: 3px 1px;
+  border-radius: 50%;
 }
 
 .fa-twitch {
-	background: purple;
-	color: white;
+  background: purple;
+  color: white;
 }
 .fa-youtube {
-	background: red;
-	color: white;
+  background: red;
+  color: white;
 }
 
 /*camera avatar upload button*/
 i.fa-camera {
-	margin: 10px;
-	cursor: pointer;
-	font-size: 20px;
-	color: #dddddd;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #dddddd;
 }
 .custom-file-upload {
-	position: absolute;
-	top: 40%;
-	left: 50%;
+  position: absolute;
+  top: 40%;
+  left: 50%;
 }
 i:hover {
-	opacity: 0.6;
+  opacity: 0.6;
 }
 input {
-	display: none;
+  display: none;
 }
 
 /*edits the card holding the avatar*/
 #avatar-card {
-	background: rgba(76, 175, 80, 0.0);
-	margin-top: -9rem;
-	padding-bottom: .25rem;
+  background: rgba(76, 175, 80, 0);
+  margin-top: -9rem;
+  padding-bottom: 0.25rem;
 }
 
 /*edits cover photo*/
 #cover-photo {
-	background-color: #190061;
-	border-style: solid;
-	border-color: #3500d3 !important;
+  background-color: #190061;
+  border-style: solid;
+  border-color: #3500d3 !important;
 }
 
 /*edits the friends section on the profile page*/
 .friends {
-	border-radius: 50%;
-	/* width: 25% !important; */
-	border-style: solid;
-	border-color: #3500d3;
-	display: block;
-	max-width: 180px;
-	max-height: 180px;
-	width: auto;
-	height: auto;
+  border-radius: 50%;
+  /* width: 25% !important; */
+  border-style: solid;
+  border-color: #3500d3;
+  display: block;
+  max-width: 180px;
+  max-height: 180px;
+  width: auto;
+  height: auto;
 }
 .friends-row {
-	width: 75%;
+  width: 75%;
 }
 /*creates margins between comments middle section*/
 .comments {
-	margin-top: 1rem !important;
-	background-color: #282828;
-	color: white;
+  margin-top: 1rem !important;
+  background-color: #282828;
+  color: white;
 }
 /*post comments section*/
 #message {
-	background-color: #404040;
-	color: white !important;
+  background-color: #404040;
+  color: white !important;
 }
 
 /*comment button*/
 #comment-button {
-	background-color: #3500d3;
-	border-style: solid;
-	border-color: black;
-	color: white;
+  background-color: #3500d3;
+  border-style: solid;
+  border-color: black;
+  color: white;
 }
 
 .left-section {
-	margin-top: 1rem;
-	background-color: #282828 !important;
-	border-style: double;
-	border-color: #3500d3 !important;
-	color: white;
+  margin-top: 1rem;
+  background-color: #282828 !important;
+  border-style: double;
+  border-color: #3500d3 !important;
+  color: white;
 }
 
 /*background of avatar section*/
 #avatar-background {
-	background-color: #190061;
-	border-style: solid;
-	border-color: #3500d3 !important;
+  background-color: #190061;
+  border-style: solid;
+  border-color: #3500d3 !important;
 }
 
 /*top three friends board */
 #top-three-friends {
-	margin-top: 1rem;
-	background: #282828 !important;
-	border-style: solid;
-	border-color: #3500d3;
-	color: white;
+  margin-top: 1rem;
+  background: #282828 !important;
+  border-style: solid;
+  border-color: #3500d3;
+  color: white;
 }
 
 /*div for currently playing image section*/
 .current-game {
-	width: 225px;
-	height: auto;
-	overflow: hidden;
-	border: 1px solid black;
+  width: 225px;
+  height: auto;
+  overflow: hidden;
+  border: 1px solid black;
 }
 
 .current-game img {
-	width: 100%;
-	min-height: 100%;
+  width: 100%;
+  min-height: 100%;
 }
 /* embedded youtube section changes this keeps video size of the div*/
 iframe {
-	width: 100%;
-	height: 300px;
+  width: 100%;
+  height: 300px;
 }
 
 /*adjust the size of the youtube video*/
 #youtube {
-	height: 60px !important;
-	width: 60px !important;
+  height: 60px !important;
+  width: 60px !important;
 }
 
 /*more of template*/
 .profile-page .profile-header {
-	box-shadow: 0 0 10px 0 rgba(183, 192, 206, 0.2);
-	border: 1px solid #f2f4f9;
+  box-shadow: 0 0 10px 0 rgba(183, 192, 206, 0.2);
+  border: 1px solid #f2f4f9;
 }
 
 .profile-page .profile-header .cover {
-	position: relative;
-	border-radius: .25rem .25rem 0 0;
+  position: relative;
+  border-radius: 0.25rem 0.25rem 0 0;
 }
 
 .profile-page .profile-header .cover figure {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 /*section for charts*/
 
 /*for button timelines*/
 .card .nav > li {
-	position: relative;
-	display: block;
+  position: relative;
+  display: block;
 }
 
 .card .nav > li > a {
-	position: relative;
-	display: block;
-	padding: 10px 15px;
-	font-weight: 300;
-	border-radius: 4px;
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  font-weight: 300;
+  border-radius: 4px;
 }
 
 .card .nav > li > a:focus,
 .card .nav > li > a:hover {
-	text-decoration: none;
-	background-color: #eee;
+  text-decoration: none;
+  background-color: #eee;
 }
 .card .s-nav > li > a.active {
-	text-decoration: none;
-	background-color: #3afe;
-	color: #fff;
+  text-decoration: none;
+  background-color: #3afe;
+  color: #fff;
 }
 /* ends*/
 
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 .show-grid {
-	padding: 10px;
+  padding: 10px;
 }
 
 .show-grid .row {
-	margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
-.show-grid [class^=col-] {
-	padding-top: 10px;
-	padding-bottom: 10px;
-	background-color: #eee;
-	background-color: rgba(86, 61, 124, .15);
-	border: 1px solid #ddd;
-	border: 1px solid rgba(86, 61, 124, .2);
+.show-grid [class^="col-"] {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #eee;
+  background-color: rgba(86, 61, 124, 0.15);
+  border: 1px solid #ddd;
+  border: 1px solid rgba(86, 61, 124, 0.2);
 }
 
 /* GUS LIBRARY GAME GRID STYLING */
 #profile-game-area {
-	margin: 10px auto 50px auto;
+  margin: 10px auto 50px auto;
 }
 
 #game-card {
-	margin: 10px 15px 10px 15px;
-	background: #282828;
-	border-style: double;
-	border-color: #3500d3;
-	color: white;
-	margin: 10px 15px 10px 15px;
-	transition: transform .2s;
+  margin: 10px 15px 10px 15px;
+  background: #282828;
+  border-style: double;
+  border-color: #3500d3;
+  color: white;
+  margin: 10px 15px 10px 15px;
+  transition: transform 0.2s;
 }
 
 #game-card:hover {
-	transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .img-thumbnail {
-	background: #282828 !important;
-	border-style: double;
-	border-color: #3500d3;
-	object-fit: cover;
-	display: block;
-	margin: 0px auto 0px auto;
-	height: 200px;
+  background: #282828 !important;
+  border-style: double;
+  border-color: #3500d3;
+  object-fit: cover;
+  display: block;
+  margin: 0px auto 0px auto;
+  height: 200px;
 }
 
 #delete-button:hover {
-	transform: translateY(-7px);
+  transform: translateY(-7px);
 }
 /* end of profile game library area */
 
 /* Load modal Styling */
 #load-content {
-	background-color: #282828;
-	color: white;
-	border-style: double;
-	border-color: #3500d3;
+  background-color: #282828;
+  color: white;
+  border-style: double;
+  border-color: #3500d3;
 }
 
 #load-header {
-	border-bottom: 1px solid #3500d3;
+  border-bottom: 1px solid #3500d3;
 }
 
 #load-footer {
-	border-top: 1px solid #3500d3;
+  border-top: 1px solid #3500d3;
 }
 /* End of load modal */
+
+.make-black {
+  background-color: black !important;
+}
+.make-white {
+  background-color: white !important;
+  color: #282828;
+}
+
+.white-border {
+  border-color: white;
+}
+#example-modal-center {
+  font-size: 12px !important;
+}

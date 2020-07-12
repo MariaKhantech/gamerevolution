@@ -1,9 +1,7 @@
-// TODO: prompt user with questions
-// TODO: open with modal
-// TODO: once user inputs generate graphs
 // TODO: save graph data so that it can be reloaded on specific page
 //TODO: upload an average of user data for base chart data
-//TODO: make gauge chart
+//TODO: fix text color
+//TODO: make it fit in the card
 const questionDiv = $("#questionDiv");
 const statStartBtn = $("#userStatStartBtn");
 const saveStatBtn = $("#saveStatsBtn");
@@ -21,66 +19,22 @@ const strategyVal = $("#strategyVal");
 let userData = [];
 const ctx = document.getElementById("userChart").getContext("2d");
 //set chart font to white
-Chart.defaults.global.defaultFontColor = "black";
+$("#gauge-toggle").bootstrapToggle({
+  on: "gauge",
+  off: "radar",
+});
+$("#light-toggle").bootstrapToggle({
+  on: "off",
+  off: "light",
+});
+
+// Chart.defaults.global.defaultFontColor = "black";
+// Chart.defaults.global.defaultGridLinesColor = "gray";
 //initilize chart
 createUserChart("radar");
 // updates chart on click,
 saveStatBtn.on("click", () => {
-  userData = [
-    consoleVal.val(),
-    pcVal.val(),
-    onlineVal.val(),
-    offlineVal.val(),
-    shooterVal.val(),
-    racingVal.val(),
-    rpgVal.val(),
-    actionVal.val(),
-    adventureVal.val(),
-    strategyVal.val(),
-  ];
-  console.log(consoleVal.val());
-  // /////////////////////////////////////////////////////////////////////update chart data here
-
-  userRadarChart = new Chart(ctx, {
-    type: "radar",
-    data: {
-      labels: [
-        "Console",
-        "PC",
-        "Online",
-        "Offline",
-        "Shooter",
-        "Racing",
-        "RPG",
-        "Action",
-        "Adventure",
-        "Strategy",
-      ],
-      datasets: [
-        { label: "User Stats", data: userData, borderColor: "#240090" },
-        {
-          label: "Average User Stats",
-          data: [1, 2, 5, 5, 4, 2, 8, 6, 4, 8],
-          borderColor: "#84e0ee",
-        },
-      ],
-    },
-    options: {
-      scale: {
-        gridLines: {
-          color: "black",
-        },
-        angleLines: {
-          display: false,
-        },
-        ticks: {
-          display: false,
-          // suggestedMin: 1,
-          // suggestedMax: 10,
-        },
-      },
-    },
-  });
+  makeUserChart();
 });
 // $("#toggleBtn").on('click',()=>{
 //     toggleFill();
@@ -129,15 +83,15 @@ function createUserChart(type) {
     },
     options: {
       backgroundColor: "black",
-      fontColor: "white",
+      // fontColor: "white",
       legend: {
         labels: {
-          fontColor: "black",
+          // fontColor: "white",
         },
       },
       scale: {
         gridLines: {
-          color: "black",
+          // color: "black",
         },
         angleLines: {
           display: false,
@@ -194,10 +148,10 @@ function makeDonut() {
       rotation: 1 * Math.PI,
       cutOutPercentage: 60,
       backgroundColor: "black",
-      fontColor: "white",
+      // fontColor: "white",
       legend: {
         labels: {
-          fontColor: "black",
+          // fontColor: "white",
         },
       },
     },
@@ -224,3 +178,82 @@ $("#rollStatsBtn").on("click", () => {
   }
   console.log(userData);
 });
+////////////////////////////////////// gauge toggle
+$("#gauge-toggle").change(() => {
+  if ($("#userChart").hasClass("radar")) {
+    $("#userChart").removeClass("radar");
+    makeDonut();
+  } else {
+    $("#userChart").addClass("radar");
+    makeUserChart();
+  }
+});
+///////////////////////////////////////// light toggle
+$("#light-toggle").change(() => {
+  if ($("#userChartCard").hasClass("make-white")) {
+    $("#userChartCard").removeClass("make-white");
+    userRadarChart.fontColor = "black";
+    userRadarChart.update();
+  } else {
+    $("#userChartCard").addClass("make-white");
+    userRadarChart.fontColor = "white";
+  }
+});
+function makeUserChart() {
+  userData = [
+    consoleVal.val(),
+    pcVal.val(),
+    onlineVal.val(),
+    offlineVal.val(),
+    shooterVal.val(),
+    racingVal.val(),
+    rpgVal.val(),
+    actionVal.val(),
+    adventureVal.val(),
+    strategyVal.val(),
+  ];
+  console.log(consoleVal.val());
+  // /////////////////////////////////////////////////////////////////////update chart data here
+
+  userRadarChart = new Chart(ctx, {
+    type: "radar",
+    data: {
+      labels: [
+        "Console",
+        "PC",
+        "Online",
+        "Offline",
+        "Shooter",
+        "Racing",
+        "RPG",
+        "Action",
+        "Adventure",
+        "Strategy",
+      ],
+      datasets: [
+        { label: "User Stats", data: userData, borderColor: "#240090" },
+        {
+          label: "Average User Stats",
+          data: [1, 2, 5, 5, 4, 2, 8, 6, 4, 8],
+          borderColor: "#84e0ee",
+        },
+      ],
+    },
+    options: {
+      // backgroundColor: "white",
+      scale: {
+        gridLines: {
+          color: "black",
+        },
+        angleLines: {
+          display: false,
+        },
+        ticks: {
+          display: false,
+          // suggestedMin: 1,
+          // suggestedMax: 10,
+        },
+      },
+    },
+  });
+}

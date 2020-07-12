@@ -1,0 +1,19 @@
+.gray {
+  background-color: slategray;
+}
+.black {
+  background-color: rgb(21, 18, 27);
+}
+
+/* #userChart {
+  padding-top: 20px;
+  padding-bottom: 20px;
+} */
+
+#userChartCard {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.white-border {
+  border-color: white;
+}
