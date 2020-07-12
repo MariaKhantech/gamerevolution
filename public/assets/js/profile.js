@@ -3,7 +3,7 @@ $(document).ready(() => {
 	let userData;
 
 	const getProfileInfo = () => {
-		$.get('api/user-data', () => { }).then((result) => {
+		$.get('api/user-data', () => {}).then((result) => {
 			console.log(result);
 			userData = result;
 			//sets the username
@@ -25,12 +25,14 @@ $(document).ready(() => {
 				setEmbeddedYoutubeUrl();
 				//Get user comments //
 				getCommentData(result);
+				//get the users friends
+				getUserFriends(result);
 			});
 		});
 	};
-//function TODO COMMENT
+	//function TODO COMMENT
 	const getCommentData = (result) => {
-		$.get('api/profile/comment' + result.userId, () => { }).then((data) => {
+		$.get('api/profile/comment' + result.userId, () => {}).then((data) => {
 			//grab the avatar to use in the comments section
 			commentImg = $('#user-profile').attr('src');
 			commentUsername = $('#username').text();
@@ -43,10 +45,43 @@ $(document).ready(() => {
 		});
 	};
 
+	//function TODO COMMENT
+	const getUserFriends = (result) => {
+		$.get('api/profile/friends' + result.userId, () => {}).then((data) => {
+			//grab the avatar to use in the comments section
+			console.log('HELLO', data);
+
+			$.get('api/profile' + data[0].friend_id, (friendData) => {
+				console.log(friendData);
+
+				const createCard = $('<div>', {
+					class: 'card d-inline-block ',
+					id: 'game-card',
+					style: 'width: 15rem'
+				});
+
+				const cardImg = $('<img>', {
+					class: 'img-thumbnail',
+					alt: 'game-image',
+					src: friendData.avatarImg.substring(friendData.avatarImg.indexOf('/'))
+				});
+
+				const cardTitle = $('<h6>', {
+					class: 'card-title text-center',
+					text: friendData.profileName
+				});
+
+				console.log(friendData.profileName);
+				$('#profile-friends-area').append(createCard);
+				createCard.append(cardImg);
+				createCard.append(cardTitle);
+			});
+		});
+	};
+
 	//comment button on user profile//
 	$('#post-btn').on('click', (event) => {
 		//event.preventDefault();
-		// $.post('api/user/comment', (data) => {
 		console.log('works');
 		//grab the value from the text box
 		const userComment = $('#message').val();
@@ -67,7 +102,7 @@ $(document).ready(() => {
 		});
 	});
 
-	$('#signOut').on('click', function () {
+	$('#signOut').on('click', function() {
 		$.get('/api/logout', (data) => {
 			window.location.replace('/');
 		});
@@ -346,6 +381,8 @@ $(document).ready(() => {
 		);
 	};
 
+	//load the user friends
+
 	//get the latest profile information for the user
 	getProfileInfo();
 
@@ -355,21 +392,16 @@ $(document).ready(() => {
 			url: `api/user-data`,
 			method: 'GET'
 		}).then((data) => {
-
 			$.ajax({
 				url: `/api/addgames${data.userId}`,
 				method: 'GET'
 			}).then((results) => {
-
-
 				let dbGames = results;
 
 				for (let i = 0; i < dbGames.length; i++) {
-
 					let slugURL = `https://rawg.io/api/games/${dbGames[i].game_name}`;
 
 					$.get(slugURL).then((response) => {
-
 						const createCard = $('<div>', {
 							class: 'card d-inline-block ',
 							id: 'game-card',
@@ -414,7 +446,6 @@ $(document).ready(() => {
 							});
 							cardBody.append(cardDescription);
 						} else {
-
 							const gameYear = response.released.split('-');
 
 							const cardDescription = $('<p>', {
@@ -448,7 +479,6 @@ $(document).ready(() => {
 
 						cardBody.append(rawgPercentage, rawgRating, userRatings);
 
-
 						const deleteButton = $('<button>', {
 							class: 'btn btn-outline-danger btn-block ',
 							id: 'delete-button',
@@ -469,17 +499,12 @@ $(document).ready(() => {
 
 	getUserGames();
 
-	$('#profile-game-area').on('click', 'button', function (event) {
+	$('#profile-game-area').on('click', 'button', function(event) {
 		event.preventDefault();
 		let name = $(this).data('name');
 		console.log(name);
 
 		// Alert modal show
-
-
-
-
-
 		$.ajax({
 			url: `api/user-data`,
 			method: 'GET'
@@ -487,21 +512,19 @@ $(document).ready(() => {
 			const userGame = {
 				game_name: name,
 				userId: data.userId
-			}
+			};
 			$.ajax(`/api/addgames${data.userId}`, {
-				type: "DELETE",
+				type: 'DELETE',
 				data: userGame
 			}).then((result) => {
 				$('#load-modal').modal('show');
 
-				setTimeout(function () {
+				setTimeout(function() {
 					$('#load-modal').modal('hide');
 				}, 1500);
 				$('#profile-game-area').empty();
 				getUserGames();
-			})
+			});
 		});
 	});
-
-
 });

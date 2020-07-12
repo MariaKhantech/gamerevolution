@@ -75,17 +75,64 @@ div.row.style-row {
 
 /*end styling the profile cards */
 
+/*MARIO GAME STYLING*/
 .paper-mario {
+	position: relative;
+	width: 100px;
+	height: 100%;
+	background: url(public\assets\images\search-profile-img\papermario.png);
+}
+
+.paper-mario.animated {
+	animation: jump 2s ease-in-out;
+}
+/*spinning effect commented out for now*/
+/* .paper-mario {
 	width: 100px;
 	height: 100%;
 	animation: spin 1s linear alternate-reverse infinite;
 	background: url(public\assets\images\search-profile-img\papermario.png);
-}
+} */
 
 #paper-mario1 {
-	margin-top: 10px;
+	margin-top: 100px;
 }
 
+.bowser {
+	width: 200px;
+	height: 100%;
+}
+
+.mushroom {
+	height: 50px;
+	width: auto;
+}
+
+.upside-down-pipe {
+	height: 150px;
+	margin-right: 1em;
+}
+
+.green-warp-pipe {
+	height: 150px;
+}
+
+.instruction-card {
+	margin-left: 50px;
+}
+The animation */ @keyframes jump {
+	0% {
+		bottom: 0;
+	}
+	50% {
+		bottom: 400px;
+	}
+	100% {
+		bottom: 0;
+	}
+}
+
+/*spin animation*/
 @keyframes spin {
 	from {
 		transform: rotate(0deg);
@@ -94,6 +141,8 @@ div.row.style-row {
 		transform: rotateY(180deg);
 	}
 }
+
+/*END GAME STYLING*/
 
 .style-row {
 	border-style: solid;
@@ -120,14 +169,3 @@ div.row.style-row {
 	font-size: 30px;
 }
 /*end navbar*/
-
-/*end of navbar change*/
-/*plugin for carousel*/
-#carousel .cloud9-item,
-#buttons button {
-	cursor: pointer;
-}
-
-#carousel {
-	height: 675px;
-}

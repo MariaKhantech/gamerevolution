@@ -27,13 +27,13 @@ router.post('/profile/create', (req, res) => {
 		.create({
 			profileName: 'ProfileName',
 			bio: 'Fill out your bio',
-			favoriteYoutubeVideoUrl: req.body.favoriteYoutubeVideoUrl,
-			twitchUrl: req.body.twitch_icon_url,
-			youtubeChannelUrl: req.body.youtube_icon_url,
-			nickname: req.body.nickname,
-			discordUserName: req.body.discordUserName,
-			twitchUserName: req.body.twitchUserName,
-			aboutMe: req.body.aboutMe,
+			favoriteYoutubeVideoUrl: '',
+			twitchUrl: '',
+			youtubeChannelUrl: '',
+			nickname: '',
+			discordUserName: '',
+			twitchUserName: '',
+			aboutMe: '',
 			coverImg: null,
 			avatarImg: 'public/assets/images/profile-images/default-image.png',
 			userId: req.user.userId
@@ -70,7 +70,7 @@ router.put('/profile/update:id', (req, res) => {
 				}
 			}
 		)
-		.then(function (dbPost) {
+		.then(function(dbPost) {
 			res.json(dbPost);
 		});
 });
@@ -100,7 +100,7 @@ router.post('/profile/upload_avatar', (req, res) => {
 					}
 				}
 			)
-			.then(function (dbPost) {
+			.then(function(dbPost) {
 				res.json(dbPost);
 			});
 
@@ -134,7 +134,7 @@ router.post('/profile/upload_coverImg', (req, res) => {
 					}
 				}
 			)
-			.then(function (dbPost) {
+			.then(function(dbPost) {
 				res.json(dbPost);
 			});
 
@@ -200,7 +200,7 @@ router.put('/profile/selectedgames/update:id', (req, res) => {
 				}
 			}
 		)
-		.then(function (dbPost) {
+		.then(function(dbPost) {
 			res.json(dbPost);
 		});
 });
@@ -234,7 +234,6 @@ router.get('/profile/comment:id', (req, res) => {
 		})
 		.then((dbUserComments) => {
 			res.json(dbUserComments);
-			//res.redirect('/profile?userId=2');
 		});
 });
 
@@ -242,7 +241,7 @@ router.get('/profile/comment:id', (req, res) => {
 router.get('/profile/searchAll', (req, res) => {
 	db.User
 		.findAll({
-			 include: [db.Profile]
+			include: [ db.Profile ]
 		})
 		.then((result) => {
 			res.json(result);
@@ -254,13 +253,12 @@ router.get('/profile/searchAll', (req, res) => {
 
 //finds one user for profile searching friends
 router.get('/profile/searchUser:username', (req, res) => {
-
 	db.User
 		.findOne({
 			where: {
 				username: req.params.username
-			 },
-			 include: [db.Profile]
+			},
+			include: [ db.Profile ]
 		})
 		.then((result) => {
 			res.json(result);
@@ -270,11 +268,38 @@ router.get('/profile/searchUser:username', (req, res) => {
 		});
 });
 
+//creates a friend //
+router.post('/profile/friend/create', (req, res) => {
+	console.log(req.body);
+	db.Friend
+		.create({
+			friend_id: req.body.friendId,
+			userId: req.user.userId
+		})
+		.then((result) => {
+			console.log(`Posted data successfully`);
+			res.json(result);
+		})
+		.catch((err) => {
+			res.json(err);
+		});
+});
 
+//get all the friends for the user
+router.get('/profile/friends:id', (req, res) => {
+	db.Friend
+		.findAll({
+			where: {
+				userId: req.params.id
+			}
+		})
+		.then((dbUserFriends) => {
+			res.json(dbUserFriends);
+		});
+});
 
 //================= ENDS MARIA================//
 //==================Gus============//
-
 
 router.get('/addgames:id', (req, res) => {
 	db.Game
@@ -298,7 +323,6 @@ router.post('/addgames', (req, res) => {
 			game_name: req.body.game_name,
 			unique_id: req.body.unique_id,
 			userId: req.user.userId
-
 		})
 		.then((result) => {
 			console.log(`Added game successfully`);
