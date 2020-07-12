@@ -19,66 +19,14 @@ const strategyVal = $("#strategyVal");
 let userData = [];
 const ctx = document.getElementById("userChart").getContext("2d");
 //set chart font to white
+$("#gauge-toggle").bootstrapToggle();
+
 Chart.defaults.global.defaultFontColor = "black";
 //initilize chart
 createUserChart("radar");
 // updates chart on click,
 saveStatBtn.on("click", () => {
-  userData = [
-    consoleVal.val(),
-    pcVal.val(),
-    onlineVal.val(),
-    offlineVal.val(),
-    shooterVal.val(),
-    racingVal.val(),
-    rpgVal.val(),
-    actionVal.val(),
-    adventureVal.val(),
-    strategyVal.val(),
-  ];
-  console.log(consoleVal.val());
-  // /////////////////////////////////////////////////////////////////////update chart data here
-
-  userRadarChart = new Chart(ctx, {
-    type: "radar",
-    data: {
-      labels: [
-        "Console",
-        "PC",
-        "Online",
-        "Offline",
-        "Shooter",
-        "Racing",
-        "RPG",
-        "Action",
-        "Adventure",
-        "Strategy",
-      ],
-      datasets: [
-        { label: "User Stats", data: userData, borderColor: "#240090" },
-        {
-          label: "Average User Stats",
-          data: [1, 2, 5, 5, 4, 2, 8, 6, 4, 8],
-          borderColor: "#84e0ee",
-        },
-      ],
-    },
-    options: {
-      scale: {
-        gridLines: {
-          color: "black",
-        },
-        angleLines: {
-          display: false,
-        },
-        ticks: {
-          display: false,
-          // suggestedMin: 1,
-          // suggestedMax: 10,
-        },
-      },
-    },
-  });
+  makeUserChart();
 });
 // $("#toggleBtn").on('click',()=>{
 //     toggleFill();
@@ -222,3 +170,72 @@ $("#rollStatsBtn").on("click", () => {
   }
   console.log(userData);
 });
+////////////////////////////////////// gauge toggle
+$("#gauge-toggle").change(() => {
+  if ($("#userChart").hasClass("radar")) {
+    $("#userChart").removeClass("radar");
+    makeDonut();
+  } else {
+    $("#userChart").addClass("radar");
+    makeUserChart();
+  }
+});
+
+function makeUserChart() {
+  userData = [
+    consoleVal.val(),
+    pcVal.val(),
+    onlineVal.val(),
+    offlineVal.val(),
+    shooterVal.val(),
+    racingVal.val(),
+    rpgVal.val(),
+    actionVal.val(),
+    adventureVal.val(),
+    strategyVal.val(),
+  ];
+  console.log(consoleVal.val());
+  // /////////////////////////////////////////////////////////////////////update chart data here
+
+  userRadarChart = new Chart(ctx, {
+    type: "radar",
+    data: {
+      labels: [
+        "Console",
+        "PC",
+        "Online",
+        "Offline",
+        "Shooter",
+        "Racing",
+        "RPG",
+        "Action",
+        "Adventure",
+        "Strategy",
+      ],
+      datasets: [
+        { label: "User Stats", data: userData, borderColor: "#240090" },
+        {
+          label: "Average User Stats",
+          data: [1, 2, 5, 5, 4, 2, 8, 6, 4, 8],
+          borderColor: "#84e0ee",
+        },
+      ],
+    },
+    options: {
+      // backgroundColor: "white",
+      scale: {
+        gridLines: {
+          color: "black",
+        },
+        angleLines: {
+          display: false,
+        },
+        ticks: {
+          display: false,
+          // suggestedMin: 1,
+          // suggestedMax: 10,
+        },
+      },
+    },
+  });
+}
