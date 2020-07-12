@@ -447,23 +447,18 @@ $(document).ready(() => {
 							cardBody.append(cardDescription);
 						} else {
 							const gameYear = response.released.split('-');
-
 							const cardDescription = $('<p>', {
 								class: 'card-text text-center',
-
 								text: `Released: ${gameYear[0]}`
 							});
 							cardBody.append(cardDescription);
 						}
 
 						const percentage = Math.round(response.rating / 5 * 100);
-
 						const rawgPercentage = $('<p>', {
 							class: 'card-text text-center',
-
 							text: `Rating: ${percentage}%`
 						});
-
 						const rawgRating = $('<p>', {
 							class: 'card-text text-center mx-auto'
 						}).rateYo({
@@ -471,12 +466,10 @@ $(document).ready(() => {
 							readOnly: true,
 							starWidth: '25px'
 						});
-
 						const userRatings = $('<p>', {
 							class: 'card-text text-center',
 							text: `User Ratings: ${response.ratings_count}`
 						});
-
 						cardBody.append(rawgPercentage, rawgRating, userRatings);
 
 						const deleteButton = $('<button>', {
@@ -489,7 +482,6 @@ $(document).ready(() => {
 							'data-content': 'Game removed from library',
 							text: `Remove from Library`
 						});
-
 						cardBody.append(deleteButton);
 					});
 				}
@@ -501,10 +493,9 @@ $(document).ready(() => {
 
 	$('#profile-game-area').on('click', 'button', function(event) {
 		event.preventDefault();
-		let name = $(this).data('name');
-		console.log(name);
 
-		// Alert modal show
+		let name = $(this).data('name');
+
 		$.ajax({
 			url: `api/user-data`,
 			method: 'GET'
