@@ -4,7 +4,6 @@ $(document).ready(() => {
 
 	const getProfileInfo = () => {
 		$.get('api/user-data', () => {}).then((result) => {
-			console.log(result);
 			userData = result;
 			//sets the username
 			$('#username').text(`@${result.username}`);
@@ -39,7 +38,6 @@ $(document).ready(() => {
 
 			//loop through the list of comments in the data obkect
 			Object.entries(data).forEach((entry) => {
-				console.log(entry);
 				createComment(entry[1].comments, commentUsername, commentImg);
 			});
 		});
@@ -49,32 +47,45 @@ $(document).ready(() => {
 	const getUserFriends = (result) => {
 		$.get('api/profile/friends' + result.userId, () => {}).then((data) => {
 			//grab the avatar to use in the comments section
-			console.log('HELLO', data);
 
-			$.get('api/profile' + data[0].friend_id, (friendData) => {
-				console.log(friendData);
+			if (data.length === 0) {
+				$('#profile-friends-area').append(
+					'<h4 class= "text-white text-center">Navigate to Profile Search page to add friends</h4>'
+				);
+				return;
+			}
+			let friendCounter = 0;
 
-				const createCard = $('<div>', {
-					class: 'card d-inline-block ',
-					id: 'game-card',
-					style: 'width: 15rem'
+			data.forEach((element) => {
+				$.get('api/profile' + element.friend_id, () => {}).then((friendData) => {
+					const createCard = $('<div>', {
+						class: 'card d-inline-block ',
+						id: 'game-card',
+						style: 'width: 15rem'
+					});
+					const cardImg = $('<img>', {
+						class: 'img-thumbnail',
+						alt: 'game-image',
+						src: friendData.avatarImg.substring(friendData.avatarImg.indexOf('/'))
+					});
+
+					const cardTitle = $('<h6>', {
+						class: 'card-title text-center',
+						text: friendData.profileName
+					});
+
+					$('#profile-friends-area').append(createCard);
+					createCard.append(cardImg);
+					createCard.append(cardTitle);
+
+					//create top 3 card
+					if (friendCounter < 3) {
+						let friendImg = friendData.avatarImg.substring(friendData.avatarImg.indexOf('/'));
+						let topFriend = createTopFriend(friendImg, friendData.profileName);
+						$('#top-three-friends').append(topFriend);
+						friendCounter += 1;
+					}
 				});
-
-				const cardImg = $('<img>', {
-					class: 'img-thumbnail',
-					alt: 'game-image',
-					src: friendData.avatarImg.substring(friendData.avatarImg.indexOf('/'))
-				});
-
-				const cardTitle = $('<h6>', {
-					class: 'card-title text-center',
-					text: friendData.profileName
-				});
-
-				console.log(friendData.profileName);
-				$('#profile-friends-area').append(createCard);
-				createCard.append(cardImg);
-				createCard.append(cardTitle);
 			});
 		});
 	};
@@ -82,7 +93,7 @@ $(document).ready(() => {
 	//comment button on user profile//
 	$('#post-btn').on('click', (event) => {
 		//event.preventDefault();
-		console.log('works');
+
 		//grab the value from the text box
 		const userComment = $('#message').val();
 		//checking if the entry is blank if so do not send to database to create an emtpy column
@@ -97,8 +108,9 @@ $(document).ready(() => {
 
 		//post putting comment into the database
 		$.post('/api/profile/comment', userCommentData).then((results) => {
-			console.log('user posts', results);
-			location.reload();
+			commentImg = $('#user-profile').attr('src');
+			commentUsername = $('#username').text();
+			createComment(results.comments, commentUsername, commentImg);
 		});
 	});
 
@@ -111,20 +123,17 @@ $(document).ready(() => {
 	//funnction that creates a new profile by calling the post route /api/profile/create
 	const createProfile = (profileData) => {
 		$.post('/api/profile/create', profileData).then((results) => {
-			console.log('created profile', results);
 			location.reload();
 		});
 	};
 
 	//TODO- create function that updates a profile (PUT)
 	const updateProfile = (profileData) => {
-		const userId = 2;
-		console.log(userData);
 		//take some profile data and update it in the database, exsiting
 		$.ajax('/api/profile/update' + userData.userId, {
 			type: 'PUT',
 			data: profileData
-		}).then(() => {
+		}).then((data) => {
 			//reload the page to get the updated list from the database
 			location.reload();
 		});
@@ -132,7 +141,6 @@ $(document).ready(() => {
 
 	//populates profile page with the profile information from the database
 	const populateProfileInfo = (data) => {
-		console.log(data);
 		//set the profile name
 		$('#profileName').text(data.profileName);
 
@@ -149,19 +157,20 @@ $(document).ready(() => {
 		$('#favoriteVideo').attr('src', data.favoriteYoutubeVideoUrl);
 
 		//set the profile nickname
-		$('#profileNickname').html(`<strong class="color-text">Name: </strong>
+		$('#profileNickname').html(`<strong class="color-text">Name:<br> </strong>
 		${data.nickname}`);
 
 		//sets the discord user name
-		$('#discordUsername').html(`<strong class="color-text">Discord Username: </strong> ${data.discordUserName}`);
+		$('#discordUsername').html(
+			`<strong class="color-text">Discord Username:<br> </strong> ${data.discordUserName}`
+		);
 
 		//sets the twitch user name
-		$('#twitchUserName').html(`<strong class="color-text">Twitch Username: </strong> ${data.twitchUserName}`);
+		$('#twitchUserName').html(`<strong class="color-text">Twitch Username:<br> </strong> ${data.twitchUserName}`);
 
 		//sets the aboutme section
-		$('#aboutMe').html(`<strong class="color-text">About: </strong> ${data.aboutMe}`);
+		$('#aboutMe').html(`<strong class="color-text">About:<br> </strong> ${data.aboutMe}`);
 
-		console.log(data.avatarImg.substring(data.avatarImg.indexOf('/')));
 		//sets the avatar image
 		$('#user-profile').attr('src', data.avatarImg.substring(data.avatarImg.indexOf('/')));
 
@@ -186,7 +195,6 @@ $(document).ready(() => {
 	//create an users selected games in the DB
 	const createSelectedGames = (gameData) => {
 		$.post('/api/profile/selectedgames', gameData).then((results) => {
-			console.log('update successful', results);
 			location.reload();
 		});
 	};
@@ -245,7 +253,6 @@ $(document).ready(() => {
 	$('#editProfileForm').on('submit', (event) => {
 		//stop the page from refreshing
 		event.preventDefault();
-		console.log(userData);
 		//collect all the modal form data into the profileData object
 		const profileData = {
 			profileName: $('#profile-name').val(),
@@ -381,6 +388,15 @@ $(document).ready(() => {
 		);
 	};
 
+	const createTopFriend = (imgSrc, profileName) => {
+		return $(`<div class="col-md-auto">
+					<div class="friend1 text-center">
+						<img class="friends" src="${imgSrc}" alt="">
+						<h3 class="text-center">${profileName}</h3>
+					</div>
+				</div>`);
+	};
+
 	//load the user friends
 
 	//get the latest profile information for the user
@@ -396,6 +412,13 @@ $(document).ready(() => {
 				url: `/api/addgames${data.userId}`,
 				method: 'GET'
 			}).then((results) => {
+				console.log(results.length === 0);
+				if (results.length === 0) {
+					$('#profile-game-area').append(
+						'<h4 class= "text-white text-center">Navigate to Game Search page to add games</h4>'
+					);
+					return;
+				}
 				let dbGames = results;
 
 				for (let i = 0; i < dbGames.length; i++) {
@@ -502,8 +525,6 @@ $(document).ready(() => {
 	$('#profile-game-area').on('click', 'button', function(event) {
 		event.preventDefault();
 		let name = $(this).data('name');
-		console.log(name);
-
 		// Alert modal show
 		$.ajax({
 			url: `api/user-data`,

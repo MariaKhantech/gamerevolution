@@ -65,7 +65,6 @@ router.put('/profile/update:id', (req, res) => {
 			},
 			{
 				where: {
-					// userId: 1
 					userId: req.params.id
 				}
 			}
