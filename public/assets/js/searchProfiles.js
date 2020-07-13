@@ -3,16 +3,15 @@ $(document).ready(() => {
 	let userData = null;
 	let pixels = 0;
 	//returns a profile card div
+
 	const createProfileCard = (imgsrc, profileName, profileBio, userId) => {
-		return $(`<div class="col-lg-4 mb-5">
-		<div class="card text-center style-card" style="width: 15rem;">
-		  <img id="profile-card"src="${imgsrc}" class="card-img-top img-portfolio img-fluid" alt="...">
-		  <div class="card-body">
-			<h5 class="card-title text-white style-p-card" id="profileName">${profileName}</h5>
-			<hr class="text-white">
-			<p class="card-text text-white style-p-card">${profileBio}.</p>
-			<a href="#" id="addProfile" class="btn btn-primary card-add-btn ${disableBtn}" data-userId="${userId}">Add Profile</a>
-		  </div>
+		return $(`<div class="card text-center style-card" id = "multi-card" style="width:auto; max-width: 18rem;">
+		<img id="profile-card"src="${imgsrc}" class="card-img-top img-portfolio img-fluid" alt="...">
+		<div class="card-body">
+		  <h5 class="card-title" id="profileName">${profileName}</h5>
+		  <hr class="text-white">
+		  <p class="card-text style-p-card">${profileBio}</p>
+		  <a href="#" id="addProfile" class="btn btn-primary card-add-btn ${disableBtn}" data-userId="${userId}">Add Profile</a>
 		</div>
 	  </div>
 	`);
@@ -38,7 +37,12 @@ $(document).ready(() => {
 		$.get('/api/profile/searchUser' + searchValue, () => {}).then((data) => {
 			//invalid profile name
 			if (!data) {
-				alert('profile does not exist');
+				let noProfile = $(' <h6 class = "text-white">Profile does not exist!</h6>');
+				$('#not-exist').removeClass('d-none');
+				setTimeout(function() {
+					$('#not-exist').addClass('d-none');
+				}, 3000);
+
 				return;
 			}
 			//clear the profile grid
@@ -111,63 +115,82 @@ $(document).ready(() => {
 		//stop audio for spaceship engine//
 		// $('.brick')[0].pause();
 	}
-	triggerBrickExplosion();
 
 	//get the left and top position of the brick//
-	let left = $('.brick')[0].style.left;
-	let top = $('.brick')[0].style.top;
+	// let left = $('.brick')[0].style.left;
+	// let top = $('.brick')[0].style.top;
 
-	let mushroomMario = $('<img id="red-alien"src="assets/img/red-alien.png" alt="red alien">');
-	mushroomMario.css('left', left);
-	mushroomMario.css('top', top);
+	// let mushroomMario = $('<img id="red-alien"src="assets/img/red-alien.png" alt="red alien">');
+	// mushroomMario.css('left', left);
+	// mushroomMario.css('top', top);
 
 	//used to edit the animation, speed of explosion animation/
-	$('.brick').explode();
 
-	$('.brick').explode({
-		omitLastLine: false,
-		radius: 40,
-		minRadius: 20,
-		release: true,
-		fadeTime: 100,
-		recycle: true,
-		recycleDelay: 1,
-		fill: true,
-		explodeTime: 15,
-		maxAngle: 360,
-		gravity: 0,
-		round: false,
-		groundDistance: 400,
-		ignoreCompelete: false,
-		land: true
-	});
-	// }
+	// $('.brick').explode({
+	// 	omitLastLine: false,
+	// 	radius: 40,
+	// 	minRadius: 20,
+	// 	release: true,
+	// 	fadeTime: 100,
+	// 	recycle: true,
+	// 	recycleDelay: 1,
+	// 	fill: true,
+	// 	explodeTime: 15,
+	// 	maxAngle: 360,
+	// 	gravity: 0,
+	// 	round: false,
+	// 	groundDistance: 400,
+	// 	ignoreCompelete: false,
+	// 	land: true
+	// });
 
-	$('.brick').explodeRestore();
+	// $('.brick').explodeRestore();
 
 	// $('.brick').on("", function(event) {
 	// 	triggerExplosion();
 
 	//Starting mario animations//
-
+	let offset = $('.paper-mario').position();
+	console.log(offset);
+	let isExploded = false;
+	let isGrown = false;
 	document.body.onkeyup = function(e) {
 		console.log(e);
-		if (e.keyCode == 32) {
-			console.log('hello');
-			//JUMP SOUND HERE
-			let jumpMario = $('<Audio></Audio>');
-			jumpMario[0].src = 'assets/sounds/jump-mario.wav';
-			jumpMario[0].play();
-
+		if (e.keyCode === 32) {
 			$('.paper-mario').addClass('animated');
-
 			setTimeout(function() {
+				//JUMP SOUND HERE
+				let jumpMario = $('<Audio></Audio>');
+				jumpMario[0].src = 'assets/sounds/jump-mario.wav';
+				jumpMario[0].play();
+
+				let brickPos = $('.brick').position();
+				console.log(brickPos);
+
+				let marioPos = $('.paper-mario').position();
+				console.log(marioPos.left);
+
+				if (marioPos.left > 10 && marioPos.left < 51 && !isExploded) {
+					console.log('hot brick');
+					$('.brick').explode();
+					triggerBrickExplosion();
+					//show the mushroom
+					$('.mushroom').removeClass('d-none');
+					isExploded = true;
+					//grow mario
+				} else if (marioPos.left > 10 && marioPos.left < 51 && !isGrown) {
+					console.log('grab mushroom');
+					$('.paper-mario').animate({ width: '150px', height: '150px' }, 1000);
+					$('.mushroom').addClass('d-none');
+					isGrown = true;
+				}
+
 				$('.paper-mario').removeClass('animated');
-			}, 2000);
+			}, 1000);
 		}
 	};
 
-	var change = {
+	let change = {
 		37: {
 			left: '-=1'
 		},
@@ -197,10 +220,15 @@ $(document).ready(() => {
 		clearInterval(going);
 		$(document).one('keydown', keyDown);
 	}
-	// $('button').click(function() {
-	// 	$(".fademe").addClass('animated');
-	// 	setTimeout(function() {
-	// 	  $(".fademe").removeClass('animated');
-	// 	}, 1500);
-	//   });
+
+	function getOffset(el) {
+		var _x = 0;
+		var _y = 0;
+		while (el && !isNaN(el.offsetLeft) && !isNaN(el.offsetTop)) {
+			_x += el.offsetLeft - el.scrollLeft;
+			_y += el.offsetTop - el.scrollTop;
+			el = el.offsetParent;
+		}
+		return { top: _y, left: _x };
+	}
 });

@@ -18,7 +18,6 @@ $(document).ready(() => {
 			email: emailInput.val().trim(),
 			password: passwordInput.val().trim()
 		};
-		console.log(userData);
 
 		//checks if user enetered all criteria - returns if not
 		// if (!userData.firstName || !userData.lastName || !userData.username || !userData.email || !userData.password) {
@@ -30,7 +29,6 @@ $(document).ready(() => {
 	});
 
 	function signUp(firstNameParam, lastNameParam, usernameParam, emailParam, passwordParam) {
-		console.log(firstNameParam, lastNameParam, usernameParam, emailParam, passwordParam);
 		// post to signUp
 		$.post('/api/signup', {
 			firstName: firstNameParam,
@@ -41,7 +39,6 @@ $(document).ready(() => {
 			//redirect to profile page once logged in
 		})
 			.then(() => {
-				console.log('It somewhat works! :)');
 				window.location.replace('/profile');
 			})
 			.catch((err) => {

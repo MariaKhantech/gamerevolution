@@ -108,9 +108,7 @@ $(document).ready(() => {
 
 		//post putting comment into the database
 		$.post('/api/profile/comment', userCommentData).then((results) => {
-			commentImg = $('#user-profile').attr('src');
-			commentUsername = $('#username').text();
-			createComment(results.comments, commentUsername, commentImg);
+			location.reload();
 		});
 	});
 
@@ -412,7 +410,6 @@ $(document).ready(() => {
 				url: `/api/addgames${data.userId}`,
 				method: 'GET'
 			}).then((results) => {
-				console.log(results.length === 0);
 				if (results.length === 0) {
 					$('#profile-game-area').append(
 						'<h4 class= "text-white text-center">Navigate to Game Search page to add games</h4>'
