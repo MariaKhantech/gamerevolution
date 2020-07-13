@@ -115,7 +115,6 @@ $(document).ready(() => {
 		//stop audio for spaceship engine//
 		// $('.brick')[0].pause();
 	}
-	triggerBrickExplosion();
 
 	//get the left and top position of the brick//
 	// let left = $('.brick')[0].style.left;
@@ -126,7 +125,6 @@ $(document).ready(() => {
 	// mushroomMario.css('top', top);
 
 	//used to edit the animation, speed of explosion animation/
-	// $('.brick').explode();
 
 	// $('.brick').explode({
 	// 	omitLastLine: false,
@@ -145,7 +143,6 @@ $(document).ready(() => {
 	// 	ignoreCompelete: false,
 	// 	land: true
 	// });
-	// // }
 
 	// $('.brick').explodeRestore();
 
@@ -153,21 +150,44 @@ $(document).ready(() => {
 	// 	triggerExplosion();
 
 	//Starting mario animations//
-
+	let offset = $('.paper-mario').position();
+	console.log(offset);
+	let isExploded = false;
+	let isGrown = false;
 	document.body.onkeyup = function(e) {
 		console.log(e);
 		if (e.keyCode === 32) {
-			console.log('hello');
-			//JUMP SOUND HERE
-			let jumpMario = $('<Audio></Audio>');
-			jumpMario[0].src = 'assets/sounds/jump-mario.wav';
-			jumpMario[0].play();
-
-			$('.paper-mario1').addClass('animated');
-
+			$('.paper-mario').addClass('animated');
 			setTimeout(function() {
-				$('.paper-mario1').removeClass('animated');
-			}, 2000);
+				//JUMP SOUND HERE
+				let jumpMario = $('<Audio></Audio>');
+				jumpMario[0].src = 'assets/sounds/jump-mario.wav';
+				jumpMario[0].play();
+
+				console.log(getOffset($('.paper-mario')));
+				let brickPos = $('.brick').position();
+				console.log(brickPos);
+
+				let marioPos = $('.paper-mario').position();
+				console.log(marioPos.left);
+
+				if (marioPos.left > 10 && marioPos.left < 51 && !isExploded) {
+					console.log('hot brick');
+					$('.brick').explode();
+					triggerBrickExplosion();
+					//show the mushroom
+					$('.mushroom').removeClass('d-none');
+					isExploded = true;
+					//grow mario
+				} else if (marioPos.left > 10 && marioPos.left < 51 && !isGrown) {
+					console.log('grab mushroom');
+					$('.paper-mario').animate({ width: '150px', height: '150px' }, 1000);
+					$('.mushroom').addClass('d-none');
+					isGrown = true;
+				}
+
+				$('.paper-mario').removeClass('animated');
+			}, 1000);
 		}
 	};
 
@@ -192,7 +212,7 @@ $(document).ready(() => {
 		going = setInterval(keepGoing, 1);
 
 		function keepGoing() {
-			$('.paper-mario1').css(animation);
+			$('.paper-mario').css(animation);
 		}
 	}
 
@@ -200,5 +220,16 @@ $(document).ready(() => {
 		console.log('up');
 		clearInterval(going);
 		$(document).one('keydown', keyDown);
+	}
+
+	function getOffset(el) {
+		var _x = 0;
+		var _y = 0;
+		while (el && !isNaN(el.offsetLeft) && !isNaN(el.offsetTop)) {
+			_x += el.offsetLeft - el.scrollLeft;
+			_y += el.offsetTop - el.scrollTop;
+			el = el.offsetParent;
+		}
+		return { top: _y, left: _x };
 	}
 });

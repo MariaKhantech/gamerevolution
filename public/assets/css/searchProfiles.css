@@ -137,25 +137,35 @@ body {
 	width: 200px;
 	height: 100%;
 	position: relative;
-	top: -100px;
+	top: -200px;
 }
 
 .paper-mario {
-	animation: jump 2s ease-in-out;
 	position: relative;
-	width: 150px;
-	height: 150px;
-	top: -100px;
+	width: 100px;
+	height: 100px;
+	bottom: 100px;
 	left: 20px;
 }
 
 .paper-mario.animated {
-	animation: jump 2s ease-in-out;
+	animation: jump 1s ease-in-out;
+}
+
+.brick {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	bottom: 0px;
+	left: 50px;
 }
 
 .mushroom {
+	position: absolute;
+	width: 50px;
 	height: 50px;
-	width: auto;
+	bottom: 50px;
+	left: 50px;
 }
 
 .upside-down-pipe {
@@ -173,13 +183,13 @@ body {
 
 @keyframes jump {
 	0% {
-		bottom: 0;
+		bottom: 100px;
 	}
 	50% {
-		bottom: 400px;
+		bottom: 450px;
 	}
 	100% {
-		bottom: 0;
+		bottom: 100px;
 	}
 }
 
