@@ -1,6 +1,6 @@
 // const { json } = require("express");
 
-$(document).ready(function() {
+$(document).ready(function () {
 	// ////////////////////////////////////////////////////////////////initialize charts so we can use chart functions outside of response
 	// set default chart variables
 	// Chart.defaults.global.defaultFontColor = "white";
@@ -43,20 +43,20 @@ $(document).ready(function() {
 	populatePlatformList();
 
 	// On-click of platform option sets dropdown text, name-attribute, and value to the platform name & id
-	$('.platform-list').on('click', 'a', function() {
+	$('.platform-list').on('click', 'a', function () {
 		$('.platform:first-child').text($(this).text());
 		$('.platform:first-child').val($(this).data('id'));
 		$('.platform:first-child').attr('name', $(this).text());
 	});
 
 	// On-click of ordering option sets dropdown text and name-attribute to selected ordering option
-	$('.order-list').on('click', 'a', function() {
+	$('.order-list').on('click', 'a', function () {
 		$('.order:first-child').text($(this).text());
 		$('.order:first-child').attr('name', $(this).text());
 	});
 
 	//////////////////////////////////////////////////////////// single game search button
-	$('#search-button').on('click', function(event) {
+	$('#search-button').on('click', function (event) {
 		event.preventDefault();
 
 		$('#game-area').html('');
@@ -76,8 +76,8 @@ $(document).ready(function() {
 		}
 	});
 
-	// Multiple game search on-click
-	$('#browse-btn').on('click', function(event) {
+	//////////////////////////////////////////////////////////// Multiple game search on-click
+	$('#browse-btn').on('click', function (event) {
 		event.preventDefault();
 
 		$('#game-area').html('');
@@ -169,7 +169,8 @@ $(document).ready(function() {
 
 					const cardTitle = $('<h6>', {
 						class: 'card-title text-center',
-						text: game[i].name
+						text: game[i].name,
+						style: "font-size: 20px;"
 					});
 					cardBody.append(cardTitle);
 
@@ -280,7 +281,8 @@ $(document).ready(function() {
 
 					const cardTitle = $('<h6>', {
 						class: 'card-title text-center',
-						text: game[i].name
+						text: game[i].name,
+						style: "font-size: 20px;"
 					});
 					cardBody.append(cardTitle);
 
@@ -394,7 +396,8 @@ $(document).ready(function() {
 
 					const cardTitle = $('<h6>', {
 						class: 'card-title text-center',
-						text: game[i].name
+						text: game[i].name,
+						style: "font-size: 20px;"
 					});
 
 					cardBody.append(cardTitle);
@@ -504,7 +507,8 @@ $(document).ready(function() {
 
 					const cardTitle = $('<h5>', {
 						class: 'card-title text-white',
-						text: slugResponse.name
+						text: slugResponse.name,
+						style: "font-size: 25px;"
 					});
 					cardBody.append(cardTitle);
 
@@ -551,7 +555,8 @@ $(document).ready(function() {
 		});
 	};
 
-	$('#game-area').on('click', 'button', function(event) {
+	// POST GAME TO GAME DB (ON CLICK OF ADD-LIBRARY BUTTON)
+	$('#game-area').on('click', 'button', function (event) {
 		event.preventDefault();
 
 		let gameSelect = $(this).data('name');
@@ -580,7 +585,7 @@ $(document).ready(function() {
 	});
 
 	//toggle nav bar link if the user is logged in
-	$.get('/api/user-data', () => {}).then((result) => {
+	$.get('/api/user-data', () => { }).then((result) => {
 		if (result.userId) {
 			$('#myprofilelink').removeClass('d-none');
 			$('#signOut').parent().removeClass('d-none');
@@ -589,7 +594,7 @@ $(document).ready(function() {
 	});
 
 	//handle sign out btn
-	$('#signOut').on('click', function() {
+	$('#signOut').on('click', function () {
 		$.get('/api/logout', (data) => {
 			window.location.replace('/');
 		});
@@ -784,7 +789,7 @@ $(document).ready(function() {
 
 		// ////////////////////////////////////////////////////////////////////////////////////////// top chart logic
 
-		const colorPalette = [ '#3500D3', '#00ffff', '#4b7fff', '#703fff', '#9600ff', '#00e6e6', '#240090' ];
+		const colorPalette = ['#3500D3', '#00ffff', '#4b7fff', '#703fff', '#9600ff', '#00e6e6', '#240090'];
 		const colorPaletteRGBTransparent = [
 			'rgba(53,0,211,.4)',
 			'rgba(0,255,255,.4)',
@@ -805,7 +810,7 @@ $(document).ready(function() {
 		];
 		// ctx.style.backgroundColor = "rgba(255,0,0,255)";
 
-		const borderPalette = [ 'red', 'green', 'yellow', 'orange', 'pink' ];
+		const borderPalette = ['red', 'green', 'yellow', 'orange', 'pink'];
 		// let newData1 = [53, 52, 18, 68, 50, 38, 73];
 		// let oldData = [0, 1, 10, 43, 23, 88, 23];
 		// let newData = [10, 14, 18, 43, 21, 38, 63];
@@ -978,8 +983,8 @@ function createChart(ctx, type) {
 			datasets: [
 				{
 					label: 'Metacritic Score',
-					backgroundColor: [ '#3e95cd', '#8e5ea2', '#3cba9f', '#e8c3b9', '#c45850' ],
-					data: [ 78, 67, 73, 78, 93 ]
+					backgroundColor: ['#3e95cd', '#8e5ea2', '#3cba9f', '#e8c3b9', '#c45850'],
+					data: [78, 67, 73, 78, 93]
 				}
 			]
 		},

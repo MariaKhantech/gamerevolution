@@ -69,6 +69,11 @@ body {
 /* End of Charts */
 
 /* Game Area & Card Styling */
+#game-grid {
+	border-radius: 10px;
+ 	 padding: 20px;
+ 	 background-color: rgba(12, 0, 50, .7);
+}
 .col-md-12 {
 	margin: 10px auto 25px auto;
 }
@@ -78,7 +83,7 @@ body {
 }
 
 .img-thumbnail {
-	background: #282828 !important;
+	background: #282828 ;
 	border-style: double;
 	border-color: #3500d3;
 	object-fit: cover;
@@ -115,7 +120,7 @@ body {
 }
 
 #single-card {
-	background: #282828 !important;
+	background: #282828;
 	border-style: double;
 	border-color: #3500d3;
 	color: white;
