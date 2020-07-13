@@ -56,7 +56,7 @@ $(document).ready(() => {
 		textGeo = new THREE.PlaneGeometry(300, 300);
 		THREE.ImageUtils.crossOrigin = ''; //Need this to pull in crossdomain images from AWS
 		// textTexture = THREE.ImageUtils.loadTexture('../images/image1.jpg' colors the text);
-		textTexture = new THREE.TextureLoader().load('./assets/images/index-images/gamerevolution.jpg');
+		textTexture = new THREE.TextureLoader().load('./assets/images/index-images/GELogo1900px.png');
 		let colortext = new THREE.Color('rgb(255,255,255)');
 		textMaterial = new THREE.MeshLambertMaterial({
 			color: colortext,
@@ -162,34 +162,29 @@ $(document).ready(() => {
 	};
 });
 
-
 //ABOUT US PAGE
 
-(function (window, document, $, undefined) {
+(function(window, document, $, undefined) {
 	var $slides, $btnArr;
 
 	function onClick(e) {
 		var $target = $(e.target);
-		if (
-			$target.hasClass("slide") &&
-			!$target.hasClass("active") &&
-			!$target.siblings().hasClass("active")
-		) {
-			$target.removeClass("anim-in last-viewed").addClass("active");
-			$target.siblings().removeClass("anim-in last-viewed").addClass("anim-out");
+		if ($target.hasClass('slide') && !$target.hasClass('active') && !$target.siblings().hasClass('active')) {
+			$target.removeClass('anim-in last-viewed').addClass('active');
+			$target.siblings().removeClass('anim-in last-viewed').addClass('anim-out');
 		}
 	}
 
 	function closeSlide(e) {
 		var $slide = $(e.target).parent();
-		$slide.removeClass("active anim-in").addClass("last-viewed");
-		$slide.siblings().removeClass("anim-out").addClass("anim-in");
+		$slide.removeClass('active anim-in').addClass('last-viewed');
+		$slide.siblings().removeClass('anim-out').addClass('anim-in');
 	}
 
-	$(function () {
-		$slides = $(".slide");
-		$btnArr = $slides.find(".btn-close");
-		$slides.on("click", onClick);
-		$btnArr.on("click", closeSlide);
+	$(function() {
+		$slides = $('.slide');
+		$btnArr = $slides.find('.btn-close');
+		$slides.on('click', onClick);
+		$btnArr.on('click', closeSlide);
 	});
 })(this, document, jQuery);
