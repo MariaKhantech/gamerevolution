@@ -22,7 +22,6 @@ router.get('/profile:id', (req, res) => {
 
 //Creates a profile in the database --Maria
 router.post('/profile/create', (req, res) => {
-	console.log(req.user);
 	db.Profile
 		.create({
 			profileName: 'ProfileName',
@@ -39,7 +38,6 @@ router.post('/profile/create', (req, res) => {
 			userId: req.user.userId
 		})
 		.then((result) => {
-			console.log(`Posted data successfully`);
 			res.json(result);
 		})
 		.catch((err) => {
@@ -49,7 +47,6 @@ router.post('/profile/create', (req, res) => {
 
 //route to update a users profile -- Maria
 router.put('/profile/update:id', (req, res) => {
-	console.log('HELLO');
 	db.Profile
 		.update(
 			{
@@ -78,7 +75,6 @@ router.put('/profile/update:id', (req, res) => {
 router.post('/profile/upload_avatar', (req, res) => {
 	const image = req.files.file;
 	const destination = 'public/assets/images/profile-images/' + image.name;
-	console.log(req);
 	//move the image to assets/images/
 	image.mv(destination, (error) => {
 		if (error) {
@@ -102,8 +98,6 @@ router.post('/profile/upload_avatar', (req, res) => {
 			.then(function(dbPost) {
 				res.json(dbPost);
 			});
-
-		console.log(`Posted data successfully`);
 	});
 });
 
@@ -111,7 +105,6 @@ router.post('/profile/upload_avatar', (req, res) => {
 router.post('/profile/upload_coverImg', (req, res) => {
 	const image = req.files.file;
 	const destination = 'public/assets/images/profile-images/' + image.name;
-	console.log(image, destination);
 	//move the image to assets/images/
 	image.mv(destination, (error) => {
 		if (error) {
@@ -136,8 +129,6 @@ router.post('/profile/upload_coverImg', (req, res) => {
 			.then(function(dbPost) {
 				res.json(dbPost);
 			});
-
-		console.log(`Posted data successfully`);
 	});
 });
 
@@ -158,7 +149,6 @@ router.get('/profile/selectedgames:id', (req, res) => {
 
 //Creates information from the database
 router.post('/profile/selectedgames', (req, res) => {
-	//console.log(req.body);
 	db.ProfileSelectGames
 		.create({
 			currentlyPlaying: req.body.currentlyPlaying,
@@ -171,7 +161,6 @@ router.post('/profile/selectedgames', (req, res) => {
 			userId: req.user.userId
 		})
 		.then((result) => {
-			console.log(`Posted data successfully`);
 			res.json(result);
 		})
 		.catch((err) => {
@@ -206,14 +195,12 @@ router.put('/profile/selectedgames/update:id', (req, res) => {
 
 //creates a user comment //
 router.post('/profile/comment', (req, res) => {
-	console.log(req.body);
 	db.Comments
 		.create({
 			comments: req.body.comment,
 			userId: req.user.userId
 		})
 		.then((result) => {
-			console.log(`Posted data successfully`);
 			res.json(result);
 		})
 		.catch((err) => {
@@ -228,7 +215,7 @@ router.get('/profile/comment:id', (req, res) => {
 			where: {
 				userId: req.params.id
 			},
-			order: [['createdAt', 'DESC']],
+			order: [ [ 'createdAt', 'DESC' ] ],
 			limit: 5
 		})
 		.then((dbUserComments) => {
@@ -240,9 +227,7 @@ router.get('/profile/comment:id', (req, res) => {
 router.get('/profile/searchAll', (req, res) => {
 	db.User
 		.findAll({
-
 			include: [ db.Profile ]
-
 		})
 		.then((result) => {
 			res.json(result);
@@ -261,7 +246,6 @@ router.get('/profile/searchUser:username', (req, res) => {
 			},
 
 			include: [ db.Profile ]
-
 		})
 		.then((result) => {
 			res.json(result);
@@ -273,14 +257,12 @@ router.get('/profile/searchUser:username', (req, res) => {
 
 //creates a friend //
 router.post('/profile/friend/create', (req, res) => {
-	console.log(req.body);
 	db.Friend
 		.create({
 			friend_id: req.body.friendId,
 			userId: req.user.userId
 		})
 		.then((result) => {
-			console.log(`Posted data successfully`);
 			res.json(result);
 		})
 		.catch((err) => {
@@ -315,7 +297,6 @@ router.get('/addgames:id', (req, res) => {
 		})
 		.then((result) => {
 			res.json(result);
-			console.log(result);
 		})
 		.catch((err) => {
 			res.json(err);
@@ -331,7 +312,6 @@ router.post('/addgames', (req, res) => {
 			userId: req.user.userId
 		})
 		.then((result) => {
-			console.log(`Added game successfully`);
 			res.json(result);
 		})
 		.catch((err) => {
@@ -349,7 +329,6 @@ router.delete('/addgames:id', (req, res) => {
 			}
 		})
 		.then((result) => {
-			console.log(`Deleted game successfully`);
 			res.json(result);
 		})
 		.catch((err) => {
@@ -376,7 +355,6 @@ router.get('/logout', (req, res) => {
 
 //signup route, then redirect to home page
 router.post('/signup', (req, res) => {
-	console.log(req.body);
 	db.User
 		.create({
 			firstName: req.body.firstName,
@@ -395,8 +373,6 @@ router.post('/signup', (req, res) => {
 
 //get user data
 router.get('/user-data', (req, res) => {
-	console.log('Get user data');
-	console.log(req.user);
 	if (!req.user) {
 		res.json({}); //empty object if user not logged in
 	} else {

@@ -164,7 +164,6 @@ $(document).ready(() => {
 				jumpMario[0].src = 'assets/sounds/jump-mario.wav';
 				jumpMario[0].play();
 
-				console.log(getOffset($('.paper-mario')));
 				let brickPos = $('.brick').position();
 				console.log(brickPos);
 
