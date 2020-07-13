@@ -763,9 +763,9 @@ h4 {
 }
 .slide .content .about-info {
   position: absolute;
-  bottom: 40%;
-  left: 30%;
-  padding: 30px 30px 30px 120px;
+  bottom: 30%;
+  left: 10%;
+  /* padding: 30px 30px 30px 120px; */
   font-size: 1.25em;
   color: white;
   text-shadow: 0 1px 4px #0f0f0f;
