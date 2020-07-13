@@ -4,7 +4,6 @@ $(document).ready(() => {
 
 	const getProfileInfo = () => {
 		$.get('api/user-data', () => { }).then((result) => {
-			console.log(result);
 			userData = result;
 			//sets the username
 			$('#username').text(`@${result.username}`);
@@ -25,10 +24,12 @@ $(document).ready(() => {
 				setEmbeddedYoutubeUrl();
 				//Get user comments //
 				getCommentData(result);
+				//get the users friends
+				getUserFriends(result);
 			});
 		});
 	};
-//function TODO COMMENT
+	//function TODO COMMENT
 	const getCommentData = (result) => {
 		$.get('api/profile/comment' + result.userId, () => { }).then((data) => {
 			//grab the avatar to use in the comments section
@@ -37,8 +38,54 @@ $(document).ready(() => {
 
 			//loop through the list of comments in the data obkect
 			Object.entries(data).forEach((entry) => {
-				console.log(entry);
 				createComment(entry[1].comments, commentUsername, commentImg);
+			});
+		});
+	};
+
+	//function TODO COMMENT
+	const getUserFriends = (result) => {
+		$.get('api/profile/friends' + result.userId, () => { }).then((data) => {
+			//grab the avatar to use in the comments section
+
+			if (data.length === 0) {
+				$('#profile-friends-area').append(
+					'<h4 class= "text-white text-center">Navigate to Profile Search page to add friends</h4>'
+				);
+				return;
+			}
+			let friendCounter = 0;
+
+			data.forEach((element) => {
+				$.get('api/profile' + element.friend_id, () => { }).then((friendData) => {
+					const createCard = $('<div>', {
+						class: 'card d-inline-block ',
+						id: 'game-card',
+						style: 'width: 15rem'
+					});
+					const cardImg = $('<img>', {
+						class: 'img-thumbnail',
+						alt: 'game-image',
+						src: friendData.avatarImg.substring(friendData.avatarImg.indexOf('/'))
+					});
+
+					const cardTitle = $('<h6>', {
+						class: 'card-title text-center',
+						text: friendData.profileName
+					});
+
+					$('#profile-friends-area').append(createCard);
+					createCard.append(cardImg);
+					createCard.append(cardTitle);
+
+					//create top 3 card
+					if (friendCounter < 3) {
+						let friendImg = friendData.avatarImg.substring(friendData.avatarImg.indexOf('/'));
+						let topFriend = createTopFriend(friendImg, friendData.profileName);
+						$('#top-three-friends').append(topFriend);
+						friendCounter += 1;
+					}
+				});
 			});
 		});
 	};
@@ -46,8 +93,7 @@ $(document).ready(() => {
 	//comment button on user profile//
 	$('#post-btn').on('click', (event) => {
 		//event.preventDefault();
-		// $.post('api/user/comment', (data) => {
-		console.log('works');
+
 		//grab the value from the text box
 		const userComment = $('#message').val();
 		//checking if the entry is blank if so do not send to database to create an emtpy column
@@ -62,7 +108,6 @@ $(document).ready(() => {
 
 		//post putting comment into the database
 		$.post('/api/profile/comment', userCommentData).then((results) => {
-			console.log('user posts', results);
 			location.reload();
 		});
 	});
@@ -76,20 +121,17 @@ $(document).ready(() => {
 	//funnction that creates a new profile by calling the post route /api/profile/create
 	const createProfile = (profileData) => {
 		$.post('/api/profile/create', profileData).then((results) => {
-			console.log('created profile', results);
 			location.reload();
 		});
 	};
 
 	//TODO- create function that updates a profile (PUT)
 	const updateProfile = (profileData) => {
-		const userId = 2;
-		console.log(userData);
 		//take some profile data and update it in the database, exsiting
 		$.ajax('/api/profile/update' + userData.userId, {
 			type: 'PUT',
 			data: profileData
-		}).then(() => {
+		}).then((data) => {
 			//reload the page to get the updated list from the database
 			location.reload();
 		});
@@ -97,7 +139,6 @@ $(document).ready(() => {
 
 	//populates profile page with the profile information from the database
 	const populateProfileInfo = (data) => {
-		console.log(data);
 		//set the profile name
 		$('#profileName').text(data.profileName);
 
@@ -114,19 +155,20 @@ $(document).ready(() => {
 		$('#favoriteVideo').attr('src', data.favoriteYoutubeVideoUrl);
 
 		//set the profile nickname
-		$('#profileNickname').html(`<strong class="color-text">Name: </strong>
+		$('#profileNickname').html(`<strong class="color-text">Name:<br> </strong>
 		${data.nickname}`);
 
 		//sets the discord user name
-		$('#discordUsername').html(`<strong class="color-text">Discord Username: </strong> ${data.discordUserName}`);
+		$('#discordUsername').html(
+			`<strong class="color-text">Discord Username:<br> </strong> ${data.discordUserName}`
+		);
 
 		//sets the twitch user name
-		$('#twitchUserName').html(`<strong class="color-text">Twitch Username: </strong> ${data.twitchUserName}`);
+		$('#twitchUserName').html(`<strong class="color-text">Twitch Username:<br> </strong> ${data.twitchUserName}`);
 
 		//sets the aboutme section
-		$('#aboutMe').html(`<strong class="color-text">About: </strong> ${data.aboutMe}`);
+		$('#aboutMe').html(`<strong class="color-text">About:<br> </strong> ${data.aboutMe}`);
 
-		console.log(data.avatarImg.substring(data.avatarImg.indexOf('/')));
 		//sets the avatar image
 		$('#user-profile').attr('src', data.avatarImg.substring(data.avatarImg.indexOf('/')));
 
@@ -151,7 +193,6 @@ $(document).ready(() => {
 	//create an users selected games in the DB
 	const createSelectedGames = (gameData) => {
 		$.post('/api/profile/selectedgames', gameData).then((results) => {
-			console.log('update successful', results);
 			location.reload();
 		});
 	};
@@ -210,7 +251,6 @@ $(document).ready(() => {
 	$('#editProfileForm').on('submit', (event) => {
 		//stop the page from refreshing
 		event.preventDefault();
-		console.log(userData);
 		//collect all the modal form data into the profileData object
 		const profileData = {
 			profileName: $('#profile-name').val(),
@@ -346,6 +386,17 @@ $(document).ready(() => {
 		);
 	};
 
+	const createTopFriend = (imgSrc, profileName) => {
+		return $(`<div class="col-md-auto">
+					<div class="friend1 text-center">
+						<img class="friends" src="${imgSrc}" alt="">
+						<h3 class="text-center">${profileName}</h3>
+					</div>
+				</div>`);
+	};
+
+	//load the user friends
+
 	//get the latest profile information for the user
 	getProfileInfo();
 
@@ -355,21 +406,22 @@ $(document).ready(() => {
 			url: `api/user-data`,
 			method: 'GET'
 		}).then((data) => {
-
 			$.ajax({
 				url: `/api/addgames${data.userId}`,
 				method: 'GET'
 			}).then((results) => {
-
-
+				if (results.length === 0) {
+					$('#profile-game-area').append(
+						'<h4 class= "text-white text-center">Navigate to Game Search page to add games</h4>'
+					);
+					return;
+				}
 				let dbGames = results;
 
 				for (let i = 0; i < dbGames.length; i++) {
-
 					let slugURL = `https://rawg.io/api/games/${dbGames[i].game_name}`;
 
 					$.get(slugURL).then((response) => {
-
 						const createCard = $('<div>', {
 							class: 'card d-inline-block ',
 							id: 'game-card',
@@ -401,7 +453,8 @@ $(document).ready(() => {
 
 						const cardTitle = $('<h6>', {
 							class: 'card-title text-center',
-							text: response.name
+							text: response.name,
+							style: "font-size: 18px;"
 						});
 
 						cardBody.append(cardTitle);
@@ -409,30 +462,26 @@ $(document).ready(() => {
 						if (response.released === null) {
 							const cardDescription = $('<p>', {
 								class: 'card-text text-center',
-
-								text: `Released: N/A`
+								text: `Released: N/A`,
+								style: "font-size: 18px;"
 							});
 							cardBody.append(cardDescription);
 						} else {
-
 							const gameYear = response.released.split('-');
-
 							const cardDescription = $('<p>', {
 								class: 'card-text text-center',
-
-								text: `Released: ${gameYear[0]}`
+								text: `Released: ${gameYear[0]}`,
+								style: "font-size: 18px;"
 							});
 							cardBody.append(cardDescription);
 						}
 
 						const percentage = Math.round(response.rating / 5 * 100);
-
 						const rawgPercentage = $('<p>', {
 							class: 'card-text text-center',
-
-							text: `Rating: ${percentage}%`
+							text: `Rating: ${percentage}%`,
+							style: "font-size: 18px;"
 						});
-
 						const rawgRating = $('<p>', {
 							class: 'card-text text-center mx-auto'
 						}).rateYo({
@@ -440,14 +489,12 @@ $(document).ready(() => {
 							readOnly: true,
 							starWidth: '25px'
 						});
-
 						const userRatings = $('<p>', {
 							class: 'card-text text-center',
-							text: `User Ratings: ${response.ratings_count}`
+							text: `User Ratings: ${response.ratings_count}`,
+							style: "font-size: 18px;"
 						});
-
 						cardBody.append(rawgPercentage, rawgRating, userRatings);
-
 
 						const deleteButton = $('<button>', {
 							class: 'btn btn-outline-danger btn-block ',
@@ -459,7 +506,6 @@ $(document).ready(() => {
 							'data-content': 'Game removed from library',
 							text: `Remove from Library`
 						});
-
 						cardBody.append(deleteButton);
 					});
 				}
@@ -471,15 +517,8 @@ $(document).ready(() => {
 
 	$('#profile-game-area').on('click', 'button', function (event) {
 		event.preventDefault();
+
 		let name = $(this).data('name');
-		console.log(name);
-
-		// Alert modal show
-
-
-
-
-
 		$.ajax({
 			url: `api/user-data`,
 			method: 'GET'
@@ -487,9 +526,9 @@ $(document).ready(() => {
 			const userGame = {
 				game_name: name,
 				userId: data.userId
-			}
+			};
 			$.ajax(`/api/addgames${data.userId}`, {
-				type: "DELETE",
+				type: 'DELETE',
 				data: userGame
 			}).then((result) => {
 				$('#load-modal').modal('show');
@@ -499,9 +538,7 @@ $(document).ready(() => {
 				}, 1500);
 				$('#profile-game-area').empty();
 				getUserGames();
-			})
+			});
 		});
 	});
-
-
 });

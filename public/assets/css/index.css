@@ -6,10 +6,6 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
-/*tiktok video*/
-.right-mariohv {
-	margin-right: 10rem !important;
-}
 /*h5*/
 .top-funny {
 	border-style: solid;
@@ -50,6 +46,14 @@ li {
 /*logo on navbar*/
 #GamerEvolutionLogo {
 	font-size: 30px;
+}
+
+/*ps5-xbox logo*/
+.xbox-ps5 {
+	width: 30rem;
+	border-style: solid;
+	border-color: #3500d3;
+	margin: 5%;
 }
 
 /*login modal window*/
@@ -266,23 +270,16 @@ a:focus {
 }
 
 /* Footer */
+/*reference https://bootsnipp.com/snippets/rlXdE*/
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 section {
 	padding: 2rem 0;
 }
 
-/* section .section-title {
-	text-align: center;
-	color: #007b5e;
-	margin-bottom: 50px;
-	text-transform: uppercase;
-} */
 #footer {
 	background: black;
 }
-.footer-search {
-	margin-left: 53px;
-}
+
 #footer h5 {
 	padding-left: 10px;
 	border-left: 3px solid #eeeeee;
@@ -341,6 +338,12 @@ section {
 		border-left: transparent;
 		padding-bottom: 0px;
 		margin-bottom: 10px;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	#card1 {
+		width: 20rem;
 	}
 }
 /*end footer */

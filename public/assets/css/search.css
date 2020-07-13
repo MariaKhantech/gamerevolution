@@ -3,15 +3,8 @@
 	box-sizing: border-box;
 }
 
-.make-black {
-  background-color: black !important;
-}
-.make-white {
-  background-color: white !important;
-}
-
 body {
-  background-color: black;
+	background-color: black;
 	margin-top: 20px;
 	color: black;
 	padding-top: 50px;
@@ -19,123 +12,160 @@ body {
 	font-family: "Montserrat", sans-serif;
 }
 
+/* Navbar Styling */
 .navbar {
 	background-color: #282828;
 	opacity: .8;
 }
 
-/*drop down background color*/
 .background-dropdown {
 	background-color: #282828;
 	color: white;
 }
 
-/*logo on navbar*/
 #GamerEvolutionLogo {
 	font-size: 30px;
 }
+/* End of Navbar */
 
-#multi-card {
-  background: #282828;
-  border-style: double;
-  border-color: #3500d3;
-  color: white;
-  margin: 10px 15px 10px 15px;
-  transition: transform .2s;
-}
-
-#multi-card:hover {
-  transform: scale(1.05);
-}
-
-#single-card {
-  background: #282828 !important;
-  border-style: double;
-  border-color: #3500d3;
-  color: white;
-  margin: 30px 15px 30px 15px;
-  transition: transform .2s;
-}
-
-#single-card:hover {
-  transform: scale(1.01);
-}
-
-.img-thumbnail {
-  background: #282828 !important;
-  border-style: double;
-  border-color: #3500d3;
-  object-fit: cover;
-  display: block;
-  margin: 0px auto 0px auto;
-  height: 250px;
-}
-
-.col-md-9 {
-  /* background: #282828; */
-  margin: 0px auto 0px auto;
-}
-
+/* Search Menu Styling */
 .search-menu {
-    /* background-color: #3500d3; */
-    margin: 10px auto 0px auto;
-    border-style: double;
-    border-color: #3500d3;
-    border-radius: 10px;
-    padding: 20px;
+	margin: 40px auto 0px auto;
+	border-style: double;
+	border-color: #3500d3;
+	border-radius: 10px;
+	padding: 20px;
 }
 
+@media screen and (max-width: 1199px) {
+	#menu-box {
+		margin: 0px auto 15px auto;
+		text-align: center;
+	}
+}
+
+#platform-drop {
+	top: 215px !important;
+}
+/* End of Search Menu */
+
+/* Chart Styling */
+.make-black {
+	background-color: black !important;
+}
+.make-white {
+	background-color: white !important;
+}
+.col-md-9 {
+	/* background: #282828; */
+	margin: 0px auto 0px auto;
+}
 
 #chart-button {
-    margin-left: auto;
-    margin-right: auto;
-    display: none;
+	margin-left: auto;
+	margin-right: auto;
+	display: none;
+}
+/* End of Charts */
+
+/* Game Area & Card Styling */
+#game-grid {
+	border-radius: 10px;
+ 	 padding: 20px;
+ 	 background-color: rgba(12, 0, 50, .7);
 }
 .col-md-12 {
-  margin: 10px auto 25px auto;
-  
+	margin: 10px auto 25px auto;
 }
 
 #game-area {
-  margin: 0px auto 50px auto;
-  border-radius: 10px;
-  padding: 20px;
-  background-color: rgba(12, 0, 50, .7);
-
-  
+	margin: 10px auto 10px auto;
 }
 
-.modal-content {
-  background-color: #282828;
-  color: white;
-  border-style: double;
-  border-color: #3500d3;
+.img-thumbnail {
+	background: #282828 ;
+	border-style: double;
+	border-color: #3500d3;
+	object-fit: cover;
+	display: block;
+	margin: 0px auto 0px auto;
+	height: 250px;
 }
 
-.modal-header {
-  border-bottom: 1px solid #3500d3;
+#multi-card {
+	display: inline-block;
+	background: #282828;
+	border-style: double;
+	border-color: #3500d3;
+	color: white;
+	margin: 15px 0px 15px 40px;
+	transition: transform .2s;
 }
 
-.modal-footer {
-  border-top: 1px solid #3500d3;
+@media screen and (max-width: 1199px) {
+	#multi-card {
+		margin: 15px 0px 15px 100px;
+	}
+}
+
+@media screen and (max-width: 991px) {
+	#multi-card {
+		display: block;
+		margin: 15px auto 15px auto;
+	}
+}
+
+#multi-card:hover {
+	transform: scale(1.05);
+}
+
+#single-card {
+	background: #282828;
+	border-style: double;
+	border-color: #3500d3;
+	color: white;
+	margin: 15px auto 15px auto;
+	transition: transform .2s;
+}
+
+#single-card:hover {
+	transform: scale(1.01);
 }
 
 #add-to-favorites-button {
-  border-color: #6c757d;
-  background-color: black;
+	border-color: #6c757d;
+	background-color: black;
 }
 
 #add-to-favorites-button:hover {
-  background-color: #6c757d;
-  box-shadow: 0px 15px 20px #3500d3;
-  transform: translateY(-7px);
+	background-color: #6c757d;
+	box-shadow: 0px 15px 20px #3500d3;
+	transform: translateY(-7px);
+}
+/* End of Game area & card styling */
+
+/* Alert Modal Styling */
+.modal-content {
+	background-color: #282828;
+	color: white;
+	border-style: double;
+	border-color: #3500d3;
+}
+
+.modal-header {
+	border-bottom: 1px solid #3500d3;
+}
+
+.modal-footer {
+	border-top: 1px solid #3500d3;
 }
 
 #modal-button {
-  border-color: #6c757d;
-  background-color: black;
+	border-color: #6c757d;
+	background-color: black;
 }
 
 #modal-button:hover {
-  border-color: #6c757d;
+	border-color: #6c757d;
 }
+/* End of Alert  */

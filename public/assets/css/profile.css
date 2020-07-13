@@ -14,7 +14,7 @@ body {
 /*navbar background color*/
 .navbar {
 	background-color: #282828;
-	opacity: .8;
+	opacity: 0.8;
 }
 
 /*drop down background color*/
@@ -149,9 +149,9 @@ input {
 
 /*edits the card holding the avatar*/
 #avatar-card {
-	background: rgba(76, 175, 80, 0.0);
+	background: rgba(76, 175, 80, 0);
 	margin-top: -9rem;
-	padding-bottom: .25rem;
+	padding-bottom: 0.25rem;
 }
 
 /*edits cover photo*/
@@ -252,7 +252,7 @@ iframe {
 
 .profile-page .profile-header .cover {
 	position: relative;
-	border-radius: .25rem .25rem 0 0;
+	border-radius: 0.25rem 0.25rem 0 0;
 }
 
 .profile-page .profile-header .cover figure {
@@ -265,7 +265,7 @@ iframe {
 	position: relative;
 	display: block;
 }
-
+/* reference: Help with layout from https://www.bootdey.com/snippets/*/
 .card .nav > li > a {
 	position: relative;
 	display: block;
@@ -297,13 +297,13 @@ iframe {
 	margin-bottom: 15px;
 }
 
-.show-grid [class^=col-] {
+.show-grid [class^="col-"] {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	background-color: #eee;
-	background-color: rgba(86, 61, 124, .15);
+	background-color: rgba(86, 61, 124, 0.15);
 	border: 1px solid #ddd;
-	border: 1px solid rgba(86, 61, 124, .2);
+	border: 1px solid rgba(86, 61, 124, 0.2);
 }
 
 /* GUS LIBRARY GAME GRID STYLING */
@@ -318,7 +318,7 @@ iframe {
 	border-color: #3500d3;
 	color: white;
 	margin: 10px 15px 10px 15px;
-	transition: transform .2s;
+	transition: transform 0.2s;
 }
 
 #game-card:hover {
@@ -338,8 +338,11 @@ iframe {
 #delete-button:hover {
 	transform: translateY(-7px);
 }
+/* end of profile game library area */
 
-#load-content {
+/* Load modal Styling */
+#load-content,
+#questionDiv {
 	background-color: #282828;
 	color: white;
 	border-style: double;
@@ -352,4 +355,20 @@ iframe {
 
 #load-footer {
 	border-top: 1px solid #3500d3;
+}
+/* End of load modal */
+
+.make-black {
+	background-color: black !important;
+}
+.make-white {
+	background-color: white !important;
+	color: #282828;
+}
+
+.white-border {
+	border-color: white;
+}
+#example-modal-center {
+	font-size: 12px !important;
 }

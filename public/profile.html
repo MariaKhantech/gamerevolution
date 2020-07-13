@@ -15,9 +15,11 @@
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 
 
     <link rel="stylesheet" href="./assets/css/profile.css">
+    <link rel='stylesheet' href='./assets/css/userchart.css'>
 </head>
 
 <body>
@@ -25,36 +27,40 @@
     <nav class="navbar navbar-expand-lg fixed-top" id="navbarchange" role="navigation">
 
         <div class="container">
-            <a class="navbar-brand text-white float-left" id="GamerEvolutionLogo" href="index.html">GamerEvolution</a>
+            <a class="navbar-brand text-white float-left" id="GamerEvolutionLogo" href="index.html"><img
+                    src="assets/images/index-images/GElogo250px.png"></a>
             <button class="navbar-toggler border-0" type="button" data-toggle="collapse"
                 data-target="#exCollapsingNavbar">
                 &#9776;
             </button>
             <div class="collapse navbar-collapse" id="exCollapsingNavbar">
                 <ul class="nav navbar-nav">
-                    <li class="nav-item"><a href="about.html" class="nav-link text-white">About</a></li>                  
+                    <li class="nav-item"><a href="about.html" class="nav-link text-white">About</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                         Search
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Search
                         </a>
                         <div class="dropdown-menu background-dropdown" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item text-white" href="addGame.html">Game Search</a>
-                          <a class="dropdown-item text-white" href="searchProfiles.html">Profile Search</a>
-                       
+                            <a class="dropdown-item text-white" href="addGame.html">Game Search</a>
+                            <a class="dropdown-item text-white" href="searchProfiles.html">Profile Search</a>
+
                         </div>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
-                    
+
                     <li class="dropdown order-1">
                         <button type="button" id="signOut" class="btn btn-outline-secondary text-white mt-2">Sign Out
                             <span class="caret"></span></button>
-                            
+
                     </li>
-                    <li class="nav-item my-account pr-2"><a href="profile.html" class="nav-link text-white mt-2 "><h6>My Profile</h5></u></a></li>
+                    <li class="nav-item my-account pr-2"><a href="profile.html" class="nav-link text-white mt-2 ">
+                            <h6>My Profile</h5></u>
+                        </a></li>
                 </ul>
-                </div>
-                 </nav>
+            </div>
+    </nav>
 
     <!--MAIN BOOTSTRAP CONTAINER-->
     <div class="container">
@@ -149,7 +155,7 @@
 
 
             <!--avatar image card-->
-            <div class="card shadow-none border-0 mx-auto text-center" id="avatar-card" style="width: 15rem;">
+            <div class="card shadow-none border-0 mx-auto text-center" id="avatar-card" style="width: 20rem;">
                 <img id="user-profile" src="" class="card-img-top img-fluid rounded mx-auto d-block" alt="...">
 
                 <!--https://stackoverflow.com/questions/33553785/replace-input-file-with-my-own-button-in-the-form-->
@@ -164,8 +170,10 @@
                     <p class="card-text text-white" id="profileBio"></p>
                     <!--social media buttons-->
                     <p class="text-white text-center"><i>Follow or add me on:</i></p>
-                    <a href="" id="twitch_icon_url"><i class="fa fa-twitch fa-2x mx-auto" aria-hidden="true"></i></a>
-                    <a href="" id="youtube_icon_url"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i> </a>
+                    <a href="" target="_blank" id="twitch_icon_url"><i class="fa fa-twitch fa-2x mx-auto"
+                            aria-hidden="true"></i></a>
+                    <a href="" target="_blank" id="youtube_icon_url"><i class="fa fa-youtube fa-2x"
+                            aria-hidden="true"></i> </a>
 
                 </div>
             </div>
@@ -176,33 +184,7 @@
         <!--top 3 friends-->>
         <div class="row justify-content-md-center no-gutters bg-light position-relative friends-row mx-auto mb-5"
             id="top-three-friends">
-            <h3 class="text-center">Top 3 Gamer friends:</h3>
-
-            <!--friend 1-->
-            <div class="col-md-auto">
-                <div class="friend1 text-center">
-                    <img class="friends" src="assets/images/profile-images/gamergirl3.png" alt="">
-                    <h3 class="text-center">AminaDPS</h3>
-                </div>
-            </div>
-
-            <!--friend 2-->
-            <div class="col-md-auto">
-                <div class="friend2">
-
-                    <img class="friends mx-auto" src="assets/images/profile-images/girlgamer.png" alt="">
-                    <h3 class="text-center">CottonCandy2.0</h3>
-
-                </div>
-            </div>
-
-            <!--friend 3-->
-            <div class="col-md-auto">
-                <div class="friend3 text-center">
-                    <img class="friends" src="assets/images/profile-images/girlgamer.png" alt="">
-                    <h3 class="text-center">GameJoe</h3>
-                </div>
-            </div>
+            <h3 class="text-center">Top Gamer friends:</h3>
         </div>
         <!--end of top 3 friends-->
 
@@ -212,6 +194,10 @@
             <li class="nav-item">
                 <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile-content" role="tab"
                     aria-controls="profile-content" aria-selected="true">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="chart-tab" data-toggle="tab" role="tab" aria-controls="game-content"
+                    aria-selected="false" href="#chart-content">User Chart</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="games-tab" data-toggle="tab" role="tab" aria-controls="game-content"
@@ -239,9 +225,7 @@
                                 <div class="h7" id="profileNickname"></div>
                                 <div class="h7" id="discordUserName"></div>
                                 <div class="h7" id="twitchUserName"></div>
-                                <div class="h7" id="aboutMe">
-
-                                </div>
+                                <div class="h7" id="aboutMe"></div>
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item background-grey">
@@ -260,7 +244,7 @@
                         <div class="card left-section">
                             <div class="card-body background-grey" id="fav-card1">
                                 <h3 class="card-title text-center">Top 3 Favorite Games</h3>
-                                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                <div id="carouselExampleIndicators" class="carousel" data-ride="carousel">
                                     <ol class="carousel-indicators">
                                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class=""></li>
                                         <li data-target="#carouselExampleIndicators" data-slide-to="1" class=""></li>
@@ -300,7 +284,7 @@
                         <div class="card left-section">
                             <div class="card-body">
                                 <h3 class="card-title text-center">Top 3 Least Favorite Games</h3>
-                                <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel">
+                                <div id="carouselExampleIndicators1" class="carousel" data-ride="carousel">
                                     <ol class="carousel-indicators">
                                         <li data-target="#carouselExampleIndicators1" data-slide-to="0" class=""></li>
                                         <li data-target="#carouselExampleIndicators1" data-slide-to="1" class=""></li>
@@ -488,9 +472,6 @@
                             </div>
                         </div>
 
-
-
-
                     </div>
 
 
@@ -512,15 +493,13 @@
                             </div>
                         </div>
 
+
+
                         <div class="card social-timeline-card left-section">
                             <div class="card-body">
                                 <h4 class="card-title text-center">Discord Server</h5>
-
-
                                     <iframe src="https://discordapp.com/widget?id=670020368593059850&theme=dark"
                                         width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
-
-
 
                             </div>
                         </div>
@@ -529,24 +508,156 @@
                         <div class="card social-timeline-card left-section">
                             <div class="card-body">
                                 <h4 class="card-title text-center">Discord Live Chat</h5>
-
                                     <!--DISCORD LIVE CHAT WIDGETBOT-->
                                     <iframe src="https://e.widgetbot.io/channels/670020368593059850/670020368593059853"
                                         height="600" width="800"></iframe>
-
-
                             </div>
 
                         </div>
                     </div>
 
-                    <div class="row section">
-                        <!--section for charts-->
-                        <div class="col-lg-1"></div>
-                    </div>
                 </div>
             </div>
 
+            <!--CHARTS LIBRARY TAB-->
+            <div class="tab-pane fade" id="chart-content" role="tabpanel" aria-labelledby="chart-tab">
+
+                <div class="card social-timeline-card comments col-lg-12 make-white" id="userChartCard">
+                    <h4 class="card-title text-center">User Stats</h5>
+
+                        <div class='white-border'>
+
+                        </div>
+                        <canvas id="userChart" class="radar"></canvas>
+                        <div class="text-center">
+
+                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                data-target="#exampleModalCenter" id="userStatStartBtn">
+                                Launch Stats
+                            </button>
+                        </div>
+                        <div class='row'>
+                            <div class='col-md-3'></div>
+                            <div class='btn-group btn-group-sm col-md-6 text-center'>
+
+                                <input id="gauge-toggle" type="checkbox" data-toggle="toggle" color='white'
+                                    data-onstyle='primary' data-offstyle='default' class='btn btn-theme-primary' />
+
+                                <input id="light-toggle" type="checkbox" data-toggle="toggle" color='white'
+                                    data-onstyle='primary' data-offstyle='default' class='btn btn-theme-primary' />
+
+
+                            </div>
+                        </div>
+                </div>
+                <!-- Button trigger modal -->
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header background-modal">
+                                <h5 class="modal-title" id="exampleModalLongTitle">User Stats</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="questionDiv">
+                                <!-- MODAL FORM -->
+                                <form>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <!-- change label for -->
+                                            <label>From 1 to 10 How much do you like to play on a Console?</label>
+                                            <input type="number" class="form-control" id="consoleVal"
+                                                placeholder="Enter a number" max='10' default='0'>
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <!-- change label for -->
+                                            <label>How much do you like to play on a PC?</label>
+                                            <input type="number" class="form-control" id="pcVal"
+                                                placeholder="Enter a number" max='10' default='0'>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <!-- change label for -->
+                                            <label>How much do you like to play Online?</label>
+                                            <input type="number" class="form-control" id="onlineVal"
+                                                placeholder="Enter a number" max='10' default='0'>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <!-- change label for -->
+                                            <label>How much do you like to play Offline?</label>
+                                            <input type="number" class="form-control" id="offlineVal"
+                                                placeholder="Enter a number" max='10' default='0'>
+                                        </div>
+                                    </div>
+                                    <!-- shooter -->
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <!-- change label for -->
+                                            <label>How much do you like to play Shooters?</label>
+                                            <input type="number" class="form-control" id="shooterVal"
+                                                placeholder="Enter a number" max='10' default='0'>
+                                        </div>
+
+                                        <!-- racing -->
+
+                                        <div class="form-group col-md-6">
+                                            <label>How much do you like to play Racing Games?</label>
+                                            <input type="number" class="form-control" id="racingVal"
+                                                placeholder="Enter a number" max='10' default='0'>
+                                        </div>
+                                    </div>
+                                    <!-- RPG -->
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>How much do you like to play RPG Games?</label>
+                                            <input type="number" class="form-control" id="rpgVal"
+                                                placeholder="Enter a number" max='10' default='0'>
+                                        </div>
+
+                                        <!-- Action -->
+
+                                        <div class="form-group col-md-6">
+                                            <label>How much do you like to play Action Games?</label>
+                                            <input type="number" class="form-control" id="actionVal"
+                                                placeholder="Enter a number" max='10' default='0'>
+                                        </div>
+                                    </div>
+                                    <!-- Adventure -->
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>How much do you like to play Adventure Games?</label>
+                                            <input type="number" class="form-control" id="adventureVal"
+                                                placeholder="Enter a number" max='10' default='0'>
+                                        </div>
+
+                                        <!-- Strategy -->
+
+                                        <div class="form-group col-md-6">
+                                            <label>How much do you like to play Strategy Games?</label>
+                                            <input type="number" class="form-control" id="strategyVal"
+                                                placeholder="Enter a number" max='10' default='0'>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer background-modal">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" id="saveStatsBtn"
+                                    data-dismiss="modal">Save changes</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss='modal'
+                                    id='rollStatsBtn'>Roll Stats</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
 
             <!--GAME LIBRARY TAB-->
             <div class="tab-pane fade" id="game-content" role="tabpanel" aria-labelledby="games-tab">
@@ -559,23 +670,11 @@
                         </div>
 
                     </div>
-                    <div class="row">
-                        <div class="col-md-8 bg-primary text-white">.col-md-8</div>
-                        <div class="col-md-4 bg-primary text-white">.col-md-4</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 bg-primary text-white">.col-md-4</div>
-                        <div class="col-md-4 bg-primary text-white">.col-md-4</div>
-                        <div class="col-md-4 bg-primary text-white">.col-md-4</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 bg-primary text-white">.col-md-6</div>
-                        <div class="col-md-6 bg-primary text-white">.col-md-6</div>
-                    </div>
+
                 </div>
             </div>
 
-            <!-- ALERT MODAL -->
+            <!-- LOAD MODAL -->
             <div class="modal" id="load-modal" tabindex="-1" role="dialog">
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content" id="load-content">
@@ -583,28 +682,28 @@
                             <h5 class="modal-title mx-auto">REMOVING</h5>
                         </div>
                         <div class="modal-body mx-auto">
-                            <div class="spinner-grow text-primary" style="width: 5rem; height: 5rem;" role="status">
+                            <div class="spinner-grow" style="width: 5rem; height: 5rem; color: #ea577a" role="status">
                                 <span class="sr-only">Loading...</span>
                             </div>
-                            <div class="spinner-grow text-secondary" style="width: 5rem; height: 5rem;" role="status">
+                            <div class="spinner-grow" style="width: 5rem; height: 5rem; color: #3500d3" role="status">
                                 <span class="sr-only">Loading...</span>
                             </div>
-                            <div class="spinner-grow text-success" style="width: 5rem; height: 5rem;" role="status">
+                            <div class="spinner-grow" style="width: 5rem; height: 5rem; color: #ea577a" role="status">
                                 <span class="sr-only">Loading...</span>
                             </div>
-                            <div class="spinner-grow text-danger" style="width: 5rem; height: 5rem;" role="status">
+                            <div class="spinner-grow" style="width: 5rem; height: 5rem; color: #3500d3" role="status">
                                 <span class="sr-only">Loading...</span>
                             </div>
-                            <div class="spinner-grow text-warning" style="width: 5rem; height: 5rem;" role="status">
+                            <div class="spinner-grow" style="width: 5rem; height: 5rem; color: #ea577a" role="status">
                                 <span class="sr-only">Loading...</span>
                             </div>
-                            <div class="spinner-grow text-info" style="width: 5rem; height: 5rem;" role="status">
+                            <div class="spinner-grow" style="width: 5rem; height: 5rem; color: #3500d3" role="status">
                                 <span class="sr-only">Loading...</span>
                             </div>
-                            <div class="spinner-grow text-light" style="width: 5rem; height: 5rem;" role="status">
+                            <div class="spinner-grow" style="width: 5rem; height: 5rem; color: #ea577a" role="status">
                                 <span class="sr-only">Loading...</span>
                             </div>
-                            <div class="spinner-grow text-dark" style="width: 5rem; height: 5rem;" role="status">
+                            <div class="spinner-grow" style="width: 5rem; height: 5rem; color: #3500d3" role="status">
                                 <span class="sr-only">Loading...</span>
                             </div>
                         </div>
@@ -614,35 +713,30 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!--FRIENDS TAB-->
-        <div class="tab-pane fade" id="friends-content" role="tabpanel" aria-labelledby="friends-tab">
-            <div class="container show-grid">
-                <div class="row ">
-                    <div class="col-md-1 bg-primary text-white">.col-md-1</div>
-                    <div class="col-md-1 bg-primary text-white">.col-md-1</div>
-                    <div class="col-md-1 bg-primary text-white">.col-md-1</div>
-                    <div class="col-md-1 bg-primary text-white">.col-md-1</div>
-                    <div class="col-md-1 bg-primary text-white">.col-md-1</div>
-                    <div class="col-md-1 bg-primary text-white">.col-md-1</div>
-                    <div class="col-md-1 bg-primary text-white">.col-md-1</div>
-                    <div class="col-md-1 bg-primary text-white">.col-md-1</div>
-                    <div class="col-md-1 bg-primary text-white">.col-md-1</div>
-                    <div class="col-md-1 bg-primary text-white">.col-md-1</div>
-                    <div class="col-md-1 bg-primary text-white">.col-md-1</div>
-                    <div class="col-md-1 bg-primary text-white">.col-md-1</div>
+
+            <!--FRIENDS TAB-->
+            <div class="tab-pane fade" id="friends-content" role="tabpanel" aria-labelledby="friends-tab">
+                <div class="container show-grid">
+                    <div class="row d-flex justify-content-center ">
+
+                        <!-- AREA WHERE FRIENDS APPEAR -->
+                        <div class="col-md-12 " id="profile-friends-area">
+
+                        </div>
+
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </div>
-    <!--END OF TABBED CONTENT-->
+        </div>
+        <!--END OF TABBED CONTENT-->
 
     </div>
     <!--END OF CONTAINER-->
 
-
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <!--ending snippet-->
     <!-- Optional JavaScript -->
     <!-- Popper.js first, then Bootstrap JS -->
@@ -654,10 +748,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
         integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
         crossorigin="anonymous"></script>
-        <!--gus-->
+    <!--gus--->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
-    <script src="assets/js/profile.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
+    <script src="assets/js/profile.js"></script>
+    <script src='assets/js/userchart.js'></script>
 </body>
 
 

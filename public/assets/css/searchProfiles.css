@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+* {
+	box-sizing: border-box;
+}
 
 body {
 	background-color: black;
@@ -9,43 +12,62 @@ body {
 	font-family: "Montserrat", sans-serif;
 }
 
-/*navbar background color*/
+/* Navbar Styling */
 .navbar {
 	background-color: #282828;
 	opacity: .8;
 }
 
-/*drop down background color*/
 .background-dropdown {
 	background-color: #282828;
 	color: white;
 }
 
-/*logo on navbar*/
 #GamerEvolutionLogo {
 	font-size: 30px;
 }
-/*end navbar*/
+/* End of Navbar */
 
-div.row.style-row {
+/* Search Menu Styling */
+.search-menu {
+	margin: 40px auto 0px auto;
+	border-style: double;
+	border-color: #3500d3;
+	border-radius: 10px;
+	padding: 20px;
+}
+
+@media screen and (max-width: 1199px) {
+	#menu-box {
+		margin: 0px auto 15px auto;
+		text-align: center;
+	}
+}
+/*end search menu styling */
+
+/*start profile grid stylng*/
+
+.style-row {
+	margin: 40px auto 0px auto;
+	border-style: double;
+	border-color: #3500d3;
+	border-radius: 10px;
+	padding: 20px;
 	box-shadow: 0px 0px 10px 20px rgba(94, 12, 226, .550);
 }
 
-.brick {
-	height: 50px;
-	margin-left: 15px;
-	margin-bottom: 1px !important;
+#profile-area {
+	margin: 0px auto 50px auto;
 }
 
 /*style profile cards*/
-.style-p-card {
+/* .style-p-card {
 	background-color: black;
-}
+} */
 
 .style-card {
 	background-color: black;
 	padding: 20px;
-	height: 100%;
 }
 
 /*styles the text in the profile card*/
@@ -53,17 +75,16 @@ div.row.style-row {
 	font-size: 15px;
 }
 .card-add-btn {
-	background-color: #5e0ce2;
+	background-color: black;
 	border-color: white;
 }
 
+/*adds stlying to he card border*/
 .card-img-top {
 	width: 100%;
-	height: 15vw !important;
-	object-fit: cover;
+	height: 12rem !important;
 }
 
-/* images in cards*/
 .img-portfolio {
 	height: 10%;
 	border-radius: 40%;
@@ -73,19 +94,106 @@ div.row.style-row {
 		0 0 75px blue;
 }
 
-/*end styling the profile cards */
+#multi-card {
+	display: inline-block;
+	background: #282828;
+	border-style: double;
+	border-color: #3500d3;
+	color: white;
+	margin: 20px 0px 15px 20px;
+	transition: transform .2s;
+}
+
+@media screen and (max-width: 1199px) {
+	#multi-card {
+		margin: 15px 0px 15px 100px;
+	}
+}
+
+@media screen and (max-width: 991px) {
+	#multi-card {
+		display: block;
+		margin: 15px auto 15px auto;
+	}
+}
+
+#multi-card:hover {
+	transform: scale(1.05);
+}
+
+#add-to-favorites-button {
+	border-color: #6c757d;
+	background-color: black;
+}
+
+#addProfile:hover {
+	background-color: #6c757d;
+	box-shadow: 0px 15px 20px #3500d3;
+	transform: translateY(-7px);
+}
+
+/*GAME STYLING*/
+.bowser {
+	width: 200px;
+	height: 100%;
+	position: relative;
+	top: -200px;
+}
 
 .paper-mario {
+	position: relative;
 	width: 100px;
-	height: 100%;
-	animation: spin 1s linear alternate-reverse infinite;
-	background: url(public\assets\images\search-profile-img\papermario.png);
+	height: 100px;
+	bottom: 100px;
+	left: 20px;
 }
 
-#paper-mario1 {
-	margin-top: 10px;
+.paper-mario.animated {
+	animation: jump 1s ease-in-out;
 }
 
+.brick {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	bottom: 0px;
+	left: 50px;
+}
+
+.mushroom {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	bottom: 50px;
+	left: 50px;
+}
+
+.upside-down-pipe {
+	height: 150px;
+	margin-right: 1em;
+}
+
+.green-warp-pipe {
+	height: 150px;
+}
+
+.mini-head {
+	background-color: #3500d3;
+}
+
+@keyframes jump {
+	0% {
+		bottom: 100px;
+	}
+	50% {
+		bottom: 450px;
+	}
+	100% {
+		bottom: 100px;
+	}
+}
+
+/*spin animation*/
 @keyframes spin {
 	from {
 		transform: rotate(0deg);
@@ -93,41 +201,4 @@ div.row.style-row {
 	to {
 		transform: rotateY(180deg);
 	}
-}
-
-.style-row {
-	border-style: solid;
-	border-color: #5e0ce2;
-	background-color: #00008b;
-	padding: 50px;
-	padding-bottom: 5px;
-}
-
-/*navbar background color*/
-.navbar {
-	background-color: #282828;
-	opacity: .8;
-}
-
-/*drop down background color*/
-.background-dropdown {
-	background-color: #282828;
-	color: white;
-}
-
-/*logo on navbar*/
-#GamerEvolutionLogo {
-	font-size: 30px;
-}
-/*end navbar*/
-
-/*end of navbar change*/
-/*plugin for carousel*/
-#carousel .cloud9-item,
-#buttons button {
-	cursor: pointer;
-}
-
-#carousel {
-	height: 675px;
 }

@@ -22,24 +22,22 @@ router.get('/profile:id', (req, res) => {
 
 //Creates a profile in the database --Maria
 router.post('/profile/create', (req, res) => {
-	console.log(req.user);
 	db.Profile
 		.create({
 			profileName: 'ProfileName',
 			bio: 'Fill out your bio',
-			favoriteYoutubeVideoUrl: req.body.favoriteYoutubeVideoUrl,
-			twitchUrl: req.body.twitch_icon_url,
-			youtubeChannelUrl: req.body.youtube_icon_url,
-			nickname: req.body.nickname,
-			discordUserName: req.body.discordUserName,
-			twitchUserName: req.body.twitchUserName,
-			aboutMe: req.body.aboutMe,
+			favoriteYoutubeVideoUrl: '',
+			twitchUrl: '',
+			youtubeChannelUrl: '',
+			nickname: '',
+			discordUserName: '',
+			twitchUserName: '',
+			aboutMe: '',
 			coverImg: null,
 			avatarImg: 'public/assets/images/profile-images/default-image.png',
 			userId: req.user.userId
 		})
 		.then((result) => {
-			console.log(`Posted data successfully`);
 			res.json(result);
 		})
 		.catch((err) => {
@@ -49,7 +47,6 @@ router.post('/profile/create', (req, res) => {
 
 //route to update a users profile -- Maria
 router.put('/profile/update:id', (req, res) => {
-	console.log('HELLO');
 	db.Profile
 		.update(
 			{
@@ -65,12 +62,11 @@ router.put('/profile/update:id', (req, res) => {
 			},
 			{
 				where: {
-					// userId: 1
 					userId: req.params.id
 				}
 			}
 		)
-		.then(function (dbPost) {
+		.then(function(dbPost) {
 			res.json(dbPost);
 		});
 });
@@ -79,7 +75,6 @@ router.put('/profile/update:id', (req, res) => {
 router.post('/profile/upload_avatar', (req, res) => {
 	const image = req.files.file;
 	const destination = 'public/assets/images/profile-images/' + image.name;
-	console.log(req);
 	//move the image to assets/images/
 	image.mv(destination, (error) => {
 		if (error) {
@@ -100,11 +95,9 @@ router.post('/profile/upload_avatar', (req, res) => {
 					}
 				}
 			)
-			.then(function (dbPost) {
+			.then(function(dbPost) {
 				res.json(dbPost);
 			});
-
-		console.log(`Posted data successfully`);
 	});
 });
 
@@ -112,7 +105,6 @@ router.post('/profile/upload_avatar', (req, res) => {
 router.post('/profile/upload_coverImg', (req, res) => {
 	const image = req.files.file;
 	const destination = 'public/assets/images/profile-images/' + image.name;
-	console.log(image, destination);
 	//move the image to assets/images/
 	image.mv(destination, (error) => {
 		if (error) {
@@ -134,11 +126,9 @@ router.post('/profile/upload_coverImg', (req, res) => {
 					}
 				}
 			)
-			.then(function (dbPost) {
+			.then(function(dbPost) {
 				res.json(dbPost);
 			});
-
-		console.log(`Posted data successfully`);
 	});
 });
 
@@ -159,7 +149,6 @@ router.get('/profile/selectedgames:id', (req, res) => {
 
 //Creates information from the database
 router.post('/profile/selectedgames', (req, res) => {
-	//console.log(req.body);
 	db.ProfileSelectGames
 		.create({
 			currentlyPlaying: req.body.currentlyPlaying,
@@ -172,7 +161,6 @@ router.post('/profile/selectedgames', (req, res) => {
 			userId: req.user.userId
 		})
 		.then((result) => {
-			console.log(`Posted data successfully`);
 			res.json(result);
 		})
 		.catch((err) => {
@@ -200,21 +188,19 @@ router.put('/profile/selectedgames/update:id', (req, res) => {
 				}
 			}
 		)
-		.then(function (dbPost) {
+		.then(function(dbPost) {
 			res.json(dbPost);
 		});
 });
 
 //creates a user comment //
 router.post('/profile/comment', (req, res) => {
-	console.log(req.body);
 	db.Comments
 		.create({
 			comments: req.body.comment,
 			userId: req.user.userId
 		})
 		.then((result) => {
-			console.log(`Posted data successfully`);
 			res.json(result);
 		})
 		.catch((err) => {
@@ -234,7 +220,6 @@ router.get('/profile/comment:id', (req, res) => {
 		})
 		.then((dbUserComments) => {
 			res.json(dbUserComments);
-			//res.redirect('/profile?userId=2');
 		});
 });
 
@@ -242,7 +227,7 @@ router.get('/profile/comment:id', (req, res) => {
 router.get('/profile/searchAll', (req, res) => {
 	db.User
 		.findAll({
-			 include: [db.Profile]
+			include: [ db.Profile ]
 		})
 		.then((result) => {
 			res.json(result);
@@ -254,13 +239,13 @@ router.get('/profile/searchAll', (req, res) => {
 
 //finds one user for profile searching friends
 router.get('/profile/searchUser:username', (req, res) => {
-
 	db.User
 		.findOne({
 			where: {
 				username: req.params.username
-			 },
-			 include: [db.Profile]
+			},
+
+			include: [ db.Profile ]
 		})
 		.then((result) => {
 			res.json(result);
@@ -270,11 +255,38 @@ router.get('/profile/searchUser:username', (req, res) => {
 		});
 });
 
+//creates a friend //
+router.post('/profile/friend/create', (req, res) => {
+	db.Friend
+		.create({
+			friend_id: req.body.friendId,
+			userId: req.user.userId
+		})
+		.then((result) => {
+			res.json(result);
+		})
+		.catch((err) => {
+			res.json(err);
+		});
+});
 
+//get all the friends for the user
+router.get('/profile/friends:id', (req, res) => {
+	db.Friend
+		.findAll({
+			where: {
+				userId: req.params.id
+			}
+		})
+		.then((dbUserFriends) => {
+			res.json(dbUserFriends);
+		});
+});
 
 //================= ENDS MARIA================//
 //==================Gus============//
 
+// Query to find all games by user ID (aka user game)
 
 router.get('/addgames:id', (req, res) => {
 	db.Game
@@ -285,23 +297,21 @@ router.get('/addgames:id', (req, res) => {
 		})
 		.then((result) => {
 			res.json(result);
-			console.log(result);
 		})
 		.catch((err) => {
 			res.json(err);
 		});
 });
 
+// Query to add new game to DB (add game to library)
 router.post('/addgames', (req, res) => {
 	db.Game
 		.create({
 			game_name: req.body.game_name,
 			unique_id: req.body.unique_id,
 			userId: req.user.userId
-
 		})
 		.then((result) => {
-			console.log(`Added game successfully`);
 			res.json(result);
 		})
 		.catch((err) => {
@@ -309,6 +319,7 @@ router.post('/addgames', (req, res) => {
 		});
 });
 
+// Query to delete game from DB (delete from game library)
 router.delete('/addgames:id', (req, res) => {
 	db.Game
 		.destroy({
@@ -318,7 +329,6 @@ router.delete('/addgames:id', (req, res) => {
 			}
 		})
 		.then((result) => {
-			console.log(`Deleted game successfully`);
 			res.json(result);
 		})
 		.catch((err) => {
@@ -345,7 +355,6 @@ router.get('/logout', (req, res) => {
 
 //signup route, then redirect to home page
 router.post('/signup', (req, res) => {
-	console.log(req.body);
 	db.User
 		.create({
 			firstName: req.body.firstName,
@@ -364,8 +373,6 @@ router.post('/signup', (req, res) => {
 
 //get user data
 router.get('/user-data', (req, res) => {
-	console.log('Get user data');
-	console.log(req.user);
 	if (!req.user) {
 		res.json({}); //empty object if user not logged in
 	} else {
