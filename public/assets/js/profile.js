@@ -3,7 +3,7 @@ $(document).ready(() => {
 	let userData;
 
 	const getProfileInfo = () => {
-		$.get('api/user-data', () => {}).then((result) => {
+		$.get('api/user-data', () => { }).then((result) => {
 			userData = result;
 			//sets the username
 			$('#username').text(`@${result.username}`);
@@ -31,7 +31,7 @@ $(document).ready(() => {
 	};
 	//function TODO COMMENT
 	const getCommentData = (result) => {
-		$.get('api/profile/comment' + result.userId, () => {}).then((data) => {
+		$.get('api/profile/comment' + result.userId, () => { }).then((data) => {
 			//grab the avatar to use in the comments section
 			commentImg = $('#user-profile').attr('src');
 			commentUsername = $('#username').text();
@@ -45,7 +45,7 @@ $(document).ready(() => {
 
 	//function TODO COMMENT
 	const getUserFriends = (result) => {
-		$.get('api/profile/friends' + result.userId, () => {}).then((data) => {
+		$.get('api/profile/friends' + result.userId, () => { }).then((data) => {
 			//grab the avatar to use in the comments section
 
 			if (data.length === 0) {
@@ -57,7 +57,7 @@ $(document).ready(() => {
 			let friendCounter = 0;
 
 			data.forEach((element) => {
-				$.get('api/profile' + element.friend_id, () => {}).then((friendData) => {
+				$.get('api/profile' + element.friend_id, () => { }).then((friendData) => {
 					const createCard = $('<div>', {
 						class: 'card d-inline-block ',
 						id: 'game-card',
@@ -112,7 +112,7 @@ $(document).ready(() => {
 		});
 	});
 
-	$('#signOut').on('click', function() {
+	$('#signOut').on('click', function () {
 		$.get('/api/logout', (data) => {
 			window.location.replace('/');
 		});
@@ -459,7 +459,8 @@ $(document).ready(() => {
 
 						const cardTitle = $('<h6>', {
 							class: 'card-title text-center',
-							text: response.name
+							text: response.name,
+							style: "font-size: 18px;"
 						});
 
 						cardBody.append(cardTitle);
@@ -467,15 +468,16 @@ $(document).ready(() => {
 						if (response.released === null) {
 							const cardDescription = $('<p>', {
 								class: 'card-text text-center',
-
-								text: `Released: N/A`
+								text: `Released: N/A`,
+								style: "font-size: 18px;"
 							});
 							cardBody.append(cardDescription);
 						} else {
 							const gameYear = response.released.split('-');
 							const cardDescription = $('<p>', {
 								class: 'card-text text-center',
-								text: `Released: ${gameYear[0]}`
+								text: `Released: ${gameYear[0]}`,
+								style: "font-size: 18px;"
 							});
 							cardBody.append(cardDescription);
 						}
@@ -483,7 +485,8 @@ $(document).ready(() => {
 						const percentage = Math.round(response.rating / 5 * 100);
 						const rawgPercentage = $('<p>', {
 							class: 'card-text text-center',
-							text: `Rating: ${percentage}%`
+							text: `Rating: ${percentage}%`,
+							style: "font-size: 18px;"
 						});
 						const rawgRating = $('<p>', {
 							class: 'card-text text-center mx-auto'
@@ -494,7 +497,8 @@ $(document).ready(() => {
 						});
 						const userRatings = $('<p>', {
 							class: 'card-text text-center',
-							text: `User Ratings: ${response.ratings_count}`
+							text: `User Ratings: ${response.ratings_count}`,
+							style: "font-size: 18px;"
 						});
 						cardBody.append(rawgPercentage, rawgRating, userRatings);
 
@@ -517,7 +521,7 @@ $(document).ready(() => {
 
 	getUserGames();
 
-	$('#profile-game-area').on('click', 'button', function(event) {
+	$('#profile-game-area').on('click', 'button', function (event) {
 		event.preventDefault();
 
 		let name = $(this).data('name');
@@ -535,7 +539,7 @@ $(document).ready(() => {
 			}).then((result) => {
 				$('#load-modal').modal('show');
 
-				setTimeout(function() {
+				setTimeout(function () {
 					$('#load-modal').modal('hide');
 				}, 1500);
 				$('#profile-game-area').empty();

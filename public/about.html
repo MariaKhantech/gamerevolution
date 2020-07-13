@@ -1,248 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
     integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/about.css">
+  <link rel="stylesheet" href="assets/css/about.css">
 
-    <title>GamerEvolution</title>
+  <title>GamerEvolution</title>
 
 </head>
+
 <body>
 
-    <!--Fixed Navbar-->
+  <!--Fixed Navbar-->
 
-    <nav class="navbar navbar-expand-lg fixed-top" id="navbarchange" role="navigation">
-        <div class="container">
-            <a class="navbar-brand text-white float-left" id="GamerEvolutionLogo" href="index.html">GamerEvolution</a>
-            <button class="navbar-toggler border-0" type="button" data-toggle="collapse"
-                data-target="#exCollapsingNavbar">
-                &#9776;
-            </button>
-            <div class="collapse navbar-collapse" id="exCollapsingNavbar">
-                <ul class="nav navbar-nav">
-                    <li class="nav-item"><a href="about.html" class="nav-link text-white">About</a></li>                  
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                         Search
-                        </a>
-                        <div class="dropdown-menu background-dropdown" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item text-white" href="addGame.html">Game Search</a>
-                          <a class="dropdown-item text-white" href="searchProfiles.html">Profile Search</a>
-                       
-                        </div>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
-                    
-                    <li class="dropdown order-1">
-                        <button type="button" id="signOut" class="btn btn-outline-secondary text-white mt-2">Sign Out
-                            <span class="caret"></span>
-                        </button>       
-                    </li>
-                    <li class="nav-item my-account pr-2"><a href="profile.html" class="nav-link text-white mt-2 "><h6>My Profile</h5></u></a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!--end nav-->
-
-    <!--About Cards-->
-
-        <!--ABOUT-->
-    <!-- <div class="cards" style="margin-top: 50px;">
-        <div class="card content">
-          <div class="card-content">
-            <div class="card-img">
-              <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80" alt="Gamer">
-            </div>
-            <div class="card-label-about">ABOUT US</div>
-            <div class="card-title-about">
-              Why We Created This Site:
-              <li>To provide a one stop shop where gamers can search for favorite games, top games, statistics, and meet other players.
-                </li>  
-            </div>
-            <div class="card-label-profile">PROFILE FEATURES</div>
-            <div class="card-title-profile">
-                <li>Add your favorite games and least favorite games</li>
-                <li>Upload a profile picture</li>
-                <li>Comment on your own profile and share gaming information with friends</li>
-                <li>Add games to your personal Games Library via the search page</li>
-                <li>Chat with other gamers in the Discord widget</li>
-                <li>Add your gamer information including favorite genres & gaming preferences to create a personalized chart on your page</li>
-                <li>Link Twitch or YouTube channels and accounts to your own profile</li>
-                <li>Add your own friends to your profile</li>
-            </div>
-          </div>
-        </div>
-        SEARCH
-        <div class="card content">
-          <div class="card-content">
-            <div class="card-img">
-              <img src="https://images.unsplash.com/photo-1547394765-185e1e68f34e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="keyboard">
-            </div>
-            <div class="card-label-tech">
+  <nav class="navbar navbar-expand-lg fixed-top" id="navbarchange" role="navigation">
+    <div class="container">
+      <a class="navbar-brand text-white float-left" id="GamerEvolutionLogo" href="index.html"><img
+          src="assets/images/index-images/GElogo250px.png"></a>
+      <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+        &#9776;
+      </button>
+      <div class="collapse navbar-collapse" id="exCollapsingNavbar">
+        <ul class="nav navbar-nav">
+          <li class="nav-item"><a href="about.html" class="nav-link text-white">About</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Search
+            </a>
+            <div class="dropdown-menu background-dropdown" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item text-white" href="addGame.html">Game Search</a>
+              <a class="dropdown-item text-white" href="searchProfiles.html">Profile Search</a>
+
             </div>
-            <div class="card-title-tech">
-              <li>Search for games via platform, year released, name, or single search</li>
-              <li>When searching for all games, the Top 6 Games statistically will be listed</li>
-              <li>When using single search, the rating of the game chosen will be provided</li>
-              <li>Click "Add to Library" to add your favorites to your profile</li>
-            </div>
-          </div>
-        </div>
-        PROFILE-->
-        <!-- <div class="card content">
-          <div class="card-content">
-            <div class="card-img">
-              <img src="https://images.unsplash.com/photo-1519326844852-704caea5679e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2034&q=80" alt="Controller">
-            </div>
-            <div class="card-label-home">
-              Home Page
-            </div>
-            <div class="card-title-home">
-              <ul>Always providing gamers with:
-                  <li>Top stories in the game industry</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="card form">
-          <div class="form-title">WELCOME</div>
-        </div>
-    </div> --> 
+          </li>
+        </ul>
+        <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
 
-
-    <!--TEAM PHOTOS-->
-
-    <!-- <div class="image-area">
-        <h2 style="text-align: center; color: white">The Team</h2>
-        <div class="img-wrapper">
-          <img src="https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Atul Prajapati">
-          <h2>Maria Khan</h2>
-          <ul>
-            <li><a href="https://github.com/atuljustano"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://www.instagram.com/atulkprajapati2000/"><i class="fab fa-instagram"></i></a></li>
-            <li><a href="https://twitter.com/atuljustano"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://www.youtube.com/channel/UCf-KfxuY8PZBSD_8RW2nYsw"><i class="fab fa-youtube"></i></a></li>
-          </ul>
-        </div>
-        <div class="img-wrapper">
-            <img src="https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Atul Prajapati">
-            <h2>Caleb Welch</h2>
-            <ul>
-              <li><a href="https://github.com/atuljustano"><i class="fab fa-github"></i></a></li>
-              <li><a href="https://www.instagram.com/atulkprajapati2000/"><i class="fab fa-instagram"></i></a></li>
-              <li><a href="https://twitter.com/atuljustano"><i class="fab fa-twitter"></i></a></li>
-              <li><a href="https://www.youtube.com/channel/UCf-KfxuY8PZBSD_8RW2nYsw"><i class="fab fa-youtube"></i></a></li>
-            </ul>
-          </div>
-          <div class="img-wrapper">
-            <img src="https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Atul Prajapati">
-            <h2>Shannon Trainor</h2>
-            <ul>
-              <li>Student</li>
-              <li><a href="https://www.instagram.com/atulkprajapati2000/"><i class="fab fa-instagram"></i></a></li>
-              <li><a href="https://twitter.com/atuljustano"><i class="fab fa-twitter"></i></a></li>
-              <li><a href="https://www.youtube.com/channel/UCf-KfxuY8PZBSD_8RW2nYsw"><i class="fab fa-youtube"></i></a></li>
-            </ul>
-          </div>
-          <div class="img-wrapper">
-            <img src="https://images.pexels.com/photos/1220757/pexels-photo-1220757.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Atul Prajapati">
-            <h2>Gus Heptig</h2>
-            <ul>
-              <li><a href="https://github.com/atuljustano"><i class="fab fa-github"></i></a></li>
-              <li><a href="https://www.instagram.com/atulkprajapati2000/"><i class="fab fa-instagram"></i></a></li>
-              <li><a href="https://twitter.com/atuljustano"><i class="fab fa-twitter"></i></a></li>
-              <li><a href="https://www.youtube.com/channel/UCf-KfxuY8PZBSD_8RW2nYsw"><i class="fab fa-youtube"></i></a></li>
-            </ul>
-          </div>
-  
-    </div> -->
-
-
-
+          <li class="dropdown order-1">
+            <button type="button" id="signOut" class="btn btn-outline-secondary text-white mt-2">Sign Out
+              <span class="caret"></span>
+            </button>
+          </li>
+          <li class="nav-item my-account pr-2"><a href="profile.html" class="nav-link text-white mt-2 ">
+              <h6>My Profile</h5></u>
+            </a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!--end nav-->
 
   <div id="container">
     <div class="slide anim-in">
-      <div class="image" style="background-image: url(https://wallpaperaccess.com/full/713004.jpg);"></div>
+      <div class="image" style="background-image: url(https://ak.picdn.net/shutterstock/videos/25046078/thumb/1.jpg);"></div>
       <div class="overlay"></div>
       <div class="content">
         <h1 class="title" data-title="About Us">About Us</h1>
         <ul class="about-info"> We are Team Evolution!
-          <li class="country">We created this website to serve as a one-stop-shop for gamers!</li>
-          <li class="country">Using our app you can search for: </li>
-              <li class="country">Favorite Games</li>
-              <li class="country">Top Trending Games</li>
-              <li class="country">Game Statistics</li>
-              <li class="country"> & Meet other gamers!</li>
+          <li class="about">We created this website to serve as a one-stop-shop for gamers!</li>
+          <li class="about">Using our app you can: </li>
+          <li class="about">Search for your Favorite Games</li>
+          <li class="about">Search for Top Trending Games</li>
+          <li class="about">Discover Game Statistics</li>
+          <li class="about">& Meet other gamers!</li>
         </ul>
       </div>
       <div class="btn-close"></div>
     </div>
     <div class="slide anim-in">
-      <div class="image" style="background-image: url(https://image.freepik.com/free-vector/glitch-game-background_23-2148090006.jpg);"></div>
+      <div class="image" style="background-image: url(https://cdn5.vectorstock.com/i/1000x1000/20/54/game-over-neon-text-game-over-neon-sign-vector-24252054.jpg);"></div>
       <div class="overlay"></div>
       <div class="content">
         <h1 class="title" data-title="Features">Features</h1>
-        <ul class="about-info">
-          <li class="country">Country: France</li>
-          <li class="founded">Founded: ~250BC</li>
-          <li class="population">Population: 2.2 Million</li>
+        <ul class="about-info">Check Out all our site has to offer!
+          <li class="about">Top Stories in the Gaming Industry</li>
+          <li class="about">Character pick of the day with fun surprises, clips, or games</li>
+          <li class="about">Funniest Gaming Video of the Day</li>
+          <li class="about">Top 3 Games of 2020</li>
+          <li class="about">Create your own Profile</li>
+          <li class="about">Play sitewide mini games!</li>
         </ul>
       </div>
       <div class="btn-close"></div>
     </div>
     <div class="slide anim-in">
-      <div class="image" style="background-image: url(https://cdn.hipwallpaper.com/i/7/66/ARWFqk.jpg);"></div>
+      <div class="image" style="background-image: url(https://ak.picdn.net/shutterstock/videos/14387803/thumb/2.jpg);"></div>
       <div class="overlay"></div>
       <div class="content">
         <h1 class="title" data-title="Search">Search</h1>
-        <ul class="about-info">
-          <li class="country">Country: Austria</li>
-          <li class="founded">Founded: 1622</li>
-          <li class="population">Population: 145,871</li>
+        <ul class="about-info">Check out our search tab where you can:
+            <li class="about">Search for games via name, platform, release year, or single search</li>
+          <li class="about">Discover Top 6 Game Statistics</li>
+          <li class="about">Discover user ratings for searched games</li>
+          <li class="about">Search for other gamer profiles using all or single search</li>
+          <li class="about">Add gamer profiles to your own profile</li>
+          <li class="about">Add your favorite games to your profile</li>
         </ul>
       </div>
       <div class="btn-close"></div>
     </div>
     <div class="slide anim-in">
-      <div class="image" style="background-image: url(https://goldwallpapers.com/uploads/posts/video-game-background/video_game_background_019.jpg);"></div>
+      <div class="image"
+        style="background-image: url(https://goldwallpapers.com/uploads/posts/video-game-background/video_game_background_019.jpg);">
+      </div>
       <div class="overlay"></div>
       <div class="content">
         <h1 class="title" data-title="Profile">Profile</h1>
-        <ul class="about-info">
-          <li class="country">Country: Czech Republic</li>
-          <li class="founded">Founded: 870</li>
-          <li class="population">Population: 1.2 Million</li>
+        <ul class="about-info">Profile Features Include:
+          <li class="about">Add your favorite & least favorite games to your library</li>
+          <li class="about">Upload your own profile picture</li>
+          <li class="about">Comment on your own profile to share exciting gaming information</li>
+          <li class="about">Check out the Games Library tab to see your added games</li>
+          <li class="about">Chat with other gamers in the Discord widget</li>
+          <li class="about">Personalize your page with favorite game genres and preferences to generate your own gaming chart</li>
+          <li class="about">Link your Twitch or Youtube account</li>
+          <li class="about">Add friends and gamers to your profile</li>
         </ul>
       </div>
       <div class="btn-close"></div>
     </div>
-    
+
   </div><a id="codepen-link" href="https://www.codepen.io/seanfree" target="_blank"></a>
-
-
-
-
-    <!-- TEAM PHOTOS -->
-    <!-- <div id="wrapper">
-        <h5 style="text-align: center; color: white;">The Team</h5>
-        <div id="Maria" class="team"></div>
-        <div id="Caleb" class="team"></div>
-        <div id="Shannon" class="team"></div>
-        <div id="Gus" class="team"></div>
-    </div> -->
-
-
-  
-
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -251,4 +136,5 @@
     <script src="assets/js/index.js"></script>
 
 </body>
+
 </html>
