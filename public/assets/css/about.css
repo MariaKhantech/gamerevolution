@@ -383,6 +383,14 @@ h4 {
 	-webkit-transition-delay: 3.1s;
 	transition-delay: 3.1s;
 }
+.slide .content .about-info li:nth-of-type(7) {
+	-webkit-transition-delay: 3.1s;
+	transition-delay: 3.1s;
+}
+.slide .content .about-info li:nth-of-type(8) {
+	-webkit-transition-delay: 3.1s;
+	transition-delay: 3.1s;
+}
 
 
 .slide .btn-close {
