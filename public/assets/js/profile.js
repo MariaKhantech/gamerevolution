@@ -108,9 +108,7 @@ $(document).ready(() => {
 
 		//post putting comment into the database
 		$.post('/api/profile/comment', userCommentData).then((results) => {
-			commentImg = $('#user-profile').attr('src');
-			commentUsername = $('#username').text();
-			createComment(results.comments, commentUsername, commentImg);
+			location.reload();
 		});
 	});
 

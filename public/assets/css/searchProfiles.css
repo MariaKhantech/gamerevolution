@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+* {
+	box-sizing: border-box;
+}
 
 body {
 	background-color: black;
@@ -9,7 +12,24 @@ body {
 	font-family: "Montserrat", sans-serif;
 }
 
-.search-box {
+/* Navbar Styling */
+.navbar {
+	background-color: #282828;
+	opacity: .8;
+}
+
+.background-dropdown {
+	background-color: #282828;
+	color: white;
+}
+
+#GamerEvolutionLogo {
+	font-size: 30px;
+}
+/* End of Navbar */
+
+/* Search Menu Styling */
+.search-menu {
 	margin: 40px auto 0px auto;
 	border-style: double;
 	border-color: #3500d3;
@@ -17,51 +37,37 @@ body {
 	padding: 20px;
 }
 
-.container {
-	width: 1000px !important;
+@media screen and (max-width: 1199px) {
+	#menu-box {
+		margin: 0px auto 15px auto;
+		text-align: center;
+	}
 }
+/*end search menu styling */
 
-/* .row {
-	width: none !important;
-} */
+/*start profile grid stylng*/
 
-/*navbar background color*/
-.navbar {
-	background-color: #282828;
-	opacity: .8;
-}
-
-/*drop down background color*/
-.background-dropdown {
-	background-color: #282828;
-	color: white;
-}
-
-/*logo on navbar*/
-#GamerEvolutionLogo {
-	font-size: 30px;
-}
-/*end navbar*/
-
-div.row.style-row {
+.style-row {
+	margin: 40px auto 0px auto;
+	border-style: double;
+	border-color: #3500d3;
+	border-radius: 10px;
+	padding: 20px;
 	box-shadow: 0px 0px 10px 20px rgba(94, 12, 226, .550);
 }
 
-.brick {
-	height: 50px;
-	margin-left: 15px;
-	margin-bottom: 1px !important;
+#profile-area {
+	margin: 0px auto 50px auto;
 }
 
 /*style profile cards*/
-.style-p-card {
+/* .style-p-card {
 	background-color: black;
-}
+} */
 
 .style-card {
 	background-color: black;
 	padding: 20px;
-	height: 100%;
 }
 
 /*styles the text in the profile card*/
@@ -69,53 +75,82 @@ div.row.style-row {
 	font-size: 15px;
 }
 .card-add-btn {
-	background-color: #5e0ce2;
+	background-color: black;
 	border-color: white;
 }
 
+/*adds stlying to he card border*/
 .card-img-top {
 	width: 100%;
-	height: 8rem !important;
+	height: 12rem !important;
 }
 
-/* images in cards*/
 .img-portfolio {
 	height: 10%;
-	border-radius: 0%;
+	border-radius: 40%;
 	border-style: solid;
 	border-color: #5e0ce2;
 	box-shadow: 0 0 2px #fff, 0 0 5px #fff, 0 0 10px #a515b8, 0 0 10px #bf08c5, 0 0 10px #ff0080, 0 0 40px blueviolet,
 		0 0 75px blue;
 }
 
-/*end styling the profile cards */
+#multi-card {
+	display: inline-block;
+	background: #282828;
+	border-style: double;
+	border-color: #3500d3;
+	color: white;
+	margin: 20px 0px 15px 20px;
+	transition: transform .2s;
+}
 
-/*MARIO GAME STYLING*/
-.paper-mario {
-	position: relative;
-	width: 100px;
+@media screen and (max-width: 1199px) {
+	#multi-card {
+		margin: 15px 0px 15px 100px;
+	}
+}
+
+@media screen and (max-width: 991px) {
+	#multi-card {
+		display: block;
+		margin: 15px auto 15px auto;
+	}
+}
+
+#multi-card:hover {
+	transform: scale(1.05);
+}
+
+#add-to-favorites-button {
+	border-color: #6c757d;
+	background-color: black;
+}
+
+#addProfile:hover {
+	background-color: #6c757d;
+	box-shadow: 0px 15px 20px #3500d3;
+	transform: translateY(-7px);
+}
+
+/*GAME STYLING*/
+.bowser {
+	width: 200px;
 	height: 100%;
-	background: url(public\assets\images\search-profile-img\papermario.png);
+	position: relative;
+	top: -100px;
+}
+
+.paper-mario {
+	animation: jump 2s ease-in-out;
+	position: relative;
+	width: 150px;
+	height: 150px;
+	top: -100px;
+	left: 20px;
 }
 
 .paper-mario.animated {
 	animation: jump 2s ease-in-out;
-}
-/*spinning effect commented out for now*/
-/* .paper-mario {
-	width: 100px;
-	height: 100%;
-	animation: spin 1s linear alternate-reverse infinite;
-	background: url(public\assets\images\search-profile-img\papermario.png);
-} */
-
-#paper-mario1 {
-	margin-top: 100px;
-}
-
-.bowser {
-	width: 200px;
-	height: 100%;
 }
 
 .mushroom {
@@ -132,8 +167,8 @@ div.row.style-row {
 	height: 150px;
 }
 
-.instruction-card {
-	margin-left: 50px;
+.mini-head {
+	background-color: #3500d3;
 }
 
 @keyframes jump {
@@ -156,56 +191,4 @@ div.row.style-row {
 	to {
 		transform: rotateY(180deg);
 	}
-}
-
-/*END GAME STYLING*/
-
-.style-row {
-	border-style: solid;
-	border-color: #5e0ce2;
-	background-color: #00008b;
-	padding: 50px;
-	padding-bottom: 5px;
-}
-
-/*navbar background color*/
-.navbar {
-	background-color: #282828;
-	opacity: .8;
-}
-
-/*drop down background color*/
-.background-dropdown {
-	background-color: #282828;
-	color: white;
-}
-
-/*logo on navbar*/
-#GamerEvolutionLogo {
-	font-size: 30px;
-}
-/*end navbar*/
-
-/*login modal window*/
-.px-3 {
-	background-color: black;
-}
-
-#emailInput,
-#passwordInput {
-	background-color: white;
-	border-color: black;
-}
-.login-button,
-.login-dropdown {
-	background-color: #3500d3;
-	border-color: black;
-}
-
-.signUp-modal {
-	color: white;
-}
-
-#dropdownMenu1 {
-	color: white;
 }
