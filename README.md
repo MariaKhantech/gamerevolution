@@ -1,137 +1,148 @@
-# **Full-Stack Sequelize Template**
-this template is meant to get you up-and-running with a full-stack web application scaffolded out and ready to run using node, express, and sequelize.  happy coding.
+# GamerEvolution
 
-### **Useful Features**
-* 'dotenv' environmental variables package configured for sequelize
-* nodemon package configured
-* ESlint package configured for Airbnb styleguide
-* heroku-deployment ready
-* instructions to create separate development and production databases
-* instructions for migrating and seeding databases
+![badge](https://img.shields.io/badge/license-MIT-blue.svg)  ![badge](https://img.shields.io/badge/JavaScript-51%25-yellow) ![badge](https://img.shields.io/badge/HTML-32%25-red) ![badge](https://img.shields.io/badge/CSS-17%25-9cf) ![badeg](https://img.shields.io/github/repo-size/MariaKhantech/gamerevolution)
 
-### **How to Use This Template**
-* click "use template" next to the clone button, this will create a new repository on *your* github account
-* clone the repository down to your machine
-* run the `schema.sql` query in the mySQL tool of your choice  
-* run &nbsp; `npm install`
-* run &nbsp; `touch .env` &nbsp;in the root of your repository
-* open the .env file
-* add the four environmental variables that will be used to connect to the database:
-    <br/>       `DB_PASSWORD=yourpassword`
-    <br/>       `DB_HOST=127.0.0.1`
-    <br/>       `DB_USER=root`
-    <br/>       `DB_NAME=sample_db`
-* run &nbsp; `npm start` to start the server with nodemon which will automatically refresh after any server-side code changes
-* ***check out the optional migrations and heroku deployment guides below!***
+## Heroku URL
+#### HEROKU LINK HERE
 
-![image](./public/assets/images/dotenv.png)
+## Table of Contents
+* [General Information](#general-information)
+* [App Preview](#app-preview)
+* [How it Works](#how-it-works)
+* [Technologies](technologies)
+* [Local Installation](#local-installation)
+* [License](#license)
+* [Authors and Contributors](#authors-and-contributors)
 
-### **Optional Database Migrations and Seeding**
-#### ***Hey, this part can be confusing and is waaay beyond the scope of this readme to fully explain...if you choose to implement this useful functionality, you will need to refer to the documentation!***
-***If you dont want to set up migrations at the moment, you can always come back to it, just skip ahead to the "Heroku Deployment" section***
-* Sequelize-cli allows you to create models and seed your database from the command line
-* This will allow you to pre-fill your database for development, as well as provide a consistent data set for testing accross multiple collaborators
-* Please refer to the instructions below and [Sequelize migrations documentation](https://sequelize.org/master/manual/migrations.html#bootstrapping) to configure this project for migrations
+## General Information
+GamerEvolution is a full-stack web application to serve as a one-stop-shop for gamers and all things video game.  This application allows users to create a unique profile and build a social environment for gamers.  As well as search, save, read, and share data about video games new and old.  
+## App Preview
 
-### **Optional Instructions for Implementing Migrations**
-* run two sequelize-cli commands to initialize the migrations and seeders folders
+![Screenshot of App](public/assets/images/preview-images/screenshot_1.PNG)
+![Screenshot of App](public/assets/images/preview-images/screenshot_2.PNG)
+![Screenshot of App](public/assets/images/preview-images/screenshot_3.PNG)
+![Screenshot of App](public/assets/images/preview-images/screenshot_4.PNG)
+![Screenshot of App](public/assets/images/preview-images/screenshot_5.PNG)
+## How it Works
 
-        npx sequelize-cli init:migrations
+When a user presses the "Login" button at the top right of the navbar on the landing page, they are to select "Sign Up" and they will be directed to a sign up form where they are to create a unique profile by entering the following information:
+* First name
+* Last name
+* User name
+* Email address
+* Password
 
-  and 
+Once a user has signed up they will then be directed to their newly created profile where they can enter information about who they are as gamers such as personal favorite (and least favorite) games, Twitch/YouTube/Discord information. A user's profile page also can store and display chart data concerning what their tastes are as a player.
 
-        npx sequelize-cli init:seeders
+Once a user has setup their profile, they can begin to search for games to add to their personal game library by selecting the "Game Search" item on the navbar.
 
-* run 
+They Game Search feature allows a user to search for multiple and specific games using data from the RAWG Video Game Database API.  Using the  game search feature a user can select a platform, enter a year, and select an ordering of results or enter the title of the game they are looking for.  Based on a user's inputs a grid of games  will be rendered to a user displaying some general information about the game, such as image/video preview, release year, RAWG critic rating, and the number of user reviews.  A user can also look at data in the from of charts by selecting the "Top Game Charts" button.  These charts provide a user more details about the most popular games of the year for platforms and rating breakdowns for specific game titles.
 
-        npx sequelize-cli model:generate --name <ModelName> --attributes <someAttribute>:string,<anotherAttribute>:boolean
+When a user finds a game they want to add to their personal library they are to select the "Add to Library" button found at the bottom of a game card. The user can then look at their game library found on their profile, and when they would like to remove a game from their library, they can select the "Remove from Library" button and it will be removed.
 
-    entering in the model name and the attribute you are initializing it with - for example: 
+If a user knows another user's username they can use the "Profile Search" feature found on the navbar under "Search".  This is where a user can add friends as well as play a Paper-Mario mini game.  The mini-game's premise is to defeat Bowser using the left and right arrow keys and the space bar to jump.  Once a user defeats Bowser they can click Mario and the game will end.
 
-        npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string
+A user can also find general instruction and information regarding the application and all of it's key features on the "About" page. 
 
-* this will create the model in the models folder, and a migration file in the migrations folder.
-* you will need to go to the model file and finish setting it up, add validation, etc.
-* you will also need to set up your migrations file to match your model before running the migration
-* Once you have set up your model and matching migration, you can run the migration to create the table in your database:
-            
-        npx sequelize-cli db:migrate
+## Technologies
 
-* Next we will create a seed file that will allow us to populate the table with a dataset on command, allowing us to share a consistent dataset accross collaborators, as well as revert the table back to a clean state after testing.
+### Main Languages
 
-        npx sequelize-cli seed:generate <SEED NAME HERE, EX. DEMO-USER>
+* [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - This application is written and programmed using ES6 JavaScript.
 
-* Open the seed file created in the seeders folder and set up your seed data. for example:
+* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) - Used to style the html elements/application.
 
-![image](./public/assets/images/seeder-file.png)
+* [HMTL5](https://developer.mozilla.org/en-US/docs/Web/HTML) - Used to give frontend html files their structure and DOM elements.
 
-* once you have filled in your seed file you can run it:
+### Front-End Technologies
 
-        npx sequelize-cli db:seed:all
+* [jQuery](https://jquery.com/) -  Used to simplify JavaScript code, DOM access/manipulation, and API requests.
 
-* you are now all set to push everything up to github and continue with the steps below to deploy to heroku.
-* the final step will be to seed your production database as well.  See the optional last step in the heroku deployment section.
+* [Bootstrap](https://getbootstrap.com/) - Grid/Column system used to create responsive page layout/structure.  Also used to create and style several elements such as buttons, modals, carousels, etc.
 
-### **Heroku Deployment**
-* you may need to log into the heroku cli, do so by running &nbsp; `heroku login` &nbsp; in the terminal, you will also need the heroku website so might as well log in there too
-* run &nbsp;`heroku create` in the root of your project repository.
-* you can now run `git push heroku master` to push your application to heroku in its current state.  You will need to do this each time you wish to rebuild your heroku deployment.  You can also set up your repository to automatically push to heroku when you push to github -look around, you will find it!
-* select your application on the heroku website
-* click "Configure Add-ons"
-* type "JawsDB" into the search bar, select "JawsDB MySQL" and provision the "Kitefin Shared - Free" default option
-* open the JawsDB instance you have created by clicking on it
-* you will be brought to a page with the connection information for your deployed database, which you will need to establish a connection to your production database in the MySQL management tool of your choice
+* [jarallax.js](http://www.jarallax.com/) - Javascript library used to create parallax scrolling effect on landing page.
 
-![image](./public/assets/images/JawsDB-connection-info.png)
+* [three.js](https://threejs.org/) - Library used to create and animate smoke effect on application's landing page.
 
-* now it is time to create an instance of your production database in your MySQL management tool.  The following instructions are specifically for MySQL Workbench, but they should apply in a general sense to any tool you are using.
-* create a new MySQL connection instance
+* [chart.js](https://www.chartjs.org/) - Featured on "Profile" and "Game Search" pages and used to create and display charts and chart data.
 
-![image](./public/assets/images/new-connection.png)
+* [imgexplode.js](https://www.jqueryscript.net/demo/Create-An-Image-Explosion-Effect-In-jQuery-imgexplode-js/) - Plugin to create the brick explosion for the "Profile Search" mini-game.
 
-* give your connection a meaningful name, then using the information from the JawsDB Connection Info page, fill in the connection information on the new connection dialog, click the "store in keychain" button and store your password
+* [bootdey](https://www.bootdey.com/) - Resource that features components using bootstrap.  Used to create and style certain elements on "Profile" page.
 
-![image](./public/assets/images/new-con-setup.png)
+* [animate.css](https://animate.style/) - Used on application's landing page to add animation features to certain elements.
 
-* test you connection by clicking the "Test Connection" button at the bottom of the dialog
-* if your connection fails, double check that you copied the information correctly
-* if your connection succeeds, click into the instance
-* don't be alarmed if your schemas panel looks like this, you will still be able to view and query the database: 
+* [Cloud 9 Carousel](https://github.com/specious/cloud9carousel) - Plugin used on the "Profile Search" page to create 3D perspective carousel.
 
-![image](./public/assets/images/no-fetch.png)
+* [Rate Yo!](https://rateyo.fundoocode.ninja/) - Plugin used to render 5-star rating on video game cards.
 
-* to run queries, dont forget your `USE <DATABASE NAME>;` statement, using the database name you see in the schemas panel:
+### Back-End Technologies
 
-![image](./public/assets/images/db-name.png)
+* [Node.js](https://nodejs.org/en/about/) - Used to execute code for application on backend.
 
-* now you can manage your deployed production database!
-* ***Optional last steps when using migrations:***
-* To seed your production database, add the following line to the scripts in the &nbsp; `package.json` &nbsp; file, right below the start script:
+* [MySQL Workbench](https://www.mysql.com/products/workbench/) - MySQL GUI used to architect, test, and manage MySQL database.
 
-        "heroku-postbuild": "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
+* [Express](https://expressjs.com/) - Used to route and build RESTful API and make requests/responses between database and client.
 
-* save and commit your changes to github, then run another
+* [Sequelize](https://sequelize.org/) - ORM library used to connect/interact with mySQL database and execute SQL queries.
 
-        git push heroku master
+* [Passport](http://www.passportjs.org/) - Node middleware used to setup and support the application's authentication system. 
 
-    to push the changes to heroku and run a fresh build.  The script that was added will run the migration and seed at the end of the heroku build.
-* `select * ...` &nbsp; within your database management tool to see your freshly seeded production database!  Note that the database will be re-seeded each time you run a build, and the build ***does not*** drop the table automatically.  So to avoid doubling your data set, drop the table prior to running another build (you can use your management tool for this).  If you do not wish to continue re-seeding your production database, as you surely will at some point, just remove the `"heroku-postbuild"` script from the `package.json` file.
+* [Dotenv](https://www.npmjs.com/package/dotenv) - Module to load variables in `.env` file.
 
-### **Notes About This Database Configuration**
-* you now have two databases, a local development database and a deployed production database
-* when running your application locally as you develop, it will connect to the local development database using the credentials you supplied in your .env file
-* the heroku-deployed application will connect automatically to the deployed production database
-* if at any point you with to revert to a clean data set, run the migration/seeder instructions above.  Heroku has a cli that can be accessed by running
+* [Multer](https://www.npmjs.com/package/multer) - Middleware used to handle a user's profile form data and file uploading. 
 
-        heroku run bash <name of application>
-  this will allow you to run the migration and seed commands on the production database manually by running the `npx sequelize-cli...` commands detailed above.
-* remember that the heroku postbuild script in the package.json file is optional and may or may not be worth keeping in for you if you use the heroku cli tool.  It will append the seedfile dataset to the database each time the application is pushed to heroku.  You can also drop the table using your management tool prior to running another heroku build.
+### Other Technologies/Resources
 
-### **To Disable ESLint**
-* delete the .eslintrc.js file
-* run &nbsp; `npm uninstall eslint`
+* [RAWG Video Game Database API](https://api.rawg.io/docs/) - Used to retrieve all platform and video game data found on the "Game Search" and "Profile" pages.
+* [Heroku](https://www.heroku.com/) - Used to host working application. (see app link above).
 
-### **Links and Resources**
-* [eslint Getting started page](https://eslint.org/docs/user-guide/getting-started)
-* [dotenv NPM Documentation](https://www.npmjs.com/package/dotenv)
-* [airbnb styleguide documentation](https://github.com/airbnb/javascript)
+#### Image Resources
+
+ * [pngitem.com](https://www.pngitem.com/)
+ * [Mario Mushroom PNG](https://imgbin.com/download-png/N4EpLhjS)
+ * [Final Fantasy Image](https://wallup.net/wp-content/uploads/2018/03/19/591427-Final_Fantasy_XIV_A_Realm_Reborn-fantasy_art-748x665.jpg)
+ * [Icons](https://icons8.com/icons)
+ * [Unsplash.com](https://unsplash.com/)
+
+ #### Sound Resources
+
+ * [Mario Sounds](https://themushroomkingdom.net/wav.shtml)
+      
+        
+## Local Installation
+ After a user clones the repository, they will need to install the NPM packages associated with the application by running `npm install`. 
+
+ The user will then need to initialize the application's database by first editing the `config.js`/`.env` files to match their local environment information, followed by running the `sequelize db:create` command in their terminal.
+
+Finally, a user can launch the application by running `node server.js` in their terminal, and access the application at ```http://localhost:8080```
+## License
+
+MIT License
+
+Copyright (c) 2020 Maria Khan, Caleb Welch, Shannon Trainor, Gus Heptig
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+## Authors and Contributors
+
+* **[Maria Khan](https://github.com/MariaKhantech)**
+* **[Caleb Welch](https://github.com/calebwelch1)**
+* **[Shannon Trainor](https://github.com/shannontrainor)**
+* **[Gus Heptig](https://github.com/gheptig)** 
