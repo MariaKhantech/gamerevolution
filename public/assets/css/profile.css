@@ -35,6 +35,20 @@ body {
 #top-section1 {
 	background-color: black;
 }
+
+.fa {
+	font-size: 50px;
+	cursor: pointer;
+	user-select: none;
+}
+.fa:focus {
+	background-color: #3500d3;
+}
+
+.fa:hover {
+	color: darkblue;
+}
+
 /*/ //////////////*/
 #post-btn {
 	background-color: #3500d3;

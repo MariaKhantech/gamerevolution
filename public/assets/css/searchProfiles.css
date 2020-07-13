@@ -135,17 +135,23 @@ body {
 /*GAME STYLING*/
 .bowser {
 	width: 200px;
-	height: 100%;
-	position: relative;
-	top: -200px;
+	height: 200px;
+	position: absolute;
+	bottom: 100px;
+}
+.fireball {
+	width: 40px;
+	height: 50px;
+	position: absolute;
+	bottom: 100px;
 }
 
 .paper-mario {
 	position: relative;
 	width: 100px;
 	height: 100px;
-	bottom: 100px;
-	left: 20px;
+	left: 100px;
+	bottom: 150px;
 }
 
 .paper-mario.animated {
@@ -168,13 +174,15 @@ body {
 	left: 50px;
 }
 
+.green-warp-pipe {
+	position: absolute;
+	height: 150px;
+	left: 200px;
+}
+
 .upside-down-pipe {
 	height: 150px;
 	margin-right: 1em;
-}
-
-.green-warp-pipe {
-	height: 150px;
 }
 
 .mini-head {
