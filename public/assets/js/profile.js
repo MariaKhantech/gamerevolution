@@ -29,7 +29,7 @@ $(document).ready(() => {
 			});
 		});
 	};
-	//function TODO COMMENT
+	//function handles comments
 	const getCommentData = (result) => {
 		$.get('api/profile/comment' + result.userId, () => {}).then((data) => {
 			//grab the avatar to use in the comments section
@@ -43,11 +43,9 @@ $(document).ready(() => {
 		});
 	};
 
-	//function TODO COMMENT
+	//Getting users
 	const getUserFriends = (result) => {
 		$.get('api/profile/friends' + result.userId, () => {}).then((data) => {
-			//grab the avatar to use in the comments section
-
 			if (data.length === 0) {
 				$('#profile-friends-area').append(
 					'<h4 class= "text-white text-center">Navigate to Profile Search page to add friends</h4>'
@@ -389,7 +387,6 @@ $(document).ready(() => {
 	//toggle the like button
 	$(document).on('click', '.card-footer .toggle', function() {
 		event.preventDefault();
-		console.log($(this));
 		$(this).find('i').toggleClass('fa-thumbs-down');
 	});
 

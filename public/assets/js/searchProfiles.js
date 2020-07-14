@@ -22,7 +22,6 @@ $(document).ready(() => {
 		$.get('/api/profile/searchAll', () => {}).then((result) => {
 			//looping through the list of results
 			Object.entries(result).forEach((entry) => {
-				console.log(entry);
 				//holding profile card div
 				const srcImg = entry[1].Profile.avatarImg.substring(entry[1].Profile.avatarImg.indexOf('/'));
 				const cardHTML = createProfileCard(srcImg, entry[1].username, entry[1].Profile.bio, entry[1].userId);
@@ -54,11 +53,6 @@ $(document).ready(() => {
 		});
 	};
 
-	//mario fades intp the page
-	const fadeInMario = () => {
-		$('#paper-mario1').fadeIn(4000).removeClass('d-none');
-	};
-
 	//toggle nav bar link if the user is logged in
 	$.get('/api/user-data', () => {}).then((result) => {
 		if (result.userId) {
@@ -71,7 +65,6 @@ $(document).ready(() => {
 		}
 	});
 
-	fadeInMario();
 	showAllProfiles();
 
 	$('#browse-btn').on('click', (event) => {
@@ -84,18 +77,15 @@ $(document).ready(() => {
 		runProfileSearch(searchValue);
 	});
 
-	//handle add Freind
+	//handle add Friend
 	$('#profile-grid').on('click', 'a', function(event) {
 		event.preventDefault();
-		console.log($(this).data('userid'));
-
 		//create an object to store the friend_id variable
 		const friendData = {
 			friendId: $(this).data('userid')
 		};
-		//connecto api route to add friend
+		//connect api route to add friend
 		$.post('/api/profile/friend/create', friendData).then((results) => {
-			console.log('user posts', results);
 			let success = $('<h6 class = "text-white">success!</h6>');
 			$(this).replaceWith('<h6 class="text-white">success!</h6>');
 		});
