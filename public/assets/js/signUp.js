@@ -19,11 +19,6 @@ $(document).ready(() => {
 			password: passwordInput.val().trim()
 		};
 
-		//checks if user enetered all criteria - returns if not
-		// if (!userData.firstName || !userData.lastName || !userData.username || !userData.email || !userData.password) {
-		//     return;
-		// }
-
 		//run signUp when all data is input
 		signUp(userData.firstName, userData.lastName, userData.username, userData.email, userData.password);
 	});
