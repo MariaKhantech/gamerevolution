@@ -3,7 +3,7 @@
 $(document).ready(() => {
 	//===================== JS for the parallax plugin============================//
 	// object-fit polyfill run
-	objectFitImages();
+	// objectFitImages();
 	/* init Jarallax */
 	jarallax(document.querySelectorAll('.jarallax'));
 	jarallax(document.querySelectorAll('.jarallax-keep-img'), { keepImg: true });
@@ -66,11 +66,11 @@ $(document).ready(() => {
 			blending: THREE.AdditiveBlending
 		});
 		text = new THREE.Mesh(textGeo, textMaterial);
-		text.position.z = 800;
+		text.position.z = 700;
 		scene.add(text);
 		//changes the lighting that is against the clouds, middle section + creates a darker smoke, left # lightens
 		light = new THREE.DirectionalLight(0xffffff, 0.5);
-		light.position.set(-1, 0, 3);
+		light.position.set(-2, 0, 3);
 		scene.add(light);
 
 		smokeTexture = THREE.ImageUtils.loadTexture(
@@ -84,7 +84,8 @@ $(document).ready(() => {
 
 		for (p = 0; p < 150; p++) {
 			let particle = new THREE.Mesh(smokeGeo, smokeMaterial);
-			particle.position.set(Math.random() * 500 - 250, Math.random() * 500 - 250, Math.random() * 1000 - 100);
+			//in math.random the end of the line where it says 2000 changes how much smoke shows up
+			particle.position.set(Math.random() * 500 - 250, Math.random() * 500 - 250, Math.random() * 4000 - 100);
 			particle.rotation.z = Math.random() * 360;
 			scene.add(particle);
 			smokeParticles.push(particle);
@@ -105,7 +106,7 @@ $(document).ready(() => {
 	function evolveSmoke() {
 		let sp = smokeParticles.length;
 		while (sp--) {
-			smokeParticles[sp].rotation.z += delta * 0.2;
+			smokeParticles[sp].rotation.z += delta * 0.3;
 		}
 	}
 	//rotation of the smoke
@@ -164,27 +165,27 @@ $(document).ready(() => {
 
 //ABOUT US PAGE
 
-(function(window, document, $, undefined) {
-	var $slides, $btnArr;
+// (function(window, document, $, undefined) {
+// 	var $slides, $btnArr;
 
-	function onClick(e) {
-		var $target = $(e.target);
-		if ($target.hasClass('slide') && !$target.hasClass('active') && !$target.siblings().hasClass('active')) {
-			$target.removeClass('anim-in last-viewed').addClass('active');
-			$target.siblings().removeClass('anim-in last-viewed').addClass('anim-out');
-		}
-	}
+// 	function onClick(e) {
+// 		var $target = $(e.target);
+// 		if ($target.hasClass('slide') && !$target.hasClass('active') && !$target.siblings().hasClass('active')) {
+// 			$target.removeClass('anim-in last-viewed').addClass('active');
+// 			$target.siblings().removeClass('anim-in last-viewed').addClass('anim-out');
+// 		}
+// 	}
 
-	function closeSlide(e) {
-		var $slide = $(e.target).parent();
-		$slide.removeClass('active anim-in').addClass('last-viewed');
-		$slide.siblings().removeClass('anim-out').addClass('anim-in');
-	}
+// 	function closeSlide(e) {
+// 		var $slide = $(e.target).parent();
+// 		$slide.removeClass('active anim-in').addClass('last-viewed');
+// 		$slide.siblings().removeClass('anim-out').addClass('anim-in');
+// 	}
 
-	$(function() {
-		$slides = $('.slide');
-		$btnArr = $slides.find('.btn-close');
-		$slides.on('click', onClick);
-		$btnArr.on('click', closeSlide);
-	});
-})(this, document, jQuery);
+// 	$(function() {
+// 		$slides = $('.slide');
+// 		$btnArr = $slides.find('.btn-close');
+// 		$slides.on('click', onClick);
+// 		$btnArr.on('click', closeSlide);
+// 	});
+// })(this, document, jQuery);
