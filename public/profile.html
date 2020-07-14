@@ -472,7 +472,30 @@
 
                     </div>
 
-
+                    <!--moodal for the share button-->
+                    <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header background-modal">
+                              <h5 class="modal-title" id="exampleModalLabel">Share this post</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span class="text-white" aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body bg-dark text-white text-center border-colors">
+                                <div class="social">
+                                  <a href="#" id="share-fb" class="sharer button"><i class="fa fa-3x fa-facebook-square"></i></a>
+                                  <a href="#" id="share-tw" class="sharer button"><i class="fa fa-3x fa-twitter-square"></i></a>
+                                  <a href="#" id="share-li" class="sharer button"><i class="fa fa-3x fa-instagram"></i></a>
+                                  
+                                </div>
+                            </div>
+                            <div class="modal-footer background-modal">
+                              <button type="button" class="btn bg-dark text-white" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
 
                     <!--COLUMN 3-->
@@ -733,9 +756,6 @@
     </div>
     <!--END OF CONTAINER-->
 
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <!--ending snippet-->
     <!-- Optional JavaScript -->
     <!-- Popper.js first, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
@@ -751,7 +771,9 @@
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-
+    <!--sharer.js-->
+    <script src="https://cdn.jsdelivr.net/sharer.js/latest/sharer.min.js"></script>
+    <!--the teams js-->
     <script src="assets/js/profile.js"></script>
     <script src='assets/js/userchart.js'></script>
 </body>

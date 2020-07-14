@@ -377,24 +377,31 @@ $(document).ready(() => {
 				<div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>10 min ago</div>
 				<p class="card-text">${comment}</p>
 			</div>
-			<div class="card-footer clk">
-				<a href="#" class="card-link"><i class="fa fa-thumbs-up"></i></a>
+			<div class="card-footer">
+				<a href="#" class="card-link toggle"><i class="fa fa-thumbs-up"></i></a>
 				<a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-				<a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
+				<a href="#" class="card-link share " data-toggle="modal" data-target="#shareModal"><i class="fa fa-mail-forward"></i> Share</a>
 			</div>
 		</div>`
 		);
 	};
 
-	$('.clk i').click(function() {
-		console.log('hi');
-		$(this).find('i').toggleClass('fa fa-thumbsdown');
+	//toggle the like button
+	$(document).on('click', '.card-footer .toggle', function() {
+		event.preventDefault();
+		console.log($(this));
+		$(this).find('i').toggleClass('fa-thumbs-down');
 	});
 
-	// $('fa fa-thumbs-up').click(() => {
-	// 	$(this).toggleClass('fa-thumbs-down');
-	// });
+	//enable the share buttons
+	const url = window.location.href;
+	const title = document.title;
+	const via = 'yourTwitterUsername';
+	$('#share-fb').attr('data-url', url).attr('data-title', title).attr('data-sharer', 'facebook');
+	$('#share-tw').attr('data-url', url).attr('data-title', title).attr('data-via', via).attr('data-sharer', 'twitter');
+	$('#share-li').attr('data-url', url).attr('data-sharer', 'linkedin');
 
+	//create a top friend div element
 	const createTopFriend = (imgSrc, profileName) => {
 		return $(`<div class="col-md-auto">
 					<div class="friend1 text-center">
