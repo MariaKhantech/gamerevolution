@@ -18,10 +18,7 @@
 GamerEvolution is a full-stack web application to serve as a one-stop-shop for gamers and all things video game.  This application allows users to create a unique profile and build a social environment for gamers.  As well as search, save, read, and share data about video games new and old.  
 ## App Preview
 
-![Screenshot of App](public/assets/images/preview-images/screenshot_1.PNG)
-![Screenshot of App](public/assets/images/preview-images/screenshot_2.PNG)
-![Screenshot of App](public/assets/images/preview-images/screenshot_3.PNG)
-![Screenshot of App](public/assets/images/preview-images/screenshot_5.PNG)
+![app-gif](https://media.giphy.com/media/H3kNSXbWndbAH9EjmO/giphy.gif)
 ## How it Works
 
 When a user presses the "Login" button at the top right of the navbar on the landing page, they are to select "Sign Up" and they will be directed to a sign up form where they are to create a unique profile by entering the following information:
@@ -39,9 +36,8 @@ They Game Search feature allows a user to search for multiple and specific games
 
 When a user finds a game they want to add to their personal library they are to select the "Add to Library" button found at the bottom of a game card. The user can then look at their game library found on their profile, and when they would like to remove a game from their library, they can select the "Remove from Library" button and it will be removed.
 
-If a user knows another user's username they can use the "Profile Search" feature found on the navbar under "Search".  This is where a user can add friends as well as play a Paper-Mario mini game.  The mini-game's premise is to defeat Bowser using the left and right arrow keys and the space bar to jump.  Once a user defeats Bowser they can click Mario and the game will end.
+If a user knows another user's username they can use the "Profile Search" feature found on the navbar under "Search". Here a user can find other user's profiles and add them as friends. A user can also find general instruction and information regarding the application and all of it's key features on the "About" page. 
 
-A user can also find general instruction and information regarding the application and all of it's key features on the "About" page. 
 
 ## Technologies
 
@@ -65,13 +61,9 @@ A user can also find general instruction and information regarding the applicati
 
 * [chart.js](https://www.chartjs.org/) - Featured on "Profile" and "Game Search" pages and used to create and display charts and chart data.
 
-* [imgexplode.js](https://www.jqueryscript.net/demo/Create-An-Image-Explosion-Effect-In-jQuery-imgexplode-js/) - Plugin to create the brick explosion for the "Profile Search" mini-game.
-
 * [bootdey](https://www.bootdey.com/) - Resource that features components using bootstrap.  Used to create and style certain elements on "Profile" page.
 
 * [animate.css](https://animate.style/) - Used on application's landing page to add animation features to certain elements.
-
-* [Cloud 9 Carousel](https://github.com/specious/cloud9carousel) - Plugin used on the "Profile Search" page to create 3D perspective carousel.
 
 * [Rate Yo!](https://rateyo.fundoocode.ninja/) - Plugin used to render 5-star rating on video game cards.
 
@@ -99,16 +91,10 @@ A user can also find general instruction and information regarding the applicati
 #### Image Resources
 
  * [pngitem.com](https://www.pngitem.com/)
- * [Mario Mushroom PNG](https://imgbin.com/download-png/N4EpLhjS)
  * [Final Fantasy Image](https://wallup.net/wp-content/uploads/2018/03/19/591427-Final_Fantasy_XIV_A_Realm_Reborn-fantasy_art-748x665.jpg)
- * [Icons](https://icons8.com/icons)
  * [Unsplash.com](https://unsplash.com/)
 
- #### Sound Resources
 
- * [Mario Sounds](https://themushroomkingdom.net/wav.shtml)
-      
-        
 ## Local Installation
  After a user clones the repository, they will need to install the NPM packages associated with the application by running `npm install`. 
 
