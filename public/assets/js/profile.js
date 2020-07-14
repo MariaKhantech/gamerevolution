@@ -3,7 +3,7 @@ $(document).ready(() => {
 	let userData;
 
 	const getProfileInfo = () => {
-		$.get('api/user-data', () => { }).then((result) => {
+		$.get('api/user-data', () => {}).then((result) => {
 			userData = result;
 			//sets the username
 			$('#username').text(`@${result.username}`);
@@ -31,7 +31,7 @@ $(document).ready(() => {
 	};
 	//function TODO COMMENT
 	const getCommentData = (result) => {
-		$.get('api/profile/comment' + result.userId, () => { }).then((data) => {
+		$.get('api/profile/comment' + result.userId, () => {}).then((data) => {
 			//grab the avatar to use in the comments section
 			commentImg = $('#user-profile').attr('src');
 			commentUsername = $('#username').text();
@@ -45,7 +45,7 @@ $(document).ready(() => {
 
 	//function TODO COMMENT
 	const getUserFriends = (result) => {
-		$.get('api/profile/friends' + result.userId, () => { }).then((data) => {
+		$.get('api/profile/friends' + result.userId, () => {}).then((data) => {
 			//grab the avatar to use in the comments section
 
 			if (data.length === 0) {
@@ -57,7 +57,7 @@ $(document).ready(() => {
 			let friendCounter = 0;
 
 			data.forEach((element) => {
-				$.get('api/profile' + element.friend_id, () => { }).then((friendData) => {
+				$.get('api/profile' + element.friend_id, () => {}).then((friendData) => {
 					const createCard = $('<div>', {
 						class: 'card d-inline-block ',
 						id: 'game-card',
@@ -112,7 +112,7 @@ $(document).ready(() => {
 		});
 	});
 
-	$('#signOut').on('click', function () {
+	$('#signOut').on('click', function() {
 		$.get('/api/logout', (data) => {
 			window.location.replace('/');
 		});
@@ -377,8 +377,8 @@ $(document).ready(() => {
 				<div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>10 min ago</div>
 				<p class="card-text">${comment}</p>
 			</div>
-			<div id="likeBtn" class="card-footer">
-				<i class="fa fa-thumbs-up"></i>
+			<div class="card-footer clk">
+				<a href="#" class="card-link"><i class="fa fa-thumbs-up"></i></a>
 				<a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
 				<a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
 			</div>
@@ -386,8 +386,9 @@ $(document).ready(() => {
 		);
 	};
 
-	$('#likeBtn').on('click', function(event) {
-		console.log('onetheo');
+	$('.clk i').click(function() {
+		console.log('hi');
+		$(this).find('i').toggleClass('fa fa-thumbsdown');
 	});
 
 	// $('fa fa-thumbs-up').click(() => {
@@ -460,7 +461,7 @@ $(document).ready(() => {
 						const cardTitle = $('<h6>', {
 							class: 'card-title text-center',
 							text: response.name,
-							style: "font-size: 18px;"
+							style: 'font-size: 18px;'
 						});
 
 						cardBody.append(cardTitle);
@@ -469,7 +470,7 @@ $(document).ready(() => {
 							const cardDescription = $('<p>', {
 								class: 'card-text text-center',
 								text: `Released: N/A`,
-								style: "font-size: 18px;"
+								style: 'font-size: 18px;'
 							});
 							cardBody.append(cardDescription);
 						} else {
@@ -477,7 +478,7 @@ $(document).ready(() => {
 							const cardDescription = $('<p>', {
 								class: 'card-text text-center',
 								text: `Released: ${gameYear[0]}`,
-								style: "font-size: 18px;"
+								style: 'font-size: 18px;'
 							});
 							cardBody.append(cardDescription);
 						}
@@ -486,7 +487,7 @@ $(document).ready(() => {
 						const rawgPercentage = $('<p>', {
 							class: 'card-text text-center',
 							text: `Rating: ${percentage}%`,
-							style: "font-size: 18px;"
+							style: 'font-size: 18px;'
 						});
 						const rawgRating = $('<p>', {
 							class: 'card-text text-center mx-auto'
@@ -498,7 +499,7 @@ $(document).ready(() => {
 						const userRatings = $('<p>', {
 							class: 'card-text text-center',
 							text: `User Ratings: ${response.ratings_count}`,
-							style: "font-size: 18px;"
+							style: 'font-size: 18px;'
 						});
 						cardBody.append(rawgPercentage, rawgRating, userRatings);
 
@@ -521,7 +522,7 @@ $(document).ready(() => {
 
 	getUserGames();
 
-	$('#profile-game-area').on('click', 'button', function (event) {
+	$('#profile-game-area').on('click', 'button', function(event) {
 		event.preventDefault();
 
 		let name = $(this).data('name');
@@ -539,7 +540,7 @@ $(document).ready(() => {
 			}).then((result) => {
 				$('#load-modal').modal('show');
 
-				setTimeout(function () {
+				setTimeout(function() {
 					$('#load-modal').modal('hide');
 				}, 1500);
 				$('#profile-game-area').empty();
