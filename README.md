@@ -21,7 +21,6 @@ GamerEvolution is a full-stack web application to serve as a one-stop-shop for g
 ![Screenshot of App](public/assets/images/preview-images/screenshot_1.PNG)
 ![Screenshot of App](public/assets/images/preview-images/screenshot_2.PNG)
 ![Screenshot of App](public/assets/images/preview-images/screenshot_3.PNG)
-![Screenshot of App](public/assets/images/preview-images/screenshot_4.PNG)
 ![Screenshot of App](public/assets/images/preview-images/screenshot_5.PNG)
 ## How it Works
 

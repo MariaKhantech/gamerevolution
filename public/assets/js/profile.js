@@ -377,14 +377,22 @@ $(document).ready(() => {
 				<div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>10 min ago</div>
 				<p class="card-text">${comment}</p>
 			</div>
-			<div class="card-footer">
-				<a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
+			<div id="likeBtn" class="card-footer">
+				<i class="fa fa-thumbs-up"></i>
 				<a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
 				<a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
 			</div>
 		</div>`
 		);
 	};
+
+	$('#likeBtn').on('click', function(event) {
+		console.log('onetheo');
+	});
+
+	// $('fa fa-thumbs-up').click(() => {
+	// 	$(this).toggleClass('fa-thumbs-down');
+	// });
 
 	const createTopFriend = (imgSrc, profileName) => {
 		return $(`<div class="col-md-auto">
@@ -394,8 +402,6 @@ $(document).ready(() => {
 					</div>
 				</div>`);
 	};
-
-	//load the user friends
 
 	//get the latest profile information for the user
 	getProfileInfo();

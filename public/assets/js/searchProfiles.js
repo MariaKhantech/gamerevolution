@@ -152,26 +152,52 @@ $(document).ready(() => {
 	//Starting mario animations//
 	let offset = $('.paper-mario').position();
 	console.log(offset);
+
+	$('.bowser').css('left', $('body').width() - 300 + 'px');
+	$('.bowser').css('bottom', $('body').height() - 800 + 'px');
+
+	// $('.paper-mario').css('left', 20 + 'px');
+	// $('.paper-mario').css('bottom', $('body').height() - 800 + 'px');
+
+	function positionFireballShoot() {
+		$('.fireball').css('left', $('body').width() - 300 + 'px');
+		$('.fireball').css('top', 1200 + 'px');
+		setTimeout(goLeft, 50);
+	}
+
+	positionFireballShoot();
+
 	let isExploded = false;
 	let isGrown = false;
 	document.body.onkeyup = function(e) {
-		console.log(e);
+		//console.log($('.paper-mario').position());
+
 		if (e.keyCode === 32) {
 			$('.paper-mario').addClass('animated');
+			let jumpMario = $('<Audio></Audio>');
+			jumpMario[0].src = 'assets/sounds/jump-mario.wav';
+			jumpMario[0].play();
 			setTimeout(function() {
 				//JUMP SOUND HERE
-				let jumpMario = $('<Audio></Audio>');
-				jumpMario[0].src = 'assets/sounds/jump-mario.wav';
-				jumpMario[0].play();
+
+				if (isGrown && isExploded) {
+					// if ($('.paper-mario').position().left > 150 && $('.paper-mario').position().left < 250) {
+					// 	console.log($('.paper-mario')[0]);
+					// 	$('.paper-mario').removeClass('animated');
+					// 	$('.paper-mario')[0].style.left = '1300px';
+					// 	$('.paper-mario')[0].style.top = '-1000px';
+					// }
+					//console.log(($('.paper-mario')[0].style.left = '1000px'));
+				}
 
 				let brickPos = $('.brick').position();
-				console.log(brickPos);
+				//console.log(brickPos);
 
 				let marioPos = $('.paper-mario').position();
-				console.log(marioPos.left);
+				//console.log(marioPos.left);
 
 				if (marioPos.left > 10 && marioPos.left < 51 && !isExploded) {
-					console.log('hot brick');
+					//	console.log('hot brick');
 					$('.brick').explode();
 					triggerBrickExplosion();
 					//show the mushroom
@@ -179,17 +205,31 @@ $(document).ready(() => {
 					isExploded = true;
 					//grow mario
 				} else if (marioPos.left > 10 && marioPos.left < 51 && !isGrown) {
-					console.log('grab mushroom');
-					$('.paper-mario').animate({ width: '150px', height: '150px' }, 1000);
+					//	console.log('grab mushroom');
+					$('.paper-mario').animate({ width: '130px', height: '130px' }, 1000);
 					$('.mushroom').addClass('d-none');
 					isGrown = true;
 				}
 
-				$('.paper-mario').removeClass('animated');
-			}, 1000);
+				setTimeout(function() {
+					$('.paper-mario').removeClass('animated');
+				}, 1000);
+			}, 500);
 		}
 	};
 
+	function goLeft(x) {
+		$('.fireball').animate(
+			{
+				left: 0
+			},
+			10000,
+			function() {
+				positionFireballShoot();
+			}
+		);
+	}
+	//reference http://jsfiddle.net/jakecigar/u2dtep5n/ and https://github.com/samanthaming/not-fancy-css-mario-jump
 	let change = {
 		37: {
 			left: '-=1'
@@ -219,16 +259,5 @@ $(document).ready(() => {
 		console.log('up');
 		clearInterval(going);
 		$(document).one('keydown', keyDown);
-	}
-
-	function getOffset(el) {
-		var _x = 0;
-		var _y = 0;
-		while (el && !isNaN(el.offsetLeft) && !isNaN(el.offsetTop)) {
-			_x += el.offsetLeft - el.scrollLeft;
-			_y += el.offsetTop - el.scrollTop;
-			el = el.offsetParent;
-		}
-		return { top: _y, left: _x };
 	}
 });
