@@ -3,7 +3,7 @@
 ![badge](https://img.shields.io/badge/license-MIT-blue.svg)  ![badge](https://img.shields.io/badge/JavaScript-51%25-yellow) ![badge](https://img.shields.io/badge/HTML-32%25-red) ![badge](https://img.shields.io/badge/CSS-17%25-9cf) ![badeg](https://img.shields.io/github/repo-size/MariaKhantech/gamerevolution)
 
 ## Heroku URL
-#### HEROKU LINK HERE
+https://fatidique-moliere-24500.herokuapp.com/index.html
 
 ## Table of Contents
 * [General Information](#general-information)
