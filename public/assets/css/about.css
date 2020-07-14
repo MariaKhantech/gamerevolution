@@ -299,7 +299,7 @@ h4 {
   display: block;
   content: attr(data-title);
   overflow: hidden;
-  color: #fff59d;
+  color: lightblue;
   -webkit-transition: all 0.85s;
   transition: all 0.85s;
 }
